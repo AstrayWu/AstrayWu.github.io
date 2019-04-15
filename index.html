@@ -330,7 +330,7 @@
                 
               
 
-              <time title="Created: 2019-04-16 00:37:38 / Modified: 02:06:05" itemprop="dateCreated datePublished" datetime="2019-04-16T00:37:38+08:00">2019-04-16</time>
+              <time title="Created: 2019-04-16 00:37:38 / Modified: 03:23:48" itemprop="dateCreated datePublished" datetime="2019-04-16T00:37:38+08:00">2019-04-16</time>
             
 
             
@@ -371,20 +371,29 @@
       
         
           
-            <h1 id="VSCode支持的markdown语法参考"><a href="#VSCode支持的markdown语法参考" class="headerlink" title="VSCode支持的markdown语法参考"></a>VSCode支持的markdown语法参考</h1><p>主要记录下载使用vscode的markdown记录时，一些参考备注，可能集中在公式的支持上面。主要来源于参考资料，自己重新记录一遍便于回溯。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.jianshu.com/p/fd761fc43753" target="_blank" rel="noopener">VsCode支持的markdown语法参考</a></p>
-<h2 id="遗留问题"><a href="#遗留问题" class="headerlink" title="遗留问题"></a>遗留问题</h2><ol>
+            <!-- # VSCode支持的markdown语法参考 -->
+<p>主要记录下载使用vscode的markdown记录时，一些参考备注，可能集中在公式的支持上面。主要来源于参考资料，自己重新记录一遍便于回溯。</p>
+<hr>
+<h1 id="参考资料与备注"><a href="#参考资料与备注" class="headerlink" title="参考资料与备注"></a>参考资料与备注</h1><ol>
+<li>主要参考资料<a href="https://www.jianshu.com/p/fd761fc43753" target="_blank" rel="noopener">VsCode支持的markdown语法参考</a></li>
 <li>Markdown PDF没有办法解决$\LaTeX$公式的渲染问题，暂时只能使用Markdown Preview Enhance来导出到html再另存为pdf格式。</li>
 <li>Markdown Preview Enhance也是可以配置css文件的。</li>
 <li>Markdown Preview Enhance可以配置多种流程图，但是渲染等需要再研究下。</li>
 <li>关于$\LaTeX$公式是需要Markdown Math插件的，至于公式的许多用法请参考其他问题。</li>
 <li>在公式环境中，不要轻易分行，容易导致公式渲染失败。</li>
+<li>在hexo中渲染数学公式需要Mathjax，可以参考<a href="https://blog.csdn.net/crazy_scott/article/details/79293576" target="_blank" rel="noopener">hexo下LaTeX无法显示的解决方案</a></li>
+<li>hexo中支持的一些语法可以参考<a href="https://hyxxsfwy.github.io/2016/01/15/Hexo-Markdown-%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/" target="_blank" rel="noopener">Hexo Markdown 简明语法手册</a></li>
+<li>Mathjax英文可以参考<a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference/5044" target="_blank" rel="noopener">MathJax basic tutorial and quick reference</a>，中文翻译参考<a href="https://www.cnblogs.com/linxd/p/4955530.html" target="_blank" rel="noopener">Mathjax与LaTex公式简介</a></li>
+<li>Mathjax的docs，可以查到相关的语法支持情况<a href="http://docs.mathjax.org/en/latest/tex.html" target="_blank" rel="noopener">hMathJax TeX and LaTeX Support</a></li>
+<li>当前markdown渲染引擎不支持todolist<a href="https://github.com/sun11/hexo-renderer-kramed/pull/1" target="_blank" rel="noopener">Port todo list support from marked</a>，有需要的话未来可以自己合并。</li>
+<li>使用kramed需要在文档头中加<code>mathjax: true</code></li>
+<li>Katex中不支持<code>\label</code>和<code>\eqref</code>，目前站点渲染这个也无法做到，但Mathjax应该可以做到。</li>
 </ol>
-<h2 id="文本部分"><a href="#文本部分" class="headerlink" title="文本部分"></a>文本部分</h2><h3 id="粗体、斜体和删除线"><a href="#粗体、斜体和删除线" class="headerlink" title="粗体、斜体和删除线"></a>粗体、斜体和删除线</h3><p><strong>这是粗体</strong></p>
+<h1 id="文本部分"><a href="#文本部分" class="headerlink" title="文本部分"></a>文本部分</h1><h2 id="粗体、斜体和删除线"><a href="#粗体、斜体和删除线" class="headerlink" title="粗体、斜体和删除线"></a>粗体、斜体和删除线</h2><p><strong>这是粗体</strong></p>
 <p><em>这是斜体</em></p>
 <p><del>这是删除线</del></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">**这是粗体**</span><br><span class="line">*这是斜体*</span><br><span class="line">~~这是删除线~~</span><br></pre></td></tr></table></figure>
-<h3 id="分级标题"><a href="#分级标题" class="headerlink" title="分级标题"></a>分级标题</h3><!-- > 这是一级标题
+<h2 id="分级标题"><a href="#分级标题" class="headerlink" title="分级标题"></a>分级标题</h2><!-- > 这是一级标题
 > === 
 > 
 > 这是二级标题
@@ -394,7 +403,7 @@
 > ## 这是二级标题
 > ### 这是三级标题 -->
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">这是一级标题</span><br><span class="line">=== </span><br><span class="line"></span><br><span class="line">这是二级标题</span><br><span class="line">--- </span><br><span class="line"></span><br><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br></pre></td></tr></table></figure>
-<h3 id="标注"><a href="#标注" class="headerlink" title="标注"></a>标注</h3><p>好像支持不了尾注和简单的上下标写法</p>
+<h2 id="标注"><a href="#标注" class="headerlink" title="标注"></a>标注</h2><p>好像支持不了尾注和简单的上下标写法</p>
 <ul>
 <li><p>上标：30<sup>test</sup></p>
 </li>
@@ -402,47 +411,75 @@
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- 上标：30&lt;sup&gt;test&lt;/sup&gt;</span><br><span class="line">- 下标：30&lt;sub&gt;test&lt;/sub&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="文字引用"><a href="#文字引用" class="headerlink" title="文字引用"></a>文字引用</h3><blockquote>
+<h2 id="文字引用"><a href="#文字引用" class="headerlink" title="文字引用"></a>文字引用</h2><blockquote>
 <p>这是引用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; 这是引用</span><br></pre></td></tr></table></figure>
 </blockquote>
-<h3 id="生成目录"><a href="#生成目录" class="headerlink" title="生成目录"></a>生成目录</h3><p>需要使用Markdown TOC插件，不过这个插件可能会有问题，参考</p>
+<h2 id="生成目录"><a href="#生成目录" class="headerlink" title="生成目录"></a>生成目录</h2><p>需要使用Markdown TOC插件，不过这个插件可能会有问题，参考</p>
 <ul>
 <li><p><a href="https://jingyan.baidu.com/article/60ccbceba8d4f464cbb19740.html" target="_blank" rel="noopener">VSCode如何为Markdown自动生成目录</a></p>
 </li>
 <li><p><a href="https://jingyan.baidu.com/article/6b97984df62b501ca3b0bf7a.html" target="_blank" rel="noopener">VSCode中Markdown目录显示异常</a></p>
 </li>
 </ul>
-<h2 id="标签分类代码图像"><a href="#标签分类代码图像" class="headerlink" title="标签分类代码图像"></a>标签分类代码图像</h2><h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>好像不支持这个功能</p>
-<h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><ul>
+<h2 id="标签分类代码图像"><a href="#标签分类代码图像" class="headerlink" title="标签分类代码图像"></a>标签分类代码图像</h2><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>好像不支持这个功能</p>
+<h2 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h2><ul>
 <li>无序列表1</li>
 <li>无序列表2</li>
 <li>无序列表3</li>
 <li>无序列表4</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 无序列表1</span><br><span class="line">- 无序列表2</span><br><span class="line">- 无序列表3</span><br><span class="line">- 无序列表4</span><br></pre></td></tr></table></figure>
-<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><ol>
+<h2 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h2><ol>
 <li>有序列表项</li>
 <li>有序列表项</li>
 <li>有序列表项</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 有序列表项</span><br><span class="line">2. 有序列表项</span><br><span class="line">3. 有序列表项</span><br></pre></td></tr></table></figure>
-<h3 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h3><p><a href="www.baidu.com">百度一下，你就知道</a></p>
+<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><p><a href="www.baidu.com">百度一下，你就知道</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[百度一下，你就知道](www.baidu.com)</span><br></pre></td></tr></table></figure>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>用<code>`表示</code>行内代码`<br>用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```text</span><br><span class="line">代码块</span><br></pre></td></tr></table></figure></p>
-<h3 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h3><blockquote>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p><img src="/2019/04/16/VSCode支持的markdown语法参考/2019-04-16-03-04-30.png" alt=""></p>
+<h2 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h2><blockquote>
 <p><img src="/2019/04/16/VSCode支持的markdown语法参考/2019-04-11-01-59-14.png" alt=""></p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用 ![描述](图片链接地址) 插入图像。</span><br></pre></td></tr></table></figure>
-<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><p>可以使用<code>:</code>来对齐。<br>这里好像不支持<code>&gt;</code>的跨表格功能。<br>| 项目        | 价格   |  数量  |<br>| ————   | ——-:  | :——:  |<br>| 计算机     | \$1600 |   5     |<br>| 手机        |   \$12   |   12   |<br>| 管线        |    \$1    |  234  |<br>| &gt; | ce    |   ce|</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">| 项目        | 价格   |  数量  |</span><br><span class="line">| --------   | -----:  | :----:  |</span><br><span class="line">| 计算机     | \$1600 |   5     |</span><br><span class="line">| 手机        |   \$12   |   12   |</span><br><span class="line">| 管线        |    \$1    |  234  |</span><br><span class="line">| &gt; | ce    |   ce|</span><br></pre></td></tr></table></figure>
-<h3 id="TODO事项"><a href="#TODO事项" class="headerlink" title="TODO事项"></a>TODO事项</h3><p>注意方括号中间有空格</p>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>可以使用<code>:</code>来对齐。<br>这里好像不支持<code>&gt;</code>的跨表格功能。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Item</th>
+<th style="text-align:right">Value</th>
+<th style="text-align:center">Qty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Computer</td>
+<td style="text-align:right">1600 USD</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:left">Phone</td>
+<td style="text-align:right">12 USD</td>
+<td style="text-align:center">12</td>
+</tr>
+<tr>
+<td style="text-align:left">Pipe</td>
+<td style="text-align:right">1 USD</td>
+<td style="text-align:center">234</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">| Item     | Value     | Qty   |</span><br><span class="line">| :------- | --------: | :---: |</span><br><span class="line">| Computer | 1600 USD  | 5     |</span><br><span class="line">| Phone    | 12 USD    | 12    |</span><br><span class="line">| Pipe     | 1 USD     | 234   |</span><br></pre></td></tr></table></figure>
+<h2 id="TODO事项"><a href="#TODO事项" class="headerlink" title="TODO事项"></a>TODO事项</h2><p>注意方括号中间有空格，站点的渲染引擎暂不支持。</p>
 <ul>
 <li>[ ] 要做的事情</li>
 <li>[x] 已经做的事情</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- [ ] 要做的事情</span><br><span class="line">- [x] 已经做的事情</span><br></pre></td></tr></table></figure>
-<h2 id="数学公式与Latex"><a href="#数学公式与Latex" class="headerlink" title="数学公式与Latex"></a>数学公式与Latex</h2><p>用<code>$</code>表示行内公式，例如 $a^2+b^2=c^2$</p>
+<h1 id="数学公式与Latex"><a href="#数学公式与Latex" class="headerlink" title="数学公式与Latex"></a>数学公式与Latex</h1><p>用<code>$</code>表示行内公式，例如 $a^2+b^2=c^2$</p>
 <p>用<code>$$</code>表示整行公式，例如</p>
 <script type="math/tex; mode=display">a^2+b^2=c^2</script><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">用`$`表示行内公式，例如$a^2+b^2=c^2$</span><br><span class="line"></span><br><span class="line">用`$$`表示整行公式，例如</span><br><span class="line">$$</span><br><span class="line">a^2+b^2=c^2</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
 <p>这一块参考文档<strong>一份不太简短的$\LaTeX$介绍</strong>比较好，这里仅仅列可能会常用的模板或者不太容易找到的用法。</p>
@@ -548,7 +585,7 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="g
 <p>颜色</p>
 <script type="math/tex; mode=display">
 \color{black}{blackText} \color{yellow}{yellowText}</script><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\color&#123;black&#125;&#123;blackText&#125; \color&#123;yellow&#125;&#123;yellowText&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p>这一小节需要插件支持，而且渲染的时候需要定义格式，暂时不弄</p>
+<h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><p>这一小节需要插件支持，而且渲染的时候需要定义格式，暂时不弄</p>
 
           
         
