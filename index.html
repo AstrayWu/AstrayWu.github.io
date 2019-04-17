@@ -285,6 +285,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/16/SICP/SICP-2-3/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/16/SICP/SICP-2-3/" class="post-title-link" itemprop="url">SICP_2.3</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-16 04:44:51" itemprop="dateCreated datePublished" datetime="2019-04-16T04:44:51+08:00">2019-04-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-18 02:14:49" itemprop="dateModified" datetime="2019-04-18T02:14:49+08:00">2019-04-18</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="2-3-Symbolic-Data"><a href="#2-3-Symbolic-Data" class="headerlink" title="2.3 Symbolic Data"></a>2.3 Symbolic Data</h2><h3 id="2-3-1-Quotation"><a href="#2-3-1-Quotation" class="headerlink" title="2.3.1 Quotation"></a>2.3.1 Quotation</h3><p>本小结主要讲符号的引用，之前都是在对数字进行处理，现在要考虑对实际变量的处理。</p>
+<p><code>eq?</code>可以用于判断两个符号的是否相等。<br><code>memq</code>可以判断给定符号是否在特定list中，如果不是返回nil，否则返回以该符号为首的sublist。</p>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">(<span class="name">define</span> (<span class="name">memq</span> item x)</span><br><span class="line">    (<span class="name">cond</span> ((<span class="name">null</span>? x) false)</span><br><span class="line">          ((<span class="name">eq</span>? item (<span class="name">car</span> x)) x)</span><br><span class="line">          (<span class="name">else</span> (<span class="name">memq</span> item (<span class="name">cdr</span> x)))))</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-2-Example-Symbol-Differentiation"><a href="#2-3-2-Example-Symbol-Differentiation" class="headerlink" title="2.3.2 Example:Symbol Differentiation"></a>2.3.2 Example:Symbol Differentiation</h3><p>本节用求微分举例，这种带符号的求导与抽象数据的处理不同，是带符号的。只利用了最简单的4个求导规则</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \frac{\mathrm{d}c}{\mathrm{d}x} = 0 \\[2ex]
+& \frac{\mathrm{d}x}{\mathrm{d}x} = 1 \\[2ex]
+& \frac{\mathrm{d}(u + v)}{\mathrm{d}x} = \frac{\mathrm{d}u}{\mathrm{d}x} + \frac{\mathrm{d}v}{\mathrm{d}x} \\[2ex]
+& \frac{\mathrm{d}(uv)}{\mathrm{d}x} = u\frac{\mathrm{d}u}{\mathrm{d}x} + v\frac{\mathrm{d}u}{\mathrm{d}x} \\[2ex]
+\end{aligned}</script><p>首先定义如下基本操作<br><figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">(<span class="name">define</span> (<span class="name">variable</span>? e)</span><br><span class="line">    (<span class="name">symbol</span>? x))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">same-variable</span>? v1 v2)</span><br><span class="line">    (<span class="name">and</span> (<span class="name">varaible</span>? v1) (<span class="name">variable</span>? v2) (<span class="name">eq</span>? v1 v2)))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">make-sum</span> a1 a2)</span><br><span class="line">    (<span class="name">list</span> '+ a1 a2))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">make-product</span> m1 m2)</span><br><span class="line">    (<span class="name">list</span> '* m1 m2))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">sum</span>? x)</span><br><span class="line">    (<span class="name">and</span> (<span class="name">pair</span>? x) (<span class="name">eq</span>? (<span class="name">car</span> x) '+)))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">addend</span> s)</span><br><span class="line">    (<span class="name">cadr</span> s))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">augend</span> s)</span><br><span class="line">    (<span class="name">caddr</span> s))   <span class="comment">; 注意s是个list，所以要取caddr而不是cddr</span></span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">product</span>? x)</span><br><span class="line">    (<span class="name">and</span> (<span class="name">pair</span>? x) (<span class="name">eq</span>? (<span class="name">car</span> x) '+)))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">multiplier</span> p)</span><br><span class="line">    (<span class="name">cadr</span> p))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">multiplicand</span> p)</span><br><span class="line">    (<span class="name">caddr</span> p))</span><br></pre></td></tr></table></figure></p>
+<p>随后就可以根据定义的求导法则递归展开<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(define (deriv exp var)</span><br><span class="line">    (cond ((number? exp) 0)</span><br><span class="line">          ((variable? exp)</span><br><span class="line">            (if (same-variable? exp var) 1 0)</span><br><span class="line">          ((sum? exp)</span><br><span class="line">            (make-sum (deriv (addend exp) var)</span><br><span class="line">                      (deriv (augend exp) var))</span><br><span class="line">          ((product? exp)</span><br><span class="line">            (make-product (deriv (multiplier exp) var)</span><br><span class="line">                          (deriv (multiplicand exp) var)))))</span><br><span class="line">          (else (error &quot;unknown expression type -- DERIV&quot; exp))))</span><br></pre></td></tr></table></figure></p>
+<p>以上会出现一个问题，就是并没有化简到最简单，比如<br><figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">(<span class="name">define</span> '(+ x <span class="number">3</span>) 'x)</span><br><span class="line">    (<span class="name">+</span> <span class="number">1</span> <span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
+<p>解决这个问题在于改变<code>make-sum</code>的行为即可，<code>deriv</code>不用改变。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(define (make-sum a1 a2)</span><br><span class="line">    (cond ((=number? a1 0) a2)</span><br><span class="line">          ((=number? a2 0) a1)</span><br><span class="line">          ((and (number? a1) (number? a2)) (+ a1 a2))</span><br><span class="line">          (else (list &apos;+ a1 a2))))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(define (make-product m1 m1)</span><br><span class="line">    (cond ((or (=number? m1 0) (=number? m2 0)) 0)</span><br><span class="line">          ((=number? m1 1) m2)</span><br><span class="line">          ((=number? m2 1) m1)</span><br><span class="line">          ((and (number? m1) (number? m2)) (* m1 m2))</span><br><span class="line">          (else (list &apos;* m1 m2))))</span><br></pre></td></tr></table></figure></p>
+<p>习题2.56</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/16/hexo使用小记/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -330,12 +499,24 @@
                 
               
 
-              <time title="Created: 2019-04-16 03:26:21 / Modified: 03:44:03" itemprop="dateCreated datePublished" datetime="2019-04-16T03:26:21+08:00">2019-04-16</time>
+              <time title="Created: 2019-04-16 03:26:21" itemprop="dateCreated datePublished" datetime="2019-04-16T03:26:21+08:00">2019-04-16</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-18 02:08:27" itemprop="dateModified" datetime="2019-04-18T02:08:27+08:00">2019-04-18</time>
               
             
           </span>
@@ -382,12 +563,14 @@
 <li>Katex中不支持<code>\label</code>和<code>\eqref</code>，目前站点渲染这个也无法做到，但Mathjax应该可以做到。</li>
 <li><a href="https://github.com/iissnan/hexo-theme-next/issues/211" target="_blank" rel="noopener">代码不让它显示行数序号数字怎搞</a></li>
 <li><a href="https://segmentfault.com/q/1010000008494901" target="_blank" rel="noopener">取消hexo中的目录编号</a>，可以使用vs中的toc功能加编号会更好些。</li>
+<li>如何备份hexo的blog源代码<br>可以参考<a href="https://www.zhihu.com/question/21193762" target="_blank" rel="noopener">使用hexo，如果换了电脑怎么更新博客？</a><br>如果已经完成了blog的编写，可以在github上面新建一个<code>hexo</code>分支，并设置为默认分支，随后将远程分支下载下来，并用blog的源文件全部替换掉，在push即可。这样就可以将源代码备份到Github上面的hexo分支，而网页文件存储在master分支。</li>
 </ol>
 <h1 id="3-参考资料"><a href="#3-参考资料" class="headerlink" title="3. 参考资料"></a>3. 参考资料</h1><ol>
 <li><a href="https://www.jianshu.com/p/3a05351a37dc" target="_blank" rel="noopener">Hexo的Next主题详细配置</a></li>
 <li>Next官网<a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">精于心，简于形</a></li>
 <li>知乎的hexo建站笔记<a href="https://zhuanlan.zhihu.com/p/26625249" target="_blank" rel="noopener">GitHub+Hexo 搭建个人网站详细教程</a></li>
 <li><a href="https://www.jianshu.com/p/a117650f6c76" target="_blank" rel="noopener">利用vscode插件与git hook提升hexo编写部署体验</a></li>
+<li><a href="https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/" target="_blank" rel="noopener">Hexo博客搭建之在文章中插入图片</a></li>
 </ol>
 
           
@@ -490,12 +673,24 @@
                 
               
 
-              <time title="Created: 2019-04-16 00:37:38 / Modified: 03:45:29" itemprop="dateCreated datePublished" datetime="2019-04-16T00:37:38+08:00">2019-04-16</time>
+              <time title="Created: 2019-04-16 00:37:38" itemprop="dateCreated datePublished" datetime="2019-04-16T00:37:38+08:00">2019-04-16</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-17 02:13:09" itemprop="dateModified" datetime="2019-04-17T02:13:09+08:00">2019-04-17</time>
               
             
           </span>
@@ -534,7 +729,7 @@
             <!-- # VSCode支持的markdown语法参考 -->
 <p>主要记录下载使用vscode的markdown记录时，一些参考备注，可能集中在公式的支持上面。主要来源于参考资料，自己重新记录一遍便于回溯。</p>
 <hr>
-<h1 id="1-参考资料与备注"><a href="#1-参考资料与备注" class="headerlink" title="1. 参考资料与备注"></a>1. 参考资料与备注</h1><ol>
+<h1 id="参考资料与备注"><a href="#参考资料与备注" class="headerlink" title="参考资料与备注"></a>参考资料与备注</h1><ol>
 <li>主要参考资料<a href="https://www.jianshu.com/p/fd761fc43753" target="_blank" rel="noopener">VsCode支持的markdown语法参考</a></li>
 <li>Markdown PDF没有办法解决$\LaTeX$公式的渲染问题，暂时只能使用Markdown Preview Enhance来导出到html再另存为pdf格式。</li>
 <li>Markdown Preview Enhance也是可以配置css文件的。</li>
@@ -543,11 +738,12 @@
 <li>在公式环境中，不要轻易分行，容易导致公式渲染失败。</li>
 <li>其他关于markdown渲染的问题，参考<strong>hexo使用小记</strong>。</li>
 </ol>
-<h1 id="2-文本部分"><a href="#2-文本部分" class="headerlink" title="2. 文本部分"></a>2. 文本部分</h1><h2 id="2-1-粗体、斜体和删除线"><a href="#2-1-粗体、斜体和删除线" class="headerlink" title="2.1. 粗体、斜体和删除线"></a>2.1. 粗体、斜体和删除线</h2><p><strong>这是粗体</strong></p>
+<h1 id="文本部分"><a href="#文本部分" class="headerlink" title="文本部分"></a>文本部分</h1><h2 id="粗体、斜体和删除线"><a href="#粗体、斜体和删除线" class="headerlink" title="粗体、斜体和删除线"></a>粗体、斜体和删除线</h2><p><strong>这是粗体</strong></p>
 <p><em>这是斜体</em></p>
 <p><del>这是删除线</del></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">**这是粗体**</span><br><span class="line">*这是斜体*</span><br><span class="line">~~这是删除线~~</span><br></pre></td></tr></table></figure>
-<h2 id="2-2-分级标题"><a href="#2-2-分级标题" class="headerlink" title="2.2. 分级标题"></a>2.2. 分级标题</h2><!-- > 这是一级标题
+<h2 id="分级标题"><a href="#分级标题" class="headerlink" title="分级标题"></a>分级标题</h2><p>支持类似于HTM标签的标题，例如</p>
+<!-- > 这是一级标题
 > === 
 > 
 > 这是二级标题
@@ -557,7 +753,7 @@
 > ## 这是二级标题
 > ### 这是三级标题 -->
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">这是一级标题</span><br><span class="line">=== </span><br><span class="line"></span><br><span class="line">这是二级标题</span><br><span class="line">--- </span><br><span class="line"></span><br><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br></pre></td></tr></table></figure>
-<h2 id="2-3-标注"><a href="#2-3-标注" class="headerlink" title="2.3. 标注"></a>2.3. 标注</h2><p>好像支持不了尾注和简单的上下标写法</p>
+<h2 id="标注"><a href="#标注" class="headerlink" title="标注"></a>标注</h2><p>好像支持不了尾注和简单的上下标写法</p>
 <ul>
 <li><p>上标：30<sup>test</sup></p>
 </li>
@@ -565,39 +761,42 @@
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 上标：30&lt;sup&gt;test&lt;/sup&gt;</span><br><span class="line">- 下标：30&lt;sub&gt;test&lt;/sub&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="2-4-文字引用"><a href="#2-4-文字引用" class="headerlink" title="2.4. 文字引用"></a>2.4. 文字引用</h2><blockquote>
+<h2 id="文字引用"><a href="#文字引用" class="headerlink" title="文字引用"></a>文字引用</h2><p>在引用的文字前面加<code>&gt;</code>即可，并且可以嵌套</p>
+<blockquote>
 <p>这是引用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; 这是引用</span><br></pre></td></tr></table></figure>
 </blockquote>
-<h2 id="2-5-生成目录"><a href="#2-5-生成目录" class="headerlink" title="2.5. 生成目录"></a>2.5. 生成目录</h2><p>需要使用Markdown TOC插件，不过这个插件可能会有问题，参考</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; 这是引用</span><br></pre></td></tr></table></figure>
+<h2 id="生成目录"><a href="#生成目录" class="headerlink" title="生成目录"></a>生成目录</h2><p>需要使用Markdown TOC插件，不过这个插件可能会有问题，参考</p>
 <ul>
 <li><p><a href="https://jingyan.baidu.com/article/60ccbceba8d4f464cbb19740.html" target="_blank" rel="noopener">VSCode如何为Markdown自动生成目录</a></p>
 </li>
 <li><p><a href="https://jingyan.baidu.com/article/6b97984df62b501ca3b0bf7a.html" target="_blank" rel="noopener">VSCode中Markdown目录显示异常</a></p>
 </li>
 </ul>
-<h2 id="2-6-标签分类代码图像"><a href="#2-6-标签分类代码图像" class="headerlink" title="2.6. 标签分类代码图像"></a>2.6. 标签分类代码图像</h2><h2 id="2-7-分类"><a href="#2-7-分类" class="headerlink" title="2.7. 分类"></a>2.7. 分类</h2><p>好像不支持这个功能</p>
-<h2 id="2-8-无序列表"><a href="#2-8-无序列表" class="headerlink" title="2.8. 无序列表"></a>2.8. 无序列表</h2><ul>
+<h2 id="标签分类代码图像"><a href="#标签分类代码图像" class="headerlink" title="标签分类代码图像"></a>标签分类代码图像</h2><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>好像不支持这个功能</p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>支持有序列表和无序列表两种，无序列表用<code>-+*</code>都可以，无序和有序列表都要注意后面需要有一个空格。列表也可以嵌套，缩进3个空格即可。</p>
+<ul>
 <li>无序列表1</li>
 <li>无序列表2</li>
 <li>无序列表3</li>
 <li>无序列表4</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 无序列表1</span><br><span class="line">- 无序列表2</span><br><span class="line">- 无序列表3</span><br><span class="line">- 无序列表4</span><br></pre></td></tr></table></figure>
-<h2 id="2-9-有序列表"><a href="#2-9-有序列表" class="headerlink" title="2.9. 有序列表"></a>2.9. 有序列表</h2><ol>
+<ol>
 <li>有序列表项</li>
 <li>有序列表项</li>
 <li>有序列表项</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1. 有序列表项</span><br><span class="line">2. 有序列表项</span><br><span class="line">3. 有序列表项</span><br></pre></td></tr></table></figure>
-<h2 id="2-10-超链接"><a href="#2-10-超链接" class="headerlink" title="2.10. 超链接"></a>2.10. 超链接</h2><p><a href="www.baidu.com">百度一下，你就知道</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[百度一下，你就知道](www.baidu.com)</span><br></pre></td></tr></table></figure>
-<h2 id="2-11-代码"><a href="#2-11-代码" class="headerlink" title="2.11. 代码"></a>2.11. 代码</h2><p><img src="/2019/04/16/VSCode支持的markdown语法参考/2019-04-16-03-04-30.png" alt=""></p>
-<h2 id="2-12-图像"><a href="#2-12-图像" class="headerlink" title="2.12. 图像"></a>2.12. 图像</h2><blockquote>
+<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><p>用如下语法支持超链接，可以在括号中再添加字符串来给超链接加标题.</p>
+<p><a href="www.baidu.com" title="给百度链接加标题">百度一下，你就知道</a><br><a href="www.baidu.com">百度一下，你就知道</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[百度一下，你就知道](www.baidu.com &quot;给百度链接加标题&quot;)</span><br><span class="line">[百度一下，你就知道](www.baidu.com)</span><br></pre></td></tr></table></figure>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p><img src="/2019/04/16/VSCode支持的markdown语法参考/2019-04-16-03-04-30.png" alt=""></p>
+<h2 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h2><blockquote>
 <p><img src="/2019/04/16/VSCode支持的markdown语法参考/2019-04-11-01-59-14.png" alt=""></p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">使用 ![描述](图片链接地址) 插入图像。</span><br></pre></td></tr></table></figure>
-<h2 id="2-13-表格"><a href="#2-13-表格" class="headerlink" title="2.13. 表格"></a>2.13. 表格</h2><p>可以使用<code>:</code>来对齐。<br>这里好像不支持<code>&gt;</code>的跨表格功能。</p>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>可以使用<code>:</code>来对齐，左边加<code>:</code>表示文字居左；两边加<code>:</code>表示文字居中；右边的表示右对齐。<br>这里好像不支持<code>&gt;</code>的跨表格功能。</p>
 <div class="table-container">
 <table>
 <thead>
@@ -627,13 +826,13 @@
 </table>
 </div>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| Item     | Value     | Qty   |</span><br><span class="line">| :------- | --------: | :---: |</span><br><span class="line">| Computer | 1600 USD  | 5     |</span><br><span class="line">| Phone    | 12 USD    | 12    |</span><br><span class="line">| Pipe     | 1 USD     | 234   |</span><br></pre></td></tr></table></figure>
-<h2 id="2-14-TODO事项"><a href="#2-14-TODO事项" class="headerlink" title="2.14. TODO事项"></a>2.14. TODO事项</h2><p>注意方括号中间有空格，站点的渲染引擎暂不支持。</p>
+<h2 id="TODO事项"><a href="#TODO事项" class="headerlink" title="TODO事项"></a>TODO事项</h2><p>注意方括号中间有空格，站点的渲染引擎暂不支持。</p>
 <ul>
 <li>[ ] 要做的事情</li>
 <li>[x] 已经做的事情</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- [ ] 要做的事情</span><br><span class="line">- [x] 已经做的事情</span><br></pre></td></tr></table></figure>
-<h1 id="3-数学公式与Latex"><a href="#3-数学公式与Latex" class="headerlink" title="3. 数学公式与Latex"></a>3. 数学公式与Latex</h1><p>用<code>$</code>表示行内公式，例如 $a^2+b^2=c^2$</p>
+<h1 id="数学公式与Latex"><a href="#数学公式与Latex" class="headerlink" title="数学公式与Latex"></a>数学公式与Latex</h1><p>用<code>$</code>表示行内公式，例如 $a^2+b^2=c^2$</p>
 <p>用<code>$$</code>表示整行公式，例如</p>
 <script type="math/tex; mode=display">a^2+b^2=c^2</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用`$`表示行内公式，例如$a^2+b^2=c^2$</span><br><span class="line"></span><br><span class="line">用`$$`表示整行公式，例如</span><br><span class="line">$$</span><br><span class="line">a^2+b^2=c^2</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
 <p>这一块参考文档<strong>一份不太简短的$\LaTeX$介绍</strong>比较好，这里仅仅列可能会常用的模板或者不太容易找到的用法。</p>
@@ -739,577 +938,7 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
 <p>颜色</p>
 <script type="math/tex; mode=display">
 \color{black}{blackText} \color{yellow}{yellowText}</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\color&#123;black&#125;&#123;blackText&#125; \color&#123;yellow&#125;&#123;yellowText&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="4-流程图"><a href="#4-流程图" class="headerlink" title="4. 流程图"></a>4. 流程图</h1><p>这一小节需要插件支持，而且渲染的时候需要定义格式，暂时不弄</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/29/test-2/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Astray Wu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/29/test-2/" class="post-title-link" itemprop="url">test_2</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-29 02:16:22 / Modified: 02:36:09" itemprop="dateCreated datePublished" datetime="2019-01-29T02:16:22+08:00">2019-01-29</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="test"><a href="#test" class="headerlink" title="test"></a>test</h2><p><img src="/2019/01/29/test-2/xd.jpg" alt="xd_scene"></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/29/test-1/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Astray Wu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/29/test-1/" class="post-title-link" itemprop="url">test_1</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-29 01:46:53 / Modified: 01:47:32" itemprop="dateCreated datePublished" datetime="2019-01-29T01:46:53+08:00">2019-01-29</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="tset"><a href="#tset" class="headerlink" title="tset"></a>tset</h2><h4 id="test"><a href="#test" class="headerlink" title="test"></a>test</h4>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/29/new-test/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Astray Wu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/29/new-test/" class="post-title-link" itemprop="url">new_test</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-29 00:49:58" itemprop="dateCreated datePublished" datetime="2019-01-29T00:49:58+08:00">2019-01-29</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/29/hello-world/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Astray Wu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/29/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-29 00:34:05" itemprop="dateCreated datePublished" datetime="2019-01-29T00:34:05+08:00">2019-01-29</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><p>这一小节需要插件支持，而且渲染的时候需要定义格式，暂时不弄</p>
 
           
         
@@ -1394,7 +1023,7 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1583,15 +1212,9 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
   
     
       
+    
+      
         
-      
-    
-      
-    
-      
-    
-      
-    
       
     
       
