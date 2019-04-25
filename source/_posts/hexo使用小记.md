@@ -25,6 +25,9 @@ hexo d # hexo deploy
 7. Katex中不支持`\label`和`\eqref`，目前站点渲染这个也无法做到，但Mathjax应该可以做到。
 8. [代码不让它显示行数序号数字怎搞](https://github.com/iissnan/hexo-theme-next/issues/211)
 9. [取消hexo中的目录编号](https://segmentfault.com/q/1010000008494901)，可以使用vs中的toc功能加编号会更好些。
+10. 如何备份hexo的blog源代码
+    可以参考[使用hexo，如果换了电脑怎么更新博客？](https://www.zhihu.com/question/21193762)
+    如果已经完成了blog的编写，可以在github上面新建一个`hexo`分支，并设置为默认分支，随后将远程分支下载下来，并用blog的源文件全部替换掉，在push即可。这样就可以将源代码备份到Github上面的hexo分支，而网页文件存储在master分支。
 
 # 3. 参考资料
 
