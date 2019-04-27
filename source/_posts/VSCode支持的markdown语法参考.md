@@ -51,11 +51,12 @@ mathjax: true
 > ## 这是二级标题
 > ### 这是三级标题 -->
 ```
+
 这是一级标题
-=== 
+===
 
 这是二级标题
---- 
+---
 
 # 这是一级标题
 ## 这是二级标题
@@ -81,7 +82,6 @@ mathjax: true
 在引用的文字前面加`>`即可，并且可以嵌套
 
 > 这是引用
-
 
 ```text
 > 这是引用
@@ -121,7 +121,7 @@ mathjax: true
 2. 有序列表项
 3. 有序列表项
 
-```
+```text
 1. 有序列表项
 2. 有序列表项
 3. 有序列表项
@@ -198,6 +198,7 @@ $$
 a^2+b^2=c^2
 $$
 ```
+
 这一块参考文档**一份不太简短的$\LaTeX$介绍**比较好，这里仅仅列可能会常用的模板或者不太容易找到的用法。
 
 特殊符号
@@ -232,7 +233,6 @@ $$
 ```text
 \vec x \hat x \dot x
 ```
-
 
 省略号
 $$
@@ -289,49 +289,49 @@ $$
 ```
 
 $$
-\begin{pmatrix} 
+\begin{pmatrix}
 1 & 2 \\
 1 & 2 \\
 \end{pmatrix}
-\begin{bmatrix} 
+\begin{bmatrix}
 1 & 2 \\
 1 & 2 \\
 \end{bmatrix}
-\begin{Bmatrix} 
+\begin{Bmatrix}
 1 & 2 \\
 1 & 2 \\
-\end{Bmatrix} 
-\begin{vmatrix} 
+\end{Bmatrix}
+\begin{vmatrix}
 1 & 2 \\
 1 & 2 \\
-\end{vmatrix} 
-\begin{Vmatrix} 
+\end{vmatrix}
+\begin{Vmatrix}
 1 & 2 \\
 1 & 2 \\
-\end{Vmatrix} 
+\end{Vmatrix}
 $$
 
 ```text
-\begin{pmatrix} 
+\begin{pmatrix}
 1 & 2 \\
 1 & 2 \\
 \end{pmatrix}
-\begin{bmatrix} 
+\begin{bmatrix}
 1 & 2 \\
 1 & 2 \\
 \end{bmatrix}
-\begin{Bmatrix} 
+\begin{Bmatrix}
 1 & 2 \\
 1 & 2 \\
-\end{Bmatrix} 
-\begin{vmatrix} 
+\end{Bmatrix}
+\begin{vmatrix}
 1 & 2 \\
 1 & 2 \\
-\end{vmatrix} 
-\begin{Vmatrix} 
+\end{vmatrix}
+\begin{Vmatrix}
 1 & 2 \\
 1 & 2 \\
-\end{Vmatrix} 
+\end{Vmatrix}
 ```
 
 多行公式
@@ -356,26 +356,26 @@ a &= c - b \\
 $$
 a \quad b \qquad cd \quad c \, d \quad c \: d \quad c \; d
 $$
+
 ```text
 a \quad b \qquad cd \quad c \, d \quad c \: d \quad c \; d
 ```
-
 
 微积分求导符号
 $$
 \int_a^b f(x)\mathrm{d}x
 \qquad
 \int_a^b f(x)\,\mathrm{d}x
-\qquad 
-\dfrac{\partial^2 f}{\partial x^2} 
+\qquad
+\dfrac{\partial^2 f}{\partial x^2}
 $$
 
 ```text
 \int_a^b f(x)\mathrm{d}x
 \qquad
 \int_a^b f(x)\,\mathrm{d}x
-\qquad 
-\dfrac{\partial^2 f}{\partial x^2} 
+\qquad
+\dfrac{\partial^2 f}{\partial x^2}
 ```
 
 分段函数
@@ -387,6 +387,7 @@ $$
 x & \text{if } x > 0.
 \end{cases}
 $$
+
 ```text
  |x| =
 \begin{cases}
@@ -414,6 +415,7 @@ $$
 $$
 \bigg \{\Bigl\langle \bigl( (x) \bigr ) \Bigr \rangle \bigg \}
 $$
+
 ```text
 \bigg \{\Bigl\langle \bigl( (x) \bigr ) \Bigr \rangle \bigg \}
 ```
@@ -446,6 +448,7 @@ $$
 \frac {x^2}{y}
 \end{aligned}
 $$
+
 ```text
 \begin{aligned}
 \sum_1^n i^2 \\[5ex]
@@ -458,6 +461,7 @@ $$
 $$
 \color{black}{blackText} \color{yellow}{yellowText}
 $$
+
 ```text
 \color{black}{blackText} \color{yellow}{yellowText}
 ```
