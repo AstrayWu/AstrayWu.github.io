@@ -380,13 +380,13 @@
 <p>方法一<br>可以先将远程库拉下来，然后再将本地的代码拷贝到远端库下载到本地库，然后在提交，这样相当于一次update。不过这样子不能记录原有的git记录</p>
 <p>方法二</p>
 <p>强制关联推送</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span> 本地先正常init、add和commit</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 关联远程库</span><br><span class="line"><span class="meta">$</span> git remote add origin https://github.com/AstrayWu/utils_python.git</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 如果远端库已经存在，则进行删除再关联</span><br><span class="line"><span class="meta">$</span> git remote rm origin</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 使用--allow-unrelated-hisotries进行强制关联</span><br><span class="line"><span class="meta">$</span> git pull origin master --allow-unrelated-hisotries</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git push -u origin master</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 本地先正常init、add和commit</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 关联远程库</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote add origin https://github.com/AstrayWu/utils_python.git</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果远端库已经存在，则进行删除再关联</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote rm origin</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用--allow-unrelated-hisotries进行强制关联</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git pull origin master --allow-unrelated-hisotries</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push -u origin master</span></span><br></pre></td></tr></table></figure>
 <h2 id="2-git-push"><a href="#2-git-push" class="headerlink" title="2. git push"></a>2. git push</h2><ul>
 <li><a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener">2.5 Git 基础 - 远程仓库的使用</a></li>
 <li><a href="https://www.cnblogs.com/qianqiannian/p/6008140.html" target="_blank" rel="noopener">Git push 常见用法</a></li>
 </ul>
 <p>用<code>git remote</code>查看配置的远程库名字，一般<code>origin</code>是Git克隆的远程仓库服务器的默认名字。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span> git remote # 查看配置的远程库名字</span><br><span class="line"><span class="meta">$</span> git remote -v # 显示对应的URL</span><br><span class="line"><span class="meta">$</span> git remote add &lt;shortname&gt; &lt;url&gt; # 添加远程库并制定简称</span><br><span class="line"><span class="meta">$</span> git remote add pb https://github.com/paulboone/ticgit</span><br><span class="line"><span class="meta">$</span> git remote add pb git@github.com:paulboone/ticgit.git</span><br><span class="line"><span class="meta">$</span> git remote -v</span><br><span class="line"><span class="meta">$</span> git fetch[remote-name] # 有了简写后就可以用简写代替远程库的名字</span><br><span class="line"><span class="meta">$</span> git push [remote-name] [branch-name]</span><br><span class="line"><span class="meta">$</span> git push -u origin master 第一次同步时使用该命令</span><br><span class="line"><span class="meta">$</span> git push origin master</span><br><span class="line">origin https://github.com/schacon/ticgit (fetch)</span><br><span class="line">origin https://github.com/schacon/ticgit (push)</span><br><span class="line">pb https://github.com/paulboone/ticgit (fetch)</span><br><span class="line">pb https://github.com/paulboone/ticgit (push)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git remote <span class="comment"># 查看配置的远程库名字</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote -v <span class="comment"># 显示对应的URL</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote add &lt;shortname&gt; &lt;url&gt; <span class="comment"># 添加远程库并制定简称</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote add pb https://github.com/paulboone/ticgit</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote add pb git@github.com:paulboone/ticgit.git</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote -v</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git fetch[remote-name] <span class="comment"># 有了简写后就可以用简写代替远程库的名字</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push [remote-name] [branch-name]</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push -u origin master 第一次同步时使用该命令</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push origin master</span></span><br><span class="line">origin https://github.com/schacon/ticgit (fetch)</span><br><span class="line">origin https://github.com/schacon/ticgit (push)</span><br><span class="line">pb https://github.com/paulboone/ticgit (fetch)</span><br><span class="line">pb https://github.com/paulboone/ticgit (push)</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -425,6 +425,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/27/ffmpeg/ffmpeg常用命令/" rel="prev" title="ffmpeg常用命令">
+                ffmpeg常用命令 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -494,7 +498,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

@@ -285,6 +285,151 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/27/ffmpeg/ffmpeg常用命令/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/27/ffmpeg/ffmpeg常用命令/" class="post-title-link" itemprop="url">ffmpeg常用命令</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-27 18:25:49 / Modified: 18:35:51" itemprop="dateCreated datePublished" datetime="2019-04-27T18:25:49+08:00">2019-04-27</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>记录下工作中常用的ffmpeg命令，有些网络上不好查找到，需要总结</p>
+<hr>
+<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p>u_p444_b10的YUV→100M的YUV420的24fps的HDR10码流（单帧，每帧YUV重复2秒）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 测试效果</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ffmpeg -threads 16 -r 0.5 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 100M -vf scale=out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"keyint=24:colorprim=bt2020:transfer=smpte2084:colormatrix=bt2020nc:master-display=G(13250,34500)B(7500,3000)R(34000,16000)WP(15635,16450)L(10000000,50):max-cll=0,0"</span> -an -y -r 24 output.mp4</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/27/git使用小记/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -381,13 +526,13 @@
 <p>方法一<br>可以先将远程库拉下来，然后再将本地的代码拷贝到远端库下载到本地库，然后在提交，这样相当于一次update。不过这样子不能记录原有的git记录</p>
 <p>方法二</p>
 <p>强制关联推送</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span> 本地先正常init、add和commit</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 关联远程库</span><br><span class="line"><span class="meta">$</span> git remote add origin https://github.com/AstrayWu/utils_python.git</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 如果远端库已经存在，则进行删除再关联</span><br><span class="line"><span class="meta">$</span> git remote rm origin</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 使用--allow-unrelated-hisotries进行强制关联</span><br><span class="line"><span class="meta">$</span> git pull origin master --allow-unrelated-hisotries</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git push -u origin master</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 本地先正常init、add和commit</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 关联远程库</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote add origin https://github.com/AstrayWu/utils_python.git</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果远端库已经存在，则进行删除再关联</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote rm origin</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用--allow-unrelated-hisotries进行强制关联</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git pull origin master --allow-unrelated-hisotries</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push -u origin master</span></span><br></pre></td></tr></table></figure>
 <h2 id="2-git-push"><a href="#2-git-push" class="headerlink" title="2. git push"></a>2. git push</h2><ul>
 <li><a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener">2.5 Git 基础 - 远程仓库的使用</a></li>
 <li><a href="https://www.cnblogs.com/qianqiannian/p/6008140.html" target="_blank" rel="noopener">Git push 常见用法</a></li>
 </ul>
 <p>用<code>git remote</code>查看配置的远程库名字，一般<code>origin</code>是Git克隆的远程仓库服务器的默认名字。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span> git remote # 查看配置的远程库名字</span><br><span class="line"><span class="meta">$</span> git remote -v # 显示对应的URL</span><br><span class="line"><span class="meta">$</span> git remote add &lt;shortname&gt; &lt;url&gt; # 添加远程库并制定简称</span><br><span class="line"><span class="meta">$</span> git remote add pb https://github.com/paulboone/ticgit</span><br><span class="line"><span class="meta">$</span> git remote add pb git@github.com:paulboone/ticgit.git</span><br><span class="line"><span class="meta">$</span> git remote -v</span><br><span class="line"><span class="meta">$</span> git fetch[remote-name] # 有了简写后就可以用简写代替远程库的名字</span><br><span class="line"><span class="meta">$</span> git push [remote-name] [branch-name]</span><br><span class="line"><span class="meta">$</span> git push -u origin master 第一次同步时使用该命令</span><br><span class="line"><span class="meta">$</span> git push origin master</span><br><span class="line">origin https://github.com/schacon/ticgit (fetch)</span><br><span class="line">origin https://github.com/schacon/ticgit (push)</span><br><span class="line">pb https://github.com/paulboone/ticgit (fetch)</span><br><span class="line">pb https://github.com/paulboone/ticgit (push)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git remote <span class="comment"># 查看配置的远程库名字</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote -v <span class="comment"># 显示对应的URL</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote add &lt;shortname&gt; &lt;url&gt; <span class="comment"># 添加远程库并制定简称</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote add pb https://github.com/paulboone/ticgit</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote add pb git@github.com:paulboone/ticgit.git</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote -v</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git fetch[remote-name] <span class="comment"># 有了简写后就可以用简写代替远程库的名字</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push [remote-name] [branch-name]</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push -u origin master 第一次同步时使用该命令</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push origin master</span></span><br><span class="line">origin https://github.com/schacon/ticgit (fetch)</span><br><span class="line">origin https://github.com/schacon/ticgit (push)</span><br><span class="line">pb https://github.com/paulboone/ticgit (fetch)</span><br><span class="line">pb https://github.com/paulboone/ticgit (push)</span><br></pre></td></tr></table></figure>
           
         
       
@@ -505,7 +650,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-27 12:51:31" itemprop="dateModified" datetime="2019-04-27T12:51:31+08:00">2019-04-27</time>
+                <time title="Modified: 2019-04-27 18:22:59" itemprop="dateModified" datetime="2019-04-27T18:22:59+08:00">2019-04-27</time>
               
             
           </span>
@@ -541,7 +686,7 @@
       
         
           
-            <h2 id="1-常用的chrome插件"><a href="#1-常用的chrome插件" class="headerlink" title="1. 常用的chrome插件"></a>1. 常用的chrome插件</h2><ul>
+            <h2 id="常用的chrome插件"><a href="#常用的chrome插件" class="headerlink" title="常用的chrome插件"></a>常用的chrome插件</h2><ul>
 <li><a href="https://chrome.google.com/webstore/detail/context-menus/phlfmkfpmphogkomddckmggcfpmfchpn" target="_blank" rel="noopener">Context Menus/右键搜索</a></li>
 <li><a href="https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall?utm_source=chrome-ntp-icon" target="_blank" rel="noopener">One Tab</a> 基本必备的插件</li>
 <li><a href="https://chrome.google.com/webstore/detail/ie-tab/hehijbfgiekmjfkfjpbkbammjbdenadd?utm_source=chrome-ntp-icon" target="_blank" rel="noopener">IE tab</a> 还没有试验过，不过有些网站确实只支持IE</li>
@@ -552,11 +697,12 @@
 <li><a href="http://www.internetdownloadmanager.com/" target="_blank" rel="noopener">IDM</a> IDM配合chrome使用</li>
 <li><a href="https://chrome.google.com/webstore/detail/ticktick-todo-task-list/diankknpkndanachmlckaikddgcehkod" target="_blank" rel="noopener">TickTick - Todo &amp; Task List</a> 有时候需要同步手机上的清单</li>
 <li><a href="https://chrome.google.com/webstore/detail/%E8%B0%B7%E6%AD%8C%E8%AE%BF%E9%97%AE%E5%8A%A9%E6%89%8B/gocklaboggjfkolaknpbhddbaopcepfp" target="_blank" rel="noopener">谷歌访问助手</a> 没有VPN时候就靠这个活着了</li>
+<li><a href="https://chrome.google.com/webstore/detail/im-feeling-lucky/cnlabakikmdekpfaflaihcepfkjopgll" target="_blank" rel="noopener">I’m Feeling Lucky</a> <a href="https://www.techjunkie.com/im-feeling-lucky/" target="_blank" rel="noopener">How to add Google’s I’m Feeling Lucky Option to Your Chrome Search Engines</a></li>
 </ul>
-<h2 id="2-实用的小工具"><a href="#2-实用的小工具" class="headerlink" title="2. 实用的小工具"></a>2. 实用的小工具</h2><h3 id="2-1-实际使用"><a href="#2-1-实际使用" class="headerlink" title="2.1. 实际使用"></a>2.1. 实际使用</h3><ul>
+<h2 id="实用的软件"><a href="#实用的软件" class="headerlink" title="实用的软件"></a>实用的软件</h2><h3 id="实际使用"><a href="#实际使用" class="headerlink" title="实际使用"></a>实际使用</h3><ul>
 <li>SumatraPDF/福昕阅读器 小巧的PDF阅读器，不过不能编辑</li>
 <li>Total Commander/Q-Dir/Clover 多窗口多标签的资源管理器，文件整理工具</li>
-<li><strong>Launchy</strong> 快速启动</li>
+<li><strong>Launchy</strong>/Wox 快速启动</li>
 <li><strong>Eeverthing</strong> 快速搜索</li>
 <li>MediaInfo 强大的视频参数检测工具</li>
 <li>MathType Word中插入公式</li>
@@ -588,9 +734,33 @@
 <li>Seer、QuickLook windows查看工具，TODO</li>
 <li>Screen to GIF/Ocam fit录制/剪辑工具</li>
 <li>冰点下载 百度文库的免费下载器</li>
+<li>Collagelt 拼图，TODO</li>
+<li>7-Zip</li>
+<li>SpaceSniffer</li>
+<li>Duplicate Cleaner TODD</li>
+<li>SyncToy 文件夾同步工具 TODO</li>
+<li>Icaros 让资源管理器能够显示所有视频格式缩略图，缩略图拓展增强插件 Icaros TODO</li>
+<li>Smallpdf</li>
+<li><a href="https://github.com/soimort/you-get" target="_blank" rel="noopener">you-get</a> 下载视频神器</li>
 </ul>
-<h3 id="2-2-ref"><a href="#2-2-ref" class="headerlink" title="2.2. ref"></a>2.2. ref</h3><ul>
+<h3 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h3><ul>
 <li><a href="https://www.zhihu.com/question/300735799/answer/604585413" target="_blank" rel="noopener">有哪些软件堪称神器，却不为大众所知？</a></li>
+</ul>
+<h2 id="实用的网站"><a href="#实用的网站" class="headerlink" title="实用的网站"></a>实用的网站</h2><ul>
+<li><a href="https://mubu.com/" target="_blank" rel="noopener">极简大纲笔记 | 一键生成思维导图</a></li>
+<li><a href="https://uzer.me/" target="_blank" rel="noopener">UZER.ME云端超级应用空间</a></li>
+<li><a href="http://bigjpg.com/" target="_blank" rel="noopener">AI人工智能图片放大</a></li>
+<li><a href="https://burner.bonanza.com/" target="_blank" rel="noopener">Background Burner: Remove Image Backgrounds Free &amp; Fast</a> 抠图</li>
+<li><a href="https://www.wolframalpha.com/" target="_blank" rel="noopener">wolframalpha</a></li>
+<li><a href="http://tools.jb51.net/" target="_blank" rel="noopener">脚本之家</a></li>
+</ul>
+<h2 id="Office"><a href="#Office" class="headerlink" title="Office"></a>Office</h2><ul>
+<li><a href="https://www.jiandaoyun.com/f/5b4fe560ba4f62256657ec95" target="_blank" rel="noopener">Office插件</a></li>
+<li><a href="http://www.hippter.com/" target="_blank" rel="noopener">HiPPTer</a></li>
+<li><a href="http://www.ffcell.com/" target="_blank" rel="noopener">方方格子</a></li>
+</ul>
+<h2 id="IOS"><a href="#IOS" class="headerlink" title="IOS"></a>IOS</h2><ul>
+<li><a href="https://www.zhihu.com/question/271740133" target="_blank" rel="noopener">在当下使用 iPad 有哪些值得推荐的应用？</a></li>
 </ul>
 
           
@@ -1631,7 +1801,7 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1818,6 +1988,8 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
 
   
   
+    
+      
     
       
     
