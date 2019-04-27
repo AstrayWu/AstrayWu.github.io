@@ -82,7 +82,6 @@ $$
           (else (error "unknown expression type -- DERIV" exp))))
 ```
 
-
 以上会出现一个问题，就是并没有化简到最简单，比如
 
 ```lisp
@@ -124,7 +123,7 @@ $$
           ((product? exp)
             (make-product (deriv (multiplier exp) var)
                           (deriv (multiplicand exp) var)))))
-          ((exponentiation? exp)
+          ((exponentiation? exp)    ; 需要新增获取基本元素的函数以及构造函数
             (let ((n (exponent exp))
                   (u (base exp)))
                   (make-product
@@ -140,4 +139,13 @@ $$
             base)
           (else
             (list '** base exponent))))
+
+(define (exponent exp)
+    (caddr exp))
+
+(define (base exp)
+    (cadr exp))
+
+(define (exponentiation? exp)
+    (and (pair? exp) (eq? (car exp) `**)))
 ```

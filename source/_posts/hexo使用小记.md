@@ -5,7 +5,7 @@ tags:
 mathjax: true
 ---
 
-# 1. 常用的命令
+## 1. 常用的命令
 
 ```bash
 hexo new tile_of_poster
@@ -14,7 +14,15 @@ hexo s # hexo server
 hexo d # hexo deploy
 ```
 
-# 2. 常见问题
+正常情况下要推送到网站使用，随后即可到www.github.io查看网页了。
+
+```shell
+hexo clean
+hexo g
+hexo d
+```
+
+## 2. 常见问题
 
 1. 在hexo中渲染数学公式需要Mathjax，可以参考[hexo下LaTeX无法显示的解决方案](https://blog.csdn.net/crazy_scott/article/details/79293576)
 2. hexo中支持的一些语法可以参考[Hexo Markdown 简明语法手册](https://hyxxsfwy.github.io/2016/01/15/Hexo-Markdown-%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/)
@@ -29,7 +37,7 @@ hexo d # hexo deploy
     可以参考[使用hexo，如果换了电脑怎么更新博客？](https://www.zhihu.com/question/21193762)
     如果已经完成了blog的编写，可以在github上面新建一个`hexo`分支，并设置为默认分支，随后将远程分支下载下来，并用blog的源文件全部替换掉，在push即可。这样就可以将源代码备份到Github上面的hexo分支，而网页文件存储在master分支。
 
-# 3. 参考资料
+## 3. 参考资料
 
 1. [Hexo的Next主题详细配置](https://www.jianshu.com/p/3a05351a37dc)
 2. Next官网[精于心，简于形](https://theme-next.iissnan.com/)
