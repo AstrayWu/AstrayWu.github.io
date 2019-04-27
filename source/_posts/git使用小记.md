@@ -25,7 +25,7 @@ tags:
 
 强制关联推送
 
-```shell
+```sh
 # 本地先正常init、add和commit
 
 # 关联远程库
@@ -47,7 +47,7 @@ $ git push -u origin master
 
 用`git remote`查看配置的远程库名字，一般`origin`是Git克隆的远程仓库服务器的默认名字。
 
-```shell
+```sh
 $ git remote # 查看配置的远程库名字
 $ git remote -v # 显示对应的URL
 $ git remote add <shortname> <url> # 添加远程库并制定简称
@@ -76,7 +76,7 @@ pb https://github.com/paulboone/ticgit (push)
 
 查看修改内容
 
-```shell
+```sh
 git diff # 可以查看工作区(work dict)和暂存区(stage)的区别
 git diff --cached # 可以查看暂存区(stage)和分支(master)的区别
 git diff HEAD -- <file> # 可以查看工作区和版本库里面最新版本的区别
@@ -86,7 +86,7 @@ git diff HEAD -- <file> # 可以查看工作区和版本库里面最新版本的
 
 查看提交日志
 
-```shell
+```sh
 git log
 git log --pretty=oneline # 简化日志输出信息
 ```
@@ -95,7 +95,7 @@ git log --pretty=oneline # 简化日志输出信息
 
 查看命令历史
 
-```shell
+```sh
 git reflog
 ```
 
@@ -104,7 +104,7 @@ git reflog
 版本回退
 返回上一个版本，在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，上上一个版本是HEAD^^，往上100个版本写成HEAD~100。commit_id是版本号，是一个用SHA1计算出的序列
 
-```shell
+```sh
 git reset --hard HEAD^
 ```
 
@@ -118,13 +118,13 @@ git reset --hard HEAD^
 一种是file已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
 总之，就是让这个文件回到最近一次git commit或git add时的状态。也就是将工作区的状态回退到暂存区或者版本库。
 
-```shell
+```sh
 git checkout -- <file>
 ```
 
 ### 9.2. 丢弃暂存区的修改
 
-```shell
+```sh
 git reset HEAD <file> # 第一步，把暂存区的修改撤销掉(unstage)，重新放回工作区：
 git checkout -- <file> # 第二步，撤销工作区的修改
 ```
@@ -139,7 +139,7 @@ git checkout -- <file> # 第二步，撤销工作区的修改
 
 删除文件
 
-```shell
+```sh
 git rm <file>
 
 # 以上等价于，注意是提交到暂存区
@@ -154,14 +154,14 @@ A: 执行`git checkout -- text.txt` 把版本库的东西重新写回工作区�
 Q: 如果执行了`git rm text.txt`我们会发现工作区的text.txt也删除了，怎么恢复？
 A: 先撤销暂存区修改，重新放回工作区，然后再从版本库写回到工作区
 
-```shell
+```sh
 git reset head text.txt
 git checkout -- text.txt
 ```
 
 ## 11. 远程库
 
-```shell
+```sh
 ssh-keygen -t rsa -C "youremail@example.com" # 创建SSH Key
 git remote add origin https://github.com/username/repositoryname.git # 关联远程仓库
 git push -u origin master # 第一次推送到远程仓库，后续可以省略-u
@@ -174,14 +174,14 @@ git remote -v # 查看远程库信息
 [【git之】fetch和 pull的区别](https://www.cnblogs.com/gyjx2016/p/6822113.html)
 一般使用pull会简单些，不过可能要解决冲突
 
-```shell
+```sh
 git pull # 相当于是从远程获取最新版本并merge到本地
 git fetch # 相当于是从远程获取最新版本到本地，不会自动merge
 ```
 
 ## 12. 分支
 
-```shell
+```sh
 git branch <branchname> # 创建分支
 git branch # 列出所有分支，当前分支前面会标一个*号。
 git checkout <branchname> # 切换分支
@@ -198,7 +198,7 @@ git branch -D <branchname> # 丢弃一个没有合并过的分支
 
 ## 13. 现场
 
-```shell
+```sh
 git stash # 保存工作现场
 git stash list # 查看工作现场
 git stash pop # 恢复工作现场
@@ -208,7 +208,7 @@ git stash pop # 恢复工作现场
 
 tag就是一个让人容易记住的有意义的名字，它跟某个commit绑在一起。
 
-```shell
+```sh
 git tag <tagname> # 用于新建一个标签，默认为HEAD，也可以指定一个commit id。
 git tag -a <tagname> -m <description> <branchname> or commit_id # 指定标签信息
 git tag # 查看所有标签

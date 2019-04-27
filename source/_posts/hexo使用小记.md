@@ -16,10 +16,15 @@ hexo d # hexo deploy
 
 正常情况下要推送到网站使用，随后即可到www.github.io查看网页了。
 
-```shell
+```sh
 hexo clean
 hexo g
 hexo d
+```
+
+要备份代码到github时
+```sh
+git push origin hexo # 因为master分支是用于备份网页文件的
 ```
 
 ## 2. 常见问题
@@ -36,6 +41,7 @@ hexo d
 10. 如何备份hexo的blog源代码
     可以参考[使用hexo，如果换了电脑怎么更新博客？](https://www.zhihu.com/question/21193762)
     如果已经完成了blog的编写，可以在github上面新建一个`hexo`分支，并设置为默认分支，随后将远程分支下载下来，并用blog的源文件全部替换掉，在push即可。这样就可以将源代码备份到Github上面的hexo分支，而网页文件存储在master分支。
+11. [NexT 自带的语法高亮插件支持的语言列表](https://blog.cat73.org/20160805/2016080501.next-highlight-langs/) 注意`shell`应该使用`sh`会比较统一一些。
 
 ## 3. 添加gitalk评论系统
 
