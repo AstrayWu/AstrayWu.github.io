@@ -469,7 +469,7 @@
 <h1 id="在ffmpeg中使用si前缀"><a href="#在ffmpeg中使用si前缀" class="headerlink" title="在ffmpeg中使用si前缀"></a>在ffmpeg中使用si前缀</h1><p>其实就是用m, k, g等代替千位符号等等的</p>
 <h1 id="ffmpeg中的转码"><a href="#ffmpeg中的转码" class="headerlink" title="ffmpeg中的转码"></a>ffmpeg中的转码</h1><p>其实就是demuxer和decoder<br><img src="/2019/04/19/ffmpeg/ffmpeg基础/2019-04-20-00-02-59.png" alt=""></p>
 <h1 id="滤波器"><a href="#滤波器" class="headerlink" title="滤波器"></a>滤波器</h1><p>在多媒体处理中，滤波器通常指将编码前对输入文件进行修改的软件。ffmpeg中有多种内置的滤波器，可以通过复杂的语法直接连接，避免了多次编解码产生的PQ下降。libavfilter是ffmpeg的filtering API，可以使用<code>-vf</code>和<code>-af</code>进行处理</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ffmpeg -i A.flv -vf hqdn3d,pad=2*iw output.mp4  # 先滤波降噪并填充变成3840x1080</span><br><span class="line">ffmpeg -i output.mp4 -i A.flv -filter_complex overlay=w compare.mp4     # 填充另一个视频</span><br><span class="line"></span><br><span class="line"># 上面等价于</span><br><span class="line">ffplay -i A.flv -vf split[a][b];[a]pad=2*iw[A];[b]hqdn3d[B];[A][B]overlay=w # 直接使用filtergraph完成两路视频不同的处理并拼接</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">ffmpeg -i A.flv -vf hqdn3d,pad=2*iw output.mp4  # 先滤波降噪并填充变成3840x1080</span><br><span class="line">ffmpeg -i output.mp4 -i A.flv -filter_complex overlay=w compare.mp4     # 填充另一个视频</span><br><span class="line"></span><br><span class="line"><span class="section"># 上面等价于</span></span><br><span class="line">ffplay -i A.flv -vf split[<span class="string">a</span>][<span class="symbol">b</span>];[<span class="string">a</span>]pad=2*iw[<span class="string">A</span>];[<span class="string">b</span>]hqdn3d[<span class="string">B</span>];[<span class="string">A</span>][<span class="symbol">B</span>]overlay=w # 直接使用filtergraph完成两路视频不同的处理并拼接</span><br></pre></td></tr></table></figure>
 <p>利用filtergraphs可以同时完成多路的滤波，实现比filter更复杂一些操作，如下是滤波器的典型用法<br><img src="/2019/04/19/ffmpeg/ffmpeg基础/2019-04-20-00-20-51.png" alt=""></p>
 
       
@@ -587,7 +587,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
