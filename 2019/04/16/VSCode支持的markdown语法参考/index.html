@@ -105,7 +105,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2019/04/16/VSCode支持的markdown语法参考/2019-04-16-03-04-30.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/16/VSCode支持的markdown语法参考/2019-04-11-01-59-14.png">
-<meta property="og:updated_time" content="2019-04-27T04:53:13.161Z">
+<meta property="og:updated_time" content="2019-04-27T14:53:05.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VSCode支持的markdown语法参考">
 <meta name="twitter:description" content="主要记录下载使用vscode的markdown记录时，一些参考备注，可能集中在公式的支持上面。主要来源于参考资料，自己重新记录一遍便于回溯。  1. 参考资料与备注 主要参考资料VsCode支持的markdown语法参考 Markdown PDF没有办法解决$\LaTeX$公式的渲染问题，暂时只能使用Markdown Preview Enhance来导出到html再另存为pdf格式。 Markd">
@@ -351,7 +351,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-27 12:53:13" itemprop="dateModified" datetime="2019-04-27T12:53:13+08:00">2019-04-27</time>
+                <time title="Modified: 2019-04-27 22:53:05" itemprop="dateModified" datetime="2019-04-27T22:53:05+08:00">2019-04-27</time>
               
             
           </span>
@@ -411,7 +411,7 @@
 > # 这是一级标题
 > ## 这是二级标题
 > ### 这是三级标题 -->
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">这是一级标题</span><br><span class="line">=== </span><br><span class="line"></span><br><span class="line">这是二级标题</span><br><span class="line">--- </span><br><span class="line"></span><br><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">这是一级标题</span><br><span class="line">===</span><br><span class="line"></span><br><span class="line">这是二级标题</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br></pre></td></tr></table></figure>
 <h3 id="2-3-标注"><a href="#2-3-标注" class="headerlink" title="2.3. 标注"></a>2.3. 标注</h3><p>好像支持不了尾注和简单的上下标写法</p>
 <ul>
 <li><p>上标：30<sup>test</sup></p>
@@ -527,26 +527,26 @@ x_{n1} & x_{n2} & \ldots & x_{nn}\\
 \dfrac{\partial^2 f}{\partial y^2}
 \end{bmatrix}</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\mathbf&#123;H&#125;=</span><br><span class="line">\begin&#123;bmatrix&#125;</span><br><span class="line">\dfrac&#123;\partial^2 f&#125;&#123;\partial x^2&#125; &amp;</span><br><span class="line">\dfrac&#123;\partial^2 f&#125;</span><br><span class="line">&#123;\partial x \partial y&#125; \\[8pt]</span><br><span class="line">\dfrac&#123;\partial^2 f&#125;</span><br><span class="line">&#123;\partial x \partial y&#125; &amp;</span><br><span class="line">\dfrac&#123;\partial^2 f&#125;&#123;\partial y^2&#125;</span><br><span class="line">\end&#123;bmatrix&#125;</span><br></pre></td></tr></table></figure>
 <script type="math/tex; mode=display">
-\begin{pmatrix} 
+\begin{pmatrix}
 1 & 2 \\
 1 & 2 \\
 \end{pmatrix}
-\begin{bmatrix} 
+\begin{bmatrix}
 1 & 2 \\
 1 & 2 \\
 \end{bmatrix}
-\begin{Bmatrix} 
+\begin{Bmatrix}
 1 & 2 \\
 1 & 2 \\
-\end{Bmatrix} 
-\begin{vmatrix} 
+\end{Bmatrix}
+\begin{vmatrix}
 1 & 2 \\
 1 & 2 \\
-\end{vmatrix} 
-\begin{Vmatrix} 
+\end{vmatrix}
+\begin{Vmatrix}
 1 & 2 \\
 1 & 2 \\
-\end{Vmatrix}</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\begin&#123;pmatrix&#125; </span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;pmatrix&#125;</span><br><span class="line">\begin&#123;bmatrix&#125; </span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;bmatrix&#125;</span><br><span class="line">\begin&#123;Bmatrix&#125; </span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;Bmatrix&#125; </span><br><span class="line">\begin&#123;vmatrix&#125; </span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;vmatrix&#125; </span><br><span class="line">\begin&#123;Vmatrix&#125; </span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;Vmatrix&#125;</span><br></pre></td></tr></table></figure>
+\end{Vmatrix}</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\begin&#123;pmatrix&#125;</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;pmatrix&#125;</span><br><span class="line">\begin&#123;bmatrix&#125;</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;bmatrix&#125;</span><br><span class="line">\begin&#123;Bmatrix&#125;</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;Bmatrix&#125;</span><br><span class="line">\begin&#123;vmatrix&#125;</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;vmatrix&#125;</span><br><span class="line">\begin&#123;Vmatrix&#125;</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;Vmatrix&#125;</span><br></pre></td></tr></table></figure>
 <p>多行公式</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
@@ -562,8 +562,8 @@ a \quad b \qquad cd \quad c \, d \quad c \: d \quad c \; d</script><figure class
 \int_a^b f(x)\mathrm{d}x
 \qquad
 \int_a^b f(x)\,\mathrm{d}x
-\qquad 
-\dfrac{\partial^2 f}{\partial x^2}</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\int_a^b f(x)\mathrm&#123;d&#125;x</span><br><span class="line">\qquad</span><br><span class="line">\int_a^b f(x)\,\mathrm&#123;d&#125;x</span><br><span class="line">\qquad </span><br><span class="line">\dfrac&#123;\partial^2 f&#125;&#123;\partial x^2&#125;</span><br></pre></td></tr></table></figure>
+\qquad
+\dfrac{\partial^2 f}{\partial x^2}</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\int_a^b f(x)\mathrm&#123;d&#125;x</span><br><span class="line">\qquad</span><br><span class="line">\int_a^b f(x)\,\mathrm&#123;d&#125;x</span><br><span class="line">\qquad</span><br><span class="line">\dfrac&#123;\partial^2 f&#125;&#123;\partial x^2&#125;</span><br></pre></td></tr></table></figure>
 <p>分段函数</p>
 <script type="math/tex; mode=display">
  |x| =

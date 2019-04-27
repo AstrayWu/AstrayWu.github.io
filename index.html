@@ -490,12 +490,24 @@
                 
               
 
-              <time title="Created: 2019-04-27 11:06:09 / Modified: 22:47:29" itemprop="dateCreated datePublished" datetime="2019-04-27T11:06:09+08:00">2019-04-27</time>
+              <time title="Created: 2019-04-27 11:06:09" itemprop="dateCreated datePublished" datetime="2019-04-27T11:06:09+08:00">2019-04-27</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-28 00:37:13" itemprop="dateModified" datetime="2019-04-28T00:37:13+08:00">2019-04-28</time>
               
             
           </span>
@@ -532,7 +544,10 @@
         
           
             <p>记录git使用过程的一些问题和方法。</p>
-<h2 id="1-本地和远程同步"><a href="#1-本地和远程同步" class="headerlink" title="1. 本地和远程同步"></a>1. 本地和远程同步</h2><p>本地库要推送到远端，但这两个git库不相关，例如已有本地库，然后github上又新建了项目</p>
+<h2 id="1-ref"><a href="#1-ref" class="headerlink" title="1. ref"></a>1. ref</h2><ul>
+<li><a href="https://github.com/hongiii/gitNotes_from_Liao" target="_blank" rel="noopener">gitNotes_from_Liao</a></li>
+</ul>
+<h2 id="2-本地和远程同步"><a href="#2-本地和远程同步" class="headerlink" title="2. 本地和远程同步"></a>2. 本地和远程同步</h2><p>本地库要推送到远端，但这两个git库不相关，例如已有本地库，然后github上又新建了项目</p>
 <ul>
 <li><a href="https://blog.csdn.net/guotingting923/article/details/80162896" target="_blank" rel="noopener">上传本地项目到github远程仓库</a></li>
 <li><a href="https://www.centos.bz/2018/03/git-%E5%87%BA%E7%8E%B0-fatal-refusing-to-merge-unrelated-histories-%E9%94%99%E8%AF%AF/" target="_blank" rel="noopener">git 出现 fatal: refusing to merge unrelated histories 错误</a></li>
@@ -542,12 +557,43 @@
 <p>方法二</p>
 <p>强制关联推送</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 本地先正常init、add和commit</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 关联远程库</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote add origin https://github.com/AstrayWu/utils_python.git</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果远端库已经存在，则进行删除再关联</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote rm origin</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用--allow-unrelated-hisotries进行强制关联</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git pull origin master --allow-unrelated-hisotries</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push -u origin master</span></span><br></pre></td></tr></table></figure>
-<h2 id="2-git-push"><a href="#2-git-push" class="headerlink" title="2. git push"></a>2. git push</h2><ul>
+<h2 id="3-git-push"><a href="#3-git-push" class="headerlink" title="3. git push"></a>3. git push</h2><ul>
 <li><a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener">2.5 Git 基础 - 远程仓库的使用</a></li>
 <li><a href="https://www.cnblogs.com/qianqiannian/p/6008140.html" target="_blank" rel="noopener">Git push 常见用法</a></li>
 </ul>
 <p>用<code>git remote</code>查看配置的远程库名字，一般<code>origin</code>是Git克隆的远程仓库服务器的默认名字。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git remote <span class="comment"># 查看配置的远程库名字</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote -v <span class="comment"># 显示对应的URL</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote add &lt;shortname&gt; &lt;url&gt; <span class="comment"># 添加远程库并制定简称</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote add pb https://github.com/paulboone/ticgit</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote add pb git@github.com:paulboone/ticgit.git</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote -v</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git fetch[remote-name] <span class="comment"># 有了简写后就可以用简写代替远程库的名字</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push [remote-name] [branch-name]</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push -u origin master 第一次同步时使用该命令</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push origin master</span></span><br><span class="line">origin https://github.com/schacon/ticgit (fetch)</span><br><span class="line">origin https://github.com/schacon/ticgit (push)</span><br><span class="line">pb https://github.com/paulboone/ticgit (fetch)</span><br><span class="line">pb https://github.com/paulboone/ticgit (push)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git remote <span class="comment"># 查看配置的远程库名字</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote -v <span class="comment"># 显示对应的URL</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote add &lt;shortname&gt; &lt;url&gt; <span class="comment"># 添加远程库并制定简称</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote add pb https://github.com/paulboone/ticgit</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote add pb git@github.com:paulboone/ticgit.git</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote -v</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git fetch [remote-name] <span class="comment"># 有了简写后就可以用简写代替远程库的名字</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push [remote-name] [branch-name]</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push -u origin master 第一次同步时使用该命令</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push origin master</span></span><br><span class="line">origin https://github.com/schacon/ticgit (fetch)</span><br><span class="line">origin https://github.com/schacon/ticgit (push)</span><br><span class="line">pb https://github.com/paulboone/ticgit (fetch)</span><br><span class="line">pb https://github.com/paulboone/ticgit (push)</span><br></pre></td></tr></table></figure>
+<h2 id="4-工作区、暂存区和版本库"><a href="#4-工作区、暂存区和版本库" class="headerlink" title="4. 工作区、暂存区和版本库"></a>4. 工作区、暂存区和版本库</h2><p>工作区：在电脑里能看到的目录； 版本库：在工作区有一个隐藏目录.git，是Git的版本库。 Git的版本库中存了很多东西，其中最重要的就是称为stage（或者称为index）的暂存区，还有Git自动创建的master，以及指向master的指针HEAD。<br><img src="/2019/04/27/git使用小记/2019-04-28-00-01-11.png" alt="工作区、暂存区和版本库"><br>进一步解释一些命令：<br><code>git add</code>实际上是把文件添加到暂存区<br><code>git commit</code>实际上是把暂存区的所有内容提交到当前分支</p>
+<h2 id="5-git-diff"><a href="#5-git-diff" class="headerlink" title="5. git diff"></a>5. git diff</h2><p>查看修改内容</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git diff # 可以查看工作区(work dict)和暂存区(stage)的区别</span><br><span class="line">git diff --cached # 可以查看暂存区(stage)和分支(master)的区别</span><br><span class="line">git diff HEAD -- &lt;file&gt; # 可以查看工作区和版本库里面最新版本的区别</span><br></pre></td></tr></table></figure>
+<h2 id="6-git-log"><a href="#6-git-log" class="headerlink" title="6. git log"></a>6. git log</h2><p>查看提交日志</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git log</span><br><span class="line">git log --pretty=oneline # 简化日志输出信息</span><br></pre></td></tr></table></figure>
+<h2 id="7-git-reflog"><a href="#7-git-reflog" class="headerlink" title="7. git reflog"></a>7. git reflog</h2><p>查看命令历史</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+<h2 id="8-git-reset"><a href="#8-git-reset" class="headerlink" title="8. git reset"></a>8. git reset</h2><p>版本回退<br>返回上一个版本，在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，上上一个版本是HEAD^^，往上100个版本写成HEAD~100。commit_id是版本号，是一个用SHA1计算出的序列</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
+<h2 id="9-撤销修改"><a href="#9-撤销修改" class="headerlink" title="9. 撤销修改"></a>9. 撤销修改</h2><h3 id="9-1-丢弃工作区的修改"><a href="#9-1-丢弃工作区的修改" class="headerlink" title="9.1. 丢弃工作区的修改"></a>9.1. 丢弃工作区的修改</h3><p>该命令是指将文件在工作区的修改全部撤销，这里有两种情况：</p>
+<p>一种是file自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；<br>一种是file已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。<br>总之，就是让这个文件回到最近一次git commit或git add时的状态。也就是将工作区的状态回退到暂存区或者版本库。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git checkout -- &lt;file&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="9-2-丢弃暂存区的修改"><a href="#9-2-丢弃暂存区的修改" class="headerlink" title="9.2. 丢弃暂存区的修改"></a>9.2. 丢弃暂存区的修改</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git reset HEAD &lt;file&gt; # 第一步，把暂存区的修改撤销掉(unstage)，重新放回工作区：</span><br><span class="line">git checkout -- &lt;file&gt; # 第二步，撤销工作区的修改</span><br></pre></td></tr></table></figure>
+<p>小结：</p>
+<ol>
+<li>当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令<code>git checkout -- &lt;file&gt;</code>。</li>
+<li>当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令<code>git reset HEAD &lt;file&gt;</code>，就回到了第一步，第二步按第一步操作。</li>
+<li>已经提交了不合适的修改到版本库时，想要撤销本次提交，进行版本回退，前提是没有推送到远程库。</li>
+</ol>
+<h2 id="10-git-rm"><a href="#10-git-rm" class="headerlink" title="10. git rm"></a>10. git rm</h2><p>删除文件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git rm &lt;file&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 以上等价于，注意是提交到暂存区</span></span><br><span class="line">rm &lt;file&gt;</span><br><span class="line">git add &lt;file&gt;</span><br></pre></td></tr></table></figure>
+<p>进一步的解释<br>Q: 比如执行了rm text.txt 误删了怎么恢复？<br>A: 执行<code>git checkout -- text.txt</code> 把版本库的东西重新写回工作区就行了</p>
+<p>Q: 如果执行了<code>git rm text.txt</code>我们会发现工作区的text.txt也删除了，怎么恢复？<br>A: 先撤销暂存区修改，重新放回工作区，然后再从版本库写回到工作区</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git reset head text.txt</span><br><span class="line">git checkout -- text.txt</span><br></pre></td></tr></table></figure>
+<h2 id="11-远程库"><a href="#11-远程库" class="headerlink" title="11. 远程库"></a>11. 远程库</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C "youremail@example.com" # 创建SSH Key</span><br><span class="line">git remote add origin https://github.com/username/repositoryname.git # 关联远程仓库</span><br><span class="line">git push -u origin master # 第一次推送到远程仓库，后续可以省略-u</span><br><span class="line"></span><br><span class="line">git remote -v # 查看远程库信息</span><br></pre></td></tr></table></figure>
+<h3 id="11-1-fetch和-pull的区别"><a href="#11-1-fetch和-pull的区别" class="headerlink" title="11.1. fetch和 pull的区别"></a>11.1. fetch和 pull的区别</h3><p><a href="https://www.cnblogs.com/gyjx2016/p/6822113.html" target="_blank" rel="noopener">【git之】fetch和 pull的区别</a><br>一般使用pull会简单些，不过可能要解决冲突</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git pull # 相当于是从远程获取最新版本并merge到本地</span><br><span class="line">git fetch # 相当于是从远程获取最新版本到本地，不会自动merge</span><br></pre></td></tr></table></figure>
+<h2 id="12-分支"><a href="#12-分支" class="headerlink" title="12. 分支"></a>12. 分支</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git branch &lt;branchname&gt; # 创建分支</span><br><span class="line">git branch # 列出所有分支，当前分支前面会标一个*号。</span><br><span class="line">git checkout &lt;branchname&gt; # 切换分支</span><br><span class="line">git checkout -b &lt;branchname&gt; # 创建+切换分支</span><br><span class="line">git merge &lt;branchname&gt; # 合并某分支到当前分支</span><br><span class="line">git branch -d &lt;branchname&gt; # 删除分支</span><br><span class="line">git log --graph # 查看分支合并图</span><br><span class="line">git merge --no-ff -m "description" &lt;branchname&gt; # 普通模式合并分支</span><br><span class="line"><span class="meta">#</span><span class="bash"> 因为本次合并要创建一个新的commit，所以加上-m参数，把commit描述写进去。合并分支时，加上--no-ff参数就可以用普通模式合并，能看出来曾经做过合并，包含作者和时间戳等信息，而fast forward合并就看不出来曾经做过合并。</span></span><br><span class="line"></span><br><span class="line">git branch -D &lt;branchname&gt; # 丢弃一个没有合并过的分支</span><br></pre></td></tr></table></figure>
+<h2 id="13-现场"><a href="#13-现场" class="headerlink" title="13. 现场"></a>13. 现场</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git stash # 保存工作现场</span><br><span class="line">git stash list # 查看工作现场</span><br><span class="line">git stash pop # 恢复工作现场</span><br></pre></td></tr></table></figure>
+<h2 id="14-标签"><a href="#14-标签" class="headerlink" title="14. 标签"></a>14. 标签</h2><p>tag就是一个让人容易记住的有意义的名字，它跟某个commit绑在一起。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git tag &lt;tagname&gt; # 用于新建一个标签，默认为HEAD，也可以指定一个commit id。</span><br><span class="line">git tag -a &lt;tagname&gt; -m &lt;description&gt; &lt;branchname&gt; or commit_id # 指定标签信息</span><br><span class="line">git tag # 查看所有标签</span><br><span class="line">git push origin &lt;tagname&gt; # 推送一个本地标签</span><br><span class="line">git tag -d &lt;tagname&gt; # 删除一个本地标签</span><br><span class="line">git push origin :refs/tags/&lt;tagname&gt; # 删除一个远程标签；也就是推送一个空的tag到远程库</span><br></pre></td></tr></table></figure>
           
         
       
@@ -665,7 +711,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-27 22:47:22" itemprop="dateModified" datetime="2019-04-27T22:47:22+08:00">2019-04-27</time>
+                <time title="Modified: 2019-04-27 23:37:26" itemprop="dateModified" datetime="2019-04-27T23:37:26+08:00">2019-04-27</time>
               
             
           </span>
@@ -714,7 +760,37 @@
 <li><a href="https://chrome.google.com/webstore/detail/%E8%B0%B7%E6%AD%8C%E8%AE%BF%E9%97%AE%E5%8A%A9%E6%89%8B/gocklaboggjfkolaknpbhddbaopcepfp" target="_blank" rel="noopener">谷歌访问助手</a> 没有VPN时候就靠这个活着了</li>
 <li><a href="https://chrome.google.com/webstore/detail/im-feeling-lucky/cnlabakikmdekpfaflaihcepfkjopgll" target="_blank" rel="noopener">I’m Feeling Lucky</a> <a href="https://www.techjunkie.com/im-feeling-lucky/" target="_blank" rel="noopener">How to add Google’s I’m Feeling Lucky Option to Your Chrome Search Engines</a></li>
 </ul>
-<h2 id="2-实用的软件"><a href="#2-实用的软件" class="headerlink" title="2. 实用的软件"></a>2. 实用的软件</h2><h3 id="2-1-实际使用"><a href="#2-1-实际使用" class="headerlink" title="2.1. 实际使用"></a>2.1. 实际使用</h3><ul>
+<h2 id="2-vscode常用插件及相关配置"><a href="#2-vscode常用插件及相关配置" class="headerlink" title="2. vscode常用插件及相关配置"></a>2. vscode常用插件及相关配置</h2><h3 id="2-1-插件"><a href="#2-1-插件" class="headerlink" title="2.1. 插件"></a>2.1. 插件</h3><ol>
+<li>vscode-icons<br> 文件格式一目了然，左侧文件目录的文件夹和文件都会显示相应的图标</li>
+<li>Bracket Pair Colorizer<br> 括号用不同颜色标识</li>
+<li>Git History<br>在vscode中添加git log</li>
+<li>LaTex language support</li>
+<li>LeetCode</li>
+<li><p>Markdown All in One<br>可以使用github flavored markdown渲染标准</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"markdown.styles": ["D:\\Documents\\01.Github\\01.markdown-css\\github-markdown.css"],</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Markdown Math<br>在markdown中支持数学公式</p>
+</li>
+<li>Markdown Preview Enhance<br>用于预览markdown</li>
+<li>Markdown Shortcuts<br>添加一些快捷键，写作时比较方便</li>
+<li><p>Markdown TOC<br>添加目录功能注意，并且可以在header中添加序号。<br>根据markdownlint的语法要求，一级标题应该仅有一个座位文章的标题，所以需要在二级标题中启动编号。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"markdown-toc.depthFrom": 2,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>markdownlint<br>对md文件做语法检查</p>
+</li>
+<li><p>Paste Image<br>方便在.md文件中复制图片，可以配置在当前同文件名的文件夹下，便于分类</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"pasteImage.path": "$&#123;currentFileDir&#125;/$&#123;currentFileNameWithoutExt&#125;/",</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Setting Sync</p>
+</li>
+<li><p>TODO Highlight<br>高亮TODO并扩展</p>
+</li>
+<li><p>OneDark-Pro<br>Atom’s ionic主题（首选项-颜色主题修改主题    </p>
+</li>
+<li>T</li>
+</ol>
+<h3 id="2-2-配置"><a href="#2-2-配置" class="headerlink" title="2.2. 配置"></a>2.2. 配置</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">"editor.mouseWheelZoom": true,</span><br><span class="line">"editor.fontFamily": "Consolas, 'Courier New', monospace",</span><br><span class="line">"workbench.colorTheme": "One Dark Pro",</span><br></pre></td></tr></table></figure>
+<h2 id="3-实用的软件"><a href="#3-实用的软件" class="headerlink" title="3. 实用的软件"></a>3. 实用的软件</h2><h3 id="3-1-实际使用"><a href="#3-1-实际使用" class="headerlink" title="3.1. 实际使用"></a>3.1. 实际使用</h3><ul>
 <li>SumatraPDF/福昕阅读器 小巧的PDF阅读器，不过不能编辑</li>
 <li>Total Commander/Q-Dir/Clover 多窗口多标签的资源管理器，文件整理工具</li>
 <li><strong>Launchy</strong>/Wox 快速启动</li>
@@ -758,10 +834,10 @@
 <li>Smallpdf</li>
 <li><a href="https://github.com/soimort/you-get" target="_blank" rel="noopener">you-get</a> 下载视频神器</li>
 </ul>
-<h3 id="2-2-ref"><a href="#2-2-ref" class="headerlink" title="2.2. ref"></a>2.2. ref</h3><ul>
+<h3 id="3-2-ref"><a href="#3-2-ref" class="headerlink" title="3.2. ref"></a>3.2. ref</h3><ul>
 <li><a href="https://www.zhihu.com/question/300735799/answer/604585413" target="_blank" rel="noopener">有哪些软件堪称神器，却不为大众所知？</a></li>
 </ul>
-<h2 id="3-实用的网站"><a href="#3-实用的网站" class="headerlink" title="3. 实用的网站"></a>3. 实用的网站</h2><ul>
+<h2 id="4-实用的网站"><a href="#4-实用的网站" class="headerlink" title="4. 实用的网站"></a>4. 实用的网站</h2><ul>
 <li><a href="https://mubu.com/" target="_blank" rel="noopener">极简大纲笔记 | 一键生成思维导图</a></li>
 <li><a href="https://uzer.me/" target="_blank" rel="noopener">UZER.ME云端超级应用空间</a></li>
 <li><a href="http://bigjpg.com/" target="_blank" rel="noopener">AI人工智能图片放大</a></li>
@@ -769,12 +845,12 @@
 <li><a href="https://www.wolframalpha.com/" target="_blank" rel="noopener">wolframalpha</a></li>
 <li><a href="http://tools.jb51.net/" target="_blank" rel="noopener">脚本之家</a></li>
 </ul>
-<h2 id="4-Office"><a href="#4-Office" class="headerlink" title="4. Office"></a>4. Office</h2><ul>
+<h2 id="5-Office"><a href="#5-Office" class="headerlink" title="5. Office"></a>5. Office</h2><ul>
 <li><a href="https://www.jiandaoyun.com/f/5b4fe560ba4f62256657ec95" target="_blank" rel="noopener">Office插件</a></li>
 <li><a href="http://www.hippter.com/" target="_blank" rel="noopener">HiPPTer</a></li>
 <li><a href="http://www.ffcell.com/" target="_blank" rel="noopener">方方格子</a></li>
 </ul>
-<h2 id="5-IOS"><a href="#5-IOS" class="headerlink" title="5. IOS"></a>5. IOS</h2><ul>
+<h2 id="6-IOS"><a href="#6-IOS" class="headerlink" title="6. IOS"></a>6. IOS</h2><ul>
 <li><a href="https://www.zhihu.com/question/271740133" target="_blank" rel="noopener">在当下使用 iPad 有哪些值得推荐的应用？</a></li>
 </ul>
 
@@ -1307,7 +1383,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-27 22:47:12" itemprop="dateModified" datetime="2019-04-27T22:47:12+08:00">2019-04-27</time>
+                <time title="Modified: 2019-04-27 23:24:32" itemprop="dateModified" datetime="2019-04-27T23:24:32+08:00">2019-04-27</time>
               
             
           </span>
@@ -1500,7 +1576,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-27 12:53:13" itemprop="dateModified" datetime="2019-04-27T12:53:13+08:00">2019-04-27</time>
+                <time title="Modified: 2019-04-27 22:53:05" itemprop="dateModified" datetime="2019-04-27T22:53:05+08:00">2019-04-27</time>
               
             
           </span>
@@ -1562,7 +1638,7 @@
 > # 这是一级标题
 > ## 这是二级标题
 > ### 这是三级标题 -->
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">这是一级标题</span><br><span class="line">=== </span><br><span class="line"></span><br><span class="line">这是二级标题</span><br><span class="line">--- </span><br><span class="line"></span><br><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">这是一级标题</span><br><span class="line">===</span><br><span class="line"></span><br><span class="line">这是二级标题</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br></pre></td></tr></table></figure>
 <h3 id="2-3-标注"><a href="#2-3-标注" class="headerlink" title="2.3. 标注"></a>2.3. 标注</h3><p>好像支持不了尾注和简单的上下标写法</p>
 <ul>
 <li><p>上标：30<sup>test</sup></p>
@@ -1678,26 +1754,26 @@ x_{n1} & x_{n2} & \ldots & x_{nn}\\
 \dfrac{\partial^2 f}{\partial y^2}
 \end{bmatrix}</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\mathbf&#123;H&#125;=</span><br><span class="line">\begin&#123;bmatrix&#125;</span><br><span class="line">\dfrac&#123;\partial^2 f&#125;&#123;\partial x^2&#125; &amp;</span><br><span class="line">\dfrac&#123;\partial^2 f&#125;</span><br><span class="line">&#123;\partial x \partial y&#125; \\[8pt]</span><br><span class="line">\dfrac&#123;\partial^2 f&#125;</span><br><span class="line">&#123;\partial x \partial y&#125; &amp;</span><br><span class="line">\dfrac&#123;\partial^2 f&#125;&#123;\partial y^2&#125;</span><br><span class="line">\end&#123;bmatrix&#125;</span><br></pre></td></tr></table></figure>
 <script type="math/tex; mode=display">
-\begin{pmatrix} 
+\begin{pmatrix}
 1 & 2 \\
 1 & 2 \\
 \end{pmatrix}
-\begin{bmatrix} 
+\begin{bmatrix}
 1 & 2 \\
 1 & 2 \\
 \end{bmatrix}
-\begin{Bmatrix} 
+\begin{Bmatrix}
 1 & 2 \\
 1 & 2 \\
-\end{Bmatrix} 
-\begin{vmatrix} 
+\end{Bmatrix}
+\begin{vmatrix}
 1 & 2 \\
 1 & 2 \\
-\end{vmatrix} 
-\begin{Vmatrix} 
+\end{vmatrix}
+\begin{Vmatrix}
 1 & 2 \\
 1 & 2 \\
-\end{Vmatrix}</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\begin&#123;pmatrix&#125; </span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;pmatrix&#125;</span><br><span class="line">\begin&#123;bmatrix&#125; </span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;bmatrix&#125;</span><br><span class="line">\begin&#123;Bmatrix&#125; </span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;Bmatrix&#125; </span><br><span class="line">\begin&#123;vmatrix&#125; </span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;vmatrix&#125; </span><br><span class="line">\begin&#123;Vmatrix&#125; </span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;Vmatrix&#125;</span><br></pre></td></tr></table></figure>
+\end{Vmatrix}</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\begin&#123;pmatrix&#125;</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;pmatrix&#125;</span><br><span class="line">\begin&#123;bmatrix&#125;</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;bmatrix&#125;</span><br><span class="line">\begin&#123;Bmatrix&#125;</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;Bmatrix&#125;</span><br><span class="line">\begin&#123;vmatrix&#125;</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;vmatrix&#125;</span><br><span class="line">\begin&#123;Vmatrix&#125;</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;Vmatrix&#125;</span><br></pre></td></tr></table></figure>
 <p>多行公式</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
@@ -1713,8 +1789,8 @@ a \quad b \qquad cd \quad c \, d \quad c \: d \quad c \; d</script><figure class
 \int_a^b f(x)\mathrm{d}x
 \qquad
 \int_a^b f(x)\,\mathrm{d}x
-\qquad 
-\dfrac{\partial^2 f}{\partial x^2}</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\int_a^b f(x)\mathrm&#123;d&#125;x</span><br><span class="line">\qquad</span><br><span class="line">\int_a^b f(x)\,\mathrm&#123;d&#125;x</span><br><span class="line">\qquad </span><br><span class="line">\dfrac&#123;\partial^2 f&#125;&#123;\partial x^2&#125;</span><br></pre></td></tr></table></figure>
+\qquad
+\dfrac{\partial^2 f}{\partial x^2}</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\int_a^b f(x)\mathrm&#123;d&#125;x</span><br><span class="line">\qquad</span><br><span class="line">\int_a^b f(x)\,\mathrm&#123;d&#125;x</span><br><span class="line">\qquad</span><br><span class="line">\dfrac&#123;\partial^2 f&#125;&#123;\partial x^2&#125;</span><br></pre></td></tr></table></figure>
 <p>分段函数</p>
 <script type="math/tex; mode=display">
  |x| =
