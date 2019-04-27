@@ -37,7 +37,40 @@ hexo d
     可以参考[使用hexo，如果换了电脑怎么更新博客？](https://www.zhihu.com/question/21193762)
     如果已经完成了blog的编写，可以在github上面新建一个`hexo`分支，并设置为默认分支，随后将远程分支下载下来，并用blog的源文件全部替换掉，在push即可。这样就可以将源代码备份到Github上面的hexo分支，而网页文件存储在master分支。
 
-## 3. 参考资料
+## 3. 添加gitalk评论系统
+
+- [Hexo NexT主题中集成gitalk评论系统](https://asdfv1929.github.io/2018/01/20/gitalk/)
+- [Hexo中Gitalk配置使用教程-可能是目前最详细的教程](https://iochen.com/2018/01/06/use-gitalk-in-hexo/)
+- [GITALK demo](https://gitalk.github.io/)
+- [OAuth Apps](https://github.com/settings/developers)
+
+主要参考了以上两个教程，但事实上目前（2019.4）在next主题中都已经集成了gitalk的相关配置了，直接启用即可，不需要像第一个blog那样需要完整添加很多配置文件。以后可以方便添加评论然后重新记录了。
+
+1. 先在[github](https://github.com/settings/applications/new)上注册新应用
+   参数说明
+
+    ```bash
+    Application name： # 应用名称，随意
+    Homepage URL： # 网站URL，如https://asdfv1929.github.io
+    Application description # 描述，随意
+    Authorization callback URL：# 网站URL，https://asdfv1929.github.io
+    ```
+
+2. 点击注册后，页面跳转如下，其中Client ID和Client Secret在后面的配置中需要用到，到时复制粘贴即可
+3. 在主题配置文件next/_config.yml中添加如下内容：
+
+    ```bash
+    gitalk:
+        enable: true
+        github_id: astraywu # Github repo owner
+        repo: astraywu.github.io # Repository name to store issues.
+        client_id: Client ID # Github Application Client ID
+        client_secret: Client Secret # Github Application Client Secret
+        admin_user: astraywu # GitHub repo owner and collaborators, only these guys can initialize github issues
+        distraction_free_mode: true # Facebook-like distraction free mode
+    ```
+
+## 4. 参考资料
 
 1. [Hexo的Next主题详细配置](https://www.jianshu.com/p/3a05351a37dc)
 2. Next官网[精于心，简于形](https://theme-next.iissnan.com/)
