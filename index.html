@@ -24,6 +24,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
 
 
 
@@ -74,7 +81,7 @@
     root: '/',
     scheme: 'Muse',
     version: '6.7.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -223,6 +230,23 @@
         
         
           
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
           <li class="menu-item menu-item-archives">
 
     
@@ -239,6 +263,14 @@
 
       
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
     </ul>
   
 
@@ -247,6 +279,27 @@
 
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -330,7 +383,7 @@
                 
               
 
-              <time title="Created: 2019-04-28 01:10:47 / Modified: 01:18:53" itemprop="dateCreated datePublished" datetime="2019-04-28T01:10:47+08:00">2019-04-28</time>
+              <time title="Created: 2019-04-28 01:10:47 / Modified: 01:27:03" itemprop="dateCreated datePublished" datetime="2019-04-28T01:10:47+08:00">2019-04-28</time>
             
 
             
@@ -352,6 +405,34 @@
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">7 mins.</span>
+              
+            </div>
           
 
           
@@ -440,30 +521,14 @@ II=(\lambda x.x)(\lambda z.z)</script><p>对上式作变量替换，将所有$x$
 3 \equiv &\lambda sz.s(s(s(z)))
 \end{aligned}</script><p>以上的计数法其实就是在z之上嵌套表达式s，数字多大就嵌套多少次，就是对z应用了n次s。这其实就是自然数的本质，不断加1。<br>我们定义后继函数(successor function)如下</p>
 <script type="math/tex; mode=display">
-S =\lambda wyx.y(wyx)</script><p>后继函数可以应用于0得到<br>&lt;!—</p>
-<script type="math/tex; mode=display">
-\begin{align}
-S0 \equiv& (\lambda wyx.y(wyx))(\lambda sz.z) \\
-    =& \lambda yx.y((\lambda sz.z)yx)\\
-    =& \lambda yx.y(x)\\
-    \equiv & 1
-\end{align}</script><p>—&gt;</p>
+S =\lambda wyx.y(wyx)</script><p>后继函数可以应用于0得到</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 S0 =& (\lambda wyx.y(wyx)) 0 \\
     =& \lambda yx.y(0yx) \\
     =& \lambda yx.y(x) \\
     = &1
-\end{aligned}</script><p>同理可以得到2等等，由此即可得到加法的定义，例如2+3就表示2S3，即2 suc 3次。注意以下推导中，2接受两个参数S和3，分别将S和3作为s和z替换，同时也要注意到$S3=4$<br>&lt;!—</p>
-<script type="math/tex; mode=display">
-\begin{align}
-2S3\equiv &(\lambda sz.s(s(z))) (\lambda wyz.y(wyx)) (\lambda uv.u(u(u(v))))  \\
-=& \lambda sz.s(s(z)) S 3\\
-=& S(S(3))\\
-=& (\lambda wyz.y(wyx)) ((\lambda wyz.y(wyx)) ((\lambda uv.u(u(u(v)))))) \\
-=& S4\\
-=& 5
-\end{align}</script><p>—&gt;</p>
+\end{aligned}</script><p>同理可以得到2等等，由此即可得到加法的定义，例如2+3就表示2S3，即2 suc 3次。注意以下推导中，2接受两个参数S和3，分别将S和3作为s和z替换，同时也要注意到$S3=4$</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 2S3\equiv & (\lambda sz.s(s(z))) S 3\\
@@ -481,17 +546,7 @@ $$
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">add(3, 5) -&gt; add(3)(5)</span><br></pre></td></tr></table></figure>
 <p>0的定义为$\lambda sz.z$，这个其实是$\lambda s.(\lambda z.z)$是完全等价的。</p>
 <h3 id="乘法-multiplication"><a href="#乘法-multiplication" class="headerlink" title="乘法(multiplication)"></a>乘法(multiplication)</h3><script type="math/tex; mode=display">
-\lambda xyz.x(yz)</script><p>例如2x2的结果为如下，注意2是可以接受两个参数的，所以$2s(z)$实际上是2接受了$s$和$z$作为输入，得到s(s(z))<br>&lt;!—</p>
-<script type="math/tex; mode=display">
-\begin{align}
-(\lambda xyz.x(yz))22 &= (\lambda z. 2(2z)) \\
-    &= (\lambda s.2(2s))\\
-    &= (\lambda s.(\lambda z. (2s(2s (z))))) \\
-    &= (\lambda sz.2s(2s(z)))\\
-    &= (\lambda sz.2s(s(s(z)))) \\
-    &= (\lambda sz.s(s(s(s(z)))))\\
-    & \equiv 4
-\end{align}</script><p>—&gt;</p>
+\lambda xyz.x(yz)</script><p>例如2x2的结果为如下，注意2是可以接受两个参数的，所以$2s(z)$实际上是2接受了$s$和$z$作为输入，得到s(s(z))</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 (\lambda xyz.x(yz))23 &= (\lambda z. 2(3z)) \\
@@ -556,7 +611,7 @@ P0=0\Theta(\lambda z.z00)F=(\lambda z.z00)F=F00=0</script><h3 id="相等与不�
 <script type="math/tex; mode=display">
 G\equiv (\lambda xy.Z(xPy))</script><p>这里的$xPy$表示对y应用x次的前继，也就是y-x，如果该式等于0，说明$y \le x$。<br>利用$x \ge y$与$y \ge x$同时成立表示$x=y$，可以得到下面这个关于相等的定义</p>
 <script type="math/tex; mode=display">
-E\equiv (\lambda xy.\land(ZxPy)(Z(yPx)))</script><p>用同样的方式我们也可以定义$x<y$, $x="">y$, $x\neq y$</y$,></p>
+E\equiv (\lambda xy.\land(ZxPy)(Z(yPx)))</script><p>用同样的方式我们也可以定义$x<y$，$x>y$和$x\neq y$。</y$，$x></p>
 <h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>在λ演算中，递归函数可以定义为调用函数y并且返回自身</p>
 <script type="math/tex; mode=display">
 Y\equiv (\lambda y.(\lambda x.y(xx))(\lambda x.y(xx)))</script><p>注意这里其实是加括号了，完整表示如下</p>
@@ -674,12 +729,24 @@ YR3= &R(YR)3\\
                 
               
 
-              <time title="Created: 2019-04-27 18:25:49 / Modified: 22:47:53" itemprop="dateCreated datePublished" datetime="2019-04-27T18:25:49+08:00">2019-04-27</time>
+              <time title="Created: 2019-04-27 18:25:49" itemprop="dateCreated datePublished" datetime="2019-04-27T18:25:49+08:00">2019-04-27</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-28 23:18:26" itemprop="dateModified" datetime="2019-04-28T23:18:26+08:00">2019-04-28</time>
               
             
           </span>
@@ -696,6 +763,34 @@ YR3= &R(YR)3\\
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">5.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">5 mins.</span>
+              
+            </div>
           
 
           
@@ -719,7 +814,7 @@ YR3= &R(YR)3\\
 <hr>
 <h2 id="1-编码"><a href="#1-编码" class="headerlink" title="1. 编码"></a>1. 编码</h2><p>u_p444_b10的YUV→100M的YUV420的24fps的HDR10码流（单帧，每帧YUV重复2秒）</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># u_p444_b10的YUV→100M的YUV420的24fps的HDR10码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line"><span class="comment"># "如果要非单帧的，将前面一个""-r 0.5""去掉即可；重复10s，用""""-r 0.1""""；如果yuv仅有一帧，编码会有错误，所以至少2帧进行repeat"""</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 100M -vf scale=out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"keyint=24:colorprim=bt2020:transfer=smpte2084:colormatrix=bt2020nc:master-display=G(13250,34500)B(7500,3000)R(34000,16000)WP(15635,16450)L(10000000,50):max-cll=0,0"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># u_p444_b10的YUV→100M的YUV420的24fps的SDR码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 100M -vf scale=out_color_matrix=bt709:out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"colorprim=bt709:transfer=bt709:colormatrix=bt709"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># u_p444_b10的YUV→100M的YUV420的24fps的HLG码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 100M -vf scale=out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"keyint=24:colorprim=bt2020:transfer=arib-std-b67:colormatrix=bt2020nc"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># u_p420_b8的YUV→100M的YUV420p10的24fps的SDR码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 1920x1080 -pix_fmt yuv420p -i input.yuv -b:v 100M -s 3840x2160 -vf scale=out_color_matrix=bt709:out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"colorprim=bt709:transfer=bt709:colormatrix=bt709"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 720x480_p422_b8的YUV→100M的YUV422p8的24fps的SDR码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line"><span class="comment"># 一帧即可完成，但是V811不支持这个格式，需要更换编码库</span></span><br><span class="line">ffmpeg -threads 16 -r 0.2 -s 720x480 -pix_fmt yuv422p -i input.yuv -b:v 100M -c:v libx265 -preset ultrafast -x265-params -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 720x480_p422_b8的YUV→100M的YUV422p8的24fps的SDR码流（单帧，每帧YUV重复10秒）</span></span><br><span class="line"><span class="comment"># 注意至少需要两帧，但第二帧不会被repeated，总共只有10这里采用MPEG4编码库，不知道为何X265时V811支持不了</span></span><br><span class="line">ffmpeg -r 0.1 -s 720x480 -pix_fmt yuv422p -i input.yuv -b:v 100M -vcodec mpeg4 -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编码时重新添加旋转的metadata</span></span><br><span class="line">ffmpeg -I input.mp4 -c copy -metadata:s:v:0 rotate=90 output.mp4</span><br></pre></td></tr></table></figure>
-<h2 id="2-解码"><a href="#2-解码" class="headerlink" title="2. 解码"></a>2. 解码</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 直接解码出YUV444的码流</span></span><br><span class="line">ffmpeg -i input.mp4 -pix_fmt yuv444p10 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码YUV444的码流，并指定30帧和分辨率</span></span><br><span class="line">ffmpeg -i input.mp4 -frames:v 30 -pix_fmt yuv444p10 -s 3840x2160 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码YUV444的码流，并指定时间段和分辨率</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:54 -t 00:00:10 -pix_fmt yuv444p10 -s 3840x2160 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将码流分段解出yuv，每段持续2秒，总共最多解500帧，指定输出分辨率为f_p444_b10</span></span><br><span class="line"><span class="comment"># （ 注意直接使用命令行时用一个""%""，在脚本中要转义用""%%""）"</span></span><br><span class="line">ffmpeg -i input.mp4 -frames:v 500 -pix_fmt yuv444p10 -s 1920x1080 -f segment -segment_time 2 -y output_%%04d.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从制定时间开始截取一帧，并制定分辨率和格式</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:54 -frames:v 1 -pix_fmt yuv444p10 -s 3840x2160 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码时进行反交错deinterlace（有两种方法，但是主观效果差异应该不大）</span></span><br><span class="line">ffmpeg -i input.mp4 -deinterlace -pix_fmt yuv444p10 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 缩放</span></span><br><span class="line">ffmpeg -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -vf scale=iw*2:ih*2 output.yuvffmpeg -i input.jpg -vf scale=iw*w:ih*2 output.jpg</span><br><span class="line">ffmpeg -i input.avi -vf scale=320:240 output.avi</span><br><span class="line">ffmpeg -i input.avi -vf scale=320:-1 otuput.avi</span><br><span class="line">ffmpeg -i input.avi -vf <span class="string">"scale=iw/2:ih/2"</span> output.avi</span><br><span class="line">ffmpeg -s 1920x1080 -pix_fmt yuv444p10 -i input.yuv -vf scale=iw*2:ih*2 output.yuv</span><br><span class="line">ffmpeg -s 1920x1080 -pix_fmt gray10 -i input.yuv -vf scale=iw*2:ih*2 output.yuv</span><br></pre></td></tr></table></figure>
+<h2 id="2-解码"><a href="#2-解码" class="headerlink" title="2. 解码"></a>2. 解码</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 直接解码出YUV444的码流</span></span><br><span class="line">ffmpeg -i input.mp4 -pix_fmt yuv444p10 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码YUV444的码流，并指定30帧和分辨率</span></span><br><span class="line">ffmpeg -i input.mp4 -frames:v 30 -pix_fmt yuv444p10 -s 3840x2160 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码YUV444的码流，并指定时间段和分辨率</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:54 -t 00:00:10 -pix_fmt yuv444p10 -s 3840x2160 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将码流分段解出yuv，每段持续2秒，总共最多解500帧，指定输出分辨率为f_p444_b10</span></span><br><span class="line"><span class="comment"># （ 注意直接使用命令行时用一个""%""，在脚本中要转义用""%%""）"</span></span><br><span class="line">ffmpeg -i input.mp4 -frames:v 500 -pix_fmt yuv444p10 -s 1920x1080 -f segment -segment_time 2 -y output_%%04d.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从制定时间开始截取一帧，并制定分辨率和格式</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:54 -frames:v 1 -pix_fmt yuv444p10 -s 3840x2160 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码时进行反交错deinterlace（有两种方法，但是主观效果差异应该不大）</span></span><br><span class="line">ffmpeg -i input.mp4 -deinterlace -pix_fmt yuv444p10 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 缩放</span></span><br><span class="line">ffmpeg -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -vf scale=iw*2:ih*2 output.yuvffmpeg -i input.jpg -vf scale=iw*w:ih*2 output.jpg</span><br><span class="line">ffmpeg -i input.avi -vf scale=320:240 output.avi</span><br><span class="line">ffmpeg -i input.avi -vf scale=320:-1 otuput.avi</span><br><span class="line">ffmpeg -i input.avi -vf <span class="string">"scale=iw/2:ih/2"</span> output.avi</span><br><span class="line">ffmpeg -s 1920x1080 -pix_fmt yuv444p10 -i input.yuv -vf scale=iw*2:ih*2 output.yuv</span><br><span class="line">ffmpeg -s 1920x1080 -pix_fmt gray10 -i input.yuv -vf scale=iw*2:ih*2 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解YUV4448bit</span></span><br><span class="line">ffmpeg -i input.mp4 -pix_fmt yuv444p -y output.yuv</span><br></pre></td></tr></table></figure>
 <h2 id="3-拼接"><a href="#3-拼接" class="headerlink" title="3. 拼接"></a>3. 拼接</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将多段ts流拼接</span></span><br><span class="line">ffmpeg -i concat:<span class="string">"u_r24_sdr_bt709.ts|u_r24_sdr_bt2020.ts|u_r24_sdr_pq.ts|u_r24_sdr_hdr10.ts|u_r24_sdr_hlg10.ts"</span> -c copy -an -y u_r24_b10_sscimf.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 同时拼接4路；做8K用</span></span><br><span class="line">ffmpeg -i 1.mp4 -i 2.mp4 -i 3.mp4 -i 4.mp4 -filter_complex <span class="string">"[0:v]pad=iw*2:ih*2[a];[a][1:v]overlay=w[b];[b][2:v]overlay=0:h[c];[c][3:v]overlay=w:h"</span> out.mp4</span><br></pre></td></tr></table></figure>
 <h2 id="4-截取"><a href="#4-截取" class="headerlink" title="4. 截取"></a>4. 截取</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 从指定时间开始截取一段码流</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:05.2 -t 00:00:10 -c copy output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从指定时间开始截取一帧</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:05 -frames:v 1 -pix_fmt yuv444p10 -y output.yuv</span><br></pre></td></tr></table></figure>
 <h2 id="5-转码-scaler"><a href="#5-转码-scaler" class="headerlink" title="5. 转码/scaler"></a>5. 转码/scaler</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将码流转码成420p10</span></span><br><span class="line">ffmpeg -i input.mp4 -vf format=yuv420p10 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将码流转码成fhd</span></span><br><span class="line">ffmpeg -i input.mp4 -vf scale=1920:1080 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将码流转码成uhd</span></span><br><span class="line"><span class="comment"># 但是HDR的metadata会丢失掉</span></span><br><span class="line">ffmpeg -i input.mp4 -vf scale=3840:2160 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新拷贝音视频流，可修复视频时间戳不正确等问题</span></span><br><span class="line">ffmpeg -i input.mp4 -c:v copy -c:a copy output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将UHD YUV转成FHD YUV</span></span><br><span class="line">ffmpeg -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -vf scale=1920:1080 -pix_fmt yuv444p10 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将UHD YUV444转成V210；"跟scalar效果基本一致，UV的值略偏右，目前没有看出来差异"</span></span><br><span class="line">ffmpeg -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -vcodec v210 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将V210转成YUV444 FHD</span></span><br><span class="line"><span class="comment"># 5529600刚好是一帧V210格式的大小，可能与标准的YUV422计算有一定的偏差，因为可能有偏移或者头 https://trac.ffmpeg.org/ticket/1869</span></span><br><span class="line">ffmpeg -f image2pipe -vcodec v210 -s 1920x1080 -frame_size 5529600 -i 1920x1080_ducks_v210.yuv</span><br></pre></td></tr></table></figure>
@@ -868,6 +963,34 @@ YR3= &R(YR)3\\
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">3.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">4 mins.</span>
+              
+            </div>
           
 
           
@@ -1055,7 +1178,7 @@ YR3= &R(YR)3\\
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-27 23:37:26" itemprop="dateModified" datetime="2019-04-27T23:37:26+08:00">2019-04-27</time>
+                <time title="Modified: 2019-04-28 23:49:28" itemprop="dateModified" datetime="2019-04-28T23:49:28+08:00">2019-04-28</time>
               
             
           </span>
@@ -1072,6 +1195,34 @@ YR3= &R(YR)3\\
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">2.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">2 mins.</span>
+              
+            </div>
           
 
           
@@ -1134,6 +1285,9 @@ YR3= &R(YR)3\\
 <li>T</li>
 </ol>
 <h3 id="2-2-配置"><a href="#2-2-配置" class="headerlink" title="2.2. 配置"></a>2.2. 配置</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">"editor.mouseWheelZoom": true,</span><br><span class="line">"editor.fontFamily": "Consolas, 'Courier New', monospace",</span><br><span class="line">"workbench.colorTheme": "One Dark Pro",</span><br></pre></td></tr></table></figure>
+<h3 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h3><ul>
+<li><a href="https://aoenian.github.io/2018/12/24/vscode-markdown-to-pdf/" target="_blank" rel="noopener">vscode编辑markdown文件并导出为PDF格式</a></li>
+</ul>
 <h2 id="3-实用的软件"><a href="#3-实用的软件" class="headerlink" title="3. 实用的软件"></a>3. 实用的软件</h2><h3 id="3-1-实际使用"><a href="#3-1-实际使用" class="headerlink" title="3.1. 实际使用"></a>3.1. 实际使用</h3><ul>
 <li>SumatraPDF/福昕阅读器 小巧的PDF阅读器，不过不能编辑</li>
 <li>Total Commander/Q-Dir/Clover 多窗口多标签的资源管理器，文件整理工具</li>
@@ -1332,6 +1486,34 @@ YR3= &R(YR)3\\
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">2.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">2 mins.</span>
+              
+            </div>
           
 
           
@@ -1573,6 +1755,34 @@ YR3= &R(YR)3\\
           
 
           
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">3.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">3 mins.</span>
+              
+            </div>
+          
 
           
 
@@ -1727,7 +1937,7 @@ YR3= &R(YR)3\\
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-28 01:05:17" itemprop="dateModified" datetime="2019-04-28T01:05:17+08:00">2019-04-28</time>
+                <time title="Modified: 2019-04-29 00:15:10" itemprop="dateModified" datetime="2019-04-29T00:15:10+08:00">2019-04-29</time>
               
             
           </span>
@@ -1744,6 +1954,34 @@ YR3= &R(YR)3\\
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">2.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">2 mins.</span>
+              
+            </div>
           
 
           
@@ -1797,15 +2035,31 @@ YR3= &R(YR)3\\
  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gitalk:</span><br><span class="line">    <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">    github_id: astraywu <span class="comment"># Github repo owner</span></span><br><span class="line">    repo: astraywu.github.io <span class="comment"># Repository name to store issues.</span></span><br><span class="line">    client_id: Client ID <span class="comment"># Github Application Client ID</span></span><br><span class="line">    client_secret: Client Secret <span class="comment"># Github Application Client Secret</span></span><br><span class="line">    admin_user: astraywu <span class="comment"># GitHub repo owner and collaborators, only these guys can initialize github issues</span></span><br><span class="line">    distraction_free_mode: <span class="literal">true</span> <span class="comment"># Facebook-like distraction free mode</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="4-ref"><a href="#4-ref" class="headerlink" title="4. ref"></a>4. ref</h2><ol>
+<h2 id="next主题优化"><a href="#next主题优化" class="headerlink" title="next主题优化"></a>next主题优化</h2><h3 id="添加tag"><a href="#添加tag" class="headerlink" title="添加tag"></a>添加tag</h3><p><a href="https://www.zhihu.com/question/29017171" target="_blank" rel="noopener">hexo 下的分类和表签无法显示，怎么解决？</a></p>
+<ol>
+<li><p>给文章加tag</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: 一个人的狂欢</span><br><span class="line">date: 2016-11-11 13:09:04</span><br><span class="line">tags: [journal,think]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命令行输入<code>hexo n page tags</code>，会在<code>sources/tags</code>生成<code>index.md</code>文件</p>
+</li>
+<li><p>编辑<code>index.md</code>文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: tags</span><br><span class="line">date: 2016-11-11 21:40:58</span><br><span class="line">type: &quot;tags&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在主题配置文件<code>themes\next\_config.yml</code>的<code>menu</code>项目下打开<code>tags</code>页</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line"><span class="attr">    home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">home</span></span><br><span class="line">    <span class="comment">#about: /about/ || user</span></span><br><span class="line"><span class="attr">    tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">tags</span></span><br><span class="line">    <span class="comment">#categories: /categories/ || th</span></span><br><span class="line"><span class="attr">    archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">archive</span></span><br><span class="line">    <span class="comment">#schedule: /schedule/ || calendar</span></span><br><span class="line">    <span class="comment">#sitemap: /sitemap.xml || sitemap</span></span><br><span class="line">    <span class="comment">#commonweal: /404/ || heartbeat</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="浏览页面的时候显示当前浏览进度"><a href="#浏览页面的时候显示当前浏览进度" class="headerlink" title="浏览页面的时候显示当前浏览进度"></a>浏览页面的时候显示当前浏览进度</h3><h3 id="添加顶部加载条"><a href="#添加顶部加载条" class="headerlink" title="添加顶部加载条"></a>添加顶部加载条</h3><h3 id="本地搜索"><a href="#本地搜索" class="headerlink" title="本地搜索"></a>本地搜索</h3><h3 id="统计功能，统计功能-显示文章字数统计-阅读时长-总字数"><a href="#统计功能，统计功能-显示文章字数统计-阅读时长-总字数" class="headerlink" title="统计功能，统计功能,显示文章字数统计,阅读时长,总字数"></a>统计功能，统计功能,显示文章字数统计,阅读时长,总字数</h3><h3 id="允许代码段拷贝"><a href="#允许代码段拷贝" class="headerlink" title="允许代码段拷贝"></a>允许代码段拷贝</h3><p>这里要使用<code>npm install hexo-symbols-count-time --save</code></p>
+<h3 id="给代码块添加复制功能"><a href="#给代码块添加复制功能" class="headerlink" title="给代码块添加复制功能"></a>给代码块添加复制功能</h3><h2 id="4-ref"><a href="#4-ref" class="headerlink" title="4. ref"></a>4. ref</h2><ol>
 <li><a href="https://www.jianshu.com/p/3a05351a37dc" target="_blank" rel="noopener">Hexo的Next主题详细配置</a></li>
 <li><a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">精于心，简于形</a> Next官网</li>
 <li><a href="https://zhuanlan.zhihu.com/p/26625249" target="_blank" rel="noopener">GitHub+Hexo 搭建个人网站详细教程</a> 知乎的hexo建站笔记</li>
 <li><a href="https://www.jianshu.com/p/a117650f6c76" target="_blank" rel="noopener">利用vscode插件与git hook提升hexo编写部署体验</a></li>
 <li><a href="https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/" target="_blank" rel="noopener">Hexo博客搭建之在文章中插入图片</a></li>
 <li><a href="https://www.jianshu.com/p/21c94eb7bcd1" target="_blank" rel="noopener">绝配：hexo+next主题及我走过的坑</a> 搭建更多功能</li>
+<li><a href="https://zhuanlan.zhihu.com/p/30836436?utm_source=ZHShareTargetIDMore&amp;utm_medium=social&amp;utm_oi=898539620818640896" target="_blank" rel="noopener">Hexo+Next主题优化</a></li>
+<li><a href="https://www.jianshu.com/p/3ff20be8574c" target="_blank" rel="noopener">Hexo-Next-主题优化(一)</a> 应该是上面的ref，带有图片演示</li>
 </ol>
-<p><img src="/2019/04/16/hexo使用小记/dimension-1FDZb4j.gif" alt="TEST"></p>
 
           
         
@@ -1941,6 +2195,34 @@ YR3= &R(YR)3\\
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">5.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">5 mins.</span>
+              
+            </div>
           
 
           
@@ -2307,7 +2589,21 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
   <span class="author" itemprop="copyrightHolder">Astray Wu</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">34k</span>
+  
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">31 mins.</span>
   
 </div>
 
@@ -2326,6 +2622,32 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
 
 
 
@@ -2341,6 +2663,8 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
@@ -2427,6 +2751,326 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
 
   
 
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
 
 
 
@@ -2499,7 +3143,7 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
 .MathJax_Display {
   overflow: auto hidden;
 }
-</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</style>
 
     
   
@@ -2518,6 +3162,80 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
   
 
   
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
 
   
 
