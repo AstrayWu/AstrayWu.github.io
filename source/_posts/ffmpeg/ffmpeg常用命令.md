@@ -67,6 +67,9 @@ ffmpeg -i input.avi -vf scale=320:-1 otuput.avi
 ffmpeg -i input.avi -vf "scale=iw/2:ih/2" output.avi
 ffmpeg -s 1920x1080 -pix_fmt yuv444p10 -i input.yuv -vf scale=iw*2:ih*2 output.yuv
 ffmpeg -s 1920x1080 -pix_fmt gray10 -i input.yuv -vf scale=iw*2:ih*2 output.yuv
+
+# 解YUV4448bit
+ffmpeg -i input.mp4 -pix_fmt yuv444p -y output.yuv
 ```
 
 ## 3. 拼接

@@ -76,10 +76,56 @@ git push origin hexo # 因为master分支是用于备份网页文件的
         distraction_free_mode: true # Facebook-like distraction free mode
     ```
 
-## 4. 参考资料
+## next主题优化
+
+[Hexo+Next主题优化](https://zhuanlan.zhihu.com/p/30836436?utm_source=ZHShareTargetIDMore&utm_medium=social&utm_oi=898539620818640896)
+
+### 添加tag
+
+[hexo 下的分类和表签无法显示，怎么解决？](https://www.zhihu.com/question/29017171)
+
+1. 给文章加tag
+
+   ```text
+    title: 一个人的狂欢
+    date: 2016-11-11 13:09:04
+    tags: [journal,think]
+   ```
+
+2. 命令行输入`hexo n page tags`，会在`sources/tags`生成`index.md`文件
+3. 编辑`index.md`文件
+
+   ```text
+    title: tags
+    date: 2016-11-11 21:40:58
+    type: "tags"
+   ```
+
+4. 在主题配置文件`themes\next\_config.yml`的`menu`项目下打开`tags`页
+
+   ```yml
+    menu:
+        home: / || home
+        #about: /about/ || user
+        tags: /tags/ || tags
+        #categories: /categories/ || th
+        archives: /archives/ || archive
+        #schedule: /schedule/ || calendar
+        #sitemap: /sitemap.xml || sitemap
+        #commonweal: /404/ || heartbeat
+   ```
+
+### 浏览页面的时候显示当前浏览进度
+
+### 添加顶部加载条
+
+## 4. ref
 
 1. [Hexo的Next主题详细配置](https://www.jianshu.com/p/3a05351a37dc)
-2. Next官网[精于心，简于形](https://theme-next.iissnan.com/)
-3. 知乎的hexo建站笔记[GitHub+Hexo 搭建个人网站详细教程](https://zhuanlan.zhihu.com/p/26625249)
+2. [精于心，简于形](https://theme-next.iissnan.com/) Next官网
+3. [GitHub+Hexo 搭建个人网站详细教程](https://zhuanlan.zhihu.com/p/26625249) 知乎的hexo建站笔记
 4. [利用vscode插件与git hook提升hexo编写部署体验](https://www.jianshu.com/p/a117650f6c76)
 5. [Hexo博客搭建之在文章中插入图片](https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/)
+6. [绝配：hexo+next主题及我走过的坑](https://www.jianshu.com/p/21c94eb7bcd1) 搭建更多功能
+
+![TEST](hexo使用小记/dimension-1FDZb4j.gif)

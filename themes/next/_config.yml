@@ -139,7 +139,7 @@ exturl: false
 menu:
   home: / || home
   #about: /about/ || user
-  #tags: /tags/ || tags
+  tags: /tags/ || tags
   #categories: /categories/ || th
   archives: /archives/ || archive
   #schedule: /schedule/ || calendar
@@ -256,7 +256,7 @@ sidebar:
   # Back to top in sidebar.
   b2t: false
   # Scroll percent label in b2t button.
-  scrollpercent: false
+  scrollpercent: true
   # Enable sidebar on narrow view (only for Muse | Mist).
   onmobile: false
 
@@ -848,7 +848,7 @@ lazyload: false
 
 # Progress bar in the top during page loading.
 # Dependencies: https://github.com/theme-next/theme-next-pace
-pace: false
+pace: true
 # Themes list:
 # pace-theme-big-counter | pace-theme-bounce | pace-theme-barber-shop | pace-theme-center-atom
 # pace-theme-center-circle | pace-theme-center-radar | pace-theme-center-simple | pace-theme-corner-indicator
