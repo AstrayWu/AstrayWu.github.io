@@ -103,26 +103,25 @@
 
 
 
-  <meta name="description" content="2.3 Symbolic Data2.3.1 Quotation本小结主要讲符号的引用，之前都是在对数字进行处理，现在要考虑对实际变量的处理。 eq?可以用于判断两个符号的是否相等。从而可以定义memq，用于判断给定符号是否在特定list中，如果不是返回nil，否则返回以该符号为首的sublist。 (define (memq item x)    (cond ((null? x) false)">
+  <meta name="description" content="近期需要回顾一些基础知识，需要相对系统地学习一下。 ref Linux工具快速教程 主要参考的文档  帮助 在只记得部分命令关键字的场合，我们可通过man -k来搜索； 需要知道某个命令的简要说明，可以使用whatis；用`whatis -w “loca*”实现正则匹配； 而更详细的介绍，则可用info命令； 查看命令在哪个位置，我们需要使用which；当系统中安装了同一软件的多个版本时，不确定使">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SICP_2.3">
-<meta property="og:url" content="http://yoursite.com/2019/04/16/SICP/SICP-2-3/index.html">
+<meta property="og:title" content="Linux使用小记">
+<meta property="og:url" content="http://yoursite.com/2019/04/30/Linux使用小记/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="2.3 Symbolic Data2.3.1 Quotation本小结主要讲符号的引用，之前都是在对数字进行处理，现在要考虑对实际变量的处理。 eq?可以用于判断两个符号的是否相等。从而可以定义memq，用于判断给定符号是否在特定list中，如果不是返回nil，否则返回以该符号为首的sublist。 (define (memq item x)    (cond ((null? x) false)">
+<meta property="og:description" content="近期需要回顾一些基础知识，需要相对系统地学习一下。 ref Linux工具快速教程 主要参考的文档  帮助 在只记得部分命令关键字的场合，我们可通过man -k来搜索； 需要知道某个命令的简要说明，可以使用whatis；用`whatis -w “loca*”实现正则匹配； 而更详细的介绍，则可用info命令； 查看命令在哪个位置，我们需要使用which；当系统中安装了同一软件的多个版本时，不确定使">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2019/04/16/SICP/SICP-2-3/2019-04-18-02-23-30.png">
-<meta property="og:updated_time" content="2019-04-27T03:02:30.812Z">
+<meta property="og:updated_time" content="2019-04-29T18:33:19.648Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SICP_2.3">
-<meta name="twitter:description" content="2.3 Symbolic Data2.3.1 Quotation本小结主要讲符号的引用，之前都是在对数字进行处理，现在要考虑对实际变量的处理。 eq?可以用于判断两个符号的是否相等。从而可以定义memq，用于判断给定符号是否在特定list中，如果不是返回nil，否则返回以该符号为首的sublist。 (define (memq item x)    (cond ((null? x) false)">
-<meta name="twitter:image" content="http://yoursite.com/2019/04/16/SICP/SICP-2-3/2019-04-18-02-23-30.png">
+<meta name="twitter:title" content="Linux使用小记">
+<meta name="twitter:description" content="近期需要回顾一些基础知识，需要相对系统地学习一下。 ref Linux工具快速教程 主要参考的文档  帮助 在只记得部分命令关键字的场合，我们可通过man -k来搜索； 需要知道某个命令的简要说明，可以使用whatis；用`whatis -w “loca*”实现正则匹配； 而更详细的介绍，则可用info命令； 查看命令在哪个位置，我们需要使用which；当系统中安装了同一软件的多个版本时，不确定使">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/16/SICP/SICP-2-3/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/30/Linux使用小记/">
 
 
 
@@ -132,7 +131,7 @@
   };
 </script>
 
-  <title>SICP_2.3 | Hexo</title>
+  <title>Linux使用小记 | Hexo</title>
   
 
 
@@ -343,7 +342,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/16/SICP/SICP-2-3/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/30/Linux使用小记/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Astray Wu">
@@ -360,7 +359,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SICP_2.3
+          <h1 class="post-title" itemprop="name headline">Linux使用小记
 
               
             
@@ -386,24 +385,12 @@
                 
               
 
-              <time title="Created: 2019-04-16 04:44:51" itemprop="dateCreated datePublished" datetime="2019-04-16T04:44:51+08:00">2019-04-16</time>
+              <time title="Created: 2019-04-30 00:45:45 / Modified: 02:33:19" itemprop="dateCreated datePublished" datetime="2019-04-30T00:45:45+08:00">2019-04-30</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-27 11:02:30" itemprop="dateModified" datetime="2019-04-27T11:02:30+08:00">2019-04-27</time>
               
             
           </span>
@@ -438,7 +425,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">3.2k</span>
+                <span title="Symbols count in article">4.2k</span>
               
 
               
@@ -452,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">3 mins.</span>
+                <span title="Reading time">4 mins.</span>
               
             </div>
           
@@ -472,25 +459,82 @@
       
 
       
-        <h2 id="2-3-Symbolic-Data"><a href="#2-3-Symbolic-Data" class="headerlink" title="2.3 Symbolic Data"></a>2.3 Symbolic Data</h2><h3 id="2-3-1-Quotation"><a href="#2-3-1-Quotation" class="headerlink" title="2.3.1 Quotation"></a>2.3.1 Quotation</h3><p>本小结主要讲符号的引用，之前都是在对数字进行处理，现在要考虑对实际变量的处理。</p>
-<p><code>eq?</code>可以用于判断两个符号的是否相等。<br>从而可以定义<code>memq</code>，用于判断给定符号是否在特定list中，如果不是返回nil，否则返回以该符号为首的sublist。</p>
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">(<span class="name">define</span> (<span class="name">memq</span> item x)</span><br><span class="line">    (<span class="name">cond</span> ((<span class="name">null</span>? x) false)</span><br><span class="line">          ((<span class="name">eq</span>? item (<span class="name">car</span> x)) x)</span><br><span class="line">          (<span class="name">else</span> (<span class="name">memq</span> item (<span class="name">cdr</span> x)))))</span><br></pre></td></tr></table></figure>
-<h3 id="2-3-2-Example-Symbol-Differentiation"><a href="#2-3-2-Example-Symbol-Differentiation" class="headerlink" title="2.3.2 Example:Symbol Differentiation"></a>2.3.2 Example:Symbol Differentiation</h3><p>本节用求微分举例，这种带符号的求导与抽象数据的处理不同，是带符号的。只利用了最简单的4个求导规则</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-& \frac{\mathrm{d}c}{\mathrm{d}x} = 0 \\[2ex]
-& \frac{\mathrm{d}x}{\mathrm{d}x} = 1 \\[2ex]
-& \frac{\mathrm{d}(u + v)}{\mathrm{d}x} = \frac{\mathrm{d}u}{\mathrm{d}x} + \frac{\mathrm{d}v}{\mathrm{d}x} \\[2ex]
-& \frac{\mathrm{d}(uv)}{\mathrm{d}x} = u\frac{\mathrm{d}u}{\mathrm{d}x} + v\frac{\mathrm{d}u}{\mathrm{d}x} \\[2ex]
-\end{aligned}</script><p>首先定义如下基本操作<br><figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">(<span class="name">define</span> (<span class="name">variable</span>? e)</span><br><span class="line">    (<span class="name">symbol</span>? x))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">same-variable</span>? v1 v2)</span><br><span class="line">    (<span class="name">and</span> (<span class="name">varaible</span>? v1) (<span class="name">variable</span>? v2) (<span class="name">eq</span>? v1 v2)))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">make-sum</span> a1 a2)</span><br><span class="line">    (<span class="name">list</span> '+ a1 a2))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">make-product</span> m1 m2)</span><br><span class="line">    (<span class="name">list</span> '* m1 m2))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">sum</span>? x)</span><br><span class="line">    (<span class="name">and</span> (<span class="name">pair</span>? x) (<span class="name">eq</span>? (<span class="name">car</span> x) '+)))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">addend</span> s)</span><br><span class="line">    (<span class="name">cadr</span> s))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">augend</span> s)</span><br><span class="line">    (<span class="name">caddr</span> s))   <span class="comment">; 注意s是个list，所以要取caddr而不是cddr</span></span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">product</span>? x)</span><br><span class="line">    (<span class="name">and</span> (<span class="name">pair</span>? x) (<span class="name">eq</span>? (<span class="name">car</span> x) '+)))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">multiplier</span> p)</span><br><span class="line">    (<span class="name">cadr</span> p))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">multiplicand</span> p)</span><br><span class="line">    (<span class="name">caddr</span> p))</span><br></pre></td></tr></table></figure></p>
-<p>随后就可以根据定义的求导法则递归展开</p>
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">(<span class="name">define</span> (<span class="name">deriv</span> exp var)</span><br><span class="line">    (<span class="name">cond</span> ((<span class="name">number</span>? exp) <span class="number">0</span>)</span><br><span class="line">          ((<span class="name">variable</span>? exp)</span><br><span class="line">            (<span class="name">if</span> (<span class="name">same-variable</span>? exp var) <span class="number">1</span> <span class="number">0</span>)</span><br><span class="line">          ((<span class="name">sum</span>? exp)</span><br><span class="line">            (<span class="name">make-sum</span> (<span class="name">deriv</span> (<span class="name">addend</span> exp) var)</span><br><span class="line">                      (<span class="name">deriv</span> (<span class="name">augend</span> exp) var))</span><br><span class="line">          ((<span class="name">product</span>? exp)</span><br><span class="line">            (<span class="name">make-product</span> (<span class="name">deriv</span> (<span class="name">multiplier</span> exp) var)</span><br><span class="line">                          (<span class="name">deriv</span> (<span class="name">multiplicand</span> exp) var)))))</span><br><span class="line">          (<span class="name">else</span> (<span class="name">error</span> <span class="string">"unknown expression type -- DERIV"</span> exp))))</span><br></pre></td></tr></table></figure>
-<p>以上会出现一个问题，就是并没有化简到最简单，比如</p>
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">(<span class="name">define</span> '(+ x <span class="number">3</span>) 'x)</span><br></pre></td></tr></table></figure>
-<p>的结果显示为<br><figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">(<span class="name">+</span> <span class="number">1</span> <span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
-<p>解决这个问题在于改变<code>make-sum</code>的行为即可，<code>deriv</code>不用改变。<br><figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">make-sum</span> a1 a2)</span><br><span class="line">    (<span class="name"><span class="builtin-name">cond</span></span> ((<span class="name">=number?</span> a1 <span class="number">0</span>) a2)</span><br><span class="line">          ((<span class="name">=number?</span> a2 <span class="number">0</span>) a1)</span><br><span class="line">          ((<span class="name"><span class="builtin-name">and</span></span> (<span class="name"><span class="builtin-name">number?</span></span> a1) (<span class="name"><span class="builtin-name">number?</span></span> a2)) (<span class="name"><span class="builtin-name">+</span></span> a1 a2))</span><br><span class="line">          (<span class="name"><span class="builtin-name">else</span></span> (<span class="name"><span class="builtin-name">list</span></span> <span class="symbol">'+</span> a1 a2))))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">make-product</span> m1 m1)</span><br><span class="line">    (<span class="name"><span class="builtin-name">cond</span></span> ((<span class="name"><span class="builtin-name">or</span></span> (<span class="name">=number?</span> m1 <span class="number">0</span>) (<span class="name">=number?</span> m2 <span class="number">0</span>)) <span class="number">0</span>)</span><br><span class="line">          ((<span class="name">=number?</span> m1 <span class="number">1</span>) m2)</span><br><span class="line">          ((<span class="name">=number?</span> m2 <span class="number">1</span>) m1)</span><br><span class="line">          ((<span class="name"><span class="builtin-name">and</span></span> (<span class="name"><span class="builtin-name">number?</span></span> m1) (<span class="name"><span class="builtin-name">number?</span></span> m2)) (<span class="name"><span class="builtin-name">*</span></span> m1 m2))</span><br><span class="line">          (<span class="name"><span class="builtin-name">else</span></span> (<span class="name"><span class="builtin-name">list</span></span> <span class="symbol">'*</span> m1 m2))))</span><br></pre></td></tr></table></figure></p>
-<p>习题2.56 实现多项式求导规则<br><img src="/2019/04/16/SICP/SICP-2-3/2019-04-18-02-23-30.png" alt=""><br><figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">(<span class="name">define</span> (<span class="name">deriv</span> exp var)</span><br><span class="line">    (<span class="name">cond</span> ((<span class="name">number</span>? exp) <span class="number">0</span>)</span><br><span class="line">          ((<span class="name">variable</span>? exp)</span><br><span class="line">            (<span class="name">if</span> (<span class="name">same-variable</span>? exp var) <span class="number">1</span> <span class="number">0</span>)</span><br><span class="line">          ((<span class="name">sum</span>? exp)</span><br><span class="line">            (<span class="name">make-sum</span> (<span class="name">deriv</span> (<span class="name">addend</span> exp) var)</span><br><span class="line">                      (<span class="name">deriv</span> (<span class="name">augend</span> exp) var))</span><br><span class="line">          ((<span class="name">product</span>? exp)</span><br><span class="line">            (<span class="name">make-product</span> (<span class="name">deriv</span> (<span class="name">multiplier</span> exp) var)</span><br><span class="line">                          (<span class="name">deriv</span> (<span class="name">multiplicand</span> exp) var)))))</span><br><span class="line">          ((<span class="name">exponentiation</span>? exp)    <span class="comment">; 需要新增获取基本元素的函数以及构造函数</span></span><br><span class="line">            (<span class="name">let</span> ((<span class="name">n</span> (<span class="name">exponent</span> exp))</span><br><span class="line">                  (<span class="name">u</span> (<span class="name">base</span> exp)))</span><br><span class="line">                  (<span class="name">make-product</span></span><br><span class="line">                    n</span><br><span class="line">                    (<span class="name">make-product</span> (<span class="name">make-exponentiation</span> u (<span class="name">-</span> n <span class="number">1</span>))</span><br><span class="line">                                  (<span class="name">deriv</span> u var)))))</span><br><span class="line">          (<span class="name">else</span> (<span class="name">error</span> <span class="string">"unknown expression type -- DERIV"</span> exp))))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">make-exmponentiation</span> base exponent)</span><br><span class="line">    (<span class="name">cond</span> ((<span class="name">=</span> exponent <span class="number">0</span>)</span><br><span class="line">            <span class="number">1</span>)</span><br><span class="line">          ((<span class="name">=</span> exponent <span class="number">1</span>)</span><br><span class="line">            base)</span><br><span class="line">          (<span class="name">else</span></span><br><span class="line">            (<span class="name">list</span> '** base exponent))))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">exponent</span> exp)</span><br><span class="line">    (<span class="name">caddr</span> exp))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">base</span> exp)</span><br><span class="line">    (<span class="name">cadr</span> exp))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">exponentiation</span>? exp)</span><br><span class="line">    (<span class="name">and</span> (<span class="name">pair</span>? exp) (<span class="name">eq</span>? (<span class="name">car</span> exp) `**)))</span><br></pre></td></tr></table></figure></p>
-
+        <p>近期需要回顾一些基础知识，需要相对系统地学习一下。</p>
+<h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><ul>
+<li><a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html" target="_blank" rel="noopener">Linux工具快速教程</a> 主要参考的文档</li>
+</ul>
+<h2 id="帮助"><a href="#帮助" class="headerlink" title="帮助"></a>帮助</h2><ul>
+<li>在只记得部分命令关键字的场合，我们可通过<code>man -k</code>来搜索；</li>
+<li>需要知道某个命令的简要说明，可以使用<code>whatis</code>；用`whatis -w “loca*”实现正则匹配；</li>
+<li>而更详细的介绍，则可用<code>info</code>命令；</li>
+<li>查看命令在哪个位置，我们需要使用<code>which</code>；当系统中安装了同一软件的多个版本时，不确定使用的是哪个版本时，这个命令就能派上用场；</li>
+<li>而对于命令的具体参数及使用方法，我们需要用到强大的<code>man</code>；</li>
+</ul>
+<p>在man的帮助手册中，将帮助文档分为了9个类别，对于有的关键字可能存在多个类别中， 我们就需要指定特定的类别来查看；（一般我们查询bash命令，归类在1类中）；</p>
+<ol>
+<li><strong>用户可以操作的命令或者是可执行文件</strong></li>
+<li>系统核心可调用的函数与工具等</li>
+<li><strong>一些常用的函数与数据库</strong></li>
+<li>设备文件的说明</li>
+<li>设置文件或者某些文件的格式</li>
+<li>游戏</li>
+<li>惯例与协议等。例如Linux标准文件系统、网络协议、ASCⅡ，码等说明内容</li>
+<li>系统管理员可用的管理条令</li>
+<li>与内核有关的文件</li>
+</ol>
+<p>我们看到printf在分类1和分类3中都有；分类1中的页面是命令操作及可执行文件的帮助；而3是常用函数库说明；如果我们想看的是C语言中printf的用法，可以指定查看分类3的帮助：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">man 3 <span class="built_in">printf</span></span><br></pre></td></tr></table></figure>
+<h2 id="文件及目录"><a href="#文件及目录" class="headerlink" title="文件及目录"></a>文件及目录</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看当前目录下文件个数</span></span><br><span class="line">find ./ | wc -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制目录</span></span><br><span class="line">cp -r source_dir  dest_dir</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到home目录</span></span><br><span class="line"><span class="built_in">cd</span></span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按时间排序，新的在前</span></span><br><span class="line">ls -lt</span><br><span class="line">ls -ltr</span><br><span class="line"></span><br><span class="line"><span class="comment"># 给每项文件前面增加一个id编号</span></span><br><span class="line">ls | cat -n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 搜寻文件或目录:</span></span><br><span class="line">find ./ -name <span class="string">"core*"</span> | xargs file <span class="comment"># xargs是列出文件类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找目标文件夹中是否有obj文件:</span></span><br><span class="line">find ./ -name <span class="string">'*.o'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归当前目录及子目录删除所有.o文件</span></span><br><span class="line">find ./ -name <span class="string">"*.o"</span> -<span class="built_in">exec</span> rm &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+<p>find是实时查找，如果需要更快的查询，可试试locate；locate会为文件系统建立索引数据库，如果有文件更新，需要定期执行更新命令来更新索引库</p>
+<p><strong>cat vi head tail more</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 显示时同时显示行号</span></span><br><span class="line">cat -n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示文件第一行:</span></span><br><span class="line">head -1 filename</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示文件倒数第五行:</span></span><br><span class="line">tail -5 filename</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看两个文件间的差别:</span></span><br><span class="line">diff file1 file2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 动态显示文本最新信息:</span></span><br><span class="line">tail -f crawler.log</span><br><span class="line"></span><br><span class="line">ln cc ccAgain <span class="comment"># 硬连接；删除一个，将仍能找到；</span></span><br><span class="line">ln -s cc ccTo <span class="comment"># 符号链接(软链接)；删除源，另一个无法使用；（后面一个ccTo 为新建的文件）</span></span><br></pre></td></tr></table></figure>
+<p>批处理命令连接执行，使用 |<br>串联: 使用分号 ;<br>前面成功，则执行后面一条，否则，不执行:&amp;&amp;<br>前面失败，则后一条执行: ||</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ls /proc &amp;&amp; <span class="built_in">echo</span>  suss! || <span class="built_in">echo</span> failed.</span><br></pre></td></tr></table></figure>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>参考<a href="https://blog.csdn.net/jiangyanting2011/article/details/78875928" target="_blank" rel="noopener">Linux下的环境变量</a></p>
+<p>Linux中环境变量包括系统级和用户级，系统级的环境变量是每个登录到系统的用户都要读取的系统变量，而用户级的环境变量则是该用户使用系统时加载的环境变量。所以管理环境变量的文件也分为系统级和用户级的。</p>
+<ol>
+<li>系统级<ol>
+<li><code>/etc/environment</code>: 是系统在登录时读取的第一个文件，<strong>用于为所有进程设置环境变量。</strong></li>
+<li><code>/etc/profile</code>：是系统登录时执行的第二个文件，可以用于设定针对全系统所有用户的环境变量。该文件一般是调用<code>/etc/bash.bashrc</code>文件。</li>
+<li><code>/etc/bash.bashrc</code>：系统级的<code>bashrc</code>文件，为每一个运行bash shell的用户执行此文件。此文件会在用户每次打开shell时执行一次。</li>
+</ol>
+</li>
+<li>用户级<ol>
+<li><code>~/.profile</code>: 是对应当前登录用户的profile文件，用于定制当前用户的个人工作环境。 每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件。</li>
+<li><code>~/.bashrc</code>: 是对应当前登录用户的bash初始化文件，当用户每次打开shell时，系统都会执行此文件一次。平时设置这个文件就可以了。</li>
+</ol>
+</li>
+</ol>
+<p>那么根据以上描述，这几个文件的执行先后顺序应当是：<br><code>/etc/enviroment –&gt;/etc/profile –&gt;~/.profile –&gt;/etc/bash.bashrc–&gt; ~/.bashrc</code></p>
+<p>配置环境变量</p>
+<ol>
+<li><p>临时生效<br> 直接运行export命令定义变量【只对当前shell(BASH)有效(临时的)】</p>
+ <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=/usr/<span class="built_in">local</span>/webserver/php/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对当前用户有效<br>编辑<code>~/.bashrc</code>并添加<code>export PATH=$PATH:/usr/local/webserver/php/bin</code>；用<code>source ~/.bashrc</code>让修改马上生效</p>
+</li>
+<li>对所有用户生效<br> 在<code>/etc/profile</code>文件中添加变量，并执行<code>source /etc/profile</code></li>
+</ol>
+<h2 id="文件与目录权限修改"><a href="#文件与目录权限修改" class="headerlink" title="文件与目录权限修改"></a>文件与目录权限修改</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">chown <span class="comment"># 改变文件的拥有者</span></span><br><span class="line">chmod <span class="comment">#改变文件读、写、执行等属性</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归子目录修改</span></span><br><span class="line">chomd chown -R tuxapp <span class="built_in">source</span>/</span><br><span class="line">chown 777 -R test_dir</span><br></pre></td></tr></table></figure>
+<p><code>chmod</code>的语法为</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">chmod [who] [+ | - | =] [mode] 文件名</span><br></pre></td></tr></table></figure>
+<ul>
+<li>u 表示“用户（user）”，即文件或目录的所有者。</li>
+<li>g 表示“同组（group）用户”，即与文件属主有相同组ID的所有用户。</li>
+<li>o 表示“其他（others）用户”。</li>
+<li>a 表示“所有（all）用户”。它是系统默认值。</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在一个命令行中可给出多个权限方式，其间用逗号隔开</span></span><br><span class="line">chmod g+r，o+r example <span class="comment"># 使同组和其他用户对文件example 有读权限</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 对所有用户增加执行权限</span></span><br><span class="line">chmod a+x sort</span><br></pre></td></tr></table></figure>
+<h2 id="文本处理"><a href="#文本处理" class="headerlink" title="文本处理"></a>文本处理</h2><h3 id="find-文件查找"><a href="#find-文件查找" class="headerlink" title="find 文件查找"></a>find 文件查找</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查找txt和pdf文件:</span></span><br><span class="line">find . \( -name <span class="string">"*.txt"</span> -o -name <span class="string">"*.pdf"</span> \) -<span class="built_in">print</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 正则方式查找.txt和pdf:</span></span><br><span class="line"><span class="comment"># -iregex： 忽略大小写的正则</span></span><br><span class="line">find . -regex  <span class="string">".*\(\.txt|\.pdf\)$"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 否定参数 ,查找所有非txt文本:</span></span><br><span class="line">find . ! -name <span class="string">"*.txt"</span> -<span class="built_in">print</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定搜索深度,打印出当前目录的文件（深度为1）:</span></span><br><span class="line">find . -maxdepth 1 -<span class="built_in">type</span> f</span><br><span class="line"></span><br><span class="line"><span class="comment">## 定制搜索</span></span><br><span class="line"><span class="comment"># 按类型搜索</span></span><br><span class="line">find . -<span class="built_in">type</span> d -<span class="built_in">print</span>  //只列出所有目录</span><br><span class="line"><span class="comment"># -type f 文件 / l 符号链接 / d 目录</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># file命令可以检查文件具体类型（二进制或文本），find不行</span></span><br><span class="line"><span class="comment"># $ file redis-cli  # 二进制文件</span></span><br><span class="line"><span class="comment"># redis-cli: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.9, not stripped</span></span><br><span class="line"><span class="comment"># $ file redis.pid  # 文本文件</span></span><br><span class="line"><span class="comment"># redis.pid: ASCII text</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以用以下命令组合来实现查找本地目录下的所有二进制文件:</span></span><br><span class="line">ls -lrt | awk <span class="string">'&#123;print $9&#125;'</span>|xargs file|grep  ELF| awk <span class="string">'&#123;print $1&#125;'</span>|tr -d <span class="string">':'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 按时间搜索</span></span><br><span class="line"><span class="comment"># -atime 访问时间 (单位是天，分钟单位则是-amin，以下类似）</span></span><br><span class="line"><span class="comment"># -mtime 修改时间 （内容被修改）</span></span><br><span class="line"><span class="comment"># -ctime 变化时间 （元数据或权限变化）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 最近第7天被访问过的所有文件:</span></span><br><span class="line">find . -atime 7 -<span class="built_in">type</span> f -<span class="built_in">print</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 最近7天内被访问过的所有文件:</span></span><br><span class="line">find . -atime -7 -<span class="built_in">type</span> f -<span class="built_in">print</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询7天前被访问过的所有文件:</span></span><br><span class="line">find . -atime +7 <span class="built_in">type</span> f -<span class="built_in">print</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 按大小搜索</span></span><br><span class="line"><span class="comment"># w字 k M G 寻找大于2k的文件:</span></span><br><span class="line">find . -<span class="built_in">type</span> f -size +2k</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除当前目录下所有的swp文件:</span></span><br><span class="line">find . -<span class="built_in">type</span> f -name <span class="string">"*.swp"</span> -delete</span><br><span class="line">find . -<span class="built_in">type</span> f -name <span class="string">"*.swp"</span> | xargs rm</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行动作（强大的exec）</span></span><br><span class="line"><span class="comment"># 将当前目录下的所有权变更为weber:</span></span><br><span class="line">find . -<span class="built_in">type</span> f -user root -<span class="built_in">exec</span> chown weber &#123;&#125; \;</span><br><span class="line"><span class="comment"># &#123;&#125;是一个特殊的字符串，对于每一个匹配的文件，&#123;&#125;会被替换成相应的文件名</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将找到的文件全都copy到另一个目录:</span></span><br><span class="line">find . -<span class="built_in">type</span> f -mtime +10 -name <span class="string">"*.txt"</span> -<span class="built_in">exec</span> cp &#123;&#125; OLD \;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果需要后续执行多个命令，可以将多个命令写成一个脚本。然后 -exec 调用时执行脚本即可:</span></span><br><span class="line">-<span class="built_in">exec</span> ./commands.sh &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+<h3 id="grep-文本搜索"><a href="#grep-文本搜索" class="headerlink" title="grep 文本搜索"></a>grep 文本搜索</h3><p>常用参数</p>
+<ul>
+<li>-o 只输出匹配的文本行 VS -v 只输出没有匹配的文本行</li>
+<li>-c 统计文件中包含文本的次数<br>  <code>grep -c “text” filename</code></li>
+<li>-n 打印匹配的行号</li>
+<li>-i 搜索时忽略大小写</li>
+<li>-l 只打印文件名</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在多级目录中对文本递归搜索(程序员搜代码的最爱）:</span></span><br><span class="line">grep <span class="string">"class"</span> . -R -n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 匹配多个模式:</span></span><br><span class="line">grep -e <span class="string">"class"</span> -e <span class="string">"vitural"</span> file</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -511,6 +555,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
 
       
       
@@ -520,8 +570,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/16/hexo使用小记/" rel="next" title="hexo使用小记">
-                <i class="fa fa-chevron-left"></i> hexo使用小记
+              <a href="/2019/04/28/A-Tutorial-Introduction-to-the-Lambda-Calculus/" rel="next" title="A Tutorial Introduction to the Lambda Calculus">
+                <i class="fa fa-chevron-left"></i> A Tutorial Introduction to the Lambda Calculus
               </a>
             
           </div>
@@ -530,8 +580,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/19/ffmpeg/ffmpeg基础/" rel="prev" title="ffmpeg基础">
-                ffmpeg基础 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/30/快捷键/" rel="prev" title="快捷键">
+                快捷键 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -659,7 +709,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Symbolic-Data"><span class="nav-text">2.3 Symbolic Data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-Quotation"><span class="nav-text">2.3.1 Quotation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-Example-Symbol-Differentiation"><span class="nav-text">2.3.2 Example:Symbol Differentiation</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ref"><span class="nav-text">ref</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#帮助"><span class="nav-text">帮助</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件及目录"><span class="nav-text">文件及目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境变量"><span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件与目录权限修改"><span class="nav-text">文件与目录权限修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本处理"><span class="nav-text">文本处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#find-文件查找"><span class="nav-text">find 文件查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#grep-文本搜索"><span class="nav-text">grep 文本搜索</span></a></li></ol></li></ol></div>
             
 
           </div>
