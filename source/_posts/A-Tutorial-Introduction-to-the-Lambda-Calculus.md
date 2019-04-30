@@ -2,6 +2,7 @@
 title: A Tutorial Introduction to the Lambda Calculus
 date: 2019-04-28 01:10:47
 tags:
+mathjax: true
 ---
 
 ## 参考文献

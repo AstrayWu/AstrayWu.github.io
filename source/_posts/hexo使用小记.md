@@ -23,13 +23,16 @@ hexo d
 ```
 
 要备份代码到github时
+
 ```sh
 git push origin hexo # 因为master分支是用于备份网页文件的
 ```
 
 ## 2. 常见问题
 
-1. 在hexo中渲染数学公式需要Mathjax，可以参考[hexo下LaTeX无法显示的解决方案](https://blog.csdn.net/crazy_scott/article/details/79293576)
+1. 数学公式
+   在hexo中渲染数学公式需要Mathjax，可以参考[hexo下LaTeX无法显示的解决方案](https://blog.csdn.net/crazy_scott/article/details/79293576)
+   [[NexT]配置MathJax](https://hexo-guide.readthedocs.io/zh_CN/latest/theme/[NexT]%E9%85%8D%E7%BD%AEMathJax.html) 参考这里也可以，注意`per_page`配置为`true`时，要在blog中主动带上`mathjax: true`
 2. hexo中支持的一些语法可以参考[Hexo Markdown 简明语法手册](https://hyxxsfwy.github.io/2016/01/15/Hexo-Markdown-%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/)
 3. Mathjax英文可以参考[MathJax basic tutorial and quick reference](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference/5044)，中文翻译参考[Mathjax与LaTex公式简介](https://www.cnblogs.com/linxd/p/4955530.html)
 4. Mathjax的docs，可以查到相关的语法支持情况[hMathJax TeX and LaTeX Support](http://docs.mathjax.org/en/latest/tex.html)
@@ -76,11 +79,9 @@ git push origin hexo # 因为master分支是用于备份网页文件的
         distraction_free_mode: true # Facebook-like distraction free mode
     ```
 
-## next主题优化
+## 4. next主题优化
 
-[Hexo+Next主题优化](https://zhuanlan.zhihu.com/p/30836436?utm_source=ZHShareTargetIDMore&utm_medium=social&utm_oi=898539620818640896)
-
-### 添加tag
+### 4.1. 添加tag
 
 [hexo 下的分类和表签无法显示，怎么解决？](https://www.zhihu.com/question/29017171)
 
@@ -115,11 +116,21 @@ git push origin hexo # 因为master分支是用于备份网页文件的
         #commonweal: /404/ || heartbeat
    ```
 
-### 浏览页面的时候显示当前浏览进度
+### 4.2. 浏览页面的时候显示当前浏览进度
 
-### 添加顶部加载条
+### 4.3. 添加顶部加载条
 
-## 4. ref
+### 4.4. 本地搜索
+
+### 4.5. 统计功能，统计功能,显示文章字数统计,阅读时长,总字数
+
+### 4.6. 允许代码段拷贝
+
+这里要使用`npm install hexo-symbols-count-time --save`
+
+### 4.7. 给代码块添加复制功能
+
+## 5. ref
 
 1. [Hexo的Next主题详细配置](https://www.jianshu.com/p/3a05351a37dc)
 2. [精于心，简于形](https://theme-next.iissnan.com/) Next官网
@@ -127,5 +138,6 @@ git push origin hexo # 因为master分支是用于备份网页文件的
 4. [利用vscode插件与git hook提升hexo编写部署体验](https://www.jianshu.com/p/a117650f6c76)
 5. [Hexo博客搭建之在文章中插入图片](https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/)
 6. [绝配：hexo+next主题及我走过的坑](https://www.jianshu.com/p/21c94eb7bcd1) 搭建更多功能
-
-![TEST](hexo使用小记/dimension-1FDZb4j.gif)
+7. [Hexo+Next主题优化](https://zhuanlan.zhihu.com/p/30836436?utm_source=ZHShareTargetIDMore&utm_medium=social&utm_oi=898539620818640896)
+8. [Hexo-Next-主题优化(一)](https://www.jianshu.com/p/3ff20be8574c) 应该是上面的ref，带有图片演示
+9. [hexo指南](https://hexo-guide.readthedocs.io/zh_CN/latest/index.html)
