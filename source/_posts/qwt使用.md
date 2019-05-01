@@ -4,7 +4,7 @@ date: 2019-04-30 23:32:52
 tags:
 ---
 
-近期需要做一个调试小工具，用于可视化调试LUT，可以使用Qt的Qwt库，全程是Qt Widgets for Technical Applications，用于生成各种统计图。
+近期需要做一个调试小工具，用于可视化调试LUT，可以使用Qt的Qwt库，全称是Qt Widgets for Technical Applications，用于生成各种统计图。
 
 ## 安装
 
@@ -19,9 +19,9 @@ MSVC-2015 64bit的完整安装教程，[Installing Qwt with MSVC-2015 64bit comp
 1. 对Qt的安装路径配置环境变量
    ![](qwt使用/2019-05-01-00-57-36.png)
 2. 拷贝include目录到Qt的include目录，最好新建个Qwt的子目录
-3. 拷贝lib\qwt.lib和qwtd.lib到Qt的lib目录下
-4. 拷贝lib\qwt.dll和qwtd.dll到Qt的bin目录下
-5. 拷贝plugins\designer\qwt_designer_plugin.dll到plugins\designer目录下，用于qt designer。
+3. 拷贝**lib\qwt.lib**和**qwtd.lib**到Qt的lib目录下
+4. 拷贝**lib\qwt.dll**和**qwtd.dll**到Qt的bin目录下
+5. 拷贝**plugins\designer\qwt_designer_plugin.dll**到**plugins\designer**目录下，用于qt designer。
 6. 配置VS（有些不是必须的，但最好配置上）
    1. 配置头文件：`$(QTDIR)\include\Qwt`
    ![](qwt使用/2019-05-01-01-04-35.png)
@@ -71,6 +71,20 @@ MSVC-2017应该也有类似的教程。
 ![](qwt使用/2019-05-01-01-55-00.png)
 ![](qwt使用/2019-05-01-01-57-10.png)
 
+## 使用过程中一些小细节
+
+1. 按钮出现中文乱码
+
+```C++
+// 源码文件的字符集不是UTF8 ？
+// 如果是Qt5.x，则：
+fileBtn->setText(tr("文件标准对话框"));
+// 修改为
+fileBtn->setText(QStringLiteral("文件标准对话框"));
+```
+
+2. pushbutton的简单使用
+3. [Qt QPushButton](https://blog.csdn.net/qq_25800311/article/details/80913477)
 
 ## Qt的MVC设计模式
 
@@ -136,7 +150,6 @@ MVC设计模式包含三个元素：
 
 ### Qt的MVC——InterView框架（MVD）
 
-ref:
 - [Qt的MVC设计模式——InterView框架（MVD）](https://blog.csdn.net/weixin_39743893/article/details/80625759)
 - [Qt5MVC模式(一)](https://blog.csdn.net/u012521552/article/details/51771318)
 - [Qt中的MVC （模型/视图结构）](https://blog.csdn.net/rl529014/article/details/52072380)
