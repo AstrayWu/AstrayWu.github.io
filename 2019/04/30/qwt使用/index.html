@@ -121,7 +121,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/30/qwt使用/2019-05-01-01-55-00.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/30/qwt使用/2019-05-01-01-57-10.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/30/qwt使用/2019-05-01-01-18-30.png">
-<meta property="og:updated_time" content="2019-04-30T18:16:07.315Z">
+<meta property="og:updated_time" content="2019-05-01T01:59:52.921Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="qwt使用">
 <meta name="twitter:description" content="近期需要做一个调试小工具，用于可视化调试LUT，可以使用Qt的Qwt库，全称是Qt Widgets for Technical Applications，用于生成各种统计图。 安装官网介绍Qwt User’s Guide MSVC-2015 64bit的完整安装教程，Installing Qwt with MSVC-2015 64bit compiler on Windows (complete">
@@ -413,7 +413,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-01 02:16:07" itemprop="dateModified" datetime="2019-05-01T02:16:07+08:00">2019-05-01</time>
+                <time title="Modified: 2019-05-01 09:59:52" itemprop="dateModified" datetime="2019-05-01T09:59:52+08:00">2019-05-01</time>
               
             
           </span>
@@ -448,7 +448,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">4.6k</span>
+                <span title="Symbols count in article">4.7k</span>
               
 
               
@@ -489,9 +489,9 @@
 <ol>
 <li>对Qt的安装路径配置环境变量<br><img src="/2019/04/30/qwt使用/2019-05-01-00-57-36.png" alt=""></li>
 <li>拷贝include目录到Qt的include目录，最好新建个Qwt的子目录</li>
-<li>拷贝lib\qwt.lib和qwtd.lib到Qt的lib目录下</li>
-<li>拷贝lib\qwt.dll和qwtd.dll到Qt的bin目录下</li>
-<li>拷贝plugins\designer\qwt_designer_plugin.dll到plugins\designer目录下，用于qt designer。</li>
+<li>拷贝<strong>lib\qwt.lib</strong>和<strong>qwtd.lib</strong>到Qt的lib目录下</li>
+<li>拷贝<strong>lib\qwt.dll</strong>和<strong>qwtd.dll</strong>到Qt的bin目录下</li>
+<li>拷贝<strong>plugins\designer\qwt_designer_plugin.dll</strong>到<strong>plugins\designer</strong>目录下，用于qt designer。</li>
 <li>配置VS（有些不是必须的，但最好配置上）<ol>
 <li>配置头文件：<code>$(QTDIR)\include\Qwt</code><br><img src="/2019/04/30/qwt使用/2019-05-01-01-04-35.png" alt=""></li>
 <li>配置可执行文件：<code>qwtd.lib</code>（如果是Release版本用<code>qwt.lib</code>）<br><img src="/2019/04/30/qwt使用/2019-05-01-01-05-32.png" alt=""></li>
@@ -530,6 +530,8 @@
 </ol>
 <p>这里列几个典型的</p>
 <p><img src="/2019/04/30/qwt使用/2019-05-01-01-59-06.png" alt=""><br><img src="/2019/04/30/qwt使用/2019-05-01-01-58-14.png" alt=""><br><img src="/2019/04/30/qwt使用/2019-05-01-01-55-00.png" alt=""><br><img src="/2019/04/30/qwt使用/2019-05-01-01-57-10.png" alt=""></p>
+<h2 id="使用过程中一些小细节"><a href="#使用过程中一些小细节" class="headerlink" title="使用过程中一些小细节"></a>使用过程中一些小细节</h2><p>按钮出现中文乱码</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 源码文件的字符集不是UTF8 ？</span></span><br><span class="line"><span class="comment">// 如果是Qt5.x，则：</span></span><br><span class="line">fileBtn-&gt;setText(tr(<span class="string">"文件标准对话框"</span>));</span><br><span class="line"><span class="comment">// 修改为</span></span><br><span class="line">fileBtn-&gt;setText(QStringLiteral(<span class="string">"文件标准对话框"</span>));</span><br></pre></td></tr></table></figure>
 <h2 id="Qt的MVC设计模式"><a href="#Qt的MVC设计模式" class="headerlink" title="Qt的MVC设计模式"></a>Qt的MVC设计模式</h2><p>网络上关于Qt的介绍还是相对不多的，这里记录下Qt相关的东西，便于回溯。</p>
 <h3 id="架构、框架和设计模式"><a href="#架构、框架和设计模式" class="headerlink" title="架构、框架和设计模式"></a>架构、框架和设计模式</h3><p>ref:<br><a href="https://www.cnblogs.com/the-wang/p/7258303.html" target="_blank" rel="noopener">架构、框架和设计模式</a></p>
 <h4 id="软件架构"><a href="#软件架构" class="headerlink" title="软件架构"></a>软件架构</h4><p>软件架构是系统的一个草图，阐述了各个组件之间的通信，层次划分，一旦系统开始详细设计，架构蓝图就很难甚至无法改变。</p>
@@ -555,8 +557,7 @@
 <p>这三者的共同点都是为解决现实生活中的问题而出现的，都为了使我们的设计更面向对象化。</p>
 <h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><p>MVC设计模式起源于SmallTalk的一种与用户界面相关的设计模式，可以有效分离数据和用户界面。</p>
 <p>MVC设计模式包含三个元素：<br>表示数据的模型（Model），表示用户界面的识图（View），定义了用户在界面上的操作控制（Control）。这和典型的三层架构不同。MVC是设计模式，属于微观的解决方案；三层架构是系统架构，属于宏观的解决方案。</p>
-<h3 id="Qt的MVC——InterView框架（MVD）"><a href="#Qt的MVC——InterView框架（MVD）" class="headerlink" title="Qt的MVC——InterView框架（MVD）"></a>Qt的MVC——InterView框架（MVD）</h3><p>ref:</p>
-<ul>
+<h3 id="Qt的MVC——InterView框架（MVD）"><a href="#Qt的MVC——InterView框架（MVD）" class="headerlink" title="Qt的MVC——InterView框架（MVD）"></a>Qt的MVC——InterView框架（MVD）</h3><ul>
 <li><a href="https://blog.csdn.net/weixin_39743893/article/details/80625759" target="_blank" rel="noopener">Qt的MVC设计模式——InterView框架（MVD）</a></li>
 <li><a href="https://blog.csdn.net/u012521552/article/details/51771318" target="_blank" rel="noopener">Qt5MVC模式(一)</a></li>
 <li><a href="https://blog.csdn.net/rl529014/article/details/52072380" target="_blank" rel="noopener">Qt中的MVC （模型/视图结构）</a></li>
@@ -692,7 +693,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -745,7 +746,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qwt-demo"><span class="nav-text">qwt demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt的MVC设计模式"><span class="nav-text">Qt的MVC设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#架构、框架和设计模式"><span class="nav-text">架构、框架和设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#软件架构"><span class="nav-text">软件架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#框架"><span class="nav-text">框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设计模式"><span class="nav-text">设计模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#比较"><span class="nav-text">比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC"><span class="nav-text">MVC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Qt的MVC——InterView框架（MVD）"><span class="nav-text">Qt的MVC——InterView框架（MVD）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-text">基本概念</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qwt-demo"><span class="nav-text">qwt demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用过程中一些小细节"><span class="nav-text">使用过程中一些小细节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt的MVC设计模式"><span class="nav-text">Qt的MVC设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#架构、框架和设计模式"><span class="nav-text">架构、框架和设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#软件架构"><span class="nav-text">软件架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#框架"><span class="nav-text">框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设计模式"><span class="nav-text">设计模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#比较"><span class="nav-text">比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC"><span class="nav-text">MVC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Qt的MVC——InterView框架（MVD）"><span class="nav-text">Qt的MVC——InterView框架（MVD）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-text">基本概念</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -777,7 +778,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">43k</span>
+    <span title="Symbols count total">46k</span>
   
 
   
@@ -786,7 +787,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">39 mins.</span>
+    <span title="Reading time total">41 mins.</span>
   
 </div>
 
