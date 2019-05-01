@@ -130,6 +130,15 @@ git push origin hexo # 因为master分支是用于备份网页文件的
 
 ### 4.7. 给代码块添加复制功能
 
+### 4.8. 修改行间距
+
+文章内容较多时，next原来的间距太大了，要上下来回滚动。
+修改`themes\next\source\css\_variables\custom.styl`，添加
+
+```styl
+$line-height-base           = 1.5
+```
+
 ## 5. ref
 
 1. [Hexo的Next主题详细配置](https://www.jianshu.com/p/3a05351a37dc)
