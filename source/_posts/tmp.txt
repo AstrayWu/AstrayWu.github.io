@@ -1,0 +1,23 @@
+
+qt元数据类型
+
+
+https://blog.csdn.net/zhenguo26/article/details/82588415
+https://stackoverflow.com/questions/19120829/emitting-qvector-reference-in-qt-signal-results-in-copy
+[构造函数能不能是虚函数](https://blog.csdn.net/woyaowenzi/article/details/2310710)
+[Java反射](https://baike.baidu.com/item/JAVA%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/6015990?fr=aladdin)
+[第43篇 进阶（三）对象树与拥有权](http://shouce.jb51.net/qt-beginning/48.html)
+[Qt QPushButton](https://blog.csdn.net/qq_25800311/article/details/80913477)
+
+[Qt多线程通信](https://blog.csdn.net/hebbely/article/details/79428336)
+
+[QT入门系列（4）：QString与int相互转换方法](https://blog.csdn.net/qq598535550/article/details/60966378)
+[Qt学习（一）——多线程及简单实例](https://blog.csdn.net/qq_34447388/article/details/78985148)
+[QT的多线程使用](https://www.cnblogs.com/coolcpp/p/qt-thread.html)
+
+[Qt之显示yuv数据图像](https://blog.csdn.net/x348722662/article/details/53445136)
+[从零开始学习音视频编程技术之初出茅庐](http://blog.yundiantech.com/?log=blog&id=3)
+[浅谈QTabWidget的基本使用](https://zhuanlan.zhihu.com/p/33740056)
+[Qt Tutorials For Beginners – Adding tab to QTabWidget.](http://www.codebind.com/cpp-tutorial/qt-tutorials-beginners-adding-tab-qtabwidget/)
+[第六章 Qt布局管理器Layout](http://www.cnblogs.com/heguoyuan/archive/2015/02/07/4279294.html)
+[Qt5开发学习总结(三)——窗口部件的使用(QWidget和QDialog)](https://blog.csdn.net/kilotwo/article/details/79238545)
