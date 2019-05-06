@@ -103,20 +103,24 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+  <meta name="description" content="工作中的工程主要是C，不过公共的库函数设计上面存在一些问题，例如全局变量设计不合适、函数声明不合理、部分函数定义有问题，导致可移植性有点差，改成cpp文件后，报了很多错误，这里记录一些容易错误的地方，也顺带回顾一下基础知识。  全局变量的声明和使用（跨文件） How do I use extern to share variables between source files? What is t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C、C++基础">
+<meta property="og:url" content="http://yoursite.com/2019/05/06/C、C++基础/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="工作中的工程主要是C，不过公共的库函数设计上面存在一些问题，例如全局变量设计不合适、函数声明不合理、部分函数定义有问题，导致可移植性有点差，改成cpp文件后，报了很多错误，这里记录一些容易错误的地方，也顺带回顾一下基础知识。  全局变量的声明和使用（跨文件） How do I use extern to share variables between source files? What is t">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-06T15:49:40.925Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="C、C++基础">
+<meta name="twitter:description" content="工作中的工程主要是C，不过公共的库函数设计上面存在一些问题，例如全局变量设计不合适、函数声明不合理、部分函数定义有问题，导致可移植性有点差，改成cpp文件后，报了很多错误，这里记录一些容易错误的地方，也顺带回顾一下基础知识。  全局变量的声明和使用（跨文件） How do I use extern to share variables between source files? What is t">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/page/2/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/06/C、C++基础/">
 
 
 
@@ -126,7 +130,7 @@
   };
 </script>
 
-  <title>Archive | Hexo</title>
+  <title>C、C++基础 | Hexo</title>
   
 
 
@@ -174,7 +178,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-archive">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -246,7 +250,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -275,22 +279,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -337,292 +325,241 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/06/C、C++基础/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">C、C++基础
+
+              
+            
+          </h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-06 22:52:46 / Modified: 23:49:40" itemprop="dateCreated datePublished" datetime="2019-05-06T22:52:46+08:00">2019-05-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
           
-        
-        Um..! 17 posts in total. Keep on posting.
-      </span>
-      
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/27/ffmpeg/ffmpeg常用命令/" itemprop="url">
             
-              <span itemprop="name">ffmpeg常用命令</span>
             
-          </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-27T18:25:49+08:00" content="2019-04-27">
-          04-27
-        </time>
-      </div>
+          
+          
 
-    </header>
-  </article>
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
+          
+            <div class="post-symbolscount">
+              
 
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">1.3k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/27/git使用小记/" itemprop="url">
-            
-              <span itemprop="name">git使用小记</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-27T11:06:09+08:00" content="2019-04-27">
-          04-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/19/常用插件和小工具/" itemprop="url">
-            
-              <span itemprop="name">常用插件和小工具</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-19T01:23:42+08:00" content="2019-04-19">
-          04-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>工作中的工程主要是C，不过公共的库函数设计上面存在一些问题，例如全局变量设计不合适、函数声明不合理、部分函数定义有问题，导致可移植性有点差，改成cpp文件后，报了很多错误，这里记录一些容易错误的地方，也顺带回顾一下基础知识。</p>
+<hr>
+<h3 id="全局变量的声明和使用（跨文件）"><a href="#全局变量的声明和使用（跨文件）" class="headerlink" title="全局变量的声明和使用（跨文件）"></a>全局变量的声明和使用（跨文件）</h3><ul>
+<li><a href="https://stackoverflow.com/questions/1433204/how-do-i-use-extern-to-share-variables-between-source-files" target="_blank" rel="noopener">How do I use extern to share variables between source files?</a></li>
+<li><a href="https://stackoverflow.com/questions/1410563/what-is-the-difference-between-a-definition-and-a-declaration" target="_blank" rel="noopener">What is the difference between a definition and a declaration?</a></li>
+</ul>
+<p>错误的参考</p>
+<ul>
+<li><a href="https://blog.csdn.net/flyingdust21/article/details/51679943" target="_blank" rel="noopener">C语言：全局变量在多个c文件中公用的方法</a></li>
+</ul>
+<p>上面的链接中Jonathan Leffler已经回答的很好了。对于声明和定义来说：</p>
+<ul>
+<li>一个变量被声明是指告知编译器，有个某种类型的变量会被使用，但编译不会为它分配内存。</li>
+<li>一个变量并定义是指编译器会分配对应变量的存储空间。</li>
+</ul>
+<p>一个变量可以被多次声明，但在给定的作用域范围内只能定义一次。一个变量的定义可以是一种声明，反之不是。</p>
+<p>最佳实践方式是使用包含<code>extern</code>关键字的头文件来声明变量，然后用某个包含该头文件的源文件对该变量进行定义。</p>
+<p>指导原则：</p>
+<ul>
+<li>头文件中值包含<code>extern</code>方式声明的变量，不要使用<code>static</code>或其他不合格的定义（静态全局变量只在本地文件中可以访问，因此有多个副本）</li>
+<li>对于任何变量，仅在一个头文件中声明（SPOT-Single Point of Truth）</li>
+<li>不要在在源文件中使用<code>extern</code>方式声明变量，源文件中应该用include头文件的方式来声明他们。——我司的实践规范，但实际代码并没有这么遵循，这样代码不好维护。</li>
+<li>对于任何变量，只能有一个源文件进行定义，并且建议初始化为0。</li>
+<li>头文件和源文件中的声明和定义应该保持一致。</li>
+<li>不需要在函数中用<code>extern</code>来声明变量。</li>
+<li>尽量避免全局变量。</li>
+</ul>
+<p>例如有<code>file3.h</code>、<code>file1.c</code>和<code>file2.c</code>三个文件（头文件和源文件名称一致会更好）：</p>
+<p><strong>file3.h</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> global_variable;  <span class="comment">/* Declaration of the variable */</span></span><br></pre></td></tr></table></figure>
+<p><strong>file1.c</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"file3.h"</span>  <span class="comment">/* Declaration made available here */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"prog1.h"</span>  <span class="comment">/* Function declarations */</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Variable defined here */</span></span><br><span class="line"><span class="keyword">int</span> global_variable = <span class="number">37</span>;    <span class="comment">/* Definition checked against declaration */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">increment</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123; <span class="keyword">return</span> global_variable++; &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>file2.c</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"file3.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"prog1.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">use_it</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Global variable: %d\n"</span>, global_variable++);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/19/ffmpeg/ffmpeg基础/" itemprop="url">
-            
-              <span itemprop="name">ffmpeg基础</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-19T00:25:19+08:00" content="2019-04-19">
-          04-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/16/SICP/SICP-2-3/" itemprop="url">
-            
-              <span itemprop="name">SICP_2.3</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-16T04:44:51+08:00" content="2019-04-16">
-          04-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/16/hexo使用小记/" itemprop="url">
-            
-              <span itemprop="name">hexo使用小记</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-16T03:26:21+08:00" content="2019-04-16">
-          04-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/16/VSCode支持的markdown语法参考/" itemprop="url">
-            
-              <span itemprop="name">VSCode支持的markdown语法参考</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-16T00:37:38+08:00" content="2019-04-16">
-          04-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/04/Qt资源汇总/" rel="next" title="Qt资源汇总">
+                <i class="fa fa-chevron-left"></i> Qt资源汇总
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-  </nav>
+  </article>
 
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -643,8 +580,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -701,6 +647,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局变量的声明和使用（跨文件）"><span class="nav-text">全局变量的声明和使用（跨文件）</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -870,6 +833,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
 
   
 
@@ -880,6 +847,34 @@
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '0dc2b1112de28c1c61bd',
+    clientSecret: '18b118f15b345c4b26e72a2bf08388f3d0ad1d48',
+    repo: 'astraywu.github.io',
+    owner: 'astraywu',
+    admin: ['astraywu'],
+    id: md5(location.pathname),
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
 
 
   
