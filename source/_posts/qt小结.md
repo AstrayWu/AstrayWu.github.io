@@ -173,7 +173,8 @@ Qt 的元对象系统（Meta-Object System）提供了对象之间通信的信�
 - [QT实现信号与槽之间传递QVector类型的数据 CSDN](https://blog.csdn.net/u012372584/article/details/88252002) 可以不用这么麻烦
 - [QT子线程与主线程的信号槽通信](https://blog.csdn.net/zhenguo26/article/details/82588415) 传结构体
 - [Passing QVector<float> from worker thread to main thread via signal/slot](https://stackoverflow.com/questions/10719553/passing-qvectorfloat-from-worker-thread-to-main-thread-via-signal-slot) 传QVector
-
+- [信号与槽的新语法(Qt5) CSDN](https://blog.csdn.net/dbzhang800/article/details/6547196)
+- 
 ### 概述
 
 所谓信号槽，实际就是观察者模式。**当某个事件发生之后**，比如，按钮检测到自己被点击了一下，**它就会发出一个信号（signal）**。这种发出是没有目的的，类似广播。**如果有对象对这个信号感兴趣，它就会使用连接（connect）函数**，意思是，**将想要处理的信号和自己的一个函数（称为槽（slot））绑定来处理这个信号**。也就是说，**当信号发出时，被连接的槽函数会自动被回调**。这就类似观察者模式：当发生了感兴趣的事件，某一个操作就会被自动触发。
@@ -369,7 +370,31 @@ connect(sender, &Sender::valueChanged,receiver, &Receiver::updateValue );
 - 如果有隐式转换的参数，会自动转换类型。比如QString到QVariant
 - 它可以连接QObject的任何成员方法，不仅仅是定义的槽。
 
-它不支持：
+旧版本的不足原因是旧语法connect接收的是两个字符串：
+
+```C++
+bool QObject::connect ( const QObject * sender, const char * signal, const QObject * receiver, const char * method, Qt::ConnectionType type = Qt::AutoConnection ) [static]
+```
+
+例如：
+
+```C++
+connect(slider, SIGNAL(valueChanged(int)), spinbox, SLOT(setValue(int)));
+```
+
+编译预处理后就是：
+
+```C++
+connect(slider, "2valueChanged(int)", spinbox, "1setValue(int)");
+```
+
+这将导致：
+
+- 即使信号和槽不存在，编译不会出问题。只有运行时会给出警告并返回false，可是大部分用户并不检查返回值。
+- 参数必须匹配，比如信号参数是 int，槽参数是 double，语法将会 connect 失败
+- 参数类型必须字面上一样，比如说都是int，但是其中一个typedef了一下，或者namespace修饰不同，都会导致连接失败。
+
+而在新语法中避免掉了这些问题。但它不支持：
 
 - 更复杂的语法？你需要指定你的对象类型、
 - 非常复杂的语法，比如重载，参见后面。

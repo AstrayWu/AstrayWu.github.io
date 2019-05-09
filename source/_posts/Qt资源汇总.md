@@ -53,8 +53,8 @@ ref:
 ## 书籍
 
 - QmlBook - A Book about Qt5
-    - [英文版](http://qmlbook.github.io)
-    - [中文版](https://github.com/cwc1987/QmlBook-In-Chinese)
+  - [英文版](http://qmlbook.github.io)
+  - [中文版](https://github.com/cwc1987/QmlBook-In-Chinese)
 - C++ Primer
 - C++ GUI Qt4编程
   Trolltech 的 Qt 培训教材，生动、全面、深刻地阐明了 Qt 程序的设计理念，轻松创建跨平台的解决方案。
@@ -66,7 +66,7 @@ ref:
   利用跨平台开源软件开发框架 Qt 阐释了 C++ 和设计模式中的主要思想，既复习了设计模式，又学了 C++/Qt，对于使用其它框架也是一个非常有用的参考。
 - Qt5 开发实战
   在全面阐述 Qt 基本功能的基础上，对新增的功能和服务进行了重点介绍。同时运用大量示例，集中讲解了应用程序的开发方法、技巧和必需的 API。
-- Qt5 开发及实例
+- **Qt5 开发及实例**
   以 Qt5.4 为平台，循序渐进，在介绍开发环境的基础上，系统介绍 Qt5 应用程序的开发技术，通过实例介绍和讲解内容，将知识和能力融为一体。一般能够在比较短的时间内掌握 Qt5 应用技术。
 - Qt on Android 核心编程
   基于 Qt 5.2，详细讲述如何在移动平台 Android 上使用 Qt 框架进行开发。无论是专注于传统的桌面软件开发，还是希望尝试使用 Qt 在 Android 平台开发，都可以从中获得重要的知识与实例。

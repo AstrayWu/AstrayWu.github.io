@@ -9,7 +9,7 @@ https://stackoverflow.com/questions/19120829/emitting-qvector-reference-in-qt-si
 [第43篇 进阶（三）对象树与拥有权](http://shouce.jb51.net/qt-beginning/48.html)
 [Qt QPushButton](https://blog.csdn.net/qq_25800311/article/details/80913477)
 
-[Qt多线程通信](https://blog.csdn.net/hebbely/article/details/79428336)
+557[Qt多线程通信](https://blog.csdn.net/hebbely/article/details/79428336)
 
 [QT入门系列（4）：QString与int相互转换方法](https://blog.csdn.net/qq598535550/article/details/60966378)
 [Qt学习（一）——多线程及简单实例](https://blog.csdn.net/qq_34447388/article/details/78985148)
