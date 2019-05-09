@@ -21,6 +21,8 @@ mathjax: true
 6. 在公式环境中，不要轻易分行，容易导致公式渲染失败。
 7. 其他关于markdown渲染的问题，参考**hexo使用小记**。
 8. [GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
+9. [用Markdown写Hexo博客时如何转义竖杠 | ？](https://www.zhihu.com/question/37542455) 使用HTML字符修改
+10. [转义字符](https://gitbook.creat.kim/GFM/escapecharacter.html) gfm好像不支持竖线的转义，至少hexo不支持
 
 ## 2. 文本部分
 

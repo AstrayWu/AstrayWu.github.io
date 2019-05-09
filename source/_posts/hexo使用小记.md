@@ -46,6 +46,7 @@ git push origin hexo # 因为master分支是用于备份网页文件的
     如果已经完成了blog的编写，可以在github上面新建一个`hexo`分支，并设置为默认分支，随后将远程分支下载下来，并用blog的源文件全部替换掉，在push即可。这样就可以将源代码备份到Github上面的hexo分支，而网页文件存储在master分支。
 11. [NexT 自带的语法高亮插件支持的语言列表](https://blog.cat73.org/20160805/2016080501.next-highlight-langs/) 注意`shell`应该使用`sh`会比较统一一些。
 12. [TypeError: Cannot set property 'lastIndex' of undefined github](https://github.com/hexojs/hexo/issues/2380)
+13. [用Markdown写Hexo博客时如何转义竖杠 | ？](https://www.zhihu.com/question/37542455) 使用HTML字符修改
 
 ## 3. 添加gitalk评论系统
 
