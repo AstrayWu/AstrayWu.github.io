@@ -111,7 +111,7 @@
 <meta property="og:description" content="重新温习一下Qt的教程，回顾下相关知识 Qt开发环境的搭建和helloworld release版本 配置icon  Qt多窗口程序 在界面上显示的中文仍然使用tr(“中文”)，便于使用Qt预言家来翻译整个软件要显示的字符创。 通过UI来设置信号和槽 在QtDesigner界面可以设置信号和槽 QMessageBox lineEdit设置占位符 lineEdit的trim和clear 类的前置声明">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2019/05/02/qt小结/2019-05-07-01-00-21.png">
-<meta property="og:updated_time" content="2019-05-06T17:28:10.088Z">
+<meta property="og:updated_time" content="2019-05-07T16:04:29.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="qt小结">
 <meta name="twitter:description" content="重新温习一下Qt的教程，回顾下相关知识 Qt开发环境的搭建和helloworld release版本 配置icon  Qt多窗口程序 在界面上显示的中文仍然使用tr(“中文”)，便于使用Qt预言家来翻译整个软件要显示的字符创。 通过UI来设置信号和槽 在QtDesigner界面可以设置信号和槽 QMessageBox lineEdit设置占位符 lineEdit的trim和clear 类的前置声明">
@@ -403,7 +403,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-07 01:28:10" itemprop="dateModified" datetime="2019-05-07T01:28:10+08:00">2019-05-07</time>
+                <time title="Modified: 2019-05-08 00:04:29" itemprop="dateModified" datetime="2019-05-08T00:04:29+08:00">2019-05-08</time>
               
             
           </span>
@@ -438,7 +438,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">9.6k</span>
+                <span title="Symbols count in article">10k</span>
               
 
               
@@ -580,8 +580,10 @@
 <li><a href="https://blog.csdn.net/u012372584/article/details/88252002" target="_blank" rel="noopener">QT实现信号与槽之间传递QVector类型的数据 CSDN</a> 可以不用这么麻烦</li>
 <li><a href="https://blog.csdn.net/zhenguo26/article/details/82588415" target="_blank" rel="noopener">QT子线程与主线程的信号槽通信</a> 传结构体</li>
 <li><a href="https://stackoverflow.com/questions/10719553/passing-qvectorfloat-from-worker-thread-to-main-thread-via-signal-slot" target="_blank" rel="noopener">Passing QVector<float> from worker thread to main thread via signal/slot</float></a> 传QVector</li>
+<li><a href="https://blog.csdn.net/dbzhang800/article/details/6547196" target="_blank" rel="noopener">信号与槽的新语法(Qt5) CSDN</a></li>
+<li><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3></li>
 </ul>
-<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>所谓信号槽，实际就是观察者模式。<strong>当某个事件发生之后</strong>，比如，按钮检测到自己被点击了一下，<strong>它就会发出一个信号（signal）</strong>。这种发出是没有目的的，类似广播。<strong>如果有对象对这个信号感兴趣，它就会使用连接（connect）函数</strong>，意思是，<strong>将想要处理的信号和自己的一个函数（称为槽（slot））绑定来处理这个信号</strong>。也就是说，<strong>当信号发出时，被连接的槽函数会自动被回调</strong>。这就类似观察者模式：当发生了感兴趣的事件，某一个操作就会被自动触发。<br><strong>信号和槽是Qt特有的信息传输机制，是Qt设计程序的重要基础，它可以让互不干扰的对象建立一种联系。</strong><br>槽的本质是类的成员函数，其参数可以是任意类型的。和普通C++成员函数几乎没有区别，它可以是虚函数；也可以被重载；可以是公有的、保护的、私有的、也可以被其他C++成员函数调用。唯一区别的是：<strong>槽可以与信号连接在一起，每当和槽连接的信号被发射的时候，就会调用这个槽。</strong>Qt5中的新语法可以将信号connect到QObject的任何成员方法，不仅仅是定义的槽。</p>
+<p>所谓信号槽，实际就是观察者模式。<strong>当某个事件发生之后</strong>，比如，按钮检测到自己被点击了一下，<strong>它就会发出一个信号（signal）</strong>。这种发出是没有目的的，类似广播。<strong>如果有对象对这个信号感兴趣，它就会使用连接（connect）函数</strong>，意思是，<strong>将想要处理的信号和自己的一个函数（称为槽（slot））绑定来处理这个信号</strong>。也就是说，<strong>当信号发出时，被连接的槽函数会自动被回调</strong>。这就类似观察者模式：当发生了感兴趣的事件，某一个操作就会被自动触发。<br><strong>信号和槽是Qt特有的信息传输机制，是Qt设计程序的重要基础，它可以让互不干扰的对象建立一种联系。</strong><br>槽的本质是类的成员函数，其参数可以是任意类型的。和普通C++成员函数几乎没有区别，它可以是虚函数；也可以被重载；可以是公有的、保护的、私有的、也可以被其他C++成员函数调用。唯一区别的是：<strong>槽可以与信号连接在一起，每当和槽连接的信号被发射的时候，就会调用这个槽。</strong>Qt5中的新语法可以将信号connect到QObject的任何成员方法，不仅仅是定义的槽。</p>
 <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>Qt5中的使用方式：</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">QPushButton <span class="title">button</span><span class="params">(<span class="string">"Quit"</span>)</span></span>;</span><br><span class="line">    QObject::connect(&amp;button, &amp;QPushButton::clicked,</span><br><span class="line">                    &amp;app, &amp;QApplication::quit);</span><br><span class="line">    button.show();</span><br><span class="line">    <span class="keyword">return</span> app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>connect()函数最常用的一般形式：</p>
@@ -642,7 +644,19 @@
 <li>如果有隐式转换的参数，会自动转换类型。比如QString到QVariant</li>
 <li>它可以连接QObject的任何成员方法，不仅仅是定义的槽。</li>
 </ul>
-<p>它不支持：</p>
+<p>旧版本的不足原因是旧语法connect接收的是两个字符串：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">bool</span> QObject::connect ( <span class="keyword">const</span> QObject * sender, <span class="keyword">const</span> <span class="keyword">char</span> * signal, <span class="keyword">const</span> QObject * receiver, <span class="keyword">const</span> <span class="keyword">char</span> * method, Qt::ConnectionType type = Qt::AutoConnection ) [<span class="keyword">static</span>]</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">connect(slider, SIGNAL(valueChanged(<span class="keyword">int</span>)), spinbox, SLOT(setValue(<span class="keyword">int</span>)));</span><br></pre></td></tr></table></figure>
+<p>编译预处理后就是：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">connect(slider, <span class="string">"2valueChanged(int)"</span>, spinbox, <span class="string">"1setValue(int)"</span>);</span><br></pre></td></tr></table></figure>
+<p>这将导致：</p>
+<ul>
+<li>即使信号和槽不存在，编译不会出问题。只有运行时会给出警告并返回false，可是大部分用户并不检查返回值。</li>
+<li>参数必须匹配，比如信号参数是 int，槽参数是 double，语法将会 connect 失败</li>
+<li>参数类型必须字面上一样，比如说都是int，但是其中一个typedef了一下，或者namespace修饰不同，都会导致连接失败。</li>
+</ul>
+<p>而在新语法中避免掉了这些问题。但它不支持：</p>
 <ul>
 <li>更复杂的语法？你需要指定你的对象类型、</li>
 <li>非常复杂的语法，比如重载，参见后面。</li>
@@ -800,7 +814,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -885,7 +899,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">63k</span>
+    <span title="Symbols count total">66k</span>
   
 
   
@@ -894,7 +908,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">57 mins.</span>
+    <span title="Reading time total">1:01</span>
   
 </div>
 

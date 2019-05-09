@@ -112,7 +112,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2019/04/16/VSCode支持的markdown语法参考/2019-04-16-03-04-30.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/16/VSCode支持的markdown语法参考/2019-04-11-01-59-14.png">
-<meta property="og:updated_time" content="2019-04-27T14:53:05.374Z">
+<meta property="og:updated_time" content="2019-05-09T16:54:23.416Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VSCode支持的markdown语法参考">
 <meta name="twitter:description" content="主要记录下载使用vscode的markdown记录时，一些参考备注，可能集中在公式的支持上面。主要来源于参考资料，自己重新记录一遍便于回溯。  1. 参考资料与备注 主要参考资料VsCode支持的markdown语法参考 Markdown PDF没有办法解决$\LaTeX$公式的渲染问题，暂时只能使用Markdown Preview Enhance来导出到html再另存为pdf格式。 Markd">
@@ -404,7 +404,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-27 22:53:05" itemprop="dateModified" datetime="2019-04-27T22:53:05+08:00">2019-04-27</time>
+                <time title="Modified: 2019-05-10 00:54:23" itemprop="dateModified" datetime="2019-05-10T00:54:23+08:00">2019-05-10</time>
               
             
           </span>
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">5.6k</span>
+                <span title="Symbols count in article">5.8k</span>
               
 
               
@@ -484,6 +484,7 @@
 <li>关于$\LaTeX$公式是需要Markdown Math插件的，至于公式的许多用法请参考其他问题。</li>
 <li>在公式环境中，不要轻易分行，容易导致公式渲染失败。</li>
 <li>其他关于markdown渲染的问题，参考<strong>hexo使用小记</strong>。</li>
+<li><a href="https://github.github.com/gfm/" target="_blank" rel="noopener">GitHub Flavored Markdown Spec</a></li>
 </ol>
 <h2 id="2-文本部分"><a href="#2-文本部分" class="headerlink" title="2. 文本部分"></a>2. 文本部分</h2><h3 id="2-1-粗体、斜体和删除线"><a href="#2-1-粗体、斜体和删除线" class="headerlink" title="2.1. 粗体、斜体和删除线"></a>2.1. 粗体、斜体和删除线</h3><p><strong>这是粗体</strong></p>
 <p><em>这是斜体</em></p>
@@ -499,7 +500,7 @@
 > # 这是一级标题
 > ## 这是二级标题
 > ### 这是三级标题 -->
-<figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">这是一级标题</span><br><span class="line">===</span><br><span class="line"></span><br><span class="line">这是二级标题</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">这是一级标题</span><br><span class="line">===</span><br><span class="line"></span><br><span class="line">这是二级标题</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br></pre></td></tr></table></figure>
 <h3 id="2-3-标注"><a href="#2-3-标注" class="headerlink" title="2.3. 标注"></a>2.3. 标注</h3><p>好像支持不了尾注和简单的上下标写法</p>
 <ul>
 <li><p>上标：30<sup>test</sup></p>
@@ -686,7 +687,9 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
 <script type="math/tex; mode=display">
 \color{black}{blackText} \color{yellow}{yellowText}</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\color&#123;black&#125;&#123;blackText&#125; \color&#123;yellow&#125;&#123;yellowText&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="4-流程图"><a href="#4-流程图" class="headerlink" title="4. 流程图"></a>4. 流程图</h2><p>这一小节需要插件支持，而且渲染的时候需要定义格式，暂时不弄</p>
-
+<h2 id="5-转义字符"><a href="#5-转义字符" class="headerlink" title="5. 转义字符"></a>5. 转义字符</h2><p>md支持下列字符的转义</p>
+<p>\ 反斜杠<br>` 反引号<br>* 星号<br>_ 下划线<br>\{\} 大括号<br>[] 中括号<br>() 小括号<br># 井号<br>+ 加号<br>- 减号<br>. 英文句号<br>! 感叹号</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\\ 反斜杠</span><br><span class="line">\` 反引号</span><br><span class="line">\* 星号</span><br><span class="line">\_ 下划线</span><br><span class="line">\&#123;\&#125; 大括号</span><br><span class="line">\[\] 中括号</span><br><span class="line">\(\) 小括号</span><br><span class="line">\# 井号</span><br><span class="line">\+ 加号</span><br><span class="line">\- 减号</span><br><span class="line">\. 英文句号</span><br><span class="line">\! 感叹号</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -798,7 +801,7 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -851,7 +854,7 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-参考资料与备注"><span class="nav-text">1. 参考资料与备注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-文本部分"><span class="nav-text">2. 文本部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-粗体、斜体和删除线"><span class="nav-text">2.1. 粗体、斜体和删除线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-分级标题"><span class="nav-text">2.2. 分级标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-标注"><span class="nav-text">2.3. 标注</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-文字引用"><span class="nav-text">2.4. 文字引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-生成目录"><span class="nav-text">2.5. 生成目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-标签分类代码图像"><span class="nav-text">2.6. 标签分类代码图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-分类"><span class="nav-text">2.7. 分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-列表"><span class="nav-text">2.8. 列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-超链接"><span class="nav-text">2.9. 超链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-代码"><span class="nav-text">2.10. 代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-11-图像"><span class="nav-text">2.11. 图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-12-表格"><span class="nav-text">2.12. 表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-13-TODO事项"><span class="nav-text">2.13. TODO事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-数学公式与Latex"><span class="nav-text">3. 数学公式与Latex</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-流程图"><span class="nav-text">4. 流程图</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-参考资料与备注"><span class="nav-text">1. 参考资料与备注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-文本部分"><span class="nav-text">2. 文本部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-粗体、斜体和删除线"><span class="nav-text">2.1. 粗体、斜体和删除线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-分级标题"><span class="nav-text">2.2. 分级标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-标注"><span class="nav-text">2.3. 标注</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-文字引用"><span class="nav-text">2.4. 文字引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-生成目录"><span class="nav-text">2.5. 生成目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-标签分类代码图像"><span class="nav-text">2.6. 标签分类代码图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-分类"><span class="nav-text">2.7. 分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-列表"><span class="nav-text">2.8. 列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-超链接"><span class="nav-text">2.9. 超链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-代码"><span class="nav-text">2.10. 代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-11-图像"><span class="nav-text">2.11. 图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-12-表格"><span class="nav-text">2.12. 表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-13-TODO事项"><span class="nav-text">2.13. TODO事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-数学公式与Latex"><span class="nav-text">3. 数学公式与Latex</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-流程图"><span class="nav-text">4. 流程图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-转义字符"><span class="nav-text">5. 转义字符</span></a></li></ol></div>
             
 
           </div>
@@ -883,7 +886,7 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">63k</span>
+    <span title="Symbols count total">66k</span>
   
 
   
@@ -892,7 +895,7 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">57 mins.</span>
+    <span title="Reading time total">1:01</span>
   
 </div>
 
