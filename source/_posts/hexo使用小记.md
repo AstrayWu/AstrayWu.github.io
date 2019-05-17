@@ -47,6 +47,7 @@ git push origin hexo # 因为master分支是用于备份网页文件的
 11. [NexT 自带的语法高亮插件支持的语言列表](https://blog.cat73.org/20160805/2016080501.next-highlight-langs/) 注意`shell`应该使用`sh`会比较统一一些。
 12. [TypeError: Cannot set property 'lastIndex' of undefined github](https://github.com/hexojs/hexo/issues/2380)
 13. [用Markdown写Hexo博客时如何转义竖杠 | ？](https://www.zhihu.com/question/37542455) 使用HTML字符修改
+14. [如何在hexo使用图片和提供附件下载](http://abonege.github.io/2016/05/25/%E5%A6%82%E4%BD%95%E5%9C%A8hexo%E4%BD%BF%E7%94%A8%E5%9B%BE%E7%89%87/) 提供附件下载功能，其实就是开启在开启post_asset_folder后，在同名文件夹下面放附件就可以了，类似于图片
 
 ## 3. 添加gitalk评论系统
 

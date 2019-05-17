@@ -6,6 +6,10 @@ tags:
 
 重新温习一下Qt的教程，回顾下相关知识
 
+- [第1篇 Qt5基础（一）Qt开发环境的搭建和hello world](http://www.qter.org/portal.php?mod=view&aid=25&page=1)
+- [Qt快速入门系列教程目录](http://www.qter.org/forum.php?mod=viewthread&tid=193)
+- 
+
 ## Qt开发环境的搭建和helloworld
 
 1. release版本
@@ -496,3 +500,34 @@ C++11中的Lambda表达式用于定义并创建匿名的函数对象，以简化
     ->返回值类型，标识函数返回值的类型，当返回值为void，或者函数体中只有一处return的地方（此时编译器可以自动推断出返回值类型）时，这部分可以省略。
 6. 是函数体；
     {}，标识函数的实现，这部分不能省略，但函数体可以为空。
+
+
+
+
+
+
+    布局是QT界面当中必不可少的一环。我们常常使用QHBoxLayout、QVBoxLayout等进行布局。然而有个问题是，在MainWindow并不能直接进行布局。
+
+    -[QT笔记——在QMainWindow内直接添加Layout行不通](https://blog.csdn.net/qq_26399665/article/details/52695042)
+    发现在QMainWindow中添加的控件不显示，还有QToolBar也可能。
+
+    原因是该窗口类中已经有一个Layout对象了，这时候再setLayout是无效的。有三种方法：
+    1. 调用layout()方法，返回这个窗口内部的layout对象，删除后再setLayout设置自己的Layout对象
+    2. 直接使用该Layout对象
+    3. 创建子窗口对象，在这个子窗口对象中使用Layout对象。例如在QMainWindow中，通常是创建一个窗口对象后，调用setCentralWidget来安装该窗口，然后在该窗口中使用自己的Layout。
+
+    ```C++
+    QWidget *widget = new QWidget();
+    // method 1
+    //setCentralWidget(widget);
+    //centralWidget()->setLayout(mainLayout);
+
+    // method 2
+    widget->setLayout(mainLayout);
+    setCentralWidget(widget);
+    ```
+
+
+    ## utils
+
+    QMessageBox::information(this, tr("Information"), str);
