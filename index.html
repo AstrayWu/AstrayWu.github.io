@@ -338,6 +338,384 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/19/OJ/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/19/OJ/" class="post-title-link" itemprop="url">OJ</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-19 13:03:09 / Modified: 16:47:33" itemprop="dateCreated datePublished" datetime="2019-05-19T13:03:09+08:00">2019-05-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">1.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>记录一下常用的刷题模板</p>
+<h2 id="典型的二分查找"><a href="#典型的二分查找" class="headerlink" title="典型的二分查找"></a>典型的二分查找</h2><p>使用STL的半闭半开区间方式</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">binary_search</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, r = nums.size();</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">        <span class="keyword">int</span> m = (l + r) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums[m] == target)</span><br><span class="line">            <span class="keyword">return</span> m;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (nums[m] &gt; target)</span><br><span class="line">            r = m;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            l = m + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="lower-bound和upper-bound"><a href="#lower-bound和upper-bound" class="headerlink" title="lower_bound和upper_bound"></a>lower_bound和upper_bound</h2><p><code>lower_bound</code>返回第一个大于等于T的迭代器<br><code>upper_bound</code>反馈第一个大于T的迭代器</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> ForwardIterator, <span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">ForwardIterator <span class="title">lower_bound</span><span class="params">(ForwardIterator first, ForwardIterator end, T value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (first != end) &#123;</span><br><span class="line">        <span class="keyword">auto</span> mid = next(first, distance(first, end) / <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span> (*mid &lt; value)</span><br><span class="line">            first = mid + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            end = mid;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> first;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> ForwardIterator, <span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">ForwardIterator <span class="title">upper_bound</span><span class="params">(ForwardIterator first, ForwardIterator end, T value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (first != end) &#123;</span><br><span class="line">        <span class="keyword">auto</span> mid = next(first, distance(first, end) / <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span> (*mid &lt;= value)</span><br><span class="line">            first = mid + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            end = mid;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> first;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/19/leetcode-线性表/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/19/leetcode-线性表/" class="post-title-link" itemprop="url">leetcode_线性表</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-19 12:15:08" itemprop="dateCreated datePublished" datetime="2019-05-19T12:15:08+08:00">2019-05-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-21 00:21:32" itemprop="dateModified" datetime="2019-05-21T00:21:32+08:00">2019-05-21</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">8.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">8 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>需要重新把以前练习过的思路重新拿起来了。仍旧是以soulmachine的模板为基础进行练习和复习，不过这次的难度需要加大一些。</p>
+<h2 id="26-Remove-Duplicates-from-Sorted-Array"><a href="#26-Remove-Duplicates-from-Sorted-Array" class="headerlink" title="[26] Remove Duplicates from Sorted Array"></a><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/" target="_blank" rel="noopener">[26] Remove Duplicates from Sorted Array</a></h2><p>用个变量index来标记当前已经存储下来的数据的位置</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 2019.5.19</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.empty()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] != nums[index]) &#123;</span><br><span class="line">                nums[++index] = nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> index + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="80-Remove-Duplicates-from-Sorted-Array-II"><a href="#80-Remove-Duplicates-from-Sorted-Array-II" class="headerlink" title="[80] Remove Duplicates from Sorted Array II"></a><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/description/" target="_blank" rel="noopener">[80] Remove Duplicates from Sorted Array II</a></h2><p>基本和上一题一样，不过注意是可以重复两次，所以不用和当前的位置判断，和前一个位置判断就可以了。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 2019.5.19</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.size() &lt; <span class="number">2</span>) <span class="keyword">return</span> nums.size();</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] != nums[index - <span class="number">1</span>]) &#123;</span><br><span class="line">                nums[++index] = nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> index + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="33-Search-in-Rotated-Sorted-Array"><a href="#33-Search-in-Rotated-Sorted-Array" class="headerlink" title="[33] Search in Rotated Sorted Array"></a><a href="https://leetcode.com/problems/search-in-rotated-sorted-array/description/" target="_blank" rel="noopener">[33] Search in Rotated Sorted Array</a></h2><p>旋转数组<br>利用二分查找判断哪一段是有序的，然后进行分而治之。这个旋转数组是不重复的。<br>用闭区间的方式比较好区分些。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = (<span class="keyword">int</span>)nums.size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target)</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (nums[left] &lt;= nums[mid]) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[left] &lt;= target &amp;&amp; target &lt;= nums[mid])</span><br><span class="line">                    right = mid - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[mid] &lt;= target &amp;&amp; target &lt;= nums[right])</span><br><span class="line">                    left = mid + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="81-Search-in-Rotated-Sorted-Array-II"><a href="#81-Search-in-Rotated-Sorted-Array-II" class="headerlink" title="81. Search in Rotated Sorted Array II"></a><a href="https://leetcode.com/problems/search-in-rotated-sorted-array-ii/description/" target="_blank" rel="noopener">81. Search in Rotated Sorted Array II</a></h2><p>这个题目相对会困难一些，包含可能重复的元素，在分治的时候要注意区分条件，因为<code>nums[left] &lt;= nums[mid]</code>分为小于和等于两种情况。<br>划分时[left, mid], [mid + 1, right]</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">search</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = (<span class="keyword">int</span>)nums.size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (nums[left] &lt; nums[mid]) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[left] &lt;= target &amp;&amp; target &lt;= nums[mid])</span><br><span class="line">                    right = mid - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[left] &gt; nums[mid]) &#123;  <span class="comment">// 只根据左边的&lt;=&gt;来区分</span></span><br><span class="line">                <span class="keyword">if</span> (nums[mid + <span class="number">1</span>] &lt;= target &amp;&amp; target &lt;= nums[right])</span><br><span class="line">                    left = mid + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                ++left;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="4-Median-of-Two-Sorted-Arrays"><a href="#4-Median-of-Two-Sorted-Arrays" class="headerlink" title="[4] Median of Two Sorted Arrays"></a><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/description/" target="_blank" rel="noopener">[4] Median of Two Sorted Arrays</a></h2><p>很经典的题目</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = nums1.size();</span><br><span class="line">        <span class="keyword">int</span> n = nums2.size();</span><br><span class="line">        <span class="keyword">int</span> num = m + n;</span><br><span class="line">        <span class="keyword">if</span> (num % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> find_kth(nums1.cbegin(), m, nums2.cbegin(), n, num / <span class="number">2</span> + <span class="number">1</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> m1 = find_kth(nums1.cbegin(), m, nums2.cbegin(), n, num / <span class="number">2</span>);</span><br><span class="line">            <span class="keyword">int</span> m2 = find_kth(nums1.cbegin(), m, nums2.cbegin(), n, num / <span class="number">2</span> + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">return</span> (m1 + m2) / <span class="number">2.0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">find_kth</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::const_iterator A, <span class="keyword">int</span> m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::const_iterator B, <span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (m &gt; n) <span class="keyword">return</span> find_kth(B, n, A, m, k);</span><br><span class="line">        <span class="keyword">if</span> (m == <span class="number">0</span>) <span class="keyword">return</span> *(B + k - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span> (k == <span class="number">1</span>) <span class="keyword">return</span> min(*A, *B);</span><br><span class="line">        <span class="keyword">int</span> ia = min(k / <span class="number">2</span>, m);</span><br><span class="line">        <span class="keyword">int</span> ib = k - ia;</span><br><span class="line">        <span class="keyword">if</span> (*(A + ia - <span class="number">1</span>) &lt; *(B + ib - <span class="number">1</span>))</span><br><span class="line">            <span class="keyword">return</span> find_kth(A + ia, m - ia, B, n, k - ia);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (*(A + ia - <span class="number">1</span>) &gt; *(B + ib - <span class="number">1</span>))</span><br><span class="line">            <span class="keyword">return</span> find_kth(A, m, B + ib, n - ib, k - ib);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> *(A + ia - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<h2 id="128-Longest-Consecutive-Sequence"><a href="#128-Longest-Consecutive-Sequence" class="headerlink" title="[128] Longest Consecutive Sequence"></a><a href="https://leetcode.com/problems/longest-consecutive-sequence/description/" target="_blank" rel="noopener">[128] Longest Consecutive Sequence</a></h2><p>要求时间复杂度为<code>O(n)</code>，那就必须用哈希了。<br>用哈希表表示查找每个元素，以及是否被使用过，如果没有被使用，则左右扩张。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">longestConsecutive</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">bool</span>&gt; used;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> i : nums) used[i] = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">int</span> longest = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> i : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (used[i]) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">int</span> len = <span class="number">1</span>;</span><br><span class="line">            used[i] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; used.find(j) != used.end(); ++j) &#123;</span><br><span class="line">                used[j] = <span class="literal">true</span>;</span><br><span class="line">                ++len;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">1</span>; used.find(j) != used.end(); --j) &#123;</span><br><span class="line">                used[j] = <span class="literal">true</span>;</span><br><span class="line">                ++len;</span><br><span class="line">            &#125;</span><br><span class="line">            longest = max(longest, len);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> longest;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a><a href="https://leetcode.com/problems/two-sum/description/" target="_blank" rel="noopener">Two Sum</a></h2><p>还是比较容易错的，可能数组中有重复的元素，哈希表中只保留了最后一次插入的。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; mapping;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) mapping[nums[i]] = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">const</span> <span class="keyword">int</span> gap = target - nums[i];</span><br><span class="line">            <span class="keyword">if</span> (mapping.find(gap) != mapping.end() &amp;&amp; mapping[gap] &gt; i) &#123;</span><br><span class="line">                res.push_back(i);</span><br><span class="line">                res.push_back(mapping[gap]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="15-3Sum"><a href="#15-3Sum" class="headerlink" title="[15] 3Sum"></a><a href="https://leetcode.com/problems/3sum/description/" target="_blank" rel="noopener">[15] 3Sum</a></h2><p>求三个数的和为给定值的组合，注意可能有重复的元素，但不能包含重复解，因此需要把每个元素重复的位置都给跳过。<br>需要先排序再夹逼，本题时间复杂度为<code>O^2</code>，推广后时间复杂度基本为<code>O(max{n\log n, O^{k - 1}}</code>。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; threeSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">        <span class="keyword">if</span> (nums.size() &lt; <span class="number">3</span>) <span class="keyword">return</span> res;</span><br><span class="line">        sort(nums.begin(), nums.end());</span><br><span class="line">        <span class="keyword">int</span> target = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">auto</span> last = nums.end();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> i = nums.begin(); i &lt; last - <span class="number">2</span>; ++i) &#123;</span><br><span class="line">            <span class="keyword">auto</span> j = i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (i != nums.begin() &amp;&amp; *i == *(i - <span class="number">1</span>)) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">auto</span> k = last - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (j &lt; k) &#123;</span><br><span class="line">                <span class="keyword">int</span> sum = *i + *j + *k;</span><br><span class="line">                <span class="keyword">if</span> (sum &lt; target) &#123;</span><br><span class="line">                    ++j;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sum &gt; target) &#123;</span><br><span class="line">                    --k;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    res.push_back(&#123;*i, *j, *k&#125;);</span><br><span class="line">                    ++j;</span><br><span class="line">                    --k;</span><br><span class="line">                    <span class="keyword">while</span> (*j == *(j - <span class="number">1</span>) &amp;&amp; *k == *(k + <span class="number">1</span>) &amp;&amp; j &lt; k) ++j;  <span class="comment">// 在关键的地方把重复元素跳过即可</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>如果要进一步优化的话，可能会复杂一些。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; threeSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">        <span class="keyword">if</span> (nums.size() &lt; <span class="number">3</span>) <span class="keyword">return</span> res;</span><br><span class="line">        sort(nums.begin(), nums.end());</span><br><span class="line">        <span class="keyword">int</span> target = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">auto</span> last = nums.end();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> i = nums.begin(); i &lt; last - <span class="number">2</span>; ++i) &#123;</span><br><span class="line">            <span class="keyword">auto</span> j = i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (i != nums.begin() &amp;&amp; *i == *(i - <span class="number">1</span>)) <span class="keyword">continue</span>;  <span class="comment">// 每个位置重复的元素都跳过</span></span><br><span class="line">            <span class="keyword">auto</span> k = last - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (j &lt; k) &#123;</span><br><span class="line">                <span class="keyword">int</span> sum = *i + *j + *k;</span><br><span class="line">                <span class="keyword">if</span> (sum &lt; target) &#123;</span><br><span class="line">                    ++j;</span><br><span class="line">                    <span class="keyword">while</span> (*j == *(j - <span class="number">1</span>) &amp;&amp; j &lt; k) ++j;  <span class="comment">// 每个位置重复的元素都跳过，注意循环判断</span></span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sum &gt; target) &#123;</span><br><span class="line">                    --k;</span><br><span class="line">                    <span class="keyword">while</span> (*k == *(k + <span class="number">1</span>) &amp;&amp; j &lt; k) --k;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    res.push_back(&#123;*i, *j, *k&#125;);</span><br><span class="line">                    ++j;</span><br><span class="line">                    --k;</span><br><span class="line">                    <span class="keyword">while</span> (*j == *(j - <span class="number">1</span>) &amp;&amp; *k == *(k + <span class="number">1</span>) &amp;&amp; j &lt; k ) ++j;  <span class="comment">// 每个位置重复的元素都跳过，注意循环判断</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="16-3Sum-Closest"><a href="#16-3Sum-Closest" class="headerlink" title="[16] 3Sum Closest"></a><a href="https://leetcode.com/problems/3sum-closest/description/" target="_blank" rel="noopener">[16] 3Sum Closest</a></h2><p>返回和与给定值差距最小的三个数</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">threeSumClosest</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> min_gap = INT_MAX;</span><br><span class="line">        sort(nums.begin(), nums.end());</span><br><span class="line">        <span class="keyword">auto</span> last = nums.end();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> i = nums.begin(); i &lt; last - <span class="number">2</span>; ++i) &#123;</span><br><span class="line">            <span class="keyword">auto</span> j = i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">auto</span> k = last - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (j &lt; k) &#123;</span><br><span class="line">                <span class="keyword">int</span> sum = *i + *j + *k;</span><br><span class="line">                <span class="keyword">int</span> gap = <span class="built_in">abs</span>(sum - target);</span><br><span class="line">                <span class="keyword">if</span> (gap &lt; min_gap) &#123;</span><br><span class="line">                    min_gap = gap;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (sum &lt; target)</span><br><span class="line">                    ++j;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    --k;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> min_gap;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/12/Qt之QTimer/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1767,7 +2145,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-10 00:54:15" itemprop="dateModified" datetime="2019-05-10T00:54:15+08:00">2019-05-10</time>
+                <time title="Modified: 2019-05-19 11:53:34" itemprop="dateModified" datetime="2019-05-19T11:53:34+08:00">2019-05-19</time>
               
             
           </span>
@@ -1868,6 +2246,7 @@
 <li><a href="http://www.devbean.net" target="_blank" rel="noopener">豆子</a></li>
 <li><a href="https://blog.csdn.net/dbzhang800" target="_blank" rel="noopener">1+1=10</a></li>
 <li><a href="http://qtdebug.com/" target="_blank" rel="noopener">QtDebug</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/42824849" target="_blank" rel="noopener">万丈高楼平地起：学习Qt5</a></li>
 </ul>
 <h2 id="书籍"><a href="#书籍" class="headerlink" title="书籍"></a>书籍</h2><ul>
 <li>QmlBook - A Book about Qt5<ul>
@@ -2357,372 +2736,6 @@ QMessageBox::information(this, tr(&quot;Information&quot;), str);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/01/设计模式/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Astray Wu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/01/设计模式/" class="post-title-link" itemprop="url">设计模式</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-05-01 10:02:44" itemprop="dateCreated datePublished" datetime="2019-05-01T10:02:44+08:00">2019-05-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-06 22:52:15" itemprop="dateModified" datetime="2019-05-06T22:52:15+08:00">2019-05-06</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">0</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/01/OpenMP/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Astray Wu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/01/OpenMP/" class="post-title-link" itemprop="url">OpenMP</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-05-01 01:35:55" itemprop="dateCreated datePublished" datetime="2019-05-01T01:35:55+08:00">2019-05-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-02 00:52:06" itemprop="dateModified" datetime="2019-05-02T00:52:06+08:00">2019-05-02</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">102</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://www.it1352.com/349766.html" target="_blank" rel="noopener">如何保证动态分配的数组是私人的OpenMP(How to ensure a dynamically allocated array is private in openmp)</a></p>
-<p><a href="http://xsk.tehon.org/den/index.php/category/tech/openmp-notes-programming.html" target="_blank" rel="noopener">OpenMP学习笔记：编程</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2770,7 +2783,7 @@ QMessageBox::information(this, tr(&quot;Information&quot;), str);
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2838,7 +2851,7 @@ QMessageBox::information(this, tr(&quot;Information&quot;), str);
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">77k</span>
+    <span title="Symbols count total">87k</span>
   
 
   
@@ -2847,7 +2860,7 @@ QMessageBox::information(this, tr(&quot;Information&quot;), str);
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">1:10</span>
+    <span title="Reading time total">1:19</span>
   
 </div>
 
