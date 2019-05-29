@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="工作中的工程主要是C，不过公共的库函数设计上面存在一些问题，例如全局变量设计不合适、函数声明不合理、部分函数定义有问题，导致可移植性有点差，改成cpp文件后，报了很多错误，这里记录一些容易错误的地方，也顺带回顾一下基础知识。  全局变量的声明和使用（跨文件） How do I use extern to share variables between source files? What is t">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-06T15:49:40.925Z">
+<meta property="og:updated_time" content="2019-05-27T15:03:54.483Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C、C++基础">
 <meta name="twitter:description" content="工作中的工程主要是C，不过公共的库函数设计上面存在一些问题，例如全局变量设计不合适、函数声明不合理、部分函数定义有问题，导致可移植性有点差，改成cpp文件后，报了很多错误，这里记录一些容易错误的地方，也顺带回顾一下基础知识。  全局变量的声明和使用（跨文件） How do I use extern to share variables between source files? What is t">
@@ -384,12 +384,24 @@
                 
               
 
-              <time title="Created: 2019-05-06 22:52:46 / Modified: 23:49:40" itemprop="dateCreated datePublished" datetime="2019-05-06T22:52:46+08:00">2019-05-06</time>
+              <time title="Created: 2019-05-06 22:52:46" itemprop="dateCreated datePublished" datetime="2019-05-06T22:52:46+08:00">2019-05-06</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-27 23:03:54" itemprop="dateModified" datetime="2019-05-27T23:03:54+08:00">2019-05-27</time>
               
             
           </span>
@@ -424,7 +436,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">1.3k</span>
+                <span title="Symbols count in article">2.1k</span>
               
 
               
@@ -438,7 +450,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">1 mins.</span>
+                <span title="Reading time">2 mins.</span>
               
             </div>
           
@@ -493,7 +505,10 @@
 <p><strong>file2.c</strong></p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"file3.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"prog1.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">use_it</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Global variable: %d\n"</span>, global_variable++);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
-
+<h2 id="bind1st"><a href="#bind1st" class="headerlink" title="bind1st"></a>bind1st</h2><p><a href="https://www.geeksforgeeks.org/bind-function-placeholders-c/" target="_blank" rel="noopener">Bind function and placeholders in C++</a><br><a href="https://blog.csdn.net/simahao/article/details/405455" target="_blank" rel="noopener">bind1st bind2nd的使用</a><br><a href="https://en.cppreference.com/w/cpp/utility/functional/bind12" target="_blank" rel="noopener">std::bind1st, std::bind2nd</a></p>
+<p>用于将二元算子转换成一元算子，将给定的参数绑定到给定的位置上。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#inlcude <span class="meta-string">&lt;functional&gt;</span></span></span><br><span class="line"><span class="built_in">std</span>::transform(a.begin(), a.end(), r.begin(),</span><br><span class="line">    <span class="built_in">std</span>::bind1st(<span class="built_in">std</span>::multiplies&lt;<span class="keyword">double</span>&gt;(), pi / <span class="number">180.</span>));</span><br><span class="line"><span class="comment">// equivalent lambda: [pi](double a)&#123; return a*pi/180.; &#125;);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除所有大于100的元素</span></span><br><span class="line"><span class="comment">// arr.value &lt; 100</span></span><br><span class="line">arr.erase(<span class="built_in">std</span>::remove_if(arr.begin(), arr.end(),</span><br><span class="line">    <span class="built_in">std</span>::bind1st(<span class="built_in">std</span>::less&lt;<span class="keyword">int</span>&gt;(), <span class="number">100</span>)), arr.end());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除所有大于100的元素</span></span><br><span class="line"><span class="comment">// 100 &lt; arr.value</span></span><br><span class="line">arr.erase(<span class="built_in">std</span>::remove_if(arr.begin(), arr.end(),</span><br><span class="line">    <span class="built_in">std</span>::bind2nd(<span class="built_in">std</span>::greater&lt;<span class="keyword">int</span>&gt;(), <span class="number">100</span>)), arr.end());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除所有小于等于100的元素</span></span><br><span class="line">arr.erase(<span class="built_in">std</span>::remove_if(arr.begin(), arr.end(),</span><br><span class="line">    <span class="built_in">std</span>::not1(<span class="built_in">std</span>::bind2nd(<span class="built_in">std</span>::greater&lt;<span class="keyword">int</span>&gt;(), <span class="number">100</span>))), arr.end());</span><br><span class="line"><span class="comment">// 说明：not1是否定返回值是单目的函数，std中还有not2它是否定返回值是双目的函数</span></span><br></pre></td></tr></table></figure>
+<h2 id="full"><a href="#full" class="headerlink" title="full"></a>full</h2>
       
     </div>
 
@@ -662,7 +677,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局变量的声明和使用（跨文件）"><span class="nav-text">全局变量的声明和使用（跨文件）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局变量的声明和使用（跨文件）"><span class="nav-text">全局变量的声明和使用（跨文件）</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#bind1st"><span class="nav-text">bind1st</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#full"><span class="nav-text">full</span></a></li></div>
             
 
           </div>
@@ -694,7 +709,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">87k</span>
+    <span title="Symbols count total">117k</span>
   
 
   
@@ -703,7 +718,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">1:19</span>
+    <span title="Reading time total">1:47</span>
   
 </div>
 

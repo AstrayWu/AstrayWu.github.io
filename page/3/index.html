@@ -1116,7 +1116,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-10 01:15:01" itemprop="dateModified" datetime="2019-05-10T01:15:01+08:00">2019-05-10</time>
+                <time title="Modified: 2019-05-27 23:02:31" itemprop="dateModified" datetime="2019-05-27T23:02:31+08:00">2019-05-27</time>
               
             
           </span>
@@ -1144,7 +1144,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">5.8k</span>
+                <span title="Symbols count in article">5.9k</span>
               
 
               
@@ -1293,8 +1293,7 @@
 <p>用<code>$$</code>表示整行公式，例如</p>
 <script type="math/tex; mode=display">a^2+b^2=c^2</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用`$`表示行内公式，例如$a^2+b^2=c^2$</span><br><span class="line"></span><br><span class="line">用`$$`表示整行公式，例如</span><br><span class="line">$$</span><br><span class="line">a^2+b^2=c^2</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
 <p>这一块参考文档<strong>一份不太简短的$\LaTeX$介绍</strong>比较好，这里仅仅列可能会常用的模板或者不太容易找到的用法。</p>
-<p>特殊符号</p>
-<script type="math/tex; mode=display">
+<h3 id="3-1-特殊符号"><a href="#3-1-特殊符号" class="headerlink" title="3.1. 特殊符号"></a>3.1. 特殊符号</h3><script type="math/tex; mode=display">
 \int \prod \sum \lim_{x \to x} \sin x  \times \infty \equiv \approx \sim \log 2 \lg 5</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\int \prod \sum \lim_&#123;x \to x&#125; \sin x  \times \infty \equiv \approx \sim \log 2 \lg 5</span><br></pre></td></tr></table></figure>
 <script type="math/tex; mode=display">
 \land \lor \lnot \lt \gt \le \ge = \neq</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\land \lor \lnot \lt \gt \le \ge = \neq</span><br></pre></td></tr></table></figure>
@@ -1302,11 +1301,12 @@
 a \equiv b \pmod n</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a \equiv b \pmod n</span><br></pre></td></tr></table></figure>
 <script type="math/tex; mode=display">
 \vec x \hat x \dot x</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\vec x \hat x \dot x</span><br></pre></td></tr></table></figure>
-<p>省略号</p>
+<h3 id="3-2-时间复杂度"><a href="#3-2-时间复杂度" class="headerlink" title="3.2. 时间复杂度"></a>3.2. 时间复杂度</h3><p><a href="https://texblog.org/2014/06/24/big-o-and-related-notations-in-latex/" target="_blank" rel="noopener">Big O and related notations in LaTeX</a></p>
+<script type="math/tex; mode=display">
+\mathcal{O}(n \log n)</script><p>省略号</p>
 <script type="math/tex; mode=display">
 a_1, a_2, \ldots, a_n \qquad a_1 + a_2 + \cdots a_n</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a_1, a_2, \ldots, a_n \qquad a_1 + a_2 + \cdots a_n</span><br></pre></td></tr></table></figure>
-<p>矩阵</p>
-<script type="math/tex; mode=display">
+<h3 id="3-3-矩阵"><a href="#3-3-矩阵" class="headerlink" title="3.3. 矩阵"></a>3.3. 矩阵</h3><script type="math/tex; mode=display">
 \mathbf{X} = \left(
 \begin{array}{cccc}
 x_{11} & x_{12} & \ldots & x_{1n}\\
@@ -1345,48 +1345,42 @@ x_{n1} & x_{n2} & \ldots & x_{nn}\\
 1 & 2 \\
 1 & 2 \\
 \end{Vmatrix}</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\begin&#123;pmatrix&#125;</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;pmatrix&#125;</span><br><span class="line">\begin&#123;bmatrix&#125;</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;bmatrix&#125;</span><br><span class="line">\begin&#123;Bmatrix&#125;</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;Bmatrix&#125;</span><br><span class="line">\begin&#123;vmatrix&#125;</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;vmatrix&#125;</span><br><span class="line">\begin&#123;Vmatrix&#125;</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">1 &amp; 2 \\</span><br><span class="line">\end&#123;Vmatrix&#125;</span><br></pre></td></tr></table></figure>
-<p>多行公式</p>
-<script type="math/tex; mode=display">
+<h3 id="3-4-多行公式"><a href="#3-4-多行公式" class="headerlink" title="3.4. 多行公式"></a>3.4. 多行公式</h3><script type="math/tex; mode=display">
 \begin{aligned}
 a + b &= c \\
 a &= c - b \\
 0 &= c - b - a
 \end{aligned}</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\begin&#123;aligned&#125;</span><br><span class="line">a + b &amp;= c \\</span><br><span class="line">a &amp;= c - b \\</span><br><span class="line">0 &amp;= c - b - a</span><br><span class="line">\end&#123;aligned&#125;</span><br></pre></td></tr></table></figure>
-<p>间距</p>
-<script type="math/tex; mode=display">
+<h3 id="3-5-间距"><a href="#3-5-间距" class="headerlink" title="3.5. 间距"></a>3.5. 间距</h3><script type="math/tex; mode=display">
 a \quad b \qquad cd \quad c \, d \quad c \: d \quad c \; d</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a \quad b \qquad cd \quad c \, d \quad c \: d \quad c \; d</span><br></pre></td></tr></table></figure>
-<p>微积分求导符号</p>
-<script type="math/tex; mode=display">
+<h3 id="3-6-微积分求导符号"><a href="#3-6-微积分求导符号" class="headerlink" title="3.6. 微积分求导符号"></a>3.6. 微积分求导符号</h3><script type="math/tex; mode=display">
 \int_a^b f(x)\mathrm{d}x
 \qquad
 \int_a^b f(x)\,\mathrm{d}x
 \qquad
 \dfrac{\partial^2 f}{\partial x^2}</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\int_a^b f(x)\mathrm&#123;d&#125;x</span><br><span class="line">\qquad</span><br><span class="line">\int_a^b f(x)\,\mathrm&#123;d&#125;x</span><br><span class="line">\qquad</span><br><span class="line">\dfrac&#123;\partial^2 f&#125;&#123;\partial x^2&#125;</span><br></pre></td></tr></table></figure>
-<p>分段函数</p>
-<script type="math/tex; mode=display">
+<h3 id="3-7-分段函数"><a href="#3-7-分段函数" class="headerlink" title="3.7. 分段函数"></a>3.7. 分段函数</h3><script type="math/tex; mode=display">
  |x| =
 \begin{cases}
 -x & \text{if } x < 0,\\
 0 & \text{if } x = 0,\\
 x & \text{if } x > 0.
 \end{cases}</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> |x| =</span><br><span class="line">\begin&#123;cases&#125;</span><br><span class="line">-x &amp; \text&#123;if &#125; x &lt; 0,\\</span><br><span class="line">0 &amp; \text&#123;if &#125; x = 0,\\</span><br><span class="line">x &amp; \text&#123;if &#125; x &gt; 0.</span><br><span class="line">\end&#123;cases&#125;</span><br></pre></td></tr></table></figure>
-<p>字体<br>MathJax不支持<code>\bm</code></p>
+<h3 id="3-8-字体"><a href="#3-8-字体" class="headerlink" title="3.8. 字体"></a>3.8. 字体</h3><p>MathJax不支持<code>\bm</code></p>
 <script type="math/tex; mode=display">
 \mathbf{d} x
 \qquad \mathbf{\mu, M}
 \qquad \boldsymbol{\mu, M}</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\mathbf&#123;d&#125; x</span><br><span class="line">\qquad \mathbf&#123;\mu, M&#125;</span><br><span class="line">\qquad \boldsymbol&#123;\mu, M&#125;</span><br></pre></td></tr></table></figure>
-<p>括号手动调整</p>
+<h3 id="3-9-括号"><a href="#3-9-括号" class="headerlink" title="3.9. 括号"></a>3.9. 括号</h3><p>手动调整</p>
 <script type="math/tex; mode=display">
 \bigg \{\Bigl\langle \bigl( (x) \bigr ) \Bigr \rangle \bigg \}</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\bigg \&#123;\Bigl\langle \bigl( (x) \bigr ) \Bigr \rangle \bigg \&#125;</span><br></pre></td></tr></table></figure>
 <p>括号自适应调整</p>
 <script type="math/tex; mode=display">
 \left( \frac12 \right)
 (\frac 1 2)</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\left( \frac12 \right)</span><br><span class="line">(\frac 1 2)</span><br></pre></td></tr></table></figure>
-<p>编号与标签</p>
-<script type="math/tex; mode=display">
+<h3 id="3-10-编号与标签"><a href="#3-10-编号与标签" class="headerlink" title="3.10. 编号与标签"></a>3.10. 编号与标签</h3><script type="math/tex; mode=display">
 E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">E=mc^2 \tag&#123;tag&#125;</span><br></pre></td></tr></table></figure>
-<p>行间距</p>
-<script type="math/tex; mode=display">
+<h3 id="3-11-行间距"><a href="#3-11-行间距" class="headerlink" title="3.11. 行间距"></a>3.11. 行间距</h3><script type="math/tex; mode=display">
 \begin{aligned}
 \sum_1^n i^2 \\[5ex]
 \frac12 \\[2ex]
@@ -1554,7 +1548,7 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">87k</span>
+    <span title="Symbols count total">117k</span>
   
 
   
@@ -1563,7 +1557,7 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">1:19</span>
+    <span title="Reading time total">1:47</span>
   
 </div>
 
