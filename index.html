@@ -91,7 +91,7 @@
       applicationID: '',
       apiKey: '',
       indexName: '',
-      hits: {"per_page":10},
+      hits: {"per_page":30},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
@@ -338,6 +338,404 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/01/UML/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/01/UML/" class="post-title-link" itemprop="url">UML</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-01 20:14:58" itemprop="dateCreated datePublished" datetime="2019-06-01T20:14:58+08:00">2019-06-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-05 00:35:13" itemprop="dateModified" datetime="2019-06-05T00:35:13+08:00">2019-06-05</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">714</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>了解一下UML</p>
+<ul>
+<li><a href="https://blog.csdn.net/monkey_d_meng/article/details/6005764" target="_blank" rel="noopener">UML类图新手入门级介绍 CSDN</a></li>
+<li><a href="https://www.cnblogs.com/pangjianxin/p/7877868.html" target="_blank" rel="noopener">UML类图与类的关系详解 cnblog</a></li>
+<li><a href="https://www.cnblogs.com/duanxz/p/5235425.html" target="_blank" rel="noopener">四步轻松实现用Visio画UML类图 cnblog</a></li>
+<li><a href="https://www.cnblogs.com/skywang12345/p/3523167.html" target="_blank" rel="noopener">UML系列01之 UML和绘图工具Visio介绍 cnblog</a></li>
+<li><a href="https://www.jianshu.com/p/c149616b8717" target="_blank" rel="noopener">01-使用Visio绘制UML类图 简书</a></li>
+<li><a href="https://www.cnblogs.com/lukefan/p/10048499.html" target="_blank" rel="noopener">UML类图基本画法 草图 cnblog</a></li>
+<li><a href="https://www.cnblogs.com/jiangds/p/6596595.html" target="_blank" rel="noopener">UML各种图总结-精华 cnblog</a> 比较好的进行总结，主要的参考</li>
+<li><a href="https://www.w3cschool.cn/uml_tutorial/" target="_blank" rel="noopener">UML教程 w3c</a></li>
+<li><a href="http://c.biancheng.net/view/1319.html" target="_blank" rel="noopener">UML中的类图及类图之间的关系</a> Rational Rose, Umlet</li>
+</ul>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>UML统一建模语言，为面对对象开发系统地产品进行说明、可视化和编辑文档的一种标准语言。</p>
+<p>UML的模型主要有三部分构成：</p>
+<ul>
+<li>事物(Things)：UML模型中最基本的构成元素，是具有代表性的成分的抽象</li>
+<li>关系(Relationships)：关系把事物紧密联系在一起</li>
+<li>图(Diagrams )：图是事物和关系的可视化表示</li>
+</ul>
+<p>UML从目标系统的不同角度出发，定义了用例图、类图、对象图、状态图、活动图、时序图、协作图、构件图、部署图等 9 种图。</p>
+<p>根据类与类之间的耦合度从弱到强排列，UML中的类图有以下几种关系：依赖关系、关联关系、聚合关系、组合关系、泛化关系和实现关系。其中泛化和实现的耦合度相等，它们是最强的。</p>
+<p>依赖关系的耦合度最弱，通过局部变量、方法的参数或静态方法的调用来访问另一个类；<br>关联关系一般是作为成员变量来实现的；<br>聚合关系也是通过成员对象实现，成员对象时整体对象的一部分，可脱离存在，has-a；<br>组合关系则部分对象不能脱离整体，contains-a；<br>泛化是父类与子类的关系，is-a；<br>实现是接口和实现类的关系；</p>
+<h2 id="基本表示方法"><a href="#基本表示方法" class="headerlink" title="基本表示方法"></a>基本表示方法</h2><p><img src="/2019/06/01/UML/2019-06-01-20-18-17.png" alt=""></p>
+<p><img src="/2019/06/01/UML/2019-06-01-20-18-34.png" alt=""></p>
+<h2 id="使用Visio绘制UML图"><a href="#使用Visio绘制UML图" class="headerlink" title="使用Visio绘制UML图"></a>使用Visio绘制UML图</h2>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/30/kmp算法/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/30/kmp算法/" class="post-title-link" itemprop="url">kmp算法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-30 23:32:00" itemprop="dateCreated datePublished" datetime="2019-05-30T23:32:00+08:00">2019-05-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-31 00:36:50" itemprop="dateModified" datetime="2019-05-31T00:36:50+08:00">2019-05-31</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">1.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><a href="https://www.cnblogs.com/yjiyjige/p/3263858.html" target="_blank" rel="noopener">（原创）详解KMP算法 cnblogs</a></li>
+<li><a href="https://www.zhihu.com/question/21923021/answer/281346746" target="_blank" rel="noopener">如何更好的理解和掌握 KMP 算法? 知乎</a></li>
+</ul>
+<p>将以前KMP算法的东西复习一下</p>
+<p>主要概念是部分匹配表PMT，即字符串前缀和后缀集合的交集中最长元素的长度，将PMT右移一位即可得到next数组，牢记<strong>next数组存储的是pattern中下一次要进行匹配判断的index</strong>，为了编程方便next[0]定义成-1。</p>
+<p>不妨即模式字符串为P，<code>next[q] = k</code>表示<code>P[q]</code>之前的子串中，存在长度为<code>k</code>的相同前缀和后缀，即<code>P[0]~P[k-1]</code>与<code>P[q-k]~P[q-1]</code>相同，于是下一次需要判断的位置应该就是<code>next[k]</code>。</p>
+<p>而next数组的求法实际就是一次匹配自身的过程，这样子看就非常好记了。</p>
+<p>附上对应的代码</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">strStr</span><span class="params">(<span class="built_in">string</span> haystack, <span class="built_in">string</span> needle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> next = getnext(needle);</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> m = haystack.size(), n = needle.size();</span><br><span class="line">        <span class="keyword">while</span> (i &lt; m &amp;&amp; j &lt; n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (j == <span class="number">-1</span> || haystack[i] == needle[j]) &#123;</span><br><span class="line">                ++i;</span><br><span class="line">                ++j;</span><br><span class="line">            &#125; <span class="keyword">else</span></span><br><span class="line">                j = next[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> j == n ? i - j : <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; getnext(<span class="keyword">const</span> <span class="built_in">string</span> &amp;p) &#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> n = p.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; next(n, <span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; n - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (j == <span class="number">-1</span> || p[i] == p[j])</span><br><span class="line">                next[++i] = ++j;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                j = next[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/30/leetcode-字符串/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -383,12 +781,24 @@
                 
               
 
-              <time title="Created: 2019-05-30 00:52:35 / Modified: 01:00:46" itemprop="dateCreated datePublished" datetime="2019-05-30T00:52:35+08:00">2019-05-30</time>
+              <time title="Created: 2019-05-30 00:52:35" itemprop="dateCreated datePublished" datetime="2019-05-30T00:52:35+08:00">2019-05-30</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-31 23:38:53" itemprop="dateModified" datetime="2019-05-31T23:38:53+08:00">2019-05-31</time>
               
             
           </span>
@@ -416,7 +826,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">12k</span>
+                <span title="Symbols count in article">9.4k</span>
               
 
               
@@ -430,7 +840,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">11 mins.</span>
+                <span title="Reading time">9 mins.</span>
               
             </div>
           
@@ -452,13 +862,22 @@
       
         
           
-            <h2 id="125-Valid-Palindrome"><a href="#125-Valid-Palindrome" class="headerlink" title="125. Valid Palindrome"></a><a href="https://leetcode.com/problems/valid-palindrome/description/" target="_blank" rel="noopener">125. Valid Palindrome</a></h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.empty()) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = s.size() - <span class="number">1</span>; i &lt; j; ++i, --j) &#123;</span><br><span class="line">            <span class="keyword">while</span> (!<span class="built_in">isalnum</span>(s[i]) &amp;&amp; i &lt; j) ++i;</span><br><span class="line">            <span class="keyword">while</span> (!<span class="built_in">isalnum</span>(s[j]) &amp;&amp; i &lt; j) --j;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">toupper</span>(s[i]) != <span class="built_in">toupper</span>(s[j])) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        transform(s.begin(), s.end(), s.begin(), ::<span class="built_in">tolower</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = s.size() - <span class="number">1</span>; i &lt; j; ++i, --j) &#123;</span><br><span class="line">            <span class="keyword">while</span> (!<span class="built_in">isalnum</span>(s[i]) &amp;&amp; i &lt; j) ++i;</span><br><span class="line">            <span class="keyword">while</span> (!<span class="built_in">isalnum</span>(s[j]) &amp;&amp; i &lt; j) --j;</span><br><span class="line">            <span class="keyword">if</span> (s[i] != s[j]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+            <h2 id="125-Valid-Palindrome"><a href="#125-Valid-Palindrome" class="headerlink" title="125. Valid Palindrome"></a><a href="https://leetcode.com/problems/valid-palindrome/description/" target="_blank" rel="noopener">125. Valid Palindrome</a></h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        transform(s.begin(), s.end(), s.begin(), ::<span class="built_in">tolower</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = s.size() - <span class="number">1</span>; i &lt; j; ++i, --j) &#123;</span><br><span class="line">            <span class="keyword">while</span> (!<span class="built_in">isalnum</span>(s[i]) &amp;&amp; i &lt; j) ++i;</span><br><span class="line">            <span class="keyword">while</span> (!<span class="built_in">isalnum</span>(s[j]) &amp;&amp; i &lt; j) --j;</span><br><span class="line">            <span class="keyword">if</span> (s[i] != s[j]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h2 id="28-Implement-strStr"><a href="#28-Implement-strStr" class="headerlink" title="28. Implement strStr()"></a><a href="https://leetcode.com/problems/implement-strstr/description/" target="_blank" rel="noopener">28. Implement strStr()</a></h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">strStr</span><span class="params">(<span class="built_in">string</span> haystack, <span class="built_in">string</span> needle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (needle.empty()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> n = haystack.size() - needle.size() + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> j = i;</span><br><span class="line">            <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (i &lt; haystack.size() &amp;&amp; k &lt; needle.size() &amp;&amp; haystack[j] == needle[k]) &#123;</span><br><span class="line">                ++j;</span><br><span class="line">                ++k;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (k == needle.size()) <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// kmp</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">strStr</span><span class="params">(<span class="built_in">string</span> haystack, <span class="built_in">string</span> needle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> next = getnext(needle);</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> m = haystack.size(), n = needle.size();</span><br><span class="line">        <span class="keyword">while</span> (i &lt; m &amp;&amp; j &lt; n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (j == <span class="number">-1</span> || haystack[i] == needle[j]) &#123;</span><br><span class="line">                ++i;</span><br><span class="line">                ++j;</span><br><span class="line">            &#125; <span class="keyword">else</span></span><br><span class="line">                j = next[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> j == n ? i - j : <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; getnext(<span class="keyword">const</span> <span class="built_in">string</span>&amp; p) &#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> n = p.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; next(n, <span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span> (j &lt; n - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (k == <span class="number">-1</span> || p[k] == p[j])</span><br><span class="line">                next[++j] = ++k;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                k = next[k];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>经典的KMP算法</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">strStr</span><span class="params">(<span class="built_in">string</span> haystack, <span class="built_in">string</span> needle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> next = getnext(needle);</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> m = haystack.size(), n = needle.size();</span><br><span class="line">        <span class="keyword">while</span> (i &lt; m &amp;&amp; j &lt; n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (j == <span class="number">-1</span> || haystack[i] == needle[j]) &#123;</span><br><span class="line">                ++i;</span><br><span class="line">                ++j;</span><br><span class="line">            &#125; <span class="keyword">else</span></span><br><span class="line">                j = next[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> j == n ? i - j : <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; getnext(<span class="keyword">const</span> <span class="built_in">string</span> &amp;p) &#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> n = p.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; next(n, <span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; n - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (j == <span class="number">-1</span> || p[i] == p[j])</span><br><span class="line">                next[++i] = ++j;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                j = next[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="8-String-to-Integer-atoi"><a href="#8-String-to-Integer-atoi" class="headerlink" title="8. String to Integer (atoi)"></a><a href="https://leetcode.com/problems/string-to-integer-atoi/description/" target="_blank" rel="noopener">8. String to Integer (atoi)</a></h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(<span class="built_in">string</span> str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> n = str.size();</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (str[i] == <span class="string">' '</span> &amp;&amp; i &lt; n) ++i;</span><br><span class="line">        <span class="keyword">bool</span> sign = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (str[i] == <span class="string">'+'</span>)</span><br><span class="line">            ++i;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (str[i] == <span class="string">'-'</span>) &#123;</span><br><span class="line">            sign = <span class="literal">false</span>;</span><br><span class="line">            ++i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!<span class="built_in">isdigit</span>(str[i])) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">if</span> (num &gt; INT_MAX / <span class="number">10</span> || (num == INT_MAX / <span class="number">10</span> &amp;&amp; (str[i] - <span class="string">'0'</span>) &gt; INT_MAX % <span class="number">10</span>)) <span class="keyword">return</span> sign ? INT_MAX : INT_MIN;</span><br><span class="line">            num = num * <span class="number">10</span> + str[i] - <span class="string">'0'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sign ? num : -num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="8-String-to-Integer-atoi"><a href="#8-String-to-Integer-atoi" class="headerlink" title="8. String to Integer (atoi)"></a><a href="https://leetcode.com/problems/string-to-integer-atoi/description/" target="_blank" rel="noopener">8. String to Integer (atoi)</a></h2><p>注意一下判断是否超出的地方技巧</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(<span class="built_in">string</span> str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> n = str.size();</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (str[i] == <span class="string">' '</span> &amp;&amp; i &lt; n) ++i;</span><br><span class="line">        <span class="keyword">bool</span> sign = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (str[i] == <span class="string">'+'</span>)</span><br><span class="line">            ++i;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (str[i] == <span class="string">'-'</span>) &#123;</span><br><span class="line">            sign = <span class="literal">false</span>;</span><br><span class="line">            ++i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!<span class="built_in">isdigit</span>(str[i])) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">if</span> (num &gt; INT_MAX / <span class="number">10</span> || (num == INT_MAX / <span class="number">10</span> &amp;&amp; (str[i] - <span class="string">'0'</span>) &gt; INT_MAX % <span class="number">10</span>)) <span class="keyword">return</span> sign ? INT_MAX : INT_MIN;</span><br><span class="line">            num = num * <span class="number">10</span> + str[i] - <span class="string">'0'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sign ? num : -num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h2 id="67-Add-Binary"><a href="#67-Add-Binary" class="headerlink" title="67. Add Binary"></a><a href="https://leetcode.com/problems/add-binary/description/" target="_blank" rel="noopener">67. Add Binary</a></h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">addBinary</span><span class="params">(<span class="built_in">string</span> a, <span class="built_in">string</span> b)</span> </span>&#123;</span><br><span class="line">        reverse(a.begin(), a.end());</span><br><span class="line">        reverse(b.begin(), b.end());</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> n = max(a.size(), b.size());</span><br><span class="line">        <span class="function"><span class="built_in">string</span> <span class="title">res</span><span class="params">(n, <span class="string">'0'</span>)</span></span>;</span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> d1 = i &lt; a.size() ? a[i] - <span class="string">'0'</span> : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> d2 = i &lt; b.size() ? b[i] - <span class="string">'0'</span> : <span class="number">0</span>;</span><br><span class="line">            res[i] = (d1 + d2 + carry) % <span class="number">2</span> + <span class="string">'0'</span>;</span><br><span class="line">            carry = (d1 + d2 + carry) / <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (carry &gt; <span class="number">0</span>)</span><br><span class="line">            res.push_back(carry + <span class="string">'0'</span>);</span><br><span class="line">        reverse(res.begin(), res.end());</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="5-Longest-Palindromic-Substring"><a href="#5-Longest-Palindromic-Substring" class="headerlink" title="5. Longest Palindromic Substring"></a><a href="https://leetcode.com/problems/longest-palindromic-substring/description/" target="_blank" rel="noopener">5. Longest Palindromic Substring</a></h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 2018.10.14 解题目的时候思路依旧不清晰</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> n = s.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;&gt; dp(n, <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;(n, <span class="literal">false</span>));</span><br><span class="line">        <span class="keyword">int</span> max_len = <span class="number">1</span>, start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; n; ++j) &#123;</span><br><span class="line">                dp[i][j] = (i == j) || (s[i] == s[j] &amp;&amp; (j - i &lt; <span class="number">2</span> || dp[i + <span class="number">1</span>][j - <span class="number">1</span>]));</span><br><span class="line">                <span class="keyword">if</span> (dp[i][j] &amp;&amp; j - i + <span class="number">1</span> &gt; max_len) &#123;</span><br><span class="line">                    start = i;</span><br><span class="line">                    max_len = j - i + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.substr(start, max_len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ver2 2018.10.14</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> n = s.size();</span><br><span class="line">        <span class="keyword">int</span> max_len = <span class="number">1</span>, start = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;&gt; dp(n, <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;(n, <span class="literal">false</span>));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= j; ++i) &#123;</span><br><span class="line">                dp[i][j] = (i == j) || (s[i] == s[j] &amp;&amp; (j - i &lt; <span class="number">2</span> || dp[i + <span class="number">1</span>][j - <span class="number">1</span>]));</span><br><span class="line">                <span class="keyword">if</span> (dp[i][j] &amp;&amp; j - i + <span class="number">1</span> &gt; max_len) &#123;</span><br><span class="line">                    max_len = j - i + <span class="number">1</span>;</span><br><span class="line">                    start = i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.substr(start, max_len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ver2 opt 2018.10.28</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> n = s.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;&gt; dp(n, <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;(n, <span class="literal">false</span>));</span><br><span class="line">        <span class="keyword">int</span> max_len = <span class="number">1</span>, start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= j; ++i) &#123;</span><br><span class="line">                dp[i][j] = s[i] == s[j] &amp;&amp; (j - i &lt; <span class="number">2</span> || dp[i + <span class="number">1</span>][j - <span class="number">1</span>]);</span><br><span class="line">                <span class="keyword">if</span> (dp[i][j] &amp;&amp; j - i + <span class="number">1</span> &gt; max_len) &#123;</span><br><span class="line">                    max_len = j - i + <span class="number">1</span>;</span><br><span class="line">                    start = i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.substr(start, max_len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="5-Longest-Palindromic-Substring"><a href="#5-Longest-Palindromic-Substring" class="headerlink" title="5. Longest Palindromic Substring"></a><a href="https://leetcode.com/problems/longest-palindromic-substring/description/" target="_blank" rel="noopener">5. Longest Palindromic Substring</a></h2><p>最长回文子串，非常经典的题。</p>
+<p>设状态为<code>f(i, j)</code>，表示区间<code>[i, j]</code>是否是回文串，则dp方程为</p>
+<script type="math/tex; mode=display">
+ f(i, j) =
+\begin{cases}
+true & , i = j,\\
+S[i] == S[j] & , j = i + 1,\\
+S[i] == S[j] and f(i + 1, j) & , j > i + 1.
+\end{cases}</script><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> n = s.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;&gt; dp(n, <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;(n, <span class="literal">false</span>));</span><br><span class="line">        <span class="keyword">int</span> max_len = <span class="number">1</span>, start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; n; ++j) &#123;</span><br><span class="line">                dp[i][j] = (i == j) || (s[i] == s[j] &amp;&amp; (j - i &lt; <span class="number">2</span> || dp[i + <span class="number">1</span>][j - <span class="number">1</span>]));</span><br><span class="line">                <span class="keyword">if</span> (dp[i][j] &amp;&amp; j - i + <span class="number">1</span> &gt; max_len) &#123;</span><br><span class="line">                    start = i;</span><br><span class="line">                    max_len = j - i + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.substr(start, max_len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h2 id="10-Regular-Expression-Matching"><a href="#10-Regular-Expression-Matching" class="headerlink" title="10. Regular Expression Matching"></a><a href="https://leetcode.com/problems/regular-expression-matching/description/" target="_blank" rel="noopener">10. Regular Expression Matching</a></h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isMatch</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> isMatch(s.c_str(), p.c_str());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isMatch</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *s, <span class="keyword">const</span> <span class="keyword">char</span> *p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (*p == <span class="string">'\0'</span>) <span class="keyword">return</span> *s == <span class="string">'\0'</span>;</span><br><span class="line">        <span class="keyword">if</span> (*(p + <span class="number">1</span>) != <span class="string">'*'</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (*s == *p || (*p == <span class="string">'.'</span> &amp;&amp; *s != <span class="string">'\0'</span>))</span><br><span class="line">                <span class="keyword">return</span> isMatch(s + <span class="number">1</span>, p + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">while</span> (*s == *p || (*p == <span class="string">'.'</span> &amp;&amp; *s != <span class="string">'\0'</span>)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (isMatch(s, p + <span class="number">2</span>)) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                ++s;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> isMatch(s, p + <span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h2 id="44-Wildcard-Matching"><a href="#44-Wildcard-Matching" class="headerlink" title="44. Wildcard Matching"></a><a href="https://leetcode.com/problems/wildcard-matching/description/" target="_blank" rel="noopener">44. Wildcard Matching</a></h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// LTE iteration ver</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isMatch</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> isMatch(s.c_str(), p.c_str());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isMatch</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *s, <span class="keyword">const</span> <span class="keyword">char</span> *p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (*p == <span class="string">'*'</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span> (*p == <span class="string">'*'</span>) ++p;</span><br><span class="line">            <span class="keyword">if</span> (*p == <span class="string">'\0'</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">while</span> (*s != <span class="string">'\0'</span> &amp;&amp; !isMatch(s, p)) ++s;</span><br><span class="line">            <span class="keyword">return</span> *s != <span class="string">'\0'</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (*p == <span class="string">'\0'</span> || *s == <span class="string">'\0'</span>)</span><br><span class="line">            <span class="keyword">return</span> *p == *s;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (*p == *s || *p == <span class="string">'?'</span>)</span><br><span class="line">            <span class="keyword">return</span> isMatch(s + <span class="number">1</span>, p + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h2 id="14-Longest-Common-Prefix"><a href="#14-Longest-Common-Prefix" class="headerlink" title="14. Longest Common Prefix"></a><a href="https://leetcode.com/problems/longest-common-prefix/description/" target="_blank" rel="noopener">14. Longest Common Prefix</a></h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestCommonPrefix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (strs.empty()) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> idx = <span class="number">0</span>; idx &lt; strs[<span class="number">0</span>].size(); ++idx) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; strs.size(); ++i) &#123;</span><br><span class="line">                <span class="keyword">if</span> (strs[i][idx] != strs[<span class="number">0</span>][idx]) <span class="keyword">return</span> strs[<span class="number">0</span>].substr(<span class="number">0</span>, idx);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> strs[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -2132,466 +2551,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/06/C、C++基础/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Astray Wu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/06/C、C++基础/" class="post-title-link" itemprop="url">C、C++基础</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-05-06 22:52:46" itemprop="dateCreated datePublished" datetime="2019-05-06T22:52:46+08:00">2019-05-06</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-27 23:03:54" itemprop="dateModified" datetime="2019-05-27T23:03:54+08:00">2019-05-27</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">2.1k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">2 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>工作中的工程主要是C，不过公共的库函数设计上面存在一些问题，例如全局变量设计不合适、函数声明不合理、部分函数定义有问题，导致可移植性有点差，改成cpp文件后，报了很多错误，这里记录一些容易错误的地方，也顺带回顾一下基础知识。</p>
-<hr>
-<h3 id="全局变量的声明和使用（跨文件）"><a href="#全局变量的声明和使用（跨文件）" class="headerlink" title="全局变量的声明和使用（跨文件）"></a>全局变量的声明和使用（跨文件）</h3><ul>
-<li><a href="https://stackoverflow.com/questions/1433204/how-do-i-use-extern-to-share-variables-between-source-files" target="_blank" rel="noopener">How do I use extern to share variables between source files?</a></li>
-<li><a href="https://stackoverflow.com/questions/1410563/what-is-the-difference-between-a-definition-and-a-declaration" target="_blank" rel="noopener">What is the difference between a definition and a declaration?</a></li>
-</ul>
-<p>错误的参考</p>
-<ul>
-<li><a href="https://blog.csdn.net/flyingdust21/article/details/51679943" target="_blank" rel="noopener">C语言：全局变量在多个c文件中公用的方法</a></li>
-</ul>
-<p>上面的链接中Jonathan Leffler已经回答的很好了。对于声明和定义来说：</p>
-<ul>
-<li>一个变量被声明是指告知编译器，有个某种类型的变量会被使用，但编译不会为它分配内存。</li>
-<li>一个变量并定义是指编译器会分配对应变量的存储空间。</li>
-</ul>
-<p>一个变量可以被多次声明，但在给定的作用域范围内只能定义一次。一个变量的定义可以是一种声明，反之不是。</p>
-<p>最佳实践方式是使用包含<code>extern</code>关键字的头文件来声明变量，然后用某个包含该头文件的源文件对该变量进行定义。</p>
-<p>指导原则：</p>
-<ul>
-<li>头文件中值包含<code>extern</code>方式声明的变量，不要使用<code>static</code>或其他不合格的定义（静态全局变量只在本地文件中可以访问，因此有多个副本）</li>
-<li>对于任何变量，仅在一个头文件中声明（SPOT-Single Point of Truth）</li>
-<li>不要在在源文件中使用<code>extern</code>方式声明变量，源文件中应该用include头文件的方式来声明他们。——我司的实践规范，但实际代码并没有这么遵循，这样代码不好维护。</li>
-<li>对于任何变量，只能有一个源文件进行定义，并且建议初始化为0。</li>
-<li>头文件和源文件中的声明和定义应该保持一致。</li>
-<li>不需要在函数中用<code>extern</code>来声明变量。</li>
-<li>尽量避免全局变量。</li>
-</ul>
-<p>例如有<code>file3.h</code>、<code>file1.c</code>和<code>file2.c</code>三个文件（头文件和源文件名称一致会更好）：</p>
-<p><strong>file3.h</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> global_variable;  <span class="comment">/* Declaration of the variable */</span></span><br></pre></td></tr></table></figure>
-<p><strong>file1.c</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"file3.h"</span>  <span class="comment">/* Declaration made available here */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"prog1.h"</span>  <span class="comment">/* Function declarations */</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Variable defined here */</span></span><br><span class="line"><span class="keyword">int</span> global_variable = <span class="number">37</span>;    <span class="comment">/* Definition checked against declaration */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">increment</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123; <span class="keyword">return</span> global_variable++; &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>file2.c</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"file3.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"prog1.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">use_it</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Global variable: %d\n"</span>, global_variable++);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="bind1st"><a href="#bind1st" class="headerlink" title="bind1st"></a>bind1st</h2><p><a href="https://www.geeksforgeeks.org/bind-function-placeholders-c/" target="_blank" rel="noopener">Bind function and placeholders in C++</a><br><a href="https://blog.csdn.net/simahao/article/details/405455" target="_blank" rel="noopener">bind1st bind2nd的使用</a><br><a href="https://en.cppreference.com/w/cpp/utility/functional/bind12" target="_blank" rel="noopener">std::bind1st, std::bind2nd</a></p>
-<p>用于将二元算子转换成一元算子，将给定的参数绑定到给定的位置上。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#inlcude <span class="meta-string">&lt;functional&gt;</span></span></span><br><span class="line"><span class="built_in">std</span>::transform(a.begin(), a.end(), r.begin(),</span><br><span class="line">    <span class="built_in">std</span>::bind1st(<span class="built_in">std</span>::multiplies&lt;<span class="keyword">double</span>&gt;(), pi / <span class="number">180.</span>));</span><br><span class="line"><span class="comment">// equivalent lambda: [pi](double a)&#123; return a*pi/180.; &#125;);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除所有大于100的元素</span></span><br><span class="line"><span class="comment">// arr.value &lt; 100</span></span><br><span class="line">arr.erase(<span class="built_in">std</span>::remove_if(arr.begin(), arr.end(),</span><br><span class="line">    <span class="built_in">std</span>::bind1st(<span class="built_in">std</span>::less&lt;<span class="keyword">int</span>&gt;(), <span class="number">100</span>)), arr.end());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除所有大于100的元素</span></span><br><span class="line"><span class="comment">// 100 &lt; arr.value</span></span><br><span class="line">arr.erase(<span class="built_in">std</span>::remove_if(arr.begin(), arr.end(),</span><br><span class="line">    <span class="built_in">std</span>::bind2nd(<span class="built_in">std</span>::greater&lt;<span class="keyword">int</span>&gt;(), <span class="number">100</span>)), arr.end());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除所有小于等于100的元素</span></span><br><span class="line">arr.erase(<span class="built_in">std</span>::remove_if(arr.begin(), arr.end(),</span><br><span class="line">    <span class="built_in">std</span>::not1(<span class="built_in">std</span>::bind2nd(<span class="built_in">std</span>::greater&lt;<span class="keyword">int</span>&gt;(), <span class="number">100</span>))), arr.end());</span><br><span class="line"><span class="comment">// 说明：not1是否定返回值是单目的函数，std中还有not2它是否定返回值是双目的函数</span></span><br></pre></td></tr></table></figure>
-<h2 id="full"><a href="#full" class="headerlink" title="full"></a>full</h2>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/04/Qt资源汇总/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Astray Wu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/04/Qt资源汇总/" class="post-title-link" itemprop="url">Qt资源汇总</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-05-04 23:14:42" itemprop="dateCreated datePublished" datetime="2019-05-04T23:14:42+08:00">2019-05-04</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-19 11:53:34" itemprop="dateModified" datetime="2019-05-19T11:53:34+08:00">2019-05-19</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">1.6k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近在工作中使用到Qt，所以准备复习一下Qt相关的东西，网络上关于Qt的东西还是比较杂，仅仅记录下目前看到可能会实用的东西，同时按照自己的方式整理下，便于后续深入了解。</p>
-<p>ref:</p>
-<ol>
-<li><a href="https://blog.csdn.net/liang19890820/article/details/51752029" target="_blank" rel="noopener">Qt 资料大全 CSDN</a></li>
-</ol>
-<h2 id="Qt官网"><a href="#Qt官网" class="headerlink" title="Qt官网"></a>Qt官网</h2><ul>
-<li><a href="https://www.qt.io/" target="_blank" rel="noopener">Qt官网</a></li>
-<li><a href="https://www.qt.io/download" target="_blank" rel="noopener">Qt下载</a> Qt源码也在这里面下载</li>
-<li><a href="http://download.qt.io/archive/qt/" target="_blank" rel="noopener">Qt所有版本下载</a></li>
-<li><a href="http://download.qt.io/official_releases/qt" target="_blank" rel="noopener">Qt官方发布下载</a></li>
-<li><a href="https://wiki.qt.io/Main" target="_blank" rel="noopener">Qt wiki</a></li>
-</ul>
-<h2 id="Github-amp-Third-Party"><a href="#Github-amp-Third-Party" class="headerlink" title="Github &amp; Third-Party"></a>Github &amp; Third-Party</h2><ul>
-<li><a href="https://github.com/qtproject" target="_blank" rel="noopener">Qt Project github</a> 官方镜像，各种强大的Qt项目及丰富的Qt库</li>
-<li><a href="https://insideqt.github.io/awesome-qt/" target="_blank" rel="noopener">Awesome Qt</a></li>
-<li><a href="https://github.com/fffaraz/awesome-cpp" target="_blank" rel="noopener">Awesome C++</a>/[]</li>
-<li><a href="https://inqlude.org/" target="_blank" rel="noopener">inqlude</a> Qt库存档</li>
-<li><a href="https://github.com/justjavac/free-programming-books-zh_CN" target="_blank" rel="noopener">免费的编程中文书籍索引</a></li>
-</ul>
-<h2 id="社区论坛"><a href="#社区论坛" class="headerlink" title="社区论坛"></a>社区论坛</h2><h3 id="国外"><a href="#国外" class="headerlink" title="国外"></a>国外</h3><ul>
-<li><a href="http://www.qtcentre.org" target="_blank" rel="noopener">Qt-Centre</a> 很全面的国外网站，包含forum、wiki、docs和blogs等</li>
-<li><a href="https://forum.qt.io/" target="_blank" rel="noopener">Qt-forum</a> 知名的Qt论坛</li>
-<li><a href="https://www.linux-apps.com/" target="_blank" rel="noopener">Linux-Apps</a> 可以找到很多免费的 Qt 应用，获得源码来学习、研究。</li>
-<li><a href="https://www.qtsoftware.de/oxShop2/source/" target="_blank" rel="noopener">Qt Software</a> 提供第三方商业软件和开源软件的Qt用户社区</li>
-<li><a href="http://quitcoding.com/" target="_blank" rel="noopener">QUIt Coding</a></li>
-</ul>
-<h3 id="国内"><a href="#国内" class="headerlink" title="国内"></a>国内</h3><ul>
-<li><a href="https://bbs.csdn.net/forums/Qt" target="_blank" rel="noopener">Qt论坛 CSDN</a></li>
-<li><a href="http://www.qtcn.org/bbs/i.php" target="_blank" rel="noopener">QTCN 开发网 </a></li>
-<li><a href="http://www.qter.org" target="_blank" rel="noopener">Qter 开源社区 </a> 里面富含 Qter 们开发的实用开源项目和作品，以及一系列优秀的原创教程 - 图文并茂、简单易学</li>
-</ul>
-<h2 id="blog"><a href="#blog" class="headerlink" title="blog"></a>blog</h2><ul>
-<li><a href="http://planet.qt.io/" target="_blank" rel="noopener">Qt 相关博客的汇集者</a></li>
-<li><a href="http://blog.csdn.net/liang19890820" target="_blank" rel="noopener">一去丶二三里</a></li>
-<li><a href="http://www.devbean.net" target="_blank" rel="noopener">豆子</a></li>
-<li><a href="https://blog.csdn.net/dbzhang800" target="_blank" rel="noopener">1+1=10</a></li>
-<li><a href="http://qtdebug.com/" target="_blank" rel="noopener">QtDebug</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/42824849" target="_blank" rel="noopener">万丈高楼平地起：学习Qt5</a></li>
-</ul>
-<h2 id="书籍"><a href="#书籍" class="headerlink" title="书籍"></a>书籍</h2><ul>
-<li>QmlBook - A Book about Qt5<ul>
-<li><a href="http://qmlbook.github.io" target="_blank" rel="noopener">英文版</a></li>
-<li><a href="https://github.com/cwc1987/QmlBook-In-Chinese" target="_blank" rel="noopener">中文版</a></li>
-</ul>
-</li>
-<li>C++ Primer</li>
-<li>C++ GUI Qt4编程<br>Trolltech 的 Qt 培训教材，生动、全面、深刻地阐明了 Qt 程序的设计理念，轻松创建跨平台的解决方案。</li>
-<li>Qt 高级编程<br>阐述 Qt 高级编程技术的书籍。以工程实践为主旨，是对 Qt 现有的 700 多个类和上百万字参考文档中部分关键技术深入、全面的讲解和探讨。</li>
-<li>Python Qt GUI 快速编程<br>讲述如何利用 Python 和 Qt 开发 GUI 应用程序的原理、方法和关键技术。结构合理，内容详实，适合用作对Python、Qt 和 PyQt 编程感兴趣的童鞋。</li>
-<li>C++ Qt 设计模式<br>利用跨平台开源软件开发框架 Qt 阐释了 C++ 和设计模式中的主要思想，既复习了设计模式，又学了 C++/Qt，对于使用其它框架也是一个非常有用的参考。</li>
-<li>Qt5 开发实战<br>在全面阐述 Qt 基本功能的基础上，对新增的功能和服务进行了重点介绍。同时运用大量示例，集中讲解了应用程序的开发方法、技巧和必需的 API。</li>
-<li><strong>Qt5 开发及实例</strong><br>以 Qt5.4 为平台，循序渐进，在介绍开发环境的基础上，系统介绍 Qt5 应用程序的开发技术，通过实例介绍和讲解内容，将知识和能力融为一体。一般能够在比较短的时间内掌握 Qt5 应用技术。</li>
-<li>Qt on Android 核心编程<br>基于 Qt 5.2，详细讲述如何在移动平台 Android 上使用 Qt 框架进行开发。无论是专注于传统的桌面软件开发，还是希望尝试使用 Qt 在 Android 平台开发，都可以从中获得重要的知识与实例。</li>
-<li>Qt Quick 核心编程<br>着力于 QML 语言基础、事件、Qt Quick 基本元素，辅以简要的 ECMAScript（JavaScript）语言介绍，能够快速熟悉 Qt Quick 的基本知识和开发过程，详尽入微。</li>
-<li>Qt Creator快速入门<br>基于 Qt Creator 编写，全面涉及 Qt Quick；植根于 Qt 网络博客教程，可无限更新；对每个知识点详尽讲解，并设计了示例程序。</li>
-<li>Qt5 编程入门<br>基于 Qt5.3 编写，全面涉及 Qt Quick；植根于 Qt 网络博客教程，可无限更新；对每个知识点详尽讲解，并设计了示例程序。</li>
-<li>Qt 5.9 C++开发指南<br><a href="https://blog.csdn.net/HongAndYi/article/details/80169184" target="_blank" rel="noopener">倾心倾力之作《Qt 5.9 C++开发指南》</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2639,7 +2598,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2707,7 +2666,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">126k</span>
+    <span title="Symbols count total">127k</span>
   
 
   
@@ -2716,7 +2675,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">1:54</span>
+    <span title="Reading time total">1:56</span>
   
 </div>
 

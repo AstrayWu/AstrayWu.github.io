@@ -91,7 +91,7 @@
       applicationID: '',
       apiKey: '',
       indexName: '',
-      hits: {"per_page":10},
+      hits: {"per_page":30},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
@@ -322,6 +322,486 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/27/ffmpeg/ffmpeg常用命令/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/27/ffmpeg/ffmpeg常用命令/" class="post-title-link" itemprop="url">ffmpeg常用命令</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-27 18:25:49" itemprop="dateCreated datePublished" datetime="2019-04-27T18:25:49+08:00">2019-04-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-23 23:31:03" itemprop="dateModified" datetime="2019-05-23T23:31:03+08:00">2019-05-23</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">6.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">6 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>记录下工作中常用的ffmpeg命令，有些网络上不好查找到，需要总结。用md不知道怎么排版比较合适</p>
+<hr>
+<h2 id="1-编码"><a href="#1-编码" class="headerlink" title="1. 编码"></a>1. 编码</h2><p>u_p444_b10的YUV→100M的YUV420的24fps的HDR10码流（单帧，每帧YUV重复2秒）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># u_p444_b10的YUV→100M的YUV420的24fps的HDR10码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line"><span class="comment"># "如果要非单帧的，将前面一个""-r 0.5""去掉即可；重复10s，用""""-r 0.1""""；如果yuv仅有一帧，编码会有错误，所以至少2帧进行repeat"""</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 100M -vf scale=out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"keyint=24:colorprim=bt2020:transfer=smpte2084:colormatrix=bt2020nc:master-display=G(13250,34500)B(7500,3000)R(34000,16000)WP(15635,16450)L(10000000,50):max-cll=0,0"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># u_p444_b10的YUV→100M的YUV420的24fps的SDR码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 100M -vf scale=out_color_matrix=bt709:out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"colorprim=bt709:transfer=bt709:colormatrix=bt709"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># u_p444_b10的YUV→100M的YUV420的24fps的HLG码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 100M -vf scale=out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"keyint=24:colorprim=bt2020:transfer=arib-std-b67:colormatrix=bt2020nc"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># u_p420_b8的YUV→100M的YUV420p10的24fps的SDR码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 1920x1080 -pix_fmt yuv420p -i input.yuv -b:v 100M -s 3840x2160 -vf scale=out_color_matrix=bt709:out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"colorprim=bt709:transfer=bt709:colormatrix=bt709"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 720x480_p422_b8的YUV→100M的YUV422p8的24fps的SDR码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line"><span class="comment"># 一帧即可完成，但是V811不支持这个格式，需要更换编码库</span></span><br><span class="line">ffmpeg -threads 16 -r 0.2 -s 720x480 -pix_fmt yuv422p -i input.yuv -b:v 100M -c:v libx265 -preset ultrafast -x265-params -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 720x480_p422_b8的YUV→100M的YUV422p8的24fps的SDR码流（单帧，每帧YUV重复10秒）</span></span><br><span class="line"><span class="comment"># 注意至少需要两帧，但第二帧不会被repeated，总共只有10这里采用MPEG4编码库，不知道为何X265时V811支持不了</span></span><br><span class="line">ffmpeg -r 0.1 -s 720x480 -pix_fmt yuv422p -i input.yuv -b:v 100M -vcodec mpeg4 -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编码时重新添加旋转的metadata</span></span><br><span class="line">ffmpeg -I input.mp4 -c copy -metadata:s:v:0 rotate=90 output.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="2-解码"><a href="#2-解码" class="headerlink" title="2. 解码"></a>2. 解码</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 直接解码出YUV444的码流</span></span><br><span class="line">ffmpeg -i input.mp4 -pix_fmt yuv444p10 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码YUV444的码流，并指定30帧和分辨率</span></span><br><span class="line">ffmpeg -i input.mp4 -frames:v 30 -pix_fmt yuv444p10 -s 3840x2160 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码YUV444的码流，并指定时间段和分辨率</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:54 -t 00:00:10 -pix_fmt yuv444p10 -s 3840x2160 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将码流分段解出yuv，每段持续2秒，总共最多解500帧，指定输出分辨率为f_p444_b10</span></span><br><span class="line"><span class="comment"># （ 注意直接使用命令行时用一个""%""，在脚本中要转义用""%%""）"</span></span><br><span class="line">ffmpeg -i input.mp4 -frames:v 500 -pix_fmt yuv444p10 -s 1920x1080 -f segment -segment_time 2 -y output_%%04d.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从制定时间开始截取一帧，并制定分辨率和格式</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:54 -frames:v 1 -pix_fmt yuv444p10 -s 3840x2160 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码时进行反交错deinterlace（有两种方法，但是主观效果差异应该不大）</span></span><br><span class="line">ffmpeg -i input.mp4 -deinterlace -pix_fmt yuv444p10 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 缩放</span></span><br><span class="line">ffmpeg -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -vf scale=iw*2:ih*2 output.yuvffmpeg -i input.jpg -vf scale=iw*w:ih*2 output.jpg</span><br><span class="line">ffmpeg -i input.avi -vf scale=320:240 output.avi</span><br><span class="line">ffmpeg -i input.avi -vf scale=320:-1 otuput.avi</span><br><span class="line">ffmpeg -i input.avi -vf <span class="string">"scale=iw/2:ih/2"</span> output.avi</span><br><span class="line">ffmpeg -s 1920x1080 -pix_fmt yuv444p10 -i input.yuv -vf scale=iw*2:ih*2 output.yuv</span><br><span class="line">ffmpeg -s 1920x1080 -pix_fmt gray10 -i input.yuv -vf scale=iw*2:ih*2 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解YUV4448bit</span></span><br><span class="line">ffmpeg -i input.mp4 -pix_fmt yuv444p -y output.yuv</span><br></pre></td></tr></table></figure>
+<h2 id="3-拼接"><a href="#3-拼接" class="headerlink" title="3. 拼接"></a>3. 拼接</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将多段ts流拼接</span></span><br><span class="line">ffmpeg -i concat:<span class="string">"u_r24_sdr_bt709.ts|u_r24_sdr_bt2020.ts|u_r24_sdr_pq.ts|u_r24_sdr_hdr10.ts|u_r24_sdr_hlg10.ts"</span> -c copy -an -y u_r24_b10_sscimf.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 同时拼接4路；做8K用</span></span><br><span class="line">ffmpeg -i 1.mp4 -i 2.mp4 -i 3.mp4 -i 4.mp4 -filter_complex <span class="string">"[0:v]pad=iw*2:ih*2[a];[a][1:v]overlay=w[b];[b][2:v]overlay=0:h[c];[c][3:v]overlay=w:h"</span> out.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="4-截取"><a href="#4-截取" class="headerlink" title="4. 截取"></a>4. 截取</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 从指定时间开始截取一段码流</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:05.2 -t 00:00:10 -c copy output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从指定时间开始截取一帧</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:05 -frames:v 1 -pix_fmt yuv444p10 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 截取4帧V210格式的UHD</span></span><br><span class="line">ffmpeg -f image2pipe -s 3840x2160 -vcodec v210 -frame_size 22118400 -i input.yuv -vcodec v210 -frames:v 4 output.yuv</span><br></pre></td></tr></table></figure>
+<h2 id="5-转码-scaler"><a href="#5-转码-scaler" class="headerlink" title="5. 转码/scaler"></a>5. 转码/scaler</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将码流转码成420p10</span></span><br><span class="line">ffmpeg -i input.mp4 -vf format=yuv420p10 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将码流转码成fhd</span></span><br><span class="line">ffmpeg -i input.mp4 -vf scale=1920:1080 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将码流转码成uhd</span></span><br><span class="line"><span class="comment"># 但是HDR的metadata会丢失掉</span></span><br><span class="line">ffmpeg -i input.mp4 -vf scale=3840:2160 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新拷贝音视频流，可修复视频时间戳不正确等问题</span></span><br><span class="line">ffmpeg -i input.mp4 -c:v copy -c:a copy output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将UHD YUV转成FHD YUV</span></span><br><span class="line">ffmpeg -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -vf scale=1920:1080 -pix_fmt yuv444p10 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将UHD YUV444转成V210；"跟scalar效果基本一致，UV的值略偏右，目前没有看出来差异"</span></span><br><span class="line">ffmpeg -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -vcodec v210 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将V210转成YUV444 FHD</span></span><br><span class="line"><span class="comment"># 5529600刚好是一帧V210格式的大小，可能与标准的YUV422计算有一定的偏差，因为可能有偏移或者头 https://trac.ffmpeg.org/ticket/1869</span></span><br><span class="line">ffmpeg -f image2pipe -vcodec v210 -s 1920x1080 -frame_size 5529600 -i 1920x1080_ducks_v210.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将V210转成缩略图</span></span><br><span class="line">ffmpeg -f image2pipe -s 3840x2160 -vcodec v210 -frame_size 22118400 -i input.yuv -f image2 -ss 08.010 -t 0.001 -s 1920x1080 otuput.jpg</span><br></pre></td></tr></table></figure>
+<h2 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># "将u_p444_b10的yuv图像以50M的码率编成420的1fps的SDR码流</span></span><br><span class="line"><span class="comment"># 5秒对应1帧原图，改变了帧率，STB播放异常，但是编码速度较快）</span></span><br><span class="line">ffmpeg -threads 16 -r 0.2 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 50M -vf scale=out_color_matrix=bt709:out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset medium -x265-params  <span class="string">"colorprim=bt709:transfer=bt709:colormatrix=bt709"</span> -an -y -r 1 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># "将u_p444_b10的yuv图像以近无损方式编成10bit420的24fps的SDR码流（pq=0）</span></span><br><span class="line"><span class="comment"># 不过码流通常会过高，可能达到400M，一般不可行"""</span></span><br><span class="line">ffmpeg -threads 16 -pix_fmt yuv444p10 -s 3840x2160 -r 24 -i input.yuv -vf scale=out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset medium -x265-params qp=0:keyint=24:colorprim=bt709:transfer=bt709:colormatrix=bt709 -an -y otuput.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="7-备注"><a href="#7-备注" class="headerlink" title="7. 备注"></a>7. 备注</h2><ol>
+<li>在编码的时候如果指定-preset ultrafast则速度会比-preset medium快不少，大约只要1/3的时间（单帧编码测试结果）。官方文档表示图像质量是一致的，文件大小有差异，但实测文件大小差异不大</li>
+</ol>
+<h2 id="8-ffprobe"><a href="#8-ffprobe" class="headerlink" title="8. ffprobe"></a>8. ffprobe</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 获取帧数（速度很慢，需要解出来才能获取）</span></span><br><span class="line">ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_read_frames -of default=nokey=1:noprint_wrappers=1 input.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 说是上面一个方法的快速版本，直接查询容器</span></span><br><span class="line">ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_frames -of default=nokey=1:noprint_wrappers=1 input.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="9-mediainfo"><a href="#9-mediainfo" class="headerlink" title="9. mediainfo"></a>9. mediainfo</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 获取帧数（速度比ffprobbe快很多）</span></span><br><span class="line">mediainfo --Output=<span class="string">"Video;%FrameCount%"</span> input.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="10-ref"><a href="#10-ref" class="headerlink" title="10. ref"></a>10. ref</h2><ul>
+<li><a href="https://www.cnblogs.com/wolf-song/p/7708364.html" target="_blank" rel="noopener">多个视频文件合成画中画效果（Python、ffmpeg）</a></li>
+<li><a href="https://blog.csdn.net/weiwen12138/article/details/70344681" target="_blank" rel="noopener">ffmpeg 命令行实现多路视频拼接播放</a>]</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/27/git使用小记/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/27/git使用小记/" class="post-title-link" itemprop="url">git使用小记</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-27 11:06:09" itemprop="dateCreated datePublished" datetime="2019-04-27T11:06:09+08:00">2019-04-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-02 00:50:17" itemprop="dateModified" datetime="2019-05-02T00:50:17+08:00">2019-05-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">5.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">5 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><a href="https://github.com/hongiii/gitNotes_from_Liao" target="_blank" rel="noopener">gitNotes_from_Liao</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰的Git教程</a></li>
+</ul>
+<p>记录git使用过程的一些问题和方法。</p>
+<h2 id="集中式VS分布式版本控制系统"><a href="#集中式VS分布式版本控制系统" class="headerlink" title="集中式VS分布式版本控制系统"></a>集中式VS分布式版本控制系统</h2><p>集中式版本管理系统，版本库是集中在中央服务器的，需要先从中央服务器同步下来，然后再推送回去，因此必须联网才能工作。而分布式版本控制系统则没有中央服务器，每个人的电脑上都是一个完整的版本库，因此工作的时候不需要联网，需要协作的时候只需要将相互的修改推动给对方，互相就可以看到修改了。<br>因此两者之间的历史版本维护位置不同，Git本地库包含了代码库还有历史库，在本地就可以记录历史，而SVN的历史库位于中央仓库，每次对比和提交代码都必须链接到中央库。<br>由于每个人的电脑都有完整的版本库，因此其安全性很高，某一个人的电脑坏了无关紧要。当然实际使用的时候，很少是是两个人之间的进行版本库的推送，一般也有一台机器充当中央服务器，该服务器的作用仅仅是用来方便大家之间的交流。</p>
+<h2 id="本地和远程同步"><a href="#本地和远程同步" class="headerlink" title="本地和远程同步"></a>本地和远程同步</h2><p>本地库要推送到远端，但这两个git库不相关，例如已有本地库，然后github上又新建了项目</p>
+<ul>
+<li><a href="https://blog.csdn.net/guotingting923/article/details/80162896" target="_blank" rel="noopener">上传本地项目到github远程仓库</a></li>
+<li><a href="https://www.centos.bz/2018/03/git-%E5%87%BA%E7%8E%B0-fatal-refusing-to-merge-unrelated-histories-%E9%94%99%E8%AF%AF/" target="_blank" rel="noopener">git 出现 fatal: refusing to merge unrelated histories 错误</a></li>
+<li><a href="https://www.jianshu.com/p/71e8dbd14b30" target="_blank" rel="noopener">GitHub使用部分—本地库和远程库之间的同步</a></li>
+</ul>
+<p>方法一<br>可以先将远程库拉下来，然后再将本地的代码拷贝到远端库下载到本地库，然后在提交，这样相当于一次update。不过这样子不能记录原有的git记录</p>
+<p>方法二<br>强制关联推送</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 本地先正常init、add和commit</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 关联远程库</span></span><br><span class="line">$ git remote add origin https://github.com/AstrayWu/utils_python.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果远端库已经存在，则进行删除再关联</span></span><br><span class="line">$ git remote rm origin</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用--allow-unrelated-hisotries进行强制关联</span></span><br><span class="line">$ git pull origin master --allow-unrelated-hisotries</span><br><span class="line"></span><br><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
+<h2 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a>git push</h2><ul>
+<li><a href="https://www.yiibai.com/git/git_push.html" target="_blank" rel="noopener">git push命令 - 易百教程</a> </li>
+<li><a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener">2.5 Git 基础 - 远程仓库的使用</a></li>
+<li><a href="https://www.cnblogs.com/qianqiannian/p/6008140.html" target="_blank" rel="noopener">Git push 常见用法</a></li>
+</ul>
+<p>用<code>git remote</code>查看配置的远程库名字，一般<code>origin</code>是Git克隆的远程仓库服务器的默认名字。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git remote <span class="comment"># 查看配置的远程库名字</span></span><br><span class="line">$ git remote -v <span class="comment"># 显示对应的URL</span></span><br><span class="line">$ git remote add &lt;shortname&gt; &lt;url&gt; <span class="comment"># 添加远程库并制定简称</span></span><br><span class="line">$ git remote add pb https://github.com/paulboone/ticgit</span><br><span class="line">$ git remote add pb git@github.com:paulboone/ticgit.git</span><br><span class="line">$ git remote -v</span><br><span class="line">$ git fetch [remote-name] <span class="comment"># 有了简写后就可以用简写代替远程库的名字</span></span><br><span class="line">$ git push [remote-name] [branch-name]</span><br><span class="line">$ git push -u origin master 第一次同步时使用该命令</span><br><span class="line">$ git push origin master</span><br><span class="line">origin https://github.com/schacon/ticgit (fetch)</span><br><span class="line">origin https://github.com/schacon/ticgit (push)</span><br><span class="line">pb https://github.com/paulboone/ticgit (fetch)</span><br><span class="line">pb https://github.com/paulboone/ticgit (push)</span><br></pre></td></tr></table></figure>
+<p><code>git push</code>的用法为，冒号后面直接加远程分支名：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span><br></pre></td></tr></table></figure>
+<p>如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。下面命令表示删除origin主机的master分支。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git push origin :master</span><br><span class="line"><span class="comment"># 等同于</span></span><br><span class="line">git push origin --delete master</span><br></pre></td></tr></table></figure>
+<p>如果当前分支与多个主机存在追踪关系，则可以使用<code>-u</code>选项指定一个默认主机，这样后面就可以不加任何参数使用<code>git push</code>。下面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用<code>git push</code>了。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h2 id="工作区、暂存区和版本库"><a href="#工作区、暂存区和版本库" class="headerlink" title="工作区、暂存区和版本库"></a>工作区、暂存区和版本库</h2><p>工作区：在电脑里能看到的目录； 版本库：在工作区有一个隐藏目录.git，是Git的版本库。 Git的版本库中存了很多东西，其中最重要的就是称为stage（或者称为index）的暂存区，还有Git自动创建的master，以及指向master的指针HEAD。<br><img src="/2019/04/27/git使用小记/2019-04-28-00-01-11.png" alt="工作区、暂存区和版本库"><br>进一步解释一些命令：<br><code>git add</code>实际上是把文件添加到暂存区<br><code>git commit</code>实际上是把暂存区的所有内容提交到当前分支</p>
+<h2 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h2><p>查看修改内容</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git diff <span class="comment"># 可以查看工作区(work dict)和暂存区(stage)的区别</span></span><br><span class="line">git diff --cached <span class="comment"># 可以查看暂存区(stage)和分支(master)的区别</span></span><br><span class="line">git diff HEAD -- &lt;file&gt; <span class="comment"># 可以查看工作区和版本库里面最新版本的区别</span></span><br></pre></td></tr></table></figure>
+<h2 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h2><p>查看提交日志</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br><span class="line">git <span class="built_in">log</span> --pretty=oneline <span class="comment"># 简化日志输出信息</span></span><br></pre></td></tr></table></figure>
+<h2 id="git-reflog"><a href="#git-reflog" class="headerlink" title="git reflog"></a>git reflog</h2><p>查看命令历史</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+<h2 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h2><ul>
+<li><a href="https://cloud.tencent.com/developer/article/1358036" target="_blank" rel="noopener">Git Reset命令- 腾讯云</a></li>
+</ul>
+<p>版本回退<br>返回上一个版本，在Git中，用<code>HEAD</code>表示当前版本，上一个版本就是<code>HEAD^</code>，上上一个版本是HEAD^^，往上100个版本写成<code>HEAD~100</code>。commit_id是版本号，是一个用SHA1计算出的序列</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>git reset --soft HEAD^</code>：将最近一次提交节点的提交记录回退到暂存区</li>
+<li><code>git reset --mixed HEAD^</code>：将最近一次提交节点的提交记录回退到工作区</li>
+<li><code>git reset --hard HEAD^</code>：将最近一次提交节点的提交记录全部清除</li>
+</ul>
+<p>eg：<br>在Master分支中，首先通过<code>git add test.txt</code>将test.txt文件添加到暂存区，再通过<code>git commit -m &quot;add file test.txt &quot;</code>将暂存区的内容作为一次提交记录添加到提交区，最后如果没问题的话就可以通过<code>git push origin master</code>将这次提交push到远端仓库。</p>
+<p>使用</p>
+<ol>
+<li><p>修改commit的message，有点类似<code>amend</code>操作<br> 如果此时发现提交记录的comment写错了，如将<code>git commit -m &quot;add file test.txt&quot;</code>写成了<code>git commit -m &quot;ad file test.txt&quot;</code>，那么就可以使用    <code>git reset --soft HEAD^</code>将本次提交回退到暂存区，再重新把comment补全，进行一次提交。</p>
+</li>
+<li><p>修改commit的文件<br>如果此时发现提交记录里有一个文件多提交了，或者有一个文件漏添加到暂存区而没有在此次提交内，则可以通过<code>git reset --mixed HEAD^</code>将本次提交都回退到没有添加到暂存区之前，然后再重新add需要提交的文件后，再重新add</p>
+</li>
+<li><p>完全撤销此次commit<br>如果此时发现修复一个BUG完全错了，希望取消这次提交，并且把代码回退到没有改动的话，则需要使用<code>git reset --hard HEAD^</code>，来将这次提交全部回退。</p>
+</li>
+</ol>
+<h2 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h2><h3 id="丢弃工作区的修改"><a href="#丢弃工作区的修改" class="headerlink" title="丢弃工作区的修改"></a>丢弃工作区的修改</h3><p>该命令是指将文件在工作区的修改全部撤销，这里有两种情况：</p>
+<ol>
+<li>file自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</li>
+<li>file已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。<br>总之，就是让这个文件回到最近一次git commit或git add时的状态。也就是将工作区的状态回退到暂存区或者版本库。</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git checkout -- &lt;file&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="丢弃暂存区的修改"><a href="#丢弃暂存区的修改" class="headerlink" title="丢弃暂存区的修改"></a>丢弃暂存区的修改</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reset HEAD &lt;file&gt; <span class="comment"># 第一步，把暂存区的修改撤销掉(unstage)，重新放回工作区：</span></span><br><span class="line">git checkout -- &lt;file&gt; <span class="comment"># 第二步，撤销工作区的修改</span></span><br></pre></td></tr></table></figure>
+<p>小结：</p>
+<ol>
+<li>当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令<code>git checkout -- &lt;file&gt;</code>。</li>
+<li>当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令<code>git reset HEAD &lt;file&gt;</code>，就回到了第一步，第二步按第一步操作。</li>
+<li>已经提交了不合适的修改到版本库时，想要撤销本次提交，进行版本回退，前提是没有推送到远程库。</li>
+</ol>
+<h2 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a>git rm</h2><p>删除文件</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git rm &lt;file&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以上等价于，注意是提交到暂存区</span></span><br><span class="line">rm &lt;file&gt;</span><br><span class="line">git add &lt;file&gt;</span><br></pre></td></tr></table></figure>
+<p>进一步的解释<br>Q: 比如执行了rm text.txt 误删了怎么恢复？<br>A: 执行<code>git checkout -- text.txt</code> 把版本库的东西重新写回工作区就行了</p>
+<p>Q: 如果执行了<code>git rm text.txt</code>我们会发现工作区的text.txt也删除了，怎么恢复？<br>A: 先撤销暂存区修改，重新放回工作区，然后再从版本库写回到工作区</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reset head text.txt</span><br><span class="line">git checkout -- text.txt</span><br></pre></td></tr></table></figure>
+<h2 id="远程库"><a href="#远程库" class="headerlink" title="远程库"></a>远程库</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span> <span class="comment"># 创建SSH Key</span></span><br><span class="line">git remote add origin https://github.com/username/repositoryname.git <span class="comment"># 关联远程仓库</span></span><br><span class="line">git push -u origin master <span class="comment"># 第一次推送到远程仓库，后续可以省略-u</span></span><br><span class="line"></span><br><span class="line">git remote -v <span class="comment"># 查看远程库信息</span></span><br></pre></td></tr></table></figure>
+<h3 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h3><ul>
+<li><a href="https://www.yiibai.com/git/git_pull.html" target="_blank" rel="noopener">git pull命令</a></li>
+</ul>
+<p>git pull命令用于从另一个存储库或本地分支获取并集成(整合)。git pull命令的作用是：取回远程主机某个分支的更新，再与本地的指定分支合并，它的完整格式稍稍有点复杂。</p>
+<p>语法的位置和push有点不同，远程主机名在最前，然后push是本地→到远端，pull是远端→本地。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</span><br></pre></td></tr></table></figure>
+<p>如要要取回origin主机的next分支，与本地的master分支合并，需要写成下面这样：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git pull origin next:master</span><br></pre></td></tr></table></figure>
+<p>如果远程分支(next)要与当前分支合并，则冒号后面的部分可以省略。上面命令可以简写为：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git pull origin next</span><br></pre></td></tr></table></figure>
+<p>上面命令表示，取回origin/next分支，再与当前分支合并。实质上，这等同于先做git fetch，再执行git merge。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git fetch origin</span><br><span class="line">git merge origin/next</span><br></pre></td></tr></table></figure>
+<h3 id="fetch和-pull的区别"><a href="#fetch和-pull的区别" class="headerlink" title="fetch和 pull的区别"></a>fetch和 pull的区别</h3><ul>
+<li><a href="https://www.yiibai.com/git/git_pull.html" target="_blank" rel="noopener">git pull命令</a></li>
+</ul>
+<p>一般使用pull会简单些，不过可能要解决冲突</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git pull <span class="comment"># 相当于是从远程获取最新版本并merge到本地</span></span><br><span class="line">git fetch <span class="comment"># 相当于是从远程获取最新版本到本地，不会自动merge</span></span><br></pre></td></tr></table></figure>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch &lt;branchname&gt; <span class="comment"># 创建分支</span></span><br><span class="line">git branch <span class="comment"># 列出所有分支，当前分支前面会标一个*号。</span></span><br><span class="line">git checkout &lt;branchname&gt; <span class="comment"># 切换分支</span></span><br><span class="line">git checkout -b &lt;branchname&gt; <span class="comment"># 创建+切换分支</span></span><br><span class="line">git merge &lt;branchname&gt; <span class="comment"># 合并某分支到当前分支</span></span><br><span class="line">git branch -d &lt;branchname&gt; <span class="comment"># 删除分支</span></span><br><span class="line">git <span class="built_in">log</span> --graph <span class="comment"># 查看分支合并图</span></span><br><span class="line">git merge --no-ff -m <span class="string">"description"</span> &lt;branchname&gt; <span class="comment"># 普通模式合并分支</span></span><br><span class="line"><span class="comment"># 因为本次合并要创建一个新的commit，所以加上-m参数，把commit描述写进去。合并分支时，加上--no-ff参数就可以用普通模式合并，能看出来曾经做过合并，包含作者和时间戳等信息，而fast forward合并就看不出来曾经做过合并。</span></span><br><span class="line"></span><br><span class="line">git branch -D &lt;branchname&gt; <span class="comment"># 丢弃一个没有合并过的分支</span></span><br></pre></td></tr></table></figure>
+<h2 id="reflog"><a href="#reflog" class="headerlink" title="reflog"></a>reflog</h2><ul>
+<li><a href="https://blog.csdn.net/u013252047/article/details/80230781" target="_blank" rel="noopener">git命令log与reflog的比较</a></li>
+</ul>
+<p>git log 命令可以显示所有提交过的版本信息；git log 命令可以显示所有提交过的版本信息</p>
+<h2 id="现场"><a href="#现场" class="headerlink" title="现场"></a>现场</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git stash <span class="comment"># 保存工作现场</span></span><br><span class="line">git stash list <span class="comment"># 查看工作现场</span></span><br><span class="line">git stash pop <span class="comment"># 恢复工作现场</span></span><br></pre></td></tr></table></figure>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p>tag就是一个让人容易记住的有意义的名字，它跟某个commit绑在一起。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git tag &lt;tagname&gt; <span class="comment"># 用于新建一个标签，默认为HEAD，也可以指定一个commit id。</span></span><br><span class="line">git tag -a &lt;tagname&gt; -m &lt;description&gt; &lt;branchname&gt; or commit_id <span class="comment"># 指定标签信息</span></span><br><span class="line">git tag <span class="comment"># 查看所有标签</span></span><br><span class="line">git push origin &lt;tagname&gt; <span class="comment"># 推送一个本地标签</span></span><br><span class="line">git tag -d &lt;tagname&gt; <span class="comment"># 删除一个本地标签</span></span><br><span class="line">git push origin :refs/tags/&lt;tagname&gt; <span class="comment"># 删除一个远程标签；也就是推送一个空的tag到远程库</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1407,7 +1887,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-27 23:02:31" itemprop="dateModified" datetime="2019-05-27T23:02:31+08:00">2019-05-27</time>
+                <time title="Modified: 2019-06-05 00:48:54" itemprop="dateModified" datetime="2019-06-05T00:48:54+08:00">2019-06-05</time>
               
             
           </span>
@@ -1435,7 +1915,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">5.9k</span>
+                <span title="Symbols count in article">6.1k</span>
               
 
               
@@ -1449,7 +1929,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">5 mins.</span>
+                <span title="Reading time">6 mins.</span>
               
             </div>
           
@@ -1684,6 +2164,10 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
 <h2 id="5-转义字符"><a href="#5-转义字符" class="headerlink" title="5. 转义字符"></a>5. 转义字符</h2><p>md支持下列字符的转义</p>
 <p>\ 反斜杠<br>` 反引号<br>* 星号<br>_ 下划线<br>\{\} 大括号<br>[] 中括号<br>() 小括号<br># 井号<br>+ 加号<br>- 减号<br>. 英文句号<br>! 感叹号</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\\ 反斜杠</span><br><span class="line">\` 反引号</span><br><span class="line">\* 星号</span><br><span class="line">\_ 下划线</span><br><span class="line">\&#123;\&#125; 大括号</span><br><span class="line">\[\] 中括号</span><br><span class="line">\(\) 小括号</span><br><span class="line">\# 井号</span><br><span class="line">\+ 加号</span><br><span class="line">\- 减号</span><br><span class="line">\. 英文句号</span><br><span class="line">\! 感叹号</span><br></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>非gfw支持的语法，不过一般可以使用</p>
+<p>加颜色<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;font color=#FF0000&gt;关于基本概念，需要在逐渐掌握整体框架后重新加深理解和总结。&lt;/font&gt;</span><br></pre></td></tr></table></figure></p>
+<font color="#FF0000">关于基本概念，需要在逐渐掌握整体框架后重新加深理解和总结。</font>
+
           
         
       
@@ -1771,7 +2255,7 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1839,7 +2323,7 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">126k</span>
+    <span title="Symbols count total">127k</span>
   
 
   
@@ -1848,7 +2332,7 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">1:54</span>
+    <span title="Reading time total">1:56</span>
   
 </div>
 
@@ -2333,6 +2817,10 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
 
   
   
+    
+      
+    
+      
     
       
     

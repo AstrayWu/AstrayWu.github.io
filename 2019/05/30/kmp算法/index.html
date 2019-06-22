@@ -103,26 +103,24 @@
 
 
 
-  <meta name="description" content="2.3 Symbolic Data2.3.1 Quotation本小结主要讲符号的引用，之前都是在对数字进行处理，现在要考虑对实际变量的处理。 eq?可以用于判断两个符号的是否相等。从而可以定义memq，用于判断给定符号是否在特定list中，如果不是返回nil，否则返回以该符号为首的sublist。 (define (memq item x)    (cond ((null? x) false)">
+  <meta name="description" content="（原创）详解KMP算法 cnblogs 如何更好的理解和掌握 KMP 算法? 知乎  将以前KMP算法的东西复习一下 主要概念是部分匹配表PMT，即字符串前缀和后缀集合的交集中最长元素的长度，将PMT右移一位即可得到next数组，牢记next数组存储的是pattern中下一次要进行匹配判断的index，为了编程方便next[0]定义成-1。 不妨即模式字符串为P，next[q] = k表示P[q">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SICP_2.3">
-<meta property="og:url" content="http://yoursite.com/2019/04/16/SICP/SICP-2-3/index.html">
+<meta property="og:title" content="kmp算法">
+<meta property="og:url" content="http://yoursite.com/2019/05/30/kmp算法/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="2.3 Symbolic Data2.3.1 Quotation本小结主要讲符号的引用，之前都是在对数字进行处理，现在要考虑对实际变量的处理。 eq?可以用于判断两个符号的是否相等。从而可以定义memq，用于判断给定符号是否在特定list中，如果不是返回nil，否则返回以该符号为首的sublist。 (define (memq item x)    (cond ((null? x) false)">
+<meta property="og:description" content="（原创）详解KMP算法 cnblogs 如何更好的理解和掌握 KMP 算法? 知乎  将以前KMP算法的东西复习一下 主要概念是部分匹配表PMT，即字符串前缀和后缀集合的交集中最长元素的长度，将PMT右移一位即可得到next数组，牢记next数组存储的是pattern中下一次要进行匹配判断的index，为了编程方便next[0]定义成-1。 不妨即模式字符串为P，next[q] = k表示P[q">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2019/04/16/SICP/SICP-2-3/2019-04-18-02-23-30.png">
-<meta property="og:updated_time" content="2019-04-27T03:02:30.812Z">
+<meta property="og:updated_time" content="2019-05-30T16:36:50.621Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SICP_2.3">
-<meta name="twitter:description" content="2.3 Symbolic Data2.3.1 Quotation本小结主要讲符号的引用，之前都是在对数字进行处理，现在要考虑对实际变量的处理。 eq?可以用于判断两个符号的是否相等。从而可以定义memq，用于判断给定符号是否在特定list中，如果不是返回nil，否则返回以该符号为首的sublist。 (define (memq item x)    (cond ((null? x) false)">
-<meta name="twitter:image" content="http://yoursite.com/2019/04/16/SICP/SICP-2-3/2019-04-18-02-23-30.png">
+<meta name="twitter:title" content="kmp算法">
+<meta name="twitter:description" content="（原创）详解KMP算法 cnblogs 如何更好的理解和掌握 KMP 算法? 知乎  将以前KMP算法的东西复习一下 主要概念是部分匹配表PMT，即字符串前缀和后缀集合的交集中最长元素的长度，将PMT右移一位即可得到next数组，牢记next数组存储的是pattern中下一次要进行匹配判断的index，为了编程方便next[0]定义成-1。 不妨即模式字符串为P，next[q] = k表示P[q">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/16/SICP/SICP-2-3/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/30/kmp算法/">
 
 
 
@@ -132,7 +130,7 @@
   };
 </script>
 
-  <title>SICP_2.3 | Hexo</title>
+  <title>kmp算法 | Hexo</title>
   
 
 
@@ -343,7 +341,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/16/SICP/SICP-2-3/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/30/kmp算法/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Astray Wu">
@@ -360,7 +358,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SICP_2.3
+          <h1 class="post-title" itemprop="name headline">kmp算法
 
               
             
@@ -386,7 +384,7 @@
                 
               
 
-              <time title="Created: 2019-04-16 04:44:51" itemprop="dateCreated datePublished" datetime="2019-04-16T04:44:51+08:00">2019-04-16</time>
+              <time title="Created: 2019-05-30 23:32:00" itemprop="dateCreated datePublished" datetime="2019-05-30T23:32:00+08:00">2019-05-30</time>
             
 
             
@@ -403,7 +401,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-27 11:02:30" itemprop="dateModified" datetime="2019-04-27T11:02:30+08:00">2019-04-27</time>
+                <time title="Modified: 2019-05-31 00:36:50" itemprop="dateModified" datetime="2019-05-31T00:36:50+08:00">2019-05-31</time>
               
             
           </span>
@@ -438,7 +436,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">3.2k</span>
+                <span title="Symbols count in article">1.1k</span>
               
 
               
@@ -452,7 +450,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">3 mins.</span>
+                <span title="Reading time">1 mins.</span>
               
             </div>
           
@@ -472,24 +470,16 @@
       
 
       
-        <h2 id="2-3-Symbolic-Data"><a href="#2-3-Symbolic-Data" class="headerlink" title="2.3 Symbolic Data"></a>2.3 Symbolic Data</h2><h3 id="2-3-1-Quotation"><a href="#2-3-1-Quotation" class="headerlink" title="2.3.1 Quotation"></a>2.3.1 Quotation</h3><p>本小结主要讲符号的引用，之前都是在对数字进行处理，现在要考虑对实际变量的处理。</p>
-<p><code>eq?</code>可以用于判断两个符号的是否相等。<br>从而可以定义<code>memq</code>，用于判断给定符号是否在特定list中，如果不是返回nil，否则返回以该符号为首的sublist。</p>
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">(<span class="name">define</span> (<span class="name">memq</span> item x)</span><br><span class="line">    (<span class="name">cond</span> ((<span class="name">null</span>? x) false)</span><br><span class="line">          ((<span class="name">eq</span>? item (<span class="name">car</span> x)) x)</span><br><span class="line">          (<span class="name">else</span> (<span class="name">memq</span> item (<span class="name">cdr</span> x)))))</span><br></pre></td></tr></table></figure>
-<h3 id="2-3-2-Example-Symbol-Differentiation"><a href="#2-3-2-Example-Symbol-Differentiation" class="headerlink" title="2.3.2 Example:Symbol Differentiation"></a>2.3.2 Example:Symbol Differentiation</h3><p>本节用求微分举例，这种带符号的求导与抽象数据的处理不同，是带符号的。只利用了最简单的4个求导规则</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-& \frac{\mathrm{d}c}{\mathrm{d}x} = 0 \\[2ex]
-& \frac{\mathrm{d}x}{\mathrm{d}x} = 1 \\[2ex]
-& \frac{\mathrm{d}(u + v)}{\mathrm{d}x} = \frac{\mathrm{d}u}{\mathrm{d}x} + \frac{\mathrm{d}v}{\mathrm{d}x} \\[2ex]
-& \frac{\mathrm{d}(uv)}{\mathrm{d}x} = u\frac{\mathrm{d}u}{\mathrm{d}x} + v\frac{\mathrm{d}u}{\mathrm{d}x} \\[2ex]
-\end{aligned}</script><p>首先定义如下基本操作<br><figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">(<span class="name">define</span> (<span class="name">variable</span>? e)</span><br><span class="line">    (<span class="name">symbol</span>? x))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">same-variable</span>? v1 v2)</span><br><span class="line">    (<span class="name">and</span> (<span class="name">varaible</span>? v1) (<span class="name">variable</span>? v2) (<span class="name">eq</span>? v1 v2)))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">make-sum</span> a1 a2)</span><br><span class="line">    (<span class="name">list</span> '+ a1 a2))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">make-product</span> m1 m2)</span><br><span class="line">    (<span class="name">list</span> '* m1 m2))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">sum</span>? x)</span><br><span class="line">    (<span class="name">and</span> (<span class="name">pair</span>? x) (<span class="name">eq</span>? (<span class="name">car</span> x) '+)))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">addend</span> s)</span><br><span class="line">    (<span class="name">cadr</span> s))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">augend</span> s)</span><br><span class="line">    (<span class="name">caddr</span> s))   <span class="comment">; 注意s是个list，所以要取caddr而不是cddr</span></span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">product</span>? x)</span><br><span class="line">    (<span class="name">and</span> (<span class="name">pair</span>? x) (<span class="name">eq</span>? (<span class="name">car</span> x) '+)))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">multiplier</span> p)</span><br><span class="line">    (<span class="name">cadr</span> p))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">multiplicand</span> p)</span><br><span class="line">    (<span class="name">caddr</span> p))</span><br></pre></td></tr></table></figure></p>
-<p>随后就可以根据定义的求导法则递归展开</p>
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">(<span class="name">define</span> (<span class="name">deriv</span> exp var)</span><br><span class="line">    (<span class="name">cond</span> ((<span class="name">number</span>? exp) <span class="number">0</span>)</span><br><span class="line">          ((<span class="name">variable</span>? exp)</span><br><span class="line">            (<span class="name">if</span> (<span class="name">same-variable</span>? exp var) <span class="number">1</span> <span class="number">0</span>)</span><br><span class="line">          ((<span class="name">sum</span>? exp)</span><br><span class="line">            (<span class="name">make-sum</span> (<span class="name">deriv</span> (<span class="name">addend</span> exp) var)</span><br><span class="line">                      (<span class="name">deriv</span> (<span class="name">augend</span> exp) var))</span><br><span class="line">          ((<span class="name">product</span>? exp)</span><br><span class="line">            (<span class="name">make-product</span> (<span class="name">deriv</span> (<span class="name">multiplier</span> exp) var)</span><br><span class="line">                          (<span class="name">deriv</span> (<span class="name">multiplicand</span> exp) var)))))</span><br><span class="line">          (<span class="name">else</span> (<span class="name">error</span> <span class="string">"unknown expression type -- DERIV"</span> exp))))</span><br></pre></td></tr></table></figure>
-<p>以上会出现一个问题，就是并没有化简到最简单，比如</p>
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">(<span class="name">define</span> '(+ x <span class="number">3</span>) 'x)</span><br></pre></td></tr></table></figure>
-<p>的结果显示为<br><figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">(<span class="name">+</span> <span class="number">1</span> <span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
-<p>解决这个问题在于改变<code>make-sum</code>的行为即可，<code>deriv</code>不用改变。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(define (make-sum a1 a2)</span><br><span class="line">    (cond ((=number? a1 0) a2)</span><br><span class="line">          ((=number? a2 0) a1)</span><br><span class="line">          ((and (number? a1) (number? a2)) (+ a1 a2))</span><br><span class="line">          (else (list &apos;+ a1 a2))))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(define (make-product m1 m1)</span><br><span class="line">    (cond ((or (=number? m1 0) (=number? m2 0)) 0)</span><br><span class="line">          ((=number? m1 1) m2)</span><br><span class="line">          ((=number? m2 1) m1)</span><br><span class="line">          ((and (number? m1) (number? m2)) (* m1 m2))</span><br><span class="line">          (else (list &apos;* m1 m2))))</span><br></pre></td></tr></table></figure></p>
-<p>习题2.56 实现多项式求导规则<br><img src="/2019/04/16/SICP/SICP-2-3/2019-04-18-02-23-30.png" alt=""><br><figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">(<span class="name">define</span> (<span class="name">deriv</span> exp var)</span><br><span class="line">    (<span class="name">cond</span> ((<span class="name">number</span>? exp) <span class="number">0</span>)</span><br><span class="line">          ((<span class="name">variable</span>? exp)</span><br><span class="line">            (<span class="name">if</span> (<span class="name">same-variable</span>? exp var) <span class="number">1</span> <span class="number">0</span>)</span><br><span class="line">          ((<span class="name">sum</span>? exp)</span><br><span class="line">            (<span class="name">make-sum</span> (<span class="name">deriv</span> (<span class="name">addend</span> exp) var)</span><br><span class="line">                      (<span class="name">deriv</span> (<span class="name">augend</span> exp) var))</span><br><span class="line">          ((<span class="name">product</span>? exp)</span><br><span class="line">            (<span class="name">make-product</span> (<span class="name">deriv</span> (<span class="name">multiplier</span> exp) var)</span><br><span class="line">                          (<span class="name">deriv</span> (<span class="name">multiplicand</span> exp) var)))))</span><br><span class="line">          ((<span class="name">exponentiation</span>? exp)    <span class="comment">; 需要新增获取基本元素的函数以及构造函数</span></span><br><span class="line">            (<span class="name">let</span> ((<span class="name">n</span> (<span class="name">exponent</span> exp))</span><br><span class="line">                  (<span class="name">u</span> (<span class="name">base</span> exp)))</span><br><span class="line">                  (<span class="name">make-product</span></span><br><span class="line">                    n</span><br><span class="line">                    (<span class="name">make-product</span> (<span class="name">make-exponentiation</span> u (<span class="name">-</span> n <span class="number">1</span>))</span><br><span class="line">                                  (<span class="name">deriv</span> u var)))))</span><br><span class="line">          (<span class="name">else</span> (<span class="name">error</span> <span class="string">"unknown expression type -- DERIV"</span> exp))))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">make-exmponentiation</span> base exponent)</span><br><span class="line">    (<span class="name">cond</span> ((<span class="name">=</span> exponent <span class="number">0</span>)</span><br><span class="line">            <span class="number">1</span>)</span><br><span class="line">          ((<span class="name">=</span> exponent <span class="number">1</span>)</span><br><span class="line">            base)</span><br><span class="line">          (<span class="name">else</span></span><br><span class="line">            (<span class="name">list</span> '** base exponent))))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">exponent</span> exp)</span><br><span class="line">    (<span class="name">caddr</span> exp))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">base</span> exp)</span><br><span class="line">    (<span class="name">cadr</span> exp))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">exponentiation</span>? exp)</span><br><span class="line">    (<span class="name">and</span> (<span class="name">pair</span>? exp) (<span class="name">eq</span>? (<span class="name">car</span> exp) `**)))</span><br></pre></td></tr></table></figure></p>
+        <ul>
+<li><a href="https://www.cnblogs.com/yjiyjige/p/3263858.html" target="_blank" rel="noopener">（原创）详解KMP算法 cnblogs</a></li>
+<li><a href="https://www.zhihu.com/question/21923021/answer/281346746" target="_blank" rel="noopener">如何更好的理解和掌握 KMP 算法? 知乎</a></li>
+</ul>
+<p>将以前KMP算法的东西复习一下</p>
+<p>主要概念是部分匹配表PMT，即字符串前缀和后缀集合的交集中最长元素的长度，将PMT右移一位即可得到next数组，牢记<strong>next数组存储的是pattern中下一次要进行匹配判断的index</strong>，为了编程方便next[0]定义成-1。</p>
+<p>不妨即模式字符串为P，<code>next[q] = k</code>表示<code>P[q]</code>之前的子串中，存在长度为<code>k</code>的相同前缀和后缀，即<code>P[0]~P[k-1]</code>与<code>P[q-k]~P[q-1]</code>相同，于是下一次需要判断的位置应该就是<code>next[k]</code>。</p>
+<p>而next数组的求法实际就是一次匹配自身的过程，这样子看就非常好记了。</p>
+<p>附上对应的代码</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">strStr</span><span class="params">(<span class="built_in">string</span> haystack, <span class="built_in">string</span> needle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> next = getnext(needle);</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> m = haystack.size(), n = needle.size();</span><br><span class="line">        <span class="keyword">while</span> (i &lt; m &amp;&amp; j &lt; n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (j == <span class="number">-1</span> || haystack[i] == needle[j]) &#123;</span><br><span class="line">                ++i;</span><br><span class="line">                ++j;</span><br><span class="line">            &#125; <span class="keyword">else</span></span><br><span class="line">                j = next[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> j == n ? i - j : <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; getnext(<span class="keyword">const</span> <span class="built_in">string</span> &amp;p) &#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> n = p.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; next(n, <span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; n - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (j == <span class="number">-1</span> || p[i] == p[j])</span><br><span class="line">                next[++i] = ++j;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                j = next[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -520,8 +510,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/16/hexo使用小记/" rel="next" title="hexo使用小记">
-                <i class="fa fa-chevron-left"></i> hexo使用小记
+              <a href="/2019/05/30/leetcode-字符串/" rel="next" title="leetcode-字符串">
+                <i class="fa fa-chevron-left"></i> leetcode-字符串
               </a>
             
           </div>
@@ -530,8 +520,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/19/ffmpeg/ffmpeg基础/" rel="prev" title="ffmpeg基础">
-                ffmpeg基础 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/01/UML/" rel="prev" title="UML">
+                UML <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -581,17 +571,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -648,23 +629,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Symbolic-Data"><span class="nav-text">2.3 Symbolic Data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-Quotation"><span class="nav-text">2.3.1 Quotation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-Example-Symbol-Differentiation"><span class="nav-text">2.3.2 Example:Symbol Differentiation</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
