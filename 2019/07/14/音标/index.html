@@ -103,26 +103,24 @@
 
 
 
-  <meta name="description" content="这两天在弄Qt的多线程，简要记录一些心得。 ref Qt使用多线程的一些心得——1.继承QThread的多线程使用方法 CSDN 写得还是挺不错的，比较实用 Qt使用多线程的一些心得——2.继承QObject的多线程使用方法 CSDN  简述Qt有两种多线程方法，一种是继承QThread的run函数，另一种是把继承于QObject的类转移到新的Thread里。Qt4.8一般采用继承QThread的">
+  <meta name="description" content="The article has been encrypted, please enter your password to view.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Qt多线程">
-<meta property="og:url" content="http://yoursite.com/2019/05/12/Qt多线程/index.html">
+<meta property="og:title" content="音标">
+<meta property="og:url" content="http://yoursite.com/2019/07/14/音标/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="这两天在弄Qt的多线程，简要记录一些心得。 ref Qt使用多线程的一些心得——1.继承QThread的多线程使用方法 CSDN 写得还是挺不错的，比较实用 Qt使用多线程的一些心得——2.继承QObject的多线程使用方法 CSDN  简述Qt有两种多线程方法，一种是继承QThread的run函数，另一种是把继承于QObject的类转移到新的Thread里。Qt4.8一般采用继承QThread的">
+<meta property="og:description" content="The article has been encrypted, please enter your password to view.">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2019/05/12/Qt多线程/QtThreadDemo.gif">
-<meta property="og:updated_time" content="2019-05-13T15:44:47.205Z">
+<meta property="og:updated_time" content="2019-07-14T03:44:50.275Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Qt多线程">
-<meta name="twitter:description" content="这两天在弄Qt的多线程，简要记录一些心得。 ref Qt使用多线程的一些心得——1.继承QThread的多线程使用方法 CSDN 写得还是挺不错的，比较实用 Qt使用多线程的一些心得——2.继承QObject的多线程使用方法 CSDN  简述Qt有两种多线程方法，一种是继承QThread的run函数，另一种是把继承于QObject的类转移到新的Thread里。Qt4.8一般采用继承QThread的">
-<meta name="twitter:image" content="http://yoursite.com/2019/05/12/Qt多线程/QtThreadDemo.gif">
+<meta name="twitter:title" content="音标">
+<meta name="twitter:description" content="The article has been encrypted, please enter your password to view.">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/12/Qt多线程/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/14/音标/">
 
 
 
@@ -132,7 +130,7 @@
   };
 </script>
 
-  <title>Qt多线程 | Hexo</title>
+  <title>音标 | Hexo</title>
   
 
 
@@ -343,7 +341,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/12/Qt多线程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/音标/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Astray Wu">
@@ -360,7 +358,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Qt多线程
+          <h1 class="post-title" itemprop="name headline">音标
 
               
             
@@ -386,24 +384,12 @@
                 
               
 
-              <time title="Created: 2019-05-12 00:00:06" itemprop="dateCreated datePublished" datetime="2019-05-12T00:00:06+08:00">2019-05-12</time>
+              <time title="Created: 2019-07-14 11:25:26 / Modified: 11:44:50" itemprop="dateCreated datePublished" datetime="2019-07-14T11:25:26+08:00">2019-07-14</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-13 23:44:47" itemprop="dateModified" datetime="2019-05-13T23:44:47+08:00">2019-05-13</time>
               
             
           </span>
@@ -438,7 +424,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">4.5k</span>
+                <span title="Symbols count in article">3.1k</span>
               
 
               
@@ -452,7 +438,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">4 mins.</span>
+                <span title="Reading time">3 mins.</span>
               
             </div>
           
@@ -472,56 +458,20 @@
       
 
       
-        <p>这两天在弄Qt的多线程，简要记录一些心得。</p>
-<h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><ul>
-<li><a href="https://blog.csdn.net/czyt1988/article/details/64441443" target="_blank" rel="noopener">Qt使用多线程的一些心得——1.继承QThread的多线程使用方法 CSDN</a> 写得还是挺不错的，比较实用</li>
-<li><a href="https://blog.csdn.net/czyt1988/article/details/71194457" target="_blank" rel="noopener">Qt使用多线程的一些心得——2.继承QObject的多线程使用方法 CSDN</a></li>
-</ul>
-<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>Qt有两种多线程方法，一种是继承QThread的run函数，另一种是把继承于QObject的类转移到新的Thread里。Qt4.8一般采用继承QThread的方法，但在4.8之后官方建议采用第二种方法，使用会更加灵活一些。<br>网络上较多的方法是采用第一种，包括很多书籍教程也是，这里把两种方法都进行下记录。</p>
-<p>通常，应用程序都是在一个线程中执行的，但当调用一个好事操作，例如大批量Io或大量矩阵变换等CPU密集操作时，用于界面常常会冻结，可以使用多线程来解决这些问题。</p>
-<p>优势</p>
-<ol>
-<li>提高应用程序的响应速度，尤其对于GUI来说，如果某个操作耗时很长，整个系统都在等待，将不能响应鼠标、键盘、菜单等操作。利用多线程可以将耗时操作放到一个新的线程中，避免该问题。</li>
-<li>使多CPU更加有效</li>
-<li>改善程序结构，将复杂的进行拆成多个线程，成为独立或半独立的运行部分，有利于代码的理解和维护。</li>
-</ol>
-<p>不足</p>
-<ol>
-<li>行为无法预期，多次执行结果可能不尽相同</li>
-<li>多线程的执行顺序无法保证，与操作系统地调度策略和线程优先级有关</li>
-<li>多线程的切换可能发生在任何时间和地点</li>
-<li>对代码的敏感度较高，细微修改都可能造成意向不到的结果</li>
-</ol>
-<h3 id="继承QThread"><a href="#继承QThread" class="headerlink" title="继承QThread"></a>继承QThread</h3><p>使用Qthread时有一个重要的规则，<strong>QThread只有run函数是在新线程里的，其他所有函数都在QThread生成的线程里</strong>。之前某个写法一直阻塞UI就是因为我在前天函数进行了操作，但其他函数并不是在子线程中的。所以要注意以下两点：</p>
-<ol>
-<li>如果QThread是在ui所在线程里成成，那么QThread的其他非run函数都是和ui一样的，要确保耗时的操作都在run函数中完成。<br>在UI线程下调用QThread的非run函数和执行普通函数没有区别。但要注意，如果这2. 个函数对线程的某个变量进行变更，并且该变量在run函数中也会使用，就要注意同步的问题，因为虽然都是QThread的类里，但run和非run函数实际上两个不同线程进行的，之间可能有竞争。</li>
-</ol>
-<p>任何继承于QThread的线程都是通过继承QThread的run函数来实现多线程的，因此，必须重写QThread的run函数，把复杂逻辑写在QThread的run函数中。</p>
-<p>参考博客提供的代码，如下，稍微替换了下命名风格。该类继承自QThread，包含了Qt类的常见内容，包括普通方法，信号和槽，还有run函数。其中<code>SetSth, GetSth, DoSth</code>函数都进行了500ms的延迟，用于验证在<code>QThread::run()</code>之外调用QThread的成员函数并会在新的线程中运行。</p>
-<p><strong>ThreadFromQThread.h</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QThread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMutex&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadFromQThread</span> :</span> <span class="keyword">public</span> QThread &#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"></span><br><span class="line">signals:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Msg</span><span class="params">(<span class="keyword">const</span> QString&amp; info)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Progress</span><span class="params">(<span class="keyword">int</span> present)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ThreadFromQThread(QObject* par);</span><br><span class="line">    ~ThreadFromQThread();</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">SetSth</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">GetSth</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Set_runCnt</span><span class="params">(<span class="keyword">int</span> count)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DoSth</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> runCnt_;</span><br><span class="line">    QMutex mutex_;</span><br><span class="line">    <span class="keyword">bool</span> canRun_;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> slots:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">StopImmediately</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>ThreadFromQThread.cpp</strong></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"ThreadFromQThread.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMutex&gt;</span></span></span><br><span class="line">ThreadFromQThread::ThreadFromQThread(QObject* par) : QThread(par)</span><br><span class="line">, runCnt_(<span class="number">20</span>) &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ThreadFromQThread::~ThreadFromQThread() &#123;</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"ThreadFromQThread::~ThreadFromQThread()"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ThreadFromQThread::SetSth() &#123;</span><br><span class="line">    msleep(<span class="number">500</span>);</span><br><span class="line">    QString str = QString(<span class="string">"%1-&gt;%2,thread id:%3"</span>).arg(__FUNCTION__).arg(__FILE__).arg((<span class="keyword">int</span>)QThread::currentThreadId());</span><br><span class="line">    <span class="function">emit <span class="title">Msg</span><span class="params">(str)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ThreadFromQThread::GetSth() &#123;</span><br><span class="line">    msleep(<span class="number">500</span>);</span><br><span class="line">    <span class="function">emit <span class="title">Msg</span><span class="params">(QString(<span class="string">"%1-&gt;%2,thread id:%3"</span>).arg(__FUNCTION__).arg(__FILE__).arg((<span class="keyword">int</span>)QThread::currentThreadId()))</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ThreadFromQThread::Set_runCnt(<span class="keyword">int</span> count) &#123;</span><br><span class="line">    runCnt_ = count;</span><br><span class="line">    <span class="function">emit <span class="title">Msg</span><span class="params">(QString(<span class="string">"%1-&gt;%2,thread id:%3"</span>).arg(__FUNCTION__).arg(__FILE__).arg((<span class="keyword">int</span>)QThread::currentThreadId()))</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ThreadFromQThread::run() &#123;</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    QString str = QString(<span class="string">"%1-&gt;%2,thread id:%3"</span>).arg(__FILE__).arg(__FUNCTION__).arg((<span class="keyword">int</span>)QThread::currentThreadId());</span><br><span class="line">    <span class="function">emit <span class="title">Msg</span><span class="params">(str)</span></span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        sleep(<span class="number">1</span>); <span class="comment">// 共20秒完成一次进度条，不过doSth还会暂停一点时间</span></span><br><span class="line">        ++cnt;</span><br><span class="line">        <span class="function">emit <span class="title">Progress</span><span class="params">(((<span class="keyword">float</span>)cnt / runCnt_) * <span class="number">100</span>)</span></span>;</span><br><span class="line">        <span class="function">emit <span class="title">Msg</span><span class="params">(QString(<span class="string">"ThreadFromQThread::run times:%1"</span>).arg(cnt))</span></span>;</span><br><span class="line">        DoSth();</span><br><span class="line">        <span class="keyword">if</span> (runCnt_ == cnt) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function">QMutexLocker <span class="title">locker</span><span class="params">(&amp;mutex_)</span></span>;</span><br><span class="line">            <span class="keyword">if</span> (!canRun_)</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ThreadFromQThread::DoSth() &#123;</span><br><span class="line">    msleep(<span class="number">500</span>);</span><br><span class="line">    <span class="function">emit <span class="title">Msg</span><span class="params">(QString(<span class="string">"%1-&gt;%2,thread id:%3"</span>).arg(__FUNCTION__).arg(__FILE__).arg((<span class="keyword">int</span>)QThread::currentThreadId()))</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ThreadFromQThread::StopImmediately() &#123;</span><br><span class="line">    <span class="function">QMutexLocker <span class="title">locker</span><span class="params">(&amp;mutex_)</span></span>;</span><br><span class="line">    canRun_ = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>博主提供了如下的UI界面，用于验证：</p>
-<ol>
-<li>UI线程中调用SetSth和GetSth，是否会阻塞UI线程</li>
-<li>调用quit函数和exit是否会停止子线程</li>
-<li>调用terminte是否会停止子线程</li>
-</ol>
-<p>基本效果如下<br><img src="/2019/05/12/Qt多线程/QtThreadDemo.gif" alt=""></p>
-<p>UI界面上提供一个进度条，由主程序的定时器控制，每100ms触发一次，用于证明UI线程是否阻塞。<br>第二个进度条由子线程控制。<br>run按钮会运行子线程。<br>点击getSth, setSth, doSth等按钮时候，都是调用子线程类中的非run函数，可以看到对应的thread ID其实并不是子线程的ID。<br>并且点击quit，thread没有任何响应，QThread在不调用exec()的情况下的exit和quit函数不会起作用。<br>点击terminate按钮，线程立即终止。</p>
-<p>总结一下：</p>
-<ol>
-<li>正确终止子线程<br>在子线程类中添加bool变量，主线程修改该变量然后在线程的run函数中判断是否退出。注意要用QMutexLocker枷锁判断，避免线程冲突。</li>
-<li>正确启动线程<ol>
-<li>全局线程<br>  方法一：在窗口中创建，在窗口析构时要先调用线程的wait函数，等待子线程完全结束<br>  方法二：创建时连接<code>connect(thread, &amp;QThread::finished, &amp;QObject::deleteLater;</code>，父对象为<code>NULL</code>，在线程结束时自行销毁（消息循环中确认没有该对象后析构）</li>
-<li>局部线程<br>  采用以上方法二即可</li>
-</ol>
-</li>
-<li>重复创建子线程时，可能要注意重复生成还有析构，以及时切换到新线程中完成任务，参考代码。</li>
-</ol>
-<h3 id="继承QObject"><a href="#继承QObject" class="headerlink" title="继承QObject"></a>继承QObject</h3><p>Qt官方比较推荐继承QObject的方法来实现，更加灵活。<br>QObject是Qt框架的基本类，但凡涉及到信号槽有关的类都是继承于QObject。QObject是一个功能异常强大的类，它提供了Qt关键技术信号和槽的支持以及事件系统的支持，同时它提供了线程操作的接口，也就是QObject是可以选择不同的线程里执行的。<br>QObject的线程转移函数是：void moveToThread(QThread * targetThread) ，通过此函数可以把一个顶层Object（就是没有父级）转移到一个新的线程里。<br>QThread非常容易被新手误用，主要是QThread自身并不生存在它run函数所在的线程，而是生存在旧的线程中，此问题在上一篇重点描述了。由于QThread的这个特性，导致在调用QThread的非run函数容易在旧线程中执行。</p>
-
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<div id="hbe-security">
+  <div class="hbe-input-container">
+  <input type="password" class="hbe-form-control" id="pass" placeholder="Please enter the password to read the blog.">
+    <label for="pass">Please enter the password to read the blog.</label>
+    <div class="bottom-line"></div>
+  </div>
+</div>
+<div id="decryptionError" style="display: none;">Incorrect Password!</div>
+<div id="noContentError" style="display: none;">No content to display!</div>
+<div id="encrypt-blog" style="display:none">
+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
+</div>
+<script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
     </div>
 
@@ -551,8 +501,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/09/正则表达式/" rel="next" title="正则表达式">
-                <i class="fa fa-chevron-left"></i> 正则表达式
+              <a href="/2019/06/01/UML/" rel="next" title="UML">
+                <i class="fa fa-chevron-left"></i> UML
               </a>
             
           </div>
@@ -560,10 +510,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/12/Qt之QTimer/" rel="prev" title="Qt之QTimer">
-                Qt之QTimer <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -612,17 +558,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -679,23 +616,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ref"><span class="nav-text">ref</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简述"><span class="nav-text">简述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#继承QThread"><span class="nav-text">继承QThread</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承QObject"><span class="nav-text">继承QObject</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       

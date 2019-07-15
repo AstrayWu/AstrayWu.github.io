@@ -338,6 +338,179 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/07/曲线调整/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/07/曲线调整/" class="post-title-link" itemprop="url">曲线调整</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-07 02:00:31 / Modified: 23:40:25" itemprop="dateCreated datePublished" datetime="2019-05-07T02:00:31+08:00">2019-05-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">4.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">4 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>有一段代码是利用高斯函数来做曲线拟合的，比较简单和方便，调试起来可能也会简单些。首先利用高斯函数生成0~256之间的sigma为75的曲线，第一个点按照1024归一化。大致如下<br><img src="/2019/05/07/曲线调整/2019-05-07-23-33-30.png" alt=""></p>
+<p>然后利用标准正太分布公式来计算给定sigma和mean的高斯曲线。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> STD_GS_LUT_Bit = <span class="number">8</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> STD_GS_Sigma = <span class="number">75</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> STD_GS_Mean = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> STD_GS_PRCS = <span class="number">10</span>; <span class="comment">// prcs of output</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> STD_GS_LUT_Sz = (<span class="number">1</span> &lt;&lt; STD_GS_LUT_Bit) + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> STD_GS_LUT[STD_GS_LUT_Sz];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LUTInter</span><span class="params">(<span class="keyword">int</span> val, <span class="keyword">int</span> valBit, <span class="keyword">int</span> *LUT, <span class="keyword">int</span> LUTBit)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> LUTSz = (<span class="number">1</span> &lt;&lt; LUTBit) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> shift = valBit - LUTBit;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> index = val &gt;&gt; shift;</span><br><span class="line">    <span class="keyword">if</span> (index &gt;= LUTSz - <span class="number">1</span>) &#123; <span class="comment">// index + 1&gt;= LUTSz -&gt; index + 1 &lt;= LUTSz - 1 -&gt; index + 1 &lt; LUTSz</span></span><br><span class="line">        <span class="keyword">return</span> LUT[LUTSz - <span class="number">1</span>];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> ret = LUT[index] + ((LUT[index + <span class="number">1</span>] - LUT[index]) * (val - (index &lt;&lt; shift)) &gt;&gt; shift);</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LUTInterFromSTD_GS</span><span class="params">(<span class="keyword">int</span> *LUT, <span class="keyword">int</span> LUTSz = <span class="number">33</span>, <span class="keyword">int</span> mean = <span class="number">0</span>, <span class="keyword">int</span> sigma = <span class="number">80</span>, <span class="keyword">int</span> weight = <span class="number">50</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> STD_LUT_Bit = <span class="number">8</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> PRCS = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span> shift = PRCS;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> scl = (STD_GS_Sigma &lt;&lt; shift) / sigma;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; LUTSz; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> val = <span class="built_in">abs</span>((i &lt;&lt; <span class="number">8</span>) / LUTSz - mean) * scl &gt;&gt; <span class="number">8</span>;</span><br><span class="line">        LUT[i] = (weight * LUTInter(val, shift, STD_GS_LUT, STD_GS_LUT_Bit) + (<span class="number">1</span> &lt;&lt; (shift - <span class="number">1</span>))) &gt;&gt; shift;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CalcSTD_GS</span><span class="params">(<span class="keyword">int</span> *LUT, <span class="keyword">int</span> sz, <span class="keyword">int</span> prcs, <span class="keyword">int</span> sigma, <span class="keyword">int</span> mean)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// prcs 10</span></span><br><span class="line">    <span class="comment">// sigma U6.8</span></span><br><span class="line">    <span class="comment">// mean U6.8</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">double</span> var = sigma / <span class="number">255.0</span> * sigma / <span class="number">255.0</span>;</span><br><span class="line">    <span class="keyword">double</span> u = mean / <span class="number">255</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sz; ++i) &#123;</span><br><span class="line">        <span class="keyword">double</span> val = i * <span class="number">1.0</span> / sz;</span><br><span class="line">        LUT[i] = round((<span class="number">1</span> &lt;&lt; prcs) * <span class="built_in">exp</span>(-(val - u) * (val - u) / (<span class="number">2</span> * var)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printmat</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> *p, <span class="keyword">int</span> len, <span class="keyword">const</span> <span class="keyword">char</span> *filename = <span class="string">"otuput.txt"</span>)</span> </span>&#123;</span><br><span class="line">    freopen(filename, <span class="string">"w"</span>, <span class="built_in">stderr</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i)</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"%4d "</span>, p[i]);</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ut</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    CalcSTD_GS(STD_GS_LUT, STD_GS_LUT_Sz, STD_GS_PRCS, STD_GS_Sigma, STD_GS_Mean);</span><br><span class="line">    printmat(STD_GS_LUT, STD_GS_LUT_Sz, <span class="string">"LUT_STD_GS.txt"</span>);</span><br><span class="line">    <span class="keyword">int</span> lut[<span class="number">33</span>];</span><br><span class="line">    LUTInterFromSTD_GS(lut, <span class="number">33</span>, <span class="number">0</span>, <span class="number">80</span>, <span class="number">128</span>);</span><br><span class="line">    printmat(lut, <span class="number">33</span>, <span class="string">"lut.txt"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ut();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">clr;</span><br><span class="line"></span><br><span class="line">x = <span class="number">0</span>:<span class="number">256</span>;</span><br><span class="line">y = normpdf(x, <span class="number">0</span>, <span class="number">75</span>);</span><br><span class="line">y = (y / y(<span class="number">1</span>) * <span class="number">1024</span>);</span><br><span class="line"></span><br><span class="line">LUT = [<span class="number">1024</span> <span class="number">1024</span> <span class="number">1024</span> <span class="number">1023</span> <span class="number">1023</span> <span class="number">1022</span> <span class="number">1021</span> <span class="number">1020</span> <span class="number">1018</span> <span class="number">1017</span> <span class="number">1015</span> <span class="number">1013</span> <span class="number">1011</span> <span class="number">1009</span> <span class="number">1007</span> <span class="number">1004</span> <span class="number">1001</span>  <span class="number">998</span>  <span class="number">995</span>  <span class="number">992</span>  <span class="number">989</span>  <span class="number">985</span>  <span class="number">982</span>  <span class="number">978</span>  <span class="number">974</span>  <span class="number">969</span>  <span class="number">965</span>  <span class="number">961</span>  <span class="number">956</span>  <span class="number">951</span>  <span class="number">946</span>  <span class="number">941</span>  <span class="number">936</span>  <span class="number">931</span>  <span class="number">925</span>  <span class="number">920</span>  <span class="number">914</span>  <span class="number">908</span>  <span class="number">902</span>  <span class="number">896</span>  <span class="number">890</span>  <span class="number">884</span>  <span class="number">878</span>  <span class="number">871</span>  <span class="number">864</span>  <span class="number">858</span>  <span class="number">851</span>  <span class="number">844</span>  <span class="number">837</span>  <span class="number">830</span>  <span class="number">823</span>  <span class="number">816</span>  <span class="number">808</span>  <span class="number">801</span>  <span class="number">793</span>  <span class="number">786</span>  <span class="number">778</span>  <span class="number">771</span>  <span class="number">763</span>  <span class="number">755</span>  <span class="number">747</span>  <span class="number">739</span>  <span class="number">731</span>  <span class="number">724</span>  <span class="number">716</span>  <span class="number">708</span>  <span class="number">699</span>  <span class="number">691</span>  <span class="number">683</span>  <span class="number">675</span>  <span class="number">667</span>  <span class="number">659</span>  <span class="number">651</span>  <span class="number">642</span>  <span class="number">634</span>  <span class="number">626</span>  <span class="number">618</span>  <span class="number">609</span>  <span class="number">601</span>  <span class="number">593</span>  <span class="number">585</span>  <span class="number">577</span>  <span class="number">569</span>  <span class="number">560</span>  <span class="number">552</span>  <span class="number">544</span>  <span class="number">536</span>  <span class="number">528</span>  <span class="number">520</span>  <span class="number">512</span>  <span class="number">504</span>  <span class="number">496</span>  <span class="number">488</span>  <span class="number">480</span>  <span class="number">473</span>  <span class="number">465</span>  <span class="number">457</span>  <span class="number">449</span>  <span class="number">442</span>  <span class="number">434</span>  <span class="number">427</span>  <span class="number">419</span>  <span class="number">412</span>  <span class="number">405</span>  <span class="number">397</span>  <span class="number">390</span>  <span class="number">383</span>  <span class="number">376</span>  <span class="number">369</span>  <span class="number">362</span>  <span class="number">355</span>  <span class="number">348</span>  <span class="number">342</span>  <span class="number">335</span>  <span class="number">328</span>  <span class="number">322</span>  <span class="number">315</span>  <span class="number">309</span>  <span class="number">303</span>  <span class="number">297</span>  <span class="number">290</span>  <span class="number">284</span>  <span class="number">278</span>  <span class="number">272</span>  <span class="number">267</span>  <span class="number">261</span>  <span class="number">255</span>  <span class="number">250</span>  <span class="number">244</span>  <span class="number">239</span>  <span class="number">233</span>  <span class="number">228</span>  <span class="number">223</span>  <span class="number">218</span>  <span class="number">213</span>  <span class="number">208</span>  <span class="number">203</span>  <span class="number">198</span>  <span class="number">193</span>  <span class="number">189</span>  <span class="number">184</span>  <span class="number">180</span>  <span class="number">175</span>  <span class="number">171</span>  <span class="number">167</span>  <span class="number">163</span>  <span class="number">159</span>  <span class="number">155</span>  <span class="number">151</span>  <span class="number">147</span>  <span class="number">143</span>  <span class="number">139</span>  <span class="number">136</span>  <span class="number">132</span>  <span class="number">129</span>  <span class="number">125</span>  <span class="number">122</span>  <span class="number">118</span>  <span class="number">115</span>  <span class="number">112</span>  <span class="number">109</span>  <span class="number">106</span>  <span class="number">103</span>  <span class="number">100</span>   <span class="number">97</span>   <span class="number">95</span>   <span class="number">92</span>   <span class="number">89</span>   <span class="number">87</span>   <span class="number">84</span>   <span class="number">82</span>   <span class="number">79</span>   <span class="number">77</span>   <span class="number">75</span>   <span class="number">72</span>   <span class="number">70</span>   <span class="number">68</span>   <span class="number">66</span>   <span class="number">64</span>   <span class="number">62</span>   <span class="number">60</span>   <span class="number">58</span>   <span class="number">56</span>   <span class="number">55</span>   <span class="number">53</span>   <span class="number">51</span>   <span class="number">50</span>   <span class="number">48</span>   <span class="number">46</span>   <span class="number">45</span>   <span class="number">43</span>   <span class="number">42</span>   <span class="number">41</span>   <span class="number">39</span>   <span class="number">38</span>   <span class="number">37</span>   <span class="number">36</span>   <span class="number">34</span>   <span class="number">33</span>   <span class="number">32</span>   <span class="number">31</span>   <span class="number">30</span>   <span class="number">29</span>   <span class="number">28</span>   <span class="number">27</span>   <span class="number">26</span>   <span class="number">25</span>   <span class="number">24</span>   <span class="number">23</span>   <span class="number">22</span>   <span class="number">22</span>   <span class="number">21</span>   <span class="number">20</span>   <span class="number">19</span>   <span class="number">19</span>   <span class="number">18</span>   <span class="number">17</span>   <span class="number">17</span>   <span class="number">16</span>   <span class="number">15</span>   <span class="number">15</span>   <span class="number">14</span>   <span class="number">14</span>   <span class="number">13</span>   <span class="number">13</span>   <span class="number">12</span>   <span class="number">12</span>   <span class="number">11</span>   <span class="number">11</span>   <span class="number">10</span>   <span class="number">10</span>   <span class="number">10</span>    <span class="number">9</span>    <span class="number">9</span>    <span class="number">8</span>    <span class="number">8</span>    <span class="number">8</span>    <span class="number">8</span>    <span class="number">7</span>    <span class="number">7</span>    <span class="number">7</span>    <span class="number">6</span>    <span class="number">6</span>    <span class="number">6</span>    <span class="number">6</span>    <span class="number">5</span>    <span class="number">5</span>    <span class="number">5</span>    <span class="number">5</span>    <span class="number">5</span>    <span class="number">4</span>    <span class="number">4</span>    <span class="number">4</span>    <span class="number">4</span>    <span class="number">4</span>    <span class="number">3</span>    <span class="number">3</span> ];</span><br><span class="line"></span><br><span class="line"><span class="built_in">figure</span>(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">plot</span>(x, y);</span><br><span class="line">title(<span class="string">'gauss curve, \sigma = 75, first point norm to 1024'</span>);</span><br><span class="line"><span class="comment">% plot(x, y, x, LUT);</span></span><br><span class="line">d = y - LUT;</span><br><span class="line"><span class="built_in">max</span>(<span class="built_in">abs</span>(d))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x = <span class="number">0</span>:<span class="number">8</span>:<span class="number">256</span>;</span><br><span class="line">y = normpdf(x, <span class="number">0</span>, <span class="number">80</span>);</span><br><span class="line">y = (y / y(<span class="number">1</span>) * <span class="number">128</span>);</span><br><span class="line"></span><br><span class="line">LUT = [  <span class="number">128</span>  <span class="number">128</span>  <span class="number">126</span>  <span class="number">123</span>  <span class="number">119</span>  <span class="number">115</span>  <span class="number">109</span>  <span class="number">102</span>   <span class="number">95</span>   <span class="number">89</span>   <span class="number">81</span>   <span class="number">74</span>   <span class="number">66</span>   <span class="number">59</span>   <span class="number">52</span>   <span class="number">45</span>   <span class="number">39</span>   <span class="number">34</span>   <span class="number">29</span>   <span class="number">24</span>   <span class="number">20</span>   <span class="number">17</span>   <span class="number">14</span>   <span class="number">11</span>    <span class="number">9</span>    <span class="number">7</span>    <span class="number">6</span>    <span class="number">5</span>    <span class="number">3</span>    <span class="number">3</span>    <span class="number">2</span>    <span class="number">2</span>    <span class="number">1</span>  ];</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">'b'</span>, x, LUT, <span class="string">'r'</span>);</span><br><span class="line">d = y - LUT;</span><br><span class="line"><span class="built_in">max</span>(<span class="built_in">abs</span>(d))</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/06/C、C++基础/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1289,7 +1462,7 @@ QMessageBox::information(this, tr(&quot;Information&quot;), str);
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-05 00:57:20" itemprop="dateModified" datetime="2019-06-05T00:57:20+08:00">2019-06-05</time>
+                <time title="Modified: 2019-07-14 11:19:32" itemprop="dateModified" datetime="2019-07-14T11:19:32+08:00">2019-07-14</time>
               
             
           </span>
@@ -1317,7 +1490,7 @@ QMessageBox::information(this, tr(&quot;Information&quot;), str);
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">1.8k</span>
+                <span title="Symbols count in article">43k</span>
               
 
               
@@ -1331,7 +1504,7 @@ QMessageBox::information(this, tr(&quot;Information&quot;), str);
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">2 mins.</span>
+                <span title="Reading time">39 mins.</span>
               
             </div>
           
@@ -1352,49 +1525,16 @@ QMessageBox::information(this, tr(&quot;Information&quot;), str);
 
       
         
+          The article has been encrypted, please enter your password to view.<br>
+          <!--noindex-->
           
-            <ul>
-<li><a href="http://c.biancheng.net/design_pattern/" target="_blank" rel="noopener">Java设计模式：23种设计模式全面解析（超级详细</a></li>
-<li><a href="https://www.cnblogs.com/pony1223/p/7594803.html" target="_blank" rel="noopener">JAVA设计模式总结之六大设计原则 初学者 cnblog</a></li>
-<li><a href="https://www.cnblogs.com/pony1223/p/7594803.html" target="_blank" rel="noopener">JAVA设计模式总结之23种设计模式 初学者 cngblog</a></li>
-<li><a href="https://www.cnblogs.com/jesonjason/p/5402627.html" target="_blank" rel="noopener">大话设计模式（读后感）——23种设计模式、六大原则 cnblog</a></li>
-<li><a href="https://www.cnblogs.com/dolphin0520/p/3919839.html" target="_blank" rel="noopener">设计模式之六大原则（转载）</a></li>
-</ul>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><font color="#FF0000">关于基本概念，需要在逐渐掌握整体框架后重新加深理解和总结。</font>
-
-<h3 id="设计模式的概念与意义"><a href="#设计模式的概念与意义" class="headerlink" title="设计模式的概念与意义"></a>设计模式的概念与意义</h3><ol>
-<li>软件设计模式的概念<br>软件设计模式（Software Design Pattern），又称设计模式，是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。<strong>它描述了在软件设计过程中的一些不断重复发生的问题，以及该问题的解决方案。</strong>也就是说，它是解决特定问题的一系列套路，是前辈们的代码设计经验的总结，具有一定的普遍性，可以反复使用。<strong>其目的是为了提高代码的可重用性、代码的可读性和代码的可靠性。</strong></li>
-<li><p>学习设计模式的意义<br>设计模式的本质是面向对象设计原则的实际运用，是对类的封装性、继承性和多态性以及类的关联关系和组合关系的充分理解。正确使用设计模式具有以下优点。</p>
-<ul>
-<li>可以提高程序员的思维能力、编程能力和设计能力。</li>
-<li>使程序设计更加标准化、代码编制更加工程化，使软件开发效率大大提高，从而缩短软件的开发周期。</li>
-<li><p>使设计的代码可重用性高、可读性强、可靠性高、灵活性好、可维护性强。</p>
-<p>当然，软件设计模式只是一个引导。在具体的软件幵发中，必须根据设计的应用系统的特点和要求来恰当选择。对于简单的程序开发，苛能写一个简单的算法要比引入某种设计模式更加容易。但对大项目的开发或者框架设计，用设计模式来组织代码显然更好。</p>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="基本要素"><a href="#基本要素" class="headerlink" title="基本要素"></a>基本要素</h3><p>软件设计模式使人们可以更加简单方便地复用成功的设计和体系结构，最重要的4个要素</p>
-<ol>
-<li>模式名称<br> 每一个模式都有自己的名字，通常用一两个词来描述，可以根据模式的问题、特点、解决方案、功能和效果来命名。模式名称（PatternName）<strong>有助于我们理解和记忆该模式，也方便我们来讨论自己的设计。</strong></li>
-<li>问题<br> 问题（Problem）<strong>描述了该模式的应用环境，即何时使用该模式。</strong>它解释了设计问题和问题存在的前因后果，以及必须满足的一系列先决条件。</li>
-<li>解决方案<br> 模式问题的解决方案（Solution）包括设计的组成成分、它们之间的相互关系及各自的职责和协作方式。因为模式就像一个模板，可应用于多种不同场合，所以解决方案并不描述一个特定而具体的设计或实现，而是提供设计问题的抽象描述和怎样用一个具有一般意义的元素组合（类或对象的 组合）来解决这个问题。</li>
-<li>效果<br> <strong>描述了模式的应用效果以及使用该模式应该权衡的问题，即模式的优缺点。</strong>主要是对时间和空间的衡量，以及该模式对系统的灵活性、扩充性、可移植性的影响，也考虑其实现问题。显式地列出这些效果（Consequence）对理解和评价这些模式有很大的帮助。</li>
-</ol>
-<h2 id="GoF-的-23-种设计模式的分类和功能"><a href="#GoF-的-23-种设计模式的分类和功能" class="headerlink" title="GoF 的 23 种设计模式的分类和功能"></a>GoF 的 23 种设计模式的分类和功能</h2><ol>
-<li>根据目的来分</li>
-<li>根据作用范围来分</li>
-</ol>
-<h2 id="设计模式的设计原则"><a href="#设计模式的设计原则" class="headerlink" title="设计模式的设计原则"></a>设计模式的设计原则</h2><ol>
-<li><strong>单一职责原则(Single Responsibility Principle, SRP)</strong>：一个类只负责一个功能领域中的相应职责，或者可以定义为：就一个类而言，应该只有一个引起它变化的原因。</li>
-<li><strong>开闭原则(Open-Closed Principle, OCP)</strong>：一个软件实体应当对扩展开放，对修改关闭。即软件实体应尽量在不修改原有代码的情况下进行扩展。</li>
-<li><strong>里氏代换原则(Liskov Substitution Principle, LSP)</strong>：所有引用基类（父类）的地方必须能透明地使用其子类的对象。<br> 是对开闭原则的补充。子类可以扩展父类的功能，但不能改变父类原有的功能。也就是说：子类继承父类时，除添加新的方法完成新增功能外，尽量不要重写父类的方法。</li>
-<li><strong>依赖倒转原则(Dependency Inversion  Principle, DIP)</strong>：抽象不应该依赖于细节，细节应当依赖于抽象。换言之，要针对接口编程，而不是针对实现编程。</li>
-<li><strong>接口隔离原则(Interface  Segregation Principle, ISP)</strong>：使用多个专门的接口，而不使用单一的总接口，即客户端不应该依赖那些它不需要的接口。</li>
-<li><strong>迪米特法则(Law of  Demeter, LoD)</strong>：一个软件实体应当尽可能少地与其他实体发生相互作用。</li>
-</ol>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/01/设计模式/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -2707,364 +2847,6 @@ QMessageBox::information(this, tr(&quot;Information&quot;), str);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/28/A-Tutorial-Introduction-to-the-Lambda-Calculus/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Astray Wu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/28/A-Tutorial-Introduction-to-the-Lambda-Calculus/" class="post-title-link" itemprop="url">A Tutorial Introduction to the Lambda Calculus</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-28 01:10:47" itemprop="dateCreated datePublished" datetime="2019-04-28T01:10:47+08:00">2019-04-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-29 00:27:11" itemprop="dateModified" datetime="2019-04-29T00:27:11+08:00">2019-04-29</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">8k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">7 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
-<li><a href="http://cgnail.github.io/academic/lambda-1/" target="_blank" rel="noopener">我的最爱Lambda演算——开篇</a></li>
-<li><a href="https://www.inf.fu-berlin.de/lehre/WS03/alpi/lambda.pdf" target="_blank" rel="noopener">A Tutorial Introduction to the Lambda Calculus</a> 很不错的一篇入门参考</li>
-<li><a href="http://palmstroem.blogspot.com/2012/05/lambda-calculus-for-absolute-dummies.html" target="_blank" rel="noopener">The Lambda Calculus for Absolute Dummies (like myself)</a> 基本是上一篇文章的理解和翻译，不过加入了很多理解，从我看过第一篇文章后，再看这篇会很容易接受</li>
-<li><a href="https://zhuanlan.zhihu.com/p/30510749?utm_source=ZHShareTargetIDMore&amp;utm_medium=social&amp;utm_oi=898539620818640896" target="_blank" rel="noopener">认知科学家写给小白的Lambda演算</a> 这是上一篇文章的中文翻译</li>
-<li><a href="https://www.cs.utah.edu/~mflatt/past-courses/cs7520/public_html/s06/notes.pdf" target="_blank" rel="noopener">Programming languages and lambda calculi</a> 参考书</li>
-<li><a href="https://zhuanlan.zhihu.com/p/25771134" target="_blank" rel="noopener">Lambda calculus引论(三): 不可判定</a> 这是更为简洁的笔记介绍</li>
-<li><a href="https://www.jianshu.com/p/e7db2f50b012" target="_blank" rel="noopener">神奇的λ演算</a> 另一个不错的入门介绍</li>
-</ul>
-<p>这里以第二篇开始lambda演算的学习<br>λ演算是一种形式系统(formal system)，什么是形式系统呢？大家都知道，数学语言是可以脱离现实而存在的——大家把数学想成了一种符号游戏，脱离生活常识，从公理开始，进行大量的推导和证明——最终产生了一个系统，在这个系统中有公理、定理、推论、猜想……这种自成系统，有公理又承认推理证明方法的体系，成为形式系统。而用于描述形式系统的语言就是形式语言(formal language)</p>
-<h2 id="图灵完备"><a href="#图灵完备" class="headerlink" title="图灵完备"></a>图灵完备</h2><p>首先先理解一下什么是<strong>图灵完备</strong>，参考知乎的答案<a href="https://www.zhihu.com/question/20115374" target="_blank" rel="noopener"># 什么是图灵完备？</a></p>
-<h3 id="什么是图灵机"><a href="#什么是图灵机" class="headerlink" title="什么是图灵机"></a>什么是图灵机</h3><p>图灵机是图灵在1936年发表的paper中提出的数学模型，是一个架空概念，他在文中描述了什么是图灵机，并且证明，<strong>只要图灵机可以被实现，就可以用来解决任何可计算问题</strong>。<br>图灵机的结构包括：</p>
-<ol>
-<li>一个无限长的纸带</li>
-<li>一个字符表</li>
-<li>一个读写头</li>
-<li>一个状态寄存器</li>
-<li>一个有限的指令集</li>
-</ol>
-<h3 id="图灵机可以解决什么问题"><a href="#图灵机可以解决什么问题" class="headerlink" title="图灵机可以解决什么问题"></a>图灵机可以解决什么问题</h3><p>图灵证明，假设上述模型所说的功能都可以被某种形式物理实现，那么任何可计算问题都可以被解决。<br>所谓可计算问题，涉及到计算理论（即泛指一切与计算相关的问题），可以理解为，<strong>是否存在一个算法，能解决在任何输入下的此计算问题</strong>，比如著名的停机问题，就是一个不可计算的计算问题。<br>简单所，图灵证明了对于一个问题，对于任何输入，只要人类可以保证算出结果，那么图灵机就可以保证计算结果。</p>
-<h3 id="什么是图灵完备性"><a href="#什么是图灵完备性" class="headerlink" title="什么是图灵完备性"></a>什么是图灵完备性</h3><p>图灵完备性，是针对一套数据操作规则而言的概念，数据操作规则可以是一门编程语言，也可以是计算机里的实现的指令集。当这套规则可以实现图灵机模型里的全部功能时，就称为具备图灵完备性。</p>
-<h3 id="直观理解图灵完备——Brainfuck语言"><a href="#直观理解图灵完备——Brainfuck语言" class="headerlink" title="直观理解图灵完备——Brainfuck语言"></a>直观理解图灵完备——Brainfuck语言</h3><p>1993年，有人发明了Brainfuck语言，只有8个有效字符，每个字符都是一个指令，但这却是一门图形完备的编程语言。<br>BF的工作机制与图灵机基本一致，他存储数据的方式是一个无限长的一位整数数组，里面的数值全部初始化为0，还有一个数据指针，每个时刻都指向数组的某一元素，指针可以左右移动，也可以读取、修改数组当前元素的值。<br>BF中8个有效字符分别是：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- &gt;</span><br><span class="line">指针向右移动一格</span><br><span class="line">- &lt;</span><br><span class="line">指针向左移动一格</span><br><span class="line">- +</span><br><span class="line">使指针当前格数值加一</span><br><span class="line">- -</span><br><span class="line">使指针当前格数值减一</span><br><span class="line">- .</span><br><span class="line">把当前格数值按 ASCII 表输出到终端</span><br><span class="line">- ,</span><br><span class="line">从终端接受一 byte 的数据，存储其 ASCII 数值到当前格</span><br><span class="line">- [</span><br><span class="line">当指针当前值为 0 时，程序跳转至与之对应的 ] 之后；否则程序正常执行</span><br><span class="line">- ]</span><br><span class="line">程序跳转回与之对应的 [ 处</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+++++</span><br><span class="line">[</span><br><span class="line">&gt;+++++++++++++</span><br><span class="line">&lt;-</span><br><span class="line">]</span><br><span class="line">&gt;.</span><br></pre></td></tr></table></figure>
-<p>对于上述代码段，通过完成5X13输出了字符<code>A</code>,<br>这里讲一下我的理解，<code>+</code>进行五次，因此当前指针初始化的格子cell 0的值被递增了5次<br><code>[</code>指令读取到当前值各自值为5（因此将[]中的部分执行了5次，[]中的程序会递减该值，直到0），来看[]中的行为<br><code>&gt;</code>右移指针，随后将当前指针的各自cell 1递增了13次，再左移一个到cell 0，将cell 0的值递减一次<br>随后<code>&gt;.</code>右移指针并将当前值格子cell 1的值打印出来，得到<code>A</code></p>
-<h3 id="图灵停机问题"><a href="#图灵停机问题" class="headerlink" title="图灵停机问题"></a>图灵停机问题</h3><p><strong>不存在有这样一个程序，能够计算任何程序在给定的输入上是否会结束（停机）。</strong><br>用反证法，假设有这样一个程序，叫做GodAlg，给定一个程序，并且给定这个程序的输入，就能够判定这个程序在这个输入上是否会停机。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">GodAlg</span><span class="params">(<span class="keyword">char</span> *program, <span class="keyword">char</span> *input)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (&lt;program&gt; halts on &lt;input&gt;)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们假设一个新的程序</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">SatanAlg</span><span class="params">(<span class="keyword">char</span> *program)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (GodAlg(program, program)) &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当这个算法调用自身时，SatanAlg(SatanAlg)会产生的结果如何？<br>从代码片段来看，这个程序要么能够结束运行停机，要不不能返回。</p>
-<ol>
-<li>假设能够停机，则if判断成立，程序进入循环，于是这个调用永远不会返回，说明SatanAlg(SatanAlg)不能停机。</li>
-<li>假设不能够停机，则返回true，说明SatanAlg(SatanAlg)能停机。<br>这说明假设不成立，不存在这样的一个程序GodAlg</li>
-</ol>
-<h2 id="λ演算"><a href="#λ演算" class="headerlink" title="λ演算"></a>λ演算</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>λ演算被称为最小通用编程语言，1930年由Church引入，用于公式化有效计算中的一些问题，它也是图灵完备的，但更强调变换规则的使用，而不是具体的实现，并且其约束的规则非常简单，易于演算。<br>λ演算中只有三种表达式，分别如下。在λ演算中，只有λ和.是关键字。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- &lt;expression&gt;  := &lt;name&gt; | &lt;function&gt; | &lt;application&gt;</span><br><span class="line">- &lt;function&gt;    := λ &lt;name&gt;.&lt;expression&gt;</span><br><span class="line">- &lt;application&gt; := &lt;expression&gt;&lt;expression&gt;</span><br></pre></td></tr></table></figure>
-<p>注意表达式可以是name，function和application，对于，在λ演算中，只有λ和.是关键字！<br>记住最后一个表达式，两个expression表示application。对于表达式，默认是从左到右进行分析或者应用应用的。</p>
-<script type="math/tex; mode=display">
-E_1E_2E_3\dots E_n=(((E_1E_2)E_3)\dots E_n)</script><p>最简单的恒等函数为</p>
-<script type="math/tex; mode=display">
-\lambda x.x</script><p>函数可以应用于表达式，例如下式表示将函数应用到$y$上</p>
-<script type="math/tex; mode=display">
-(\lambda x.x)y</script><p>关于function application可以通过替换规则替换body中的argument实现求值，例如</p>
-<script type="math/tex; mode=display">
-(\lambda x.x)y=[y/x]x=y</script><p>这里$[y/x]$表示将所有的$x$替换为$y$<br>λ演算中有α transform和β reduction，在λ演算中，变量是没有任何含义的，不代表任何东西，只是用先相同的名字表示两个相同的东西。而函数也什么都不计算，就是一个表达式，唯一能做的就是β规约(β reduction)，直到没有任何东西可以再替换为为止。</p>
-<ul>
-<li>α transform<br>对于λ演算中的任何表达式，可以修改函数参数的名称，只要同时修改函数体的内所有的引用。（替换有约束变量的名字）</li>
-<li>β reduction<br>指的是，对于一个application，可以将函数体中和对应函数标识符相关的部分做替换来实现application，方法就是使用标识符作为参数值替换，也就是下面的substituions部分。（将实参应用到函数体中）</li>
-</ul>
-<h3 id="约束变量-bound-variable-和自由变量-free-variable-variable"><a href="#约束变量-bound-variable-和自由变量-free-variable-variable" class="headerlink" title="约束变量(bound variable)和自由变量(free variable variable)"></a>约束变量(bound variable)和自由变量(free variable variable)</h3><p><img src="https://pic2.zhimg.com/80/v2-8de07855e732abd5ff08a6c00b6a23dd_hd.jpg" alt=""><br>在头部(head)中提及的变量被成为约束变量，没有提到的成为自由变量，因为函数可以是其他函数的一部分，所以一个变量可以同时是约束变量，又是自由变量。</p>
-<h3 id="substitutions"><a href="#substitutions" class="headerlink" title="substitutions"></a>substitutions</h3><p>由于在λ演算中当要使用一个函数时，都需要完整写出完整的定义，这里可以使用其他字符来代替定义，例如恒等function</p>
-<script type="math/tex; mode=display">
-I= (\lambda x.x)</script><p>当恒等function应用于本身时，可以表示为</p>
-<script type="math/tex; mode=display">
-II=(\lambda x.x)(\lambda x.x)</script><p>注意前后的$x$是互相独立的，上式可以写作</p>
-<script type="math/tex; mode=display">
-II=(\lambda x.x)(\lambda z.z)</script><p>对上式作变量替换，将所有$x$用$\lambda z.z$替换</p>
-<script type="math/tex; mode=display">
-[\lambda z.z/x] = \lambda z.z\equiv I</script><h3 id="算术"><a href="#算术" class="headerlink" title="算术"></a>算术</h3><p>λ演算最早就是应用于算术运算的，但在λ演算中只有函数，并没有所谓的数字，这里用丘齐数来表示，首先定义zero，然后one用suc(zero)表示，two用suc(suc(zero))表示。<br>zero表示为，需要接受两个参数s和z</p>
-<script type="math/tex; mode=display">
-\lambda s.(\lambda z.z)</script><p>可以简写为（λ演算中只定义了单个参数的函数，但是多个参数的函数无非就是单个函数的多次调用，其实就是柯里化）</p>
-<script type="math/tex; mode=display">
-0\equiv \lambda sz.z</script><p>简化后的式子可以接受两个参数，第一个可替换s，第二个可替换z。这个表达式被应用时，会把第一个表达式丢掉，然后第二个原封不动。<br>利用这个记号法，其他自然数可以定义为</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-1 \equiv & \lambda sz.s(z) \\
-2 \equiv & \lambda sz.s(s(z)) \\
-3 \equiv &\lambda sz.s(s(s(z)))
-\end{aligned}</script><p>以上的计数法其实就是在z之上嵌套表达式s，数字多大就嵌套多少次，就是对z应用了n次s。这其实就是自然数的本质，不断加1。<br>我们定义后继函数(successor function)如下</p>
-<script type="math/tex; mode=display">
-S =\lambda wyx.y(wyx)</script><p>后继函数可以应用于0得到</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-S0 =& (\lambda wyx.y(wyx)) 0 \\
-    =& \lambda yx.y(0yx) \\
-    =& \lambda yx.y(x) \\
-    = &1
-\end{aligned}</script><p>同理可以得到2等等，由此即可得到加法的定义，例如2+3就表示2S3，即2 suc 3次。注意以下推导中，2接受两个参数S和3，分别将S和3作为s和z替换，同时也要注意到$S3=4$</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-2S3\equiv & (\lambda sz.s(s(z))) S 3\\
-=& S(S(3))\\
-=& S(4) \\
-=& 5
-\end{aligned}</script><!-- 这部分有问题，需要重新看下其他文章
-关于加法实际可以定义如下
-$$
-+\equiv \lambda szxy.sx(ysz) \equiv \lambda sz.()
-$$
--->
-<h3 id="柯里化-currying"><a href="#柯里化-currying" class="headerlink" title="柯里化(currying)"></a>柯里化(currying)</h3><p>这一块可以参考wiki的解释。柯里化就是把接受多个参数的函数变成接受一个单一函数（最初函数的第一个参数）的函数，并返回接受剩余参数的函数的新函数的技术。</p>
-<p>举个例子很典型</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">add(3, 5) -&gt; add(3)(5)</span><br></pre></td></tr></table></figure>
-<p>0的定义为$\lambda sz.z$，这个其实是$\lambda s.(\lambda z.z)$是完全等价的。</p>
-<h3 id="乘法-multiplication"><a href="#乘法-multiplication" class="headerlink" title="乘法(multiplication)"></a>乘法(multiplication)</h3><script type="math/tex; mode=display">
-\lambda xyz.x(yz)</script><p>例如2x2的结果为如下，注意2是可以接受两个参数的，所以$2s(z)$实际上是2接受了$s$和$z$作为输入，得到s(s(z))</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-(\lambda xyz.x(yz))23 &= (\lambda z. 2(3z)) \\
-    &= \lambda z.(\lambda s.((3z)(((3z)(s))))) \\
-    &= \lambda zs.((3z)(3zs))\\
-    &= \lambda zs.3z(3zs) \\
-    &= \lambda zs.z(z(z(3zs))) \\
-    &= \lambda zs.z(z(z(z(z(z(s)))))) \\
-    &= 6
-\end{aligned}</script><p>时刻要记住每个应用函数时，接受了几个参数，并且是左结合的。</p>
-<h2 id="条件-conditionals"><a href="#条件-conditionals" class="headerlink" title="条件(conditionals)"></a>条件(conditionals)</h2><p>定义以下两个函数为真和加，分别接受两个参数返回其中的一个，真就返回第一个，假就返回第二个</p>
-<script type="math/tex; mode=display">
-\mathrm{T} \equiv \lambda xy.x \\
-\mathrm{F} \equiv \lambda xy.y</script><h3 id="逻辑运算-logical-operations"><a href="#逻辑运算-logical-operations" class="headerlink" title="逻辑运算(logical operations)"></a>逻辑运算(logical operations)</h3><script type="math/tex; mode=display">
-\land \equiv \lambda xy.xy\mathrm{F}\\
-\lor \equiv \lambda xy. x\mathrm{T}y \\
-\lnot \equiv \lambda x.x\mathrm F \mathrm T \\</script><p>例如</p>
-<script type="math/tex; mode=display">
-\lnot \mathrm{T}=\mathrm T \mathrm F \mathrm T = \mathrm F</script><h3 id="条件测试-a-conditional-test"><a href="#条件测试-a-conditional-test" class="headerlink" title="条件测试(a conditional test)"></a>条件测试(a conditional test)</h3><p>定义一个函数，如果参数是数字0则返回T，否则返回F</p>
-<script type="math/tex; mode=display">
-\mathrm Z \equiv \lambda x.xF\lnot F</script><p>验证如下，注意0表示接受两个参数，然后用第一个参数对第二个参数作用0次</p>
-<script type="math/tex; mode=display">
-\mathrm{Z} = (\lambda x.x \mathrm F \lnot \mathrm F)0 = 0 \mathrm F \lnot \mathrm F = \lnot \mathrm F</script><script type="math/tex; mode=display">
-\mathrm Z \mathrm N \equiv (\lambda x.x\mathrm F \lnot \mathrm F) \mathrm N = \mathrm N \mathrm F \lnot \mathrm F</script><p><strong>注意到，F对任何参数的应用都是返回恒等函数</strong></p>
-<script type="math/tex; mode=display">
-\mathrm F a \equiv (\lambda xy.y)a = \lambda y.y= \mathrm I</script><p>因此，上式继续展开为</p>
-<script type="math/tex; mode=display">
-\mathrm N \mathrm F \lnot \mathrm F = \mathrm I \mathrm F =\mathrm F</script><p>另外可以换一种方式理解，$\mathrm N \mathrm F \lnot \mathrm F $同时也表示对对$\lnot $应用n次$\mathrm F$，然后结果再应用于$\mathrm F $。注意到$\mathrm F $的定义，接受两个参数，仅仅返回第二个参数。第一个$\mathrm F $实际接受了两个参数，一个是对$\lnot$应用了n-1次F的返回值，另一个是后面的一个$\mathrm F $，因此抹掉第一个参数返回第二个参数，也就是返回最后面的那个$\mathrm F $，也就是最后就返回$\mathrm F $。</p>
-<h3 id="前继函数-predecessor-function"><a href="#前继函数-predecessor-function" class="headerlink" title="前继函数(predecessor function)"></a>前继函数(predecessor function)</h3><p>对于n的前继，通用的做法是创建一个序对(pair)，(n,n-1)然后返回需对的第二个参数作为结果。序对用λ演算可以表示为</p>
-<script type="math/tex; mode=display">
-\lambda z.zab</script><p>将该函数应用于$\mathrm T$就可以返回序对的第一个数</p>
-<script type="math/tex; mode=display">
-(\lambda z.zab)\mathrm T= \mathrm T ab=a</script><p>同理，应用于$\mathrm F$就可以返回需对的第二个数</p>
-<script type="math/tex; mode=display">
-(\lambda z.zab)\mathrm F= \mathrm F ab=b</script><p>利用下面这个函数就可以由序对(n,n-1)生成(n+1,n-1)</p>
-<blockquote>
-<p>这里感觉应该是由序对(n,n-1)生成(n+1,n)才对啊！</p>
-</blockquote>
-<script type="math/tex; mode=display">
-\Theta \equiv (\lambda pz.z(S(pT))(pT))</script><blockquote>
-<p>注意一下对上式的理解，在函数体z(S(pT))(pT))中，如果没有对z进行规约，则该式子不会进行任何计算；如果用数字n对z进行规约，变成n(S(pT))(pT)，此时才可以进一步进行参数替换S(pT)作为n的第一个参数，pT作为第二个参数。</p>
-</blockquote>
-<p>其中，子表达式$pT$从序对p中提取第一个元素。上式会构造一个新的序对，第一个元素是原序对第一个元素的后继——S(pT)，第二个元素就是第原序对的第一个元素——pT。</p>
-<blockquote>
-<p>简单来说，应该是由序对(a,b)生成(a+1,a)。</p>
-</blockquote>
-<p>因此n的前继就是应用n次$\Theta$到序对$\lambda z.z00$（得到(n,n-1)）然后返回第二个参数得到n-1：</p>
-<script type="math/tex; mode=display">
-P\equiv \lambda n.n\Theta (\lambda z.z00)\mathrm F</script><p>可以我们可以进行推导</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-P2=&2\Theta(\lambda z.z00)F\\
-=& \Theta(\Theta(\lambda z.z00))F\\
-=& \Theta(\Theta(\lambda p.p00))F\\
-=& \Theta(\lambda z.z10)F \\
-=& (\lambda z.z21)F\\
-=& F21 \\
-=& 1
-\end{aligned}</script><p>以此类推。同时要注意到$P0=0$，该性质对其他函数的定义很有用，验证如下</p>
-<script type="math/tex; mode=display">
-P0=0\Theta(\lambda z.z00)F=(\lambda z.z00)F=F00=0</script><h3 id="相等与不等"><a href="#相等与不等" class="headerlink" title="相等与不等"></a>相等与不等</h3><p>定义如下函数判断数字$x$是否大于等于$y$</p>
-<script type="math/tex; mode=display">
-G\equiv (\lambda xy.Z(xPy))</script><p>这里的$xPy$表示对y应用x次的前继，也就是y-x，如果该式等于0，说明$y \le x$。<br>利用$x \ge y$与$y \ge x$同时成立表示$x=y$，可以得到下面这个关于相等的定义</p>
-<script type="math/tex; mode=display">
-E\equiv (\lambda xy.\land(ZxPy)(Z(yPx)))</script><p>用同样的方式我们也可以定义$x<y$，$x>y$和$x\neq y$。</y$，$x></p>
-<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>在λ演算中，递归函数可以定义为调用函数y并且返回自身</p>
-<script type="math/tex; mode=display">
-Y\equiv (\lambda y.(\lambda x.y(xx))(\lambda x.y(xx)))</script><p>注意这里其实是加括号了，完整表示如下</p>
-<script type="math/tex; mode=display">
-Y\equiv (\lambda y.((\lambda x.y(xx))(\lambda x.y(xx))))</script><p>这里第二个$(\lambda x.y(xx))$是规约到第一个约束变量x中去的还是不会减少表达式的个数，<br>该函数应用于R时</p>
-<script type="math/tex; mode=display">
-YR=(\lambda x.R(xx))(\lambda x.R(xx))= R((\lambda x.R(xx))(\lambda x.R(xx)))=R(YR)</script><p>考虑从0到n的求和函数R</p>
-<script type="math/tex; mode=display">
-R\equiv (\lambda rn.Zn0(n(r(Pn))))</script><p>该函数对n进行了测试，如果n为0的话，就返回0；如果n不为0则返回n+(r(n-1))，这里r其实是对自身函数的调用。这里我们怎么知道r是对自身的递归调用呢？在λ演算中我们没有对函数定义名字的。这就是给出递归操作Y的原因，例如求和到3</p>
-<script type="math/tex; mode=display">\begin{aligned}
-YR3= &R(YR)3\\
-    =& Z30(3S(YR(P3))) \\
-    =& 3S(YR2)\\
-    =&3S2S1S0
-    =6
-\end{aligned}</script><p>这就是Y组合子(Y combinator)!</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3112,7 +2894,7 @@ YR3= &R(YR)3\\
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -3180,7 +2962,7 @@ YR3= &R(YR)3\\
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">127k</span>
+    <span title="Symbols count total">172k</span>
   
 
   
@@ -3189,7 +2971,7 @@ YR3= &R(YR)3\\
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">1:56</span>
+    <span title="Reading time total">2:36</span>
   
 </div>
 
@@ -3694,48 +3476,9 @@ YR3= &R(YR)3\\
       
     
       
-        
-      
     
   
 
-  
-    
-      <script type="text/x-mathjax-config">
-  
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      
-      equationNumbers: {
-        autoNumber: "AMS"
-      }
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-      for (i = 0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-      }
-  });
-</script>
-<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-<style>
-.MathJax_Display {
-  overflow: auto hidden;
-}
-</style>
-
-    
   
 
 
