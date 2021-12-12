@@ -652,7 +652,7 @@
 <li>它可以连接QObject的任何成员方法，不仅仅是定义的槽。</li>
 </ul>
 <p>旧版本的不足原因是旧语法connect接收的是两个字符串：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">bool</span> QObject::connect ( <span class="keyword">const</span> QObject * sender, <span class="keyword">const</span> <span class="keyword">char</span> * signal, <span class="keyword">const</span> QObject * receiver, <span class="keyword">const</span> <span class="keyword">char</span> * method, Qt::ConnectionType type = Qt::AutoConnection ) [<span class="keyword">static</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">bool QObject::connect ( const QObject * sender, const char * signal, const QObject * receiver, const char * method, Qt::ConnectionType type = Qt::AutoConnection ) [static]</span><br></pre></td></tr></table></figure>
 <p>例如：</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">connect(slider, SIGNAL(valueChanged(<span class="keyword">int</span>)), spinbox, SLOT(setValue(<span class="keyword">int</span>)));</span><br></pre></td></tr></table></figure>
 <p>编译预处理后就是：</p>
