@@ -182,46 +182,6 @@ YR3= &R(YR)3\\
 ]]></content>
   </entry>
   <entry>
-    <title>C、C++基础</title>
-    <url>/2019/05/06/C%E3%80%81C++%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<p>工作中的工程主要是C，不过公共的库函数设计上面存在一些问题，例如全局变量设计不合适、函数声明不合理、部分函数定义有问题，导致可移植性有点差，改成cpp文件后，报了很多错误，这里记录一些容易错误的地方，也顺带回顾一下基础知识。</p>
-<hr>
-<h3 id="全局变量的声明和使用（跨文件）"><a href="#全局变量的声明和使用（跨文件）" class="headerlink" title="全局变量的声明和使用（跨文件）"></a>全局变量的声明和使用（跨文件）</h3><ul>
-<li><a href="https://stackoverflow.com/questions/1433204/how-do-i-use-extern-to-share-variables-between-source-files" target="_blank" rel="noopener">How do I use extern to share variables between source files?</a></li>
-<li><a href="https://stackoverflow.com/questions/1410563/what-is-the-difference-between-a-definition-and-a-declaration" target="_blank" rel="noopener">What is the difference between a definition and a declaration?</a></li>
-</ul>
-<p>错误的参考</p>
-<ul>
-<li><a href="https://blog.csdn.net/flyingdust21/article/details/51679943" target="_blank" rel="noopener">C语言：全局变量在多个c文件中公用的方法</a></li>
-</ul>
-<p>上面的链接中Jonathan Leffler已经回答的很好了。对于声明和定义来说：</p>
-<ul>
-<li>一个变量被声明是指告知编译器，有个某种类型的变量会被使用，但编译不会为它分配内存。</li>
-<li>一个变量并定义是指编译器会分配对应变量的存储空间。</li>
-</ul>
-<p>一个变量可以被多次声明，但在给定的作用域范围内只能定义一次。一个变量的定义可以是一种声明，反之不是。</p>
-<p>最佳实践方式是使用包含<code>extern</code>关键字的头文件来声明变量，然后用某个包含该头文件的源文件对该变量进行定义。</p>
-<p>指导原则：</p>
-<ul>
-<li>头文件中值包含<code>extern</code>方式声明的变量，不要使用<code>static</code>或其他不合格的定义（静态全局变量只在本地文件中可以访问，因此有多个副本）</li>
-<li>对于任何变量，仅在一个头文件中声明（SPOT-Single Point of Truth）</li>
-<li>不要在在源文件中使用<code>extern</code>方式声明变量，源文件中应该用include头文件的方式来声明他们。——我司的实践规范，但实际代码并没有这么遵循，这样代码不好维护。</li>
-<li>对于任何变量，只能有一个源文件进行定义，并且建议初始化为0。</li>
-<li>头文件和源文件中的声明和定义应该保持一致。</li>
-<li>不需要在函数中用<code>extern</code>来声明变量。</li>
-<li>尽量避免全局变量。</li>
-</ul>
-<p>例如有<code>file3.h</code>、<code>file1.c</code>和<code>file2.c</code>三个文件（头文件和源文件名称一致会更好）：</p>
-<p><strong>file3.h</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> global_variable;  <span class="comment">/* Declaration of the variable */</span></span><br></pre></td></tr></table></figure>
-<p><strong>file1.c</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"file3.h"</span>  <span class="comment">/* Declaration made available here */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"prog1.h"</span>  <span class="comment">/* Function declarations */</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Variable defined here */</span></span><br><span class="line"><span class="keyword">int</span> global_variable = <span class="number">37</span>;    <span class="comment">/* Definition checked against declaration */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">increment</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123; <span class="keyword">return</span> global_variable++; &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>file2.c</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"file3.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"prog1.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">use_it</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Global variable: %d\n"</span>, global_variable++);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-]]></content>
-  </entry>
-  <entry>
     <title>Linux使用小记</title>
     <url>/2019/04/30/Linux%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0/</url>
     <content><![CDATA[<p>近期需要回顾一些基础知识，需要相对系统地学习一下。</p>
@@ -307,6 +267,46 @@ YR3= &R(YR)3\\
       <tags>
         <tag>Linux</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>C、C++基础</title>
+    <url>/2019/05/06/C%E3%80%81C++%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<p>工作中的工程主要是C，不过公共的库函数设计上面存在一些问题，例如全局变量设计不合适、函数声明不合理、部分函数定义有问题，导致可移植性有点差，改成cpp文件后，报了很多错误，这里记录一些容易错误的地方，也顺带回顾一下基础知识。</p>
+<hr>
+<h3 id="全局变量的声明和使用（跨文件）"><a href="#全局变量的声明和使用（跨文件）" class="headerlink" title="全局变量的声明和使用（跨文件）"></a>全局变量的声明和使用（跨文件）</h3><ul>
+<li><a href="https://stackoverflow.com/questions/1433204/how-do-i-use-extern-to-share-variables-between-source-files" target="_blank" rel="noopener">How do I use extern to share variables between source files?</a></li>
+<li><a href="https://stackoverflow.com/questions/1410563/what-is-the-difference-between-a-definition-and-a-declaration" target="_blank" rel="noopener">What is the difference between a definition and a declaration?</a></li>
+</ul>
+<p>错误的参考</p>
+<ul>
+<li><a href="https://blog.csdn.net/flyingdust21/article/details/51679943" target="_blank" rel="noopener">C语言：全局变量在多个c文件中公用的方法</a></li>
+</ul>
+<p>上面的链接中Jonathan Leffler已经回答的很好了。对于声明和定义来说：</p>
+<ul>
+<li>一个变量被声明是指告知编译器，有个某种类型的变量会被使用，但编译不会为它分配内存。</li>
+<li>一个变量并定义是指编译器会分配对应变量的存储空间。</li>
+</ul>
+<p>一个变量可以被多次声明，但在给定的作用域范围内只能定义一次。一个变量的定义可以是一种声明，反之不是。</p>
+<p>最佳实践方式是使用包含<code>extern</code>关键字的头文件来声明变量，然后用某个包含该头文件的源文件对该变量进行定义。</p>
+<p>指导原则：</p>
+<ul>
+<li>头文件中值包含<code>extern</code>方式声明的变量，不要使用<code>static</code>或其他不合格的定义（静态全局变量只在本地文件中可以访问，因此有多个副本）</li>
+<li>对于任何变量，仅在一个头文件中声明（SPOT-Single Point of Truth）</li>
+<li>不要在在源文件中使用<code>extern</code>方式声明变量，源文件中应该用include头文件的方式来声明他们。——我司的实践规范，但实际代码并没有这么遵循，这样代码不好维护。</li>
+<li>对于任何变量，只能有一个源文件进行定义，并且建议初始化为0。</li>
+<li>头文件和源文件中的声明和定义应该保持一致。</li>
+<li>不需要在函数中用<code>extern</code>来声明变量。</li>
+<li>尽量避免全局变量。</li>
+</ul>
+<p>例如有<code>file3.h</code>、<code>file1.c</code>和<code>file2.c</code>三个文件（头文件和源文件名称一致会更好）：</p>
+<p><strong>file3.h</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> global_variable;  <span class="comment">/* Declaration of the variable */</span></span><br></pre></td></tr></table></figure>
+<p><strong>file1.c</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"file3.h"</span>  <span class="comment">/* Declaration made available here */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"prog1.h"</span>  <span class="comment">/* Function declarations */</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Variable defined here */</span></span><br><span class="line"><span class="keyword">int</span> global_variable = <span class="number">37</span>;    <span class="comment">/* Definition checked against declaration */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">increment</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123; <span class="keyword">return</span> global_variable++; &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>file2.c</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"file3.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"prog1.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">use_it</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Global variable: %d\n"</span>, global_variable++);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+]]></content>
   </entry>
   <entry>
     <title>OpenMP</title>
@@ -782,183 +782,6 @@ E=mc^2 \tag{tag}</script><figure class="highlight plain"><table><tr><td class="c
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git tag &lt;tagname&gt; <span class="comment"># 用于新建一个标签，默认为HEAD，也可以指定一个commit id。</span></span><br><span class="line">git tag -a &lt;tagname&gt; -m &lt;description&gt; &lt;branchname&gt; or commit_id <span class="comment"># 指定标签信息</span></span><br><span class="line">git tag <span class="comment"># 查看所有标签</span></span><br><span class="line">git push origin &lt;tagname&gt; <span class="comment"># 推送一个本地标签</span></span><br><span class="line">git tag -d &lt;tagname&gt; <span class="comment"># 删除一个本地标签</span></span><br><span class="line">git push origin :refs/tags/&lt;tagname&gt; <span class="comment"># 删除一个远程标签；也就是推送一个空的tag到远程库</span></span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
-    <title>hexo使用小记</title>
-    <url>/2019/04/16/hexo%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0/</url>
-    <content><![CDATA[<h2 id="1-常用的命令"><a href="#1-常用的命令" class="headerlink" title="1. 常用的命令"></a>1. 常用的命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new tile_of_poster</span><br><span class="line">hexo g <span class="comment"># hexo generate</span></span><br><span class="line">hexo s <span class="comment"># hexo server</span></span><br><span class="line">hexo d <span class="comment"># hexo deploy</span></span><br></pre></td></tr></table></figure>
-<p>正常情况下要推送到网站使用，随后即可到www.github.io查看网页了。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>要备份代码到github时</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git push origin hexo <span class="comment"># 因为master分支是用于备份网页文件的</span></span><br></pre></td></tr></table></figure>
-<h2 id="2-常见问题"><a href="#2-常见问题" class="headerlink" title="2. 常见问题"></a>2. 常见问题</h2><ol>
-<li>数学公式<br>在hexo中渲染数学公式需要Mathjax，可以参考<a href="https://blog.csdn.net/crazy_scott/article/details/79293576" target="_blank" rel="noopener">hexo下LaTeX无法显示的解决方案</a><br><a href="https://hexo-guide.readthedocs.io/zh_CN/latest/theme/[NexT]%E9%85%8D%E7%BD%AEMathJax.html" target="_blank" rel="noopener">[NexT]配置MathJax</a> 参考这里也可以，注意<code>per_page</code>配置为<code>true</code>时，要在blog中主动带上<code>mathjax: true</code></li>
-<li>hexo中支持的一些语法可以参考<a href="https://hyxxsfwy.github.io/2016/01/15/Hexo-Markdown-%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/" target="_blank" rel="noopener">Hexo Markdown 简明语法手册</a></li>
-<li>Mathjax英文可以参考<a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference/5044" target="_blank" rel="noopener">MathJax basic tutorial and quick reference</a>，中文翻译参考<a href="https://www.cnblogs.com/linxd/p/4955530.html" target="_blank" rel="noopener">Mathjax与LaTex公式简介</a></li>
-<li>Mathjax的docs，可以查到相关的语法支持情况<a href="http://docs.mathjax.org/en/latest/tex.html" target="_blank" rel="noopener">hMathJax TeX and LaTeX Support</a></li>
-<li>当前markdown渲染引擎不支持todolist<a href="https://github.com/sun11/hexo-renderer-kramed/pull/1" target="_blank" rel="noopener">Port todo list support from marked</a>，有需要的话未来可以自己合并。</li>
-<li>使用kramed需要在文档头中加<code>mathjax: true</code></li>
-<li>Katex中不支持<code>\label</code>和<code>\eqref</code>，目前站点渲染这个也无法做到，但Mathjax应该可以做到。</li>
-<li><a href="https://github.com/iissnan/hexo-theme-next/issues/211" target="_blank" rel="noopener">代码不让它显示行数序号数字怎搞</a></li>
-<li><a href="https://segmentfault.com/q/1010000008494901" target="_blank" rel="noopener">取消hexo中的目录编号</a>，可以使用vs中的toc功能加编号会更好些。</li>
-<li>如何备份hexo的blog源代码<br>可以参考<a href="https://www.zhihu.com/question/21193762" target="_blank" rel="noopener">使用hexo，如果换了电脑怎么更新博客？</a><br>如果已经完成了blog的编写，可以在github上面新建一个<code>hexo</code>分支，并设置为默认分支，随后将远程分支下载下来，并用blog的源文件全部替换掉，在push即可。这样就可以将源代码备份到Github上面的hexo分支，而网页文件存储在master分支。</li>
-<li><a href="https://blog.cat73.org/20160805/2016080501.next-highlight-langs/" target="_blank" rel="noopener">NexT 自带的语法高亮插件支持的语言列表</a> 注意<code>shell</code>应该使用<code>sh</code>会比较统一一些。</li>
-<li><a href="https://github.com/hexojs/hexo/issues/2380" target="_blank" rel="noopener">TypeError: Cannot set property ‘lastIndex’ of undefined github</a></li>
-<li><a href="https://www.zhihu.com/question/37542455" target="_blank" rel="noopener">用Markdown写Hexo博客时如何转义竖杠 | ？</a> 使用HTML字符修改</li>
-<li><a href="http://abonege.github.io/2016/05/25/%E5%A6%82%E4%BD%95%E5%9C%A8hexo%E4%BD%BF%E7%94%A8%E5%9B%BE%E7%89%87/" target="_blank" rel="noopener">如何在hexo使用图片和提供附件下载</a> 提供附件下载功能，其实就是开启在开启post_asset_folder后，在同名文件夹下面放附件就可以了，类似于图片</li>
-</ol>
-<h2 id="3-添加gitalk评论系统"><a href="#3-添加gitalk评论系统" class="headerlink" title="3. 添加gitalk评论系统"></a>3. 添加gitalk评论系统</h2><ul>
-<li><a href="https://asdfv1929.github.io/2018/01/20/gitalk/" target="_blank" rel="noopener">Hexo NexT主题中集成gitalk评论系统</a></li>
-<li><a href="https://iochen.com/2018/01/06/use-gitalk-in-hexo/" target="_blank" rel="noopener">Hexo中Gitalk配置使用教程-可能是目前最详细的教程</a></li>
-<li><a href="https://gitalk.github.io/" target="_blank" rel="noopener">GITALK demo</a></li>
-<li><a href="https://github.com/settings/developers" target="_blank" rel="noopener">OAuth Apps</a></li>
-</ul>
-<p>主要参考了以上两个教程，但事实上目前（2019.4）在next主题中都已经集成了gitalk的相关配置了，直接启用即可，不需要像第一个blog那样需要完整添加很多配置文件。以后可以方便添加评论然后重新记录了。</p>
-<ol>
-<li><p>先在<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">github</a>上注册新应用<br>参数说明</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Application name： <span class="comment"># 应用名称，随意</span></span><br><span class="line">Homepage URL： <span class="comment"># 网站URL，如https://asdfv1929.github.io</span></span><br><span class="line">Application description <span class="comment"># 描述，随意</span></span><br><span class="line">Authorization callback URL：<span class="comment"># 网站URL，https://asdfv1929.github.io</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>点击注册后，页面跳转如下，其中Client ID和Client Secret在后面的配置中需要用到，到时复制粘贴即可</p>
-</li>
-<li><p>在主题配置文件next/_config.yml中添加如下内容：</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gitalk:</span><br><span class="line">    <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">    github_id: astraywu <span class="comment"># Github repo owner</span></span><br><span class="line">    repo: astraywu.github.io <span class="comment"># Repository name to store issues.</span></span><br><span class="line">    client_id: Client ID <span class="comment"># Github Application Client ID</span></span><br><span class="line">    client_secret: Client Secret <span class="comment"># Github Application Client Secret</span></span><br><span class="line">    admin_user: astraywu <span class="comment"># GitHub repo owner and collaborators, only these guys can initialize github issues</span></span><br><span class="line">    distraction_free_mode: <span class="literal">true</span> <span class="comment"># Facebook-like distraction free mode</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="4-next主题优化"><a href="#4-next主题优化" class="headerlink" title="4. next主题优化"></a>4. next主题优化</h2><h3 id="4-1-添加tag"><a href="#4-1-添加tag" class="headerlink" title="4.1. 添加tag"></a>4.1. 添加tag</h3><p><a href="https://www.zhihu.com/question/29017171" target="_blank" rel="noopener">hexo 下的分类和表签无法显示，怎么解决？</a></p>
-<ol>
-<li><p>给文章加tag</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: 一个人的狂欢</span><br><span class="line">date: 2016-11-11 13:09:04</span><br><span class="line">tags: [journal,think]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>命令行输入<code>hexo n page tags</code>，会在<code>sources/tags</code>生成<code>index.md</code>文件</p>
-</li>
-<li><p>编辑<code>index.md</code>文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: tags</span><br><span class="line">date: 2016-11-11 21:40:58</span><br><span class="line">type: &quot;tags&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在主题配置文件<code>themes\next\_config.yml</code>的<code>menu</code>项目下打开<code>tags</code>页</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">    <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">home</span></span><br><span class="line">    <span class="comment">#about: /about/ || user</span></span><br><span class="line">    <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">tags</span></span><br><span class="line">    <span class="comment">#categories: /categories/ || th</span></span><br><span class="line">    <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">archive</span></span><br><span class="line">    <span class="comment">#schedule: /schedule/ || calendar</span></span><br><span class="line">    <span class="comment">#sitemap: /sitemap.xml || sitemap</span></span><br><span class="line">    <span class="comment">#commonweal: /404/ || heartbeat</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="4-2-浏览页面的时候显示当前浏览进度"><a href="#4-2-浏览页面的时候显示当前浏览进度" class="headerlink" title="4.2. 浏览页面的时候显示当前浏览进度"></a>4.2. 浏览页面的时候显示当前浏览进度</h3><h3 id="4-3-添加顶部加载条"><a href="#4-3-添加顶部加载条" class="headerlink" title="4.3. 添加顶部加载条"></a>4.3. 添加顶部加载条</h3><h3 id="4-4-本地搜索"><a href="#4-4-本地搜索" class="headerlink" title="4.4. 本地搜索"></a>4.4. 本地搜索</h3><h3 id="4-5-统计功能，统计功能-显示文章字数统计-阅读时长-总字数"><a href="#4-5-统计功能，统计功能-显示文章字数统计-阅读时长-总字数" class="headerlink" title="4.5. 统计功能，统计功能,显示文章字数统计,阅读时长,总字数"></a>4.5. 统计功能，统计功能,显示文章字数统计,阅读时长,总字数</h3><h3 id="4-6-允许代码段拷贝"><a href="#4-6-允许代码段拷贝" class="headerlink" title="4.6. 允许代码段拷贝"></a>4.6. 允许代码段拷贝</h3><p>这里要使用<code>npm install hexo-symbols-count-time --save</code></p>
-<h3 id="4-7-给代码块添加复制功能"><a href="#4-7-给代码块添加复制功能" class="headerlink" title="4.7. 给代码块添加复制功能"></a>4.7. 给代码块添加复制功能</h3><h3 id="4-8-修改行间距"><a href="#4-8-修改行间距" class="headerlink" title="4.8. 修改行间距"></a>4.8. 修改行间距</h3><p>文章内容较多时，next原来的间距太大了，要上下来回滚动。<br>修改<code>themes\next\source\css\_variables\custom.styl</code>，添加</p>
-<figure class="highlight styl"><table><tr><td class="code"><pre><span class="line"><span class="variable">$line</span>-<span class="attribute">height</span>-base           = <span class="number">1.5</span></span><br></pre></td></tr></table></figure>
-<h2 id="5-ref"><a href="#5-ref" class="headerlink" title="5. ref"></a>5. ref</h2><ol>
-<li><a href="https://www.jianshu.com/p/3a05351a37dc" target="_blank" rel="noopener">Hexo的Next主题详细配置</a></li>
-<li><a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">精于心，简于形</a> Next官网</li>
-<li><a href="https://zhuanlan.zhihu.com/p/26625249" target="_blank" rel="noopener">GitHub+Hexo 搭建个人网站详细教程</a> 知乎的hexo建站笔记</li>
-<li><a href="https://www.jianshu.com/p/a117650f6c76" target="_blank" rel="noopener">利用vscode插件与git hook提升hexo编写部署体验</a></li>
-<li><a href="https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/" target="_blank" rel="noopener">Hexo博客搭建之在文章中插入图片</a></li>
-<li><a href="https://www.jianshu.com/p/21c94eb7bcd1" target="_blank" rel="noopener">绝配：hexo+next主题及我走过的坑</a> 搭建更多功能</li>
-<li><a href="https://zhuanlan.zhihu.com/p/30836436?utm_source=ZHShareTargetIDMore&amp;utm_medium=social&amp;utm_oi=898539620818640896" target="_blank" rel="noopener">Hexo+Next主题优化</a></li>
-<li><a href="https://www.jianshu.com/p/3ff20be8574c" target="_blank" rel="noopener">Hexo-Next-主题优化(一)</a> 应该是上面的ref，带有图片演示</li>
-<li><a href="https://hexo-guide.readthedocs.io/zh_CN/latest/index.html" target="_blank" rel="noopener">hexo指南</a></li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>qwt使用</title>
-    <url>/2019/04/30/qwt%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p>近期需要做一个调试小工具，用于可视化调试LUT，可以使用Qt的Qwt库，全称是Qt Widgets for Technical Applications，用于生成各种统计图。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>官网介绍<a href="https://qwt.sourceforge.io/index.html" target="_blank" rel="noopener">Qwt User’s Guide</a></p>
-<p>MSVC-2015 64bit的完整安装教程，<a href="https://www.qtcentre.org/threads/66576-Installing-Qwt-with-MSVC-2015-64bit-compiler-on-Windows-(complete-instructions" target="_blank" rel="noopener">Installing Qwt with MSVC-2015 64bit compiler on Windows (complete instructions)</a>)。我使用的是Qt 5.12.0。源码路径和安装路径最好分离开，便于重新再来。<br>完整以上安装后，为了方便VS使用还需要做一些简单lib、bin和include的配置。参考<a href="https://blog.csdn.net/toby54king/article/details/78852396" target="_blank" rel="noopener">QWT6.1.3编译、配置和使用（Vs2010+Qwt6.1.3+Qt5.5.1编译）</a>。</p>
-<p>安装后的文件<br><img src="/2019/04/30/qwt使用/2019-05-01-01-00-40.png" alt></p>
-<ol>
-<li>对Qt的安装路径配置环境变量<br><img src="/2019/04/30/qwt使用/2019-05-01-00-57-36.png" alt></li>
-<li>拷贝include目录到Qt的include目录，最好新建个Qwt的子目录</li>
-<li>拷贝<strong>lib\qwt.lib</strong>和<strong>qwtd.lib</strong>到Qt的lib目录下</li>
-<li>拷贝<strong>lib\qwt.dll</strong>和<strong>qwtd.dll</strong>到Qt的bin目录下</li>
-<li>拷贝<strong>plugins\designer\qwt_designer_plugin.dll</strong>到<strong>plugins\designer</strong>目录下，用于qt designer。</li>
-<li>配置VS（有些不是必须的，但最好配置上）<ol>
-<li>配置头文件：<code>$(QTDIR)\include\Qwt</code><br><img src="/2019/04/30/qwt使用/2019-05-01-01-04-35.png" alt></li>
-<li>配置可执行文件：<code>qwtd.lib</code>（如果是Release版本用<code>qwt.lib</code>）<br><img src="/2019/04/30/qwt使用/2019-05-01-01-05-32.png" alt></li>
-<li>配置预处理器：QWT_DLL<br><img src="/2019/04/30/qwt使用/2019-05-01-01-08-08.png" alt></li>
-</ol>
-</li>
-<li>跑提供的测试代码<a href="https://www.qtcentre.org/threads/66576-Installing-Qwt-with-MSVC-2015-64bit-compiler-on-Windows-(complete-instructions" target="_blank" rel="noopener">Installing Qwt with MSVC-2015 64bit compiler on Windows (complete instructions)</a>)<br>基本效果如下<br><img src="/2019/04/30/qwt使用/2019-05-01-01-10-16.png" alt></li>
-</ol>
-<p>MSVC-2017应该也有类似的教程。</p>
-<h2 id="qwt-demo"><a href="#qwt-demo" class="headerlink" title="qwt demo"></a>qwt demo</h2><p>网络上的资源参差不齐，最好还是从官方提供的example入手，之前就是因为没有完整编译好工程导致有些demo没看到，苦苦看源码搜资料查了好久。</p>
-<ol>
-<li>animation</li>
-<li>barchart：柱状图、导出按钮combox</li>
-<li>bode：picker数据拾取器</li>
-<li>controls：多个tab</li>
-<li>cpuplot：legend选择可隐藏</li>
-<li>curvdemo1</li>
-<li>dials：多个tab</li>
-<li>distrowatch</li>
-<li>event_filter：曲线上鼠标拖动点</li>
-<li>friedberg</li>
-<li>itemeditor：editor</li>
-<li>legends：layout设计、多个按钮控制显示</li>
-<li>oscilloscope</li>
-<li>radio</li>
-<li>rasterview：放大缩小</li>
-<li>realtime：组合控制</li>
-<li>refreshtest</li>
-<li>scatterplot：平移放大缩小</li>
-<li>simpleplot：简单曲线显示</li>
-<li>sinusplot：always picker</li>
-<li>spectrogram</li>
-<li>stockchart：checkbox</li>
-<li>sysinfo</li>
-<li>tvplot</li>
-</ol>
-<p>这里列几个典型的</p>
-<p><img src="/2019/04/30/qwt使用/2019-05-01-01-59-06.png" alt><br><img src="/2019/04/30/qwt使用/2019-05-01-01-58-14.png" alt><br><img src="/2019/04/30/qwt使用/2019-05-01-01-55-00.png" alt><br><img src="/2019/04/30/qwt使用/2019-05-01-01-57-10.png" alt></p>
-<h2 id="使用过程中一些小细节"><a href="#使用过程中一些小细节" class="headerlink" title="使用过程中一些小细节"></a>使用过程中一些小细节</h2><ol>
-<li>按钮出现中文乱码</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 源码文件的字符集不是UTF8 ？</span></span><br><span class="line"><span class="comment">// 如果是Qt5.x，则：</span></span><br><span class="line">fileBtn-&gt;setText(tr(<span class="string">"文件标准对话框"</span>));</span><br><span class="line"><span class="comment">// 修改为</span></span><br><span class="line">fileBtn-&gt;setText(QStringLiteral(<span class="string">"文件标准对话框"</span>));</span><br></pre></td></tr></table></figure>
-<ol>
-<li>pushbutton的简单使用</li>
-<li><a href="https://blog.csdn.net/qq_25800311/article/details/80913477" target="_blank" rel="noopener">Qt QPushButton</a></li>
-</ol>
-<h2 id="Qt的MVC设计模式"><a href="#Qt的MVC设计模式" class="headerlink" title="Qt的MVC设计模式"></a>Qt的MVC设计模式</h2><p>网络上关于Qt的介绍还是相对不多的，这里记录下Qt相关的东西，便于回溯。</p>
-<h3 id="架构、框架和设计模式"><a href="#架构、框架和设计模式" class="headerlink" title="架构、框架和设计模式"></a>架构、框架和设计模式</h3><p>ref:<br><a href="https://www.cnblogs.com/the-wang/p/7258303.html" target="_blank" rel="noopener">架构、框架和设计模式</a></p>
-<h4 id="软件架构"><a href="#软件架构" class="headerlink" title="软件架构"></a>软件架构</h4><p>软件架构是系统的一个草图，阐述了各个组件之间的通信，层次划分，一旦系统开始详细设计，架构蓝图就很难甚至无法改变。</p>
-<p>例如：三层架构：一种设计软件架构的思想。</p>
-<p>通常意义上的三层架构就是将整个业务应用划分为表示层（User Interface  Layer）、业务逻辑层（Buesiness Logic Layer）、数据访问层（Data Access Layer）。区分层次的目的是为了体现“高内聚，低耦合”的思想。</p>
-<ol>
-<li>表示层<br> 表示层位于最外层（最上层），最接近于用户。用于显示数据和接收用户输入的数据为用户提供一种交互式的操作界面。</li>
-<li>业务逻辑层<br> 业务逻辑层无疑是系统架构中体现核心价值的部分。他的关注点主要集中在业务规则的制定、业务流程的实现等与业务需求相关的系统设计上，也就是说，他与系统所对应的领域（Domain）逻辑有关，很多时候，也将业务逻辑层称为领域层。<br> 业务逻辑层在体系架构中的位置很关键，他处于数据访问层与表示层中间起到了数据交换中承上启下的作用。对于数据访问层而言，他是调用者；对于表示层而言，他却是被调用者。</li>
-<li>数据访问层<br> 数据访问层有时候也称为持久层，其功能主要是负责数据库的访问，可以访问数据库系统、二进制文件、文本文档、或是XML文档。简单的说法就是实现对数据表的Select、Insert、Update和Delete操作。</li>
-</ol>
-<h4 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h4><p>软件框架是（Framework）是项目软件开发过程中提取特定领域软件的共性部分形成的体系结构，不同领域的软件项目有着不同的框架类型。<strong>框架的作用在于：由于提取了特定领域软件的共性部分，因此在此领域内新项目开发过程中代码不需要从头编写，只需要编写在框架的基础上进行一些开发和调整便可满足要求：对于开发过程而言，这样做会提高软件的质量减低成本，缩短开发时间，是的开发越做越轻松，效益越做越好，形成一种良性循环。</strong></p>
-<p>框架不是现成可用的应用系统，<strong>他是一个半成品</strong>，需要后来的开发人员进行二次开发，实现具体功能的应用系统。框架也不是平台，平台的概念比较模糊，他可以是一种操作系统、一种应用服务器、一种数据库软件或一种通信软件等，因此平台在应用方面主要指提供特定服务的系统软件；而框架更侧重于设计和开发过程，或者可以说，框架通过调用平台提供的服务而起作用。</p>
-<p>框架也不是工具包或者类库。望文生义，类库就是一些类的集合，只要我们将一些可以复用的类集中放到一个Library中，就可以称其为一个类库。类库中的许多元素（如：类、结构、接口、枚举等）之间可能有一些关联，但这些关联通常用于支持一个类概念或接口概念的完整表达。如果从一个更高的视角来审视类库，可以发现类库中的一个个“完整的概念”之间是无关的或是关系松散的，框架和类库有着相似的形式，即框架往往也是类的集合；但不同之处在于，<strong>框架中的各个类并不是孤立的，框架中的业务逻辑代码是将不同的类连在一起在他们之间建立协作关系</strong>，例如：Spring-一个开源的Web设计规范。</p>
-<h4 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h4><p>设计模式（Design pattern）代表了最佳的实践，通常被有经验的面向对象的软件开发人员所采用。设计模式是软件开发人员在软件开发过程中面临的一般问题的解决方案。这些解决方案是众多软件开发人员经过相当长的一段时间的试验和错误总结出来的。</p>
-<p>设计模式是对某种环境下反复出现的问题以及解决该问题的方案描述，比框架更加抽象；框架可以用代码表示，也能直接执行或复用，而对模式而言只有实例才能用代码表示;设计模式是比框架更小的元素，一个框架中往往含有一个或多个设计模式，框架总是针对某一特定应用领域，但同一模式却可适用于各种应用。</p>
-<h4 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h4><ol>
-<li>框架与设计模式<br> 框架通常是代码重用，而设计模式是设计重用，架构介于两者之间，部分代码重用部分设计重用。<br> 设计模式研究的是针对单一问题的设计思路和解决方法，一个模式可以应用于不同的框架和被不同的语言所实现；而框架则是一个应用的体系结构，是一种或多种设计模式和代码的混合体，虽然他们有所不同，但却共同致力于使人们的设计可以被重用，在思想上存在着统一性的特点，因而设计模式的思想可以在框架设计中进行应用。</li>
-<li>框架与架构<br> 框架不是架构，框架比架构更具体，更偏重于技术，而架构偏重于设计。一个架构可以通过多种框架来实现.</li>
-<li>架构与设计模式<br> 设计模式主要是针对单一问题的解决方法，范畴比较小，而架构是高层次的针对体系结构的一种设计思路，范畴比较大。可以说一个架构中可能会出现多个设计模式类解决架构中的多种问题。</li>
-</ol>
-<p>通过上面的分析，可以看出这三者之间得区别还有很多，首先架构是一个范畴最大的概念，是最高层次的设计，一个架构设计中可能会用到多个框架和多个设计模式；而框架是针对共性抽象出来的半成品，这里面可能包含着多个设计模式；而设计模式就是解决单一问题的设计思路和解决方法。</p>
-<p>要做好一个项目，架构设计、框架设计和使用、设计模式都是非常重要的。<strong>我们在做一个项目的时候首先设计出来的应该是架构，是对整个问题的一个总体上的设计，之后再会考虑运用什么样的框架和设计模式来实现我们的框架；当然，只使用框架和设计模式中的一种也是经常遇到的。</strong></p>
-<p>这三者的共同点都是为解决现实生活中的问题而出现的，都为了使我们的设计更面向对象化。</p>
-<h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><p>MVC设计模式起源于SmallTalk的一种与用户界面相关的设计模式，可以有效分离数据和用户界面。</p>
-<p>MVC设计模式包含三个元素：<br>表示数据的模型（Model），表示用户界面的识图（View），定义了用户在界面上的操作控制（Control）。这和典型的三层架构不同。MVC是设计模式，属于微观的解决方案；三层架构是系统架构，属于宏观的解决方案。</p>
-<h3 id="Qt的MVC——InterView框架（MVD）"><a href="#Qt的MVC——InterView框架（MVD）" class="headerlink" title="Qt的MVC——InterView框架（MVD）"></a>Qt的MVC——InterView框架（MVD）</h3><ul>
-<li><a href="https://blog.csdn.net/weixin_39743893/article/details/80625759" target="_blank" rel="noopener">Qt的MVC设计模式——InterView框架（MVD）</a></li>
-<li><a href="https://blog.csdn.net/u012521552/article/details/51771318" target="_blank" rel="noopener">Qt5MVC模式(一)</a></li>
-<li><a href="https://blog.csdn.net/rl529014/article/details/52072380" target="_blank" rel="noopener">Qt中的MVC （模型/视图结构）</a></li>
-</ul>
-<p>与MVC设计模式类似，Qt引入了模型/视图结构用于完成数据与界面的分离，即InterView框架。但不同的是，Qt的InterView框架中把视图和控制部件结合在一起，使得框架更为简洁。<br>为了灵活地处理用户输入，InterView框架引入了代理（Delegate）。通过使用代理，能够自定义数据条目（item）的显示和编辑方式。</p>
-<p>Qt的模型/视图结构分为了三种部分：</p>
-<ul>
-<li>模型（Model）</li>
-<li>视图（View）</li>
-<li>代理（Delegate）</li>
-</ul>
-<p>如下图，模型与数据通信，并为了其它部件提供接口；<br>而视图从模型中获得用来引用数据条目的模型索引（Model Index）；<br>在视图中，代理负责绘制数据条目，当编辑条目时，代理和模型直接进行通信。<br>模型/视图/代理之间通过信号和槽进行通信。</p>
-<p><img src="/2019/04/30/qwt使用/2019-05-01-01-18-30.png" alt></p>
-<p>它们之间的关系如下：<br>数据发生改变时，模型发出信号通知视图；<br>用户对界面进行操作，视图发生信号；<br>代理发出信号告知模型和视图编辑器目前的状态。</p>
-<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ol>
-<li>模型（Model）<br> 抽象基类QAbstractItemModel<br> 列表的抽象基类QAbstractListModel、表格的抽象基类QAbstractTableModel、QAbstractProxyModel<br> QProxyModel<br> QDirModel<br> QFileSystemModel<br> QHelpContentModel<br> QStandardItemModel类继承</li>
-<li>视图（View）<br> 抽象基类QAbstractItemView<br> QListView—QListWidget\QUndoView<br> QTableView—QTableWidget<br> QTreeView—QTreeWidget<br> QColumnView<br> QHeaderView<br> 实际上：QListWidget、QTableWidget、QTreeWidget已经包含数据，是模型与视图集成的。</li>
-<li>代理（Delegate）<br> 抽象基类QAbstractItemDelegate<br> QItemDelegate<br> QStyleItemDelegate<br> 类QItemDelegate由类QSqlRelationDelegate继承</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>qt小结</title>
     <url>/2019/05/02/qt%E5%B0%8F%E7%BB%93/</url>
     <content><![CDATA[<p>重新温习一下Qt的教程，回顾下相关知识</p>
@@ -1210,123 +1033,180 @@ QMessageBox::information(this, tr(&quot;Information&quot;), str);
 </code></pre>]]></content>
   </entry>
   <entry>
-    <title>常用插件和小工具</title>
-    <url>/2019/04/19/%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%92%8C%E5%B0%8F%E5%B7%A5%E5%85%B7/</url>
-    <content><![CDATA[<h2 id="1-常用的chrome插件"><a href="#1-常用的chrome插件" class="headerlink" title="1. 常用的chrome插件"></a>1. 常用的chrome插件</h2><ul>
-<li><a href="https://chrome.google.com/webstore/detail/context-menus/phlfmkfpmphogkomddckmggcfpmfchpn" target="_blank" rel="noopener">Context Menus/右键搜索</a></li>
-<li><a href="https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall?utm_source=chrome-ntp-icon" target="_blank" rel="noopener">One Tab</a> 基本必备的插件</li>
-<li><a href="https://chrome.google.com/webstore/detail/ie-tab/hehijbfgiekmjfkfjpbkbammjbdenadd?utm_source=chrome-ntp-icon" target="_blank" rel="noopener">IE tab</a> 还没有试验过，不过有些网站确实只支持IE</li>
-<li><a href="https://chrome.google.com/webstore/detail/google-scholar-button/ldipcbpaocekfooobnbcddclnhejkcpn" target="_blank" rel="noopener">Google Scholar Button</a></li>
-<li><a href="https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd" target="_blank" rel="noopener">LastPass: Free Password Manager</a> 以前还挺经常用的，不过现在直接用google账号就可以存好多密码了</li>
-<li><a href="https://chrome.google.com/webstore/detail/wizclipper/jfanfpmalehkemdiiebjljddhgojhfab" target="_blank" rel="noopener">WizClipper/为知笔记</a></li>
-<li><a href="https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc" target="_blank" rel="noopener">Octotree</a> 用于github阅读</li>
-<li><a href="http://www.internetdownloadmanager.com/" target="_blank" rel="noopener">IDM</a> IDM配合chrome使用</li>
-<li><a href="https://chrome.google.com/webstore/detail/ticktick-todo-task-list/diankknpkndanachmlckaikddgcehkod" target="_blank" rel="noopener">TickTick - Todo &amp; Task List</a> 有时候需要同步手机上的清单</li>
-<li><a href="https://chrome.google.com/webstore/detail/%E8%B0%B7%E6%AD%8C%E8%AE%BF%E9%97%AE%E5%8A%A9%E6%89%8B/gocklaboggjfkolaknpbhddbaopcepfp" target="_blank" rel="noopener">谷歌访问助手</a> 没有VPN时候就靠这个活着了</li>
-<li><a href="https://chrome.google.com/webstore/detail/im-feeling-lucky/cnlabakikmdekpfaflaihcepfkjopgll" target="_blank" rel="noopener">I’m Feeling Lucky</a> <a href="https://www.techjunkie.com/im-feeling-lucky/" target="_blank" rel="noopener">How to add Google’s I’m Feeling Lucky Option to Your Chrome Search Engines</a></li>
-</ul>
-<h2 id="2-vscode常用插件及相关配置"><a href="#2-vscode常用插件及相关配置" class="headerlink" title="2. vscode常用插件及相关配置"></a>2. vscode常用插件及相关配置</h2><h3 id="2-1-插件"><a href="#2-1-插件" class="headerlink" title="2.1. 插件"></a>2.1. 插件</h3><ol>
-<li>vscode-icons<br> 文件格式一目了然，左侧文件目录的文件夹和文件都会显示相应的图标</li>
-<li>Bracket Pair Colorizer<br> 括号用不同颜色标识</li>
-<li>Git History<br>在vscode中添加git log</li>
-<li>LaTex language support</li>
-<li>LeetCode</li>
-<li><p>Markdown All in One<br>可以使用github flavored markdown渲染标准</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"markdown.styles": ["D:\\Documents\\01.Github\\01.markdown-css\\github-markdown.css"],</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Markdown Math<br>在markdown中支持数学公式</p>
-</li>
-<li>Markdown Preview Enhance<br>用于预览markdown</li>
-<li>Markdown Shortcuts<br>添加一些快捷键，写作时比较方便</li>
-<li><p>Markdown TOC<br>添加目录功能注意，并且可以在header中添加序号。<br>根据markdownlint的语法要求，一级标题应该仅有一个座位文章的标题，所以需要在二级标题中启动编号。</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"markdown-toc.depthFrom": 2,</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>markdownlint<br>对md文件做语法检查</p>
-</li>
-<li><p>Paste Image<br>方便在.md文件中复制图片，可以配置在当前同文件名的文件夹下，便于分类</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"pasteImage.path": "$&#123;currentFileDir&#125;/$&#123;currentFileNameWithoutExt&#125;/",</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Setting Sync</p>
-</li>
-<li><p>TODO Highlight<br>高亮TODO并扩展</p>
-</li>
-<li><p>OneDark-Pro<br>Atom’s ionic主题（首选项-颜色主题修改主题    </p>
-</li>
-<li>T</li>
+    <title>hexo使用小记</title>
+    <url>/2019/04/16/hexo%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0/</url>
+    <content><![CDATA[<h2 id="1-常用的命令"><a href="#1-常用的命令" class="headerlink" title="1. 常用的命令"></a>1. 常用的命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new tile_of_poster</span><br><span class="line">hexo g <span class="comment"># hexo generate</span></span><br><span class="line">hexo s <span class="comment"># hexo server</span></span><br><span class="line">hexo d <span class="comment"># hexo deploy</span></span><br></pre></td></tr></table></figure>
+<p>正常情况下要推送到网站使用，随后即可到www.github.io查看网页了。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>要备份代码到github时</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git push origin hexo <span class="comment"># 因为master分支是用于备份网页文件的</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-常见问题"><a href="#2-常见问题" class="headerlink" title="2. 常见问题"></a>2. 常见问题</h2><ol>
+<li>数学公式<br>在hexo中渲染数学公式需要Mathjax，可以参考<a href="https://blog.csdn.net/crazy_scott/article/details/79293576" target="_blank" rel="noopener">hexo下LaTeX无法显示的解决方案</a><br><a href="https://hexo-guide.readthedocs.io/zh_CN/latest/theme/[NexT]%E9%85%8D%E7%BD%AEMathJax.html" target="_blank" rel="noopener">[NexT]配置MathJax</a> 参考这里也可以，注意<code>per_page</code>配置为<code>true</code>时，要在blog中主动带上<code>mathjax: true</code></li>
+<li>hexo中支持的一些语法可以参考<a href="https://hyxxsfwy.github.io/2016/01/15/Hexo-Markdown-%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/" target="_blank" rel="noopener">Hexo Markdown 简明语法手册</a></li>
+<li>Mathjax英文可以参考<a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference/5044" target="_blank" rel="noopener">MathJax basic tutorial and quick reference</a>，中文翻译参考<a href="https://www.cnblogs.com/linxd/p/4955530.html" target="_blank" rel="noopener">Mathjax与LaTex公式简介</a></li>
+<li>Mathjax的docs，可以查到相关的语法支持情况<a href="http://docs.mathjax.org/en/latest/tex.html" target="_blank" rel="noopener">hMathJax TeX and LaTeX Support</a></li>
+<li>当前markdown渲染引擎不支持todolist<a href="https://github.com/sun11/hexo-renderer-kramed/pull/1" target="_blank" rel="noopener">Port todo list support from marked</a>，有需要的话未来可以自己合并。</li>
+<li>使用kramed需要在文档头中加<code>mathjax: true</code></li>
+<li>Katex中不支持<code>\label</code>和<code>\eqref</code>，目前站点渲染这个也无法做到，但Mathjax应该可以做到。</li>
+<li><a href="https://github.com/iissnan/hexo-theme-next/issues/211" target="_blank" rel="noopener">代码不让它显示行数序号数字怎搞</a></li>
+<li><a href="https://segmentfault.com/q/1010000008494901" target="_blank" rel="noopener">取消hexo中的目录编号</a>，可以使用vs中的toc功能加编号会更好些。</li>
+<li>如何备份hexo的blog源代码<br>可以参考<a href="https://www.zhihu.com/question/21193762" target="_blank" rel="noopener">使用hexo，如果换了电脑怎么更新博客？</a><br>如果已经完成了blog的编写，可以在github上面新建一个<code>hexo</code>分支，并设置为默认分支，随后将远程分支下载下来，并用blog的源文件全部替换掉，在push即可。这样就可以将源代码备份到Github上面的hexo分支，而网页文件存储在master分支。</li>
+<li><a href="https://blog.cat73.org/20160805/2016080501.next-highlight-langs/" target="_blank" rel="noopener">NexT 自带的语法高亮插件支持的语言列表</a> 注意<code>shell</code>应该使用<code>sh</code>会比较统一一些。</li>
+<li><a href="https://github.com/hexojs/hexo/issues/2380" target="_blank" rel="noopener">TypeError: Cannot set property ‘lastIndex’ of undefined github</a></li>
+<li><a href="https://www.zhihu.com/question/37542455" target="_blank" rel="noopener">用Markdown写Hexo博客时如何转义竖杠 | ？</a> 使用HTML字符修改</li>
+<li><a href="http://abonege.github.io/2016/05/25/%E5%A6%82%E4%BD%95%E5%9C%A8hexo%E4%BD%BF%E7%94%A8%E5%9B%BE%E7%89%87/" target="_blank" rel="noopener">如何在hexo使用图片和提供附件下载</a> 提供附件下载功能，其实就是开启在开启post_asset_folder后，在同名文件夹下面放附件就可以了，类似于图片</li>
 </ol>
-<h3 id="2-2-配置"><a href="#2-2-配置" class="headerlink" title="2.2. 配置"></a>2.2. 配置</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">"editor.mouseWheelZoom": true,</span><br><span class="line">"editor.fontFamily": "Consolas, 'Courier New', monospace",</span><br><span class="line">"workbench.colorTheme": "One Dark Pro",</span><br></pre></td></tr></table></figure>
-<h3 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h3><ul>
-<li><a href="https://aoenian.github.io/2018/12/24/vscode-markdown-to-pdf/" target="_blank" rel="noopener">vscode编辑markdown文件并导出为PDF格式</a></li>
+<h2 id="3-添加gitalk评论系统"><a href="#3-添加gitalk评论系统" class="headerlink" title="3. 添加gitalk评论系统"></a>3. 添加gitalk评论系统</h2><ul>
+<li><a href="https://asdfv1929.github.io/2018/01/20/gitalk/" target="_blank" rel="noopener">Hexo NexT主题中集成gitalk评论系统</a></li>
+<li><a href="https://iochen.com/2018/01/06/use-gitalk-in-hexo/" target="_blank" rel="noopener">Hexo中Gitalk配置使用教程-可能是目前最详细的教程</a></li>
+<li><a href="https://gitalk.github.io/" target="_blank" rel="noopener">GITALK demo</a></li>
+<li><a href="https://github.com/settings/developers" target="_blank" rel="noopener">OAuth Apps</a></li>
 </ul>
-<h2 id="3-实用的软件"><a href="#3-实用的软件" class="headerlink" title="3. 实用的软件"></a>3. 实用的软件</h2><h3 id="3-1-实际使用"><a href="#3-1-实际使用" class="headerlink" title="3.1. 实际使用"></a>3.1. 实际使用</h3><ul>
-<li>SumatraPDF/福昕阅读器 小巧的PDF阅读器，不过不能编辑</li>
-<li>Total Commander/Q-Dir/Clover 多窗口多标签的资源管理器，文件整理工具</li>
-<li><strong>Launchy</strong>/Wox 快速启动</li>
-<li><strong>Eeverthing</strong> 快速搜索</li>
-<li>MediaInfo 强大的视频参数检测工具</li>
-<li>MathType Word中插入公式</li>
-<li>calibre 电子书管理器</li>
-<li>KMSpico 用于注册Microsoft Office</li>
-<li>Potplayer 好用的视频播放器</li>
-<li><strong>Ditto</strong> 剪切板管理工具，可以记录多个剪切板，写代码很实用</li>
-<li>火绒安全软件</li>
-<li>Internet Download Manager 下载工具</li>
-<li>Listary Pro 还没用起来，文件浏览工具，TODO</li>
-<li><strong>MobaXterm</strong>/cmder XShell的替代品，全能终端神器</li>
-<li>ShadowsocksR-dotnet4.0 VPN工具</li>
-<li>搜狗壁纸 桌面管理工具</li>
-<li>欧路词典 可以自由搭配词典，自由性比较高</li>
-<li>Thunder5 使用专门版本的迅雷，不会被限速，简单速度高</li>
-<li><strong>Beyond Compare</strong> 比对工具</li>
-<li><strong>Quicker</strong> 效率神器，启动、复制、查找等重复性工作的自动化工具</li>
-<li>TeamViewer 功能强大的远程控制软件</li>
-<li>WinSCP SCP文件传输软件，有点类似Total Commander的界面，同步很方便</li>
-<li>每日英语听力 练习英语</li>
-<li>软媒魔方 系统优化工具</li>
-<li><strong>Snipaste</strong> 简单强大的截图工具，很实用</li>
-<li>Mathpix Snip 数学公式的OCR工具，用于Latex等</li>
-<li>Xmind/幕布 思维导图工具，TODO</li>
-<li>为知笔记 笔记工具</li>
-<li><strong>unlocker</strong> 强力解除工具，用于解决文件占用问题</li>
-<li>Geek Uninstaller 还未使用，TODO</li>
-<li><strong>DesktopCal</strong> 桌面日历</li>
-<li>Seer、QuickLook windows查看工具，TODO</li>
-<li>Screen to GIF/Ocam fit录制/剪辑工具</li>
-<li>冰点下载 百度文库的免费下载器</li>
-<li>Collagelt 拼图，TODO</li>
-<li>7-Zip</li>
-<li>SpaceSniffer</li>
-<li>Duplicate Cleaner TODD</li>
-<li>SyncToy 文件夾同步工具 TODO</li>
-<li>Icaros 让资源管理器能够显示所有视频格式缩略图，缩略图拓展增强插件 Icaros TODO</li>
-<li>Smallpdf</li>
-<li><a href="https://github.com/soimort/you-get" target="_blank" rel="noopener">you-get</a> 下载视频神器</li>
-</ul>
-<h3 id="3-2-ref"><a href="#3-2-ref" class="headerlink" title="3.2. ref"></a>3.2. ref</h3><ul>
-<li><a href="https://www.zhihu.com/question/300735799/answer/604585413" target="_blank" rel="noopener">有哪些软件堪称神器，却不为大众所知？</a></li>
-</ul>
-<h2 id="4-实用的网站"><a href="#4-实用的网站" class="headerlink" title="4. 实用的网站"></a>4. 实用的网站</h2><ul>
-<li><a href="https://mubu.com/" target="_blank" rel="noopener">极简大纲笔记 | 一键生成思维导图</a></li>
-<li><a href="https://uzer.me/" target="_blank" rel="noopener">UZER.ME云端超级应用空间</a></li>
-<li><a href="http://bigjpg.com/" target="_blank" rel="noopener">AI人工智能图片放大</a></li>
-<li><a href="https://burner.bonanza.com/" target="_blank" rel="noopener">Background Burner: Remove Image Backgrounds Free &amp; Fast</a> 抠图</li>
-<li><a href="https://www.wolframalpha.com/" target="_blank" rel="noopener">wolframalpha</a></li>
-<li><a href="http://tools.jb51.net/" target="_blank" rel="noopener">脚本之家</a></li>
-</ul>
-<h2 id="5-Office"><a href="#5-Office" class="headerlink" title="5. Office"></a>5. Office</h2><ul>
-<li><a href="https://www.jiandaoyun.com/f/5b4fe560ba4f62256657ec95" target="_blank" rel="noopener">Office插件</a></li>
-<li><a href="http://www.hippter.com/" target="_blank" rel="noopener">HiPPTer</a></li>
-<li><a href="http://www.ffcell.com/" target="_blank" rel="noopener">方方格子</a></li>
-</ul>
-<h2 id="6-IOS"><a href="#6-IOS" class="headerlink" title="6. IOS"></a>6. IOS</h2><ul>
-<li><a href="https://www.zhihu.com/question/271740133" target="_blank" rel="noopener">在当下使用 iPad 有哪些值得推荐的应用？</a></li>
-</ul>
+<p>主要参考了以上两个教程，但事实上目前（2019.4）在next主题中都已经集成了gitalk的相关配置了，直接启用即可，不需要像第一个blog那样需要完整添加很多配置文件。以后可以方便添加评论然后重新记录了。</p>
+<ol>
+<li><p>先在<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">github</a>上注册新应用<br>参数说明</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Application name： <span class="comment"># 应用名称，随意</span></span><br><span class="line">Homepage URL： <span class="comment"># 网站URL，如https://asdfv1929.github.io</span></span><br><span class="line">Application description <span class="comment"># 描述，随意</span></span><br><span class="line">Authorization callback URL：<span class="comment"># 网站URL，https://asdfv1929.github.io</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>点击注册后，页面跳转如下，其中Client ID和Client Secret在后面的配置中需要用到，到时复制粘贴即可</p>
+</li>
+<li><p>在主题配置文件next/_config.yml中添加如下内容：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gitalk:</span><br><span class="line">    <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">    github_id: astraywu <span class="comment"># Github repo owner</span></span><br><span class="line">    repo: astraywu.github.io <span class="comment"># Repository name to store issues.</span></span><br><span class="line">    client_id: Client ID <span class="comment"># Github Application Client ID</span></span><br><span class="line">    client_secret: Client Secret <span class="comment"># Github Application Client Secret</span></span><br><span class="line">    admin_user: astraywu <span class="comment"># GitHub repo owner and collaborators, only these guys can initialize github issues</span></span><br><span class="line">    distraction_free_mode: <span class="literal">true</span> <span class="comment"># Facebook-like distraction free mode</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="4-next主题优化"><a href="#4-next主题优化" class="headerlink" title="4. next主题优化"></a>4. next主题优化</h2><h3 id="4-1-添加tag"><a href="#4-1-添加tag" class="headerlink" title="4.1. 添加tag"></a>4.1. 添加tag</h3><p><a href="https://www.zhihu.com/question/29017171" target="_blank" rel="noopener">hexo 下的分类和表签无法显示，怎么解决？</a></p>
+<ol>
+<li><p>给文章加tag</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: 一个人的狂欢</span><br><span class="line">date: 2016-11-11 13:09:04</span><br><span class="line">tags: [journal,think]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命令行输入<code>hexo n page tags</code>，会在<code>sources/tags</code>生成<code>index.md</code>文件</p>
+</li>
+<li><p>编辑<code>index.md</code>文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: tags</span><br><span class="line">date: 2016-11-11 21:40:58</span><br><span class="line">type: &quot;tags&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在主题配置文件<code>themes\next\_config.yml</code>的<code>menu</code>项目下打开<code>tags</code>页</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">    <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">home</span></span><br><span class="line">    <span class="comment">#about: /about/ || user</span></span><br><span class="line">    <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">tags</span></span><br><span class="line">    <span class="comment">#categories: /categories/ || th</span></span><br><span class="line">    <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">archive</span></span><br><span class="line">    <span class="comment">#schedule: /schedule/ || calendar</span></span><br><span class="line">    <span class="comment">#sitemap: /sitemap.xml || sitemap</span></span><br><span class="line">    <span class="comment">#commonweal: /404/ || heartbeat</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="4-2-浏览页面的时候显示当前浏览进度"><a href="#4-2-浏览页面的时候显示当前浏览进度" class="headerlink" title="4.2. 浏览页面的时候显示当前浏览进度"></a>4.2. 浏览页面的时候显示当前浏览进度</h3><h3 id="4-3-添加顶部加载条"><a href="#4-3-添加顶部加载条" class="headerlink" title="4.3. 添加顶部加载条"></a>4.3. 添加顶部加载条</h3><h3 id="4-4-本地搜索"><a href="#4-4-本地搜索" class="headerlink" title="4.4. 本地搜索"></a>4.4. 本地搜索</h3><h3 id="4-5-统计功能，统计功能-显示文章字数统计-阅读时长-总字数"><a href="#4-5-统计功能，统计功能-显示文章字数统计-阅读时长-总字数" class="headerlink" title="4.5. 统计功能，统计功能,显示文章字数统计,阅读时长,总字数"></a>4.5. 统计功能，统计功能,显示文章字数统计,阅读时长,总字数</h3><h3 id="4-6-允许代码段拷贝"><a href="#4-6-允许代码段拷贝" class="headerlink" title="4.6. 允许代码段拷贝"></a>4.6. 允许代码段拷贝</h3><p>这里要使用<code>npm install hexo-symbols-count-time --save</code></p>
+<h3 id="4-7-给代码块添加复制功能"><a href="#4-7-给代码块添加复制功能" class="headerlink" title="4.7. 给代码块添加复制功能"></a>4.7. 给代码块添加复制功能</h3><h3 id="4-8-修改行间距"><a href="#4-8-修改行间距" class="headerlink" title="4.8. 修改行间距"></a>4.8. 修改行间距</h3><p>文章内容较多时，next原来的间距太大了，要上下来回滚动。<br>修改<code>themes\next\source\css\_variables\custom.styl</code>，添加</p>
+<figure class="highlight styl"><table><tr><td class="code"><pre><span class="line"><span class="variable">$line</span>-<span class="attribute">height</span>-base           = <span class="number">1.5</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-ref"><a href="#5-ref" class="headerlink" title="5. ref"></a>5. ref</h2><ol>
+<li><a href="https://www.jianshu.com/p/3a05351a37dc" target="_blank" rel="noopener">Hexo的Next主题详细配置</a></li>
+<li><a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">精于心，简于形</a> Next官网</li>
+<li><a href="https://zhuanlan.zhihu.com/p/26625249" target="_blank" rel="noopener">GitHub+Hexo 搭建个人网站详细教程</a> 知乎的hexo建站笔记</li>
+<li><a href="https://www.jianshu.com/p/a117650f6c76" target="_blank" rel="noopener">利用vscode插件与git hook提升hexo编写部署体验</a></li>
+<li><a href="https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/" target="_blank" rel="noopener">Hexo博客搭建之在文章中插入图片</a></li>
+<li><a href="https://www.jianshu.com/p/21c94eb7bcd1" target="_blank" rel="noopener">绝配：hexo+next主题及我走过的坑</a> 搭建更多功能</li>
+<li><a href="https://zhuanlan.zhihu.com/p/30836436?utm_source=ZHShareTargetIDMore&amp;utm_medium=social&amp;utm_oi=898539620818640896" target="_blank" rel="noopener">Hexo+Next主题优化</a></li>
+<li><a href="https://www.jianshu.com/p/3ff20be8574c" target="_blank" rel="noopener">Hexo-Next-主题优化(一)</a> 应该是上面的ref，带有图片演示</li>
+<li><a href="https://hexo-guide.readthedocs.io/zh_CN/latest/index.html" target="_blank" rel="noopener">hexo指南</a></li>
+</ol>
 ]]></content>
   </entry>
   <entry>
-    <title>test20211213</title>
-    <url>/2021/12/13/test20211213/</url>
-    <content><![CDATA[<p>参考<a href="https://www.cnblogs.com/linlf03/p/6923519.html" target="_blank" rel="noopener">TortoiseSVN比较工具设置为BeyondCompare 4</a></p>
+    <title>qwt使用</title>
+    <url>/2019/04/30/qwt%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>近期需要做一个调试小工具，用于可视化调试LUT，可以使用Qt的Qwt库，全称是Qt Widgets for Technical Applications，用于生成各种统计图。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>官网介绍<a href="https://qwt.sourceforge.io/index.html" target="_blank" rel="noopener">Qwt User’s Guide</a></p>
+<p>MSVC-2015 64bit的完整安装教程，<a href="https://www.qtcentre.org/threads/66576-Installing-Qwt-with-MSVC-2015-64bit-compiler-on-Windows-(complete-instructions" target="_blank" rel="noopener">Installing Qwt with MSVC-2015 64bit compiler on Windows (complete instructions)</a>)。我使用的是Qt 5.12.0。源码路径和安装路径最好分离开，便于重新再来。<br>完整以上安装后，为了方便VS使用还需要做一些简单lib、bin和include的配置。参考<a href="https://blog.csdn.net/toby54king/article/details/78852396" target="_blank" rel="noopener">QWT6.1.3编译、配置和使用（Vs2010+Qwt6.1.3+Qt5.5.1编译）</a>。</p>
+<p>安装后的文件<br><img src="/2019/04/30/qwt使用/2019-05-01-01-00-40.png" alt></p>
+<ol>
+<li>对Qt的安装路径配置环境变量<br><img src="/2019/04/30/qwt使用/2019-05-01-00-57-36.png" alt></li>
+<li>拷贝include目录到Qt的include目录，最好新建个Qwt的子目录</li>
+<li>拷贝<strong>lib\qwt.lib</strong>和<strong>qwtd.lib</strong>到Qt的lib目录下</li>
+<li>拷贝<strong>lib\qwt.dll</strong>和<strong>qwtd.dll</strong>到Qt的bin目录下</li>
+<li>拷贝<strong>plugins\designer\qwt_designer_plugin.dll</strong>到<strong>plugins\designer</strong>目录下，用于qt designer。</li>
+<li>配置VS（有些不是必须的，但最好配置上）<ol>
+<li>配置头文件：<code>$(QTDIR)\include\Qwt</code><br><img src="/2019/04/30/qwt使用/2019-05-01-01-04-35.png" alt></li>
+<li>配置可执行文件：<code>qwtd.lib</code>（如果是Release版本用<code>qwt.lib</code>）<br><img src="/2019/04/30/qwt使用/2019-05-01-01-05-32.png" alt></li>
+<li>配置预处理器：QWT_DLL<br><img src="/2019/04/30/qwt使用/2019-05-01-01-08-08.png" alt></li>
+</ol>
+</li>
+<li>跑提供的测试代码<a href="https://www.qtcentre.org/threads/66576-Installing-Qwt-with-MSVC-2015-64bit-compiler-on-Windows-(complete-instructions" target="_blank" rel="noopener">Installing Qwt with MSVC-2015 64bit compiler on Windows (complete instructions)</a>)<br>基本效果如下<br><img src="/2019/04/30/qwt使用/2019-05-01-01-10-16.png" alt></li>
+</ol>
+<p>MSVC-2017应该也有类似的教程。</p>
+<h2 id="qwt-demo"><a href="#qwt-demo" class="headerlink" title="qwt demo"></a>qwt demo</h2><p>网络上的资源参差不齐，最好还是从官方提供的example入手，之前就是因为没有完整编译好工程导致有些demo没看到，苦苦看源码搜资料查了好久。</p>
+<ol>
+<li>animation</li>
+<li>barchart：柱状图、导出按钮combox</li>
+<li>bode：picker数据拾取器</li>
+<li>controls：多个tab</li>
+<li>cpuplot：legend选择可隐藏</li>
+<li>curvdemo1</li>
+<li>dials：多个tab</li>
+<li>distrowatch</li>
+<li>event_filter：曲线上鼠标拖动点</li>
+<li>friedberg</li>
+<li>itemeditor：editor</li>
+<li>legends：layout设计、多个按钮控制显示</li>
+<li>oscilloscope</li>
+<li>radio</li>
+<li>rasterview：放大缩小</li>
+<li>realtime：组合控制</li>
+<li>refreshtest</li>
+<li>scatterplot：平移放大缩小</li>
+<li>simpleplot：简单曲线显示</li>
+<li>sinusplot：always picker</li>
+<li>spectrogram</li>
+<li>stockchart：checkbox</li>
+<li>sysinfo</li>
+<li>tvplot</li>
+</ol>
+<p>这里列几个典型的</p>
+<p><img src="/2019/04/30/qwt使用/2019-05-01-01-59-06.png" alt><br><img src="/2019/04/30/qwt使用/2019-05-01-01-58-14.png" alt><br><img src="/2019/04/30/qwt使用/2019-05-01-01-55-00.png" alt><br><img src="/2019/04/30/qwt使用/2019-05-01-01-57-10.png" alt></p>
+<h2 id="使用过程中一些小细节"><a href="#使用过程中一些小细节" class="headerlink" title="使用过程中一些小细节"></a>使用过程中一些小细节</h2><ol>
+<li>按钮出现中文乱码</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 源码文件的字符集不是UTF8 ？</span></span><br><span class="line"><span class="comment">// 如果是Qt5.x，则：</span></span><br><span class="line">fileBtn-&gt;setText(tr(<span class="string">"文件标准对话框"</span>));</span><br><span class="line"><span class="comment">// 修改为</span></span><br><span class="line">fileBtn-&gt;setText(QStringLiteral(<span class="string">"文件标准对话框"</span>));</span><br></pre></td></tr></table></figure>
+<ol>
+<li>pushbutton的简单使用</li>
+<li><a href="https://blog.csdn.net/qq_25800311/article/details/80913477" target="_blank" rel="noopener">Qt QPushButton</a></li>
+</ol>
+<h2 id="Qt的MVC设计模式"><a href="#Qt的MVC设计模式" class="headerlink" title="Qt的MVC设计模式"></a>Qt的MVC设计模式</h2><p>网络上关于Qt的介绍还是相对不多的，这里记录下Qt相关的东西，便于回溯。</p>
+<h3 id="架构、框架和设计模式"><a href="#架构、框架和设计模式" class="headerlink" title="架构、框架和设计模式"></a>架构、框架和设计模式</h3><p>ref:<br><a href="https://www.cnblogs.com/the-wang/p/7258303.html" target="_blank" rel="noopener">架构、框架和设计模式</a></p>
+<h4 id="软件架构"><a href="#软件架构" class="headerlink" title="软件架构"></a>软件架构</h4><p>软件架构是系统的一个草图，阐述了各个组件之间的通信，层次划分，一旦系统开始详细设计，架构蓝图就很难甚至无法改变。</p>
+<p>例如：三层架构：一种设计软件架构的思想。</p>
+<p>通常意义上的三层架构就是将整个业务应用划分为表示层（User Interface  Layer）、业务逻辑层（Buesiness Logic Layer）、数据访问层（Data Access Layer）。区分层次的目的是为了体现“高内聚，低耦合”的思想。</p>
+<ol>
+<li>表示层<br> 表示层位于最外层（最上层），最接近于用户。用于显示数据和接收用户输入的数据为用户提供一种交互式的操作界面。</li>
+<li>业务逻辑层<br> 业务逻辑层无疑是系统架构中体现核心价值的部分。他的关注点主要集中在业务规则的制定、业务流程的实现等与业务需求相关的系统设计上，也就是说，他与系统所对应的领域（Domain）逻辑有关，很多时候，也将业务逻辑层称为领域层。<br> 业务逻辑层在体系架构中的位置很关键，他处于数据访问层与表示层中间起到了数据交换中承上启下的作用。对于数据访问层而言，他是调用者；对于表示层而言，他却是被调用者。</li>
+<li>数据访问层<br> 数据访问层有时候也称为持久层，其功能主要是负责数据库的访问，可以访问数据库系统、二进制文件、文本文档、或是XML文档。简单的说法就是实现对数据表的Select、Insert、Update和Delete操作。</li>
+</ol>
+<h4 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h4><p>软件框架是（Framework）是项目软件开发过程中提取特定领域软件的共性部分形成的体系结构，不同领域的软件项目有着不同的框架类型。<strong>框架的作用在于：由于提取了特定领域软件的共性部分，因此在此领域内新项目开发过程中代码不需要从头编写，只需要编写在框架的基础上进行一些开发和调整便可满足要求：对于开发过程而言，这样做会提高软件的质量减低成本，缩短开发时间，是的开发越做越轻松，效益越做越好，形成一种良性循环。</strong></p>
+<p>框架不是现成可用的应用系统，<strong>他是一个半成品</strong>，需要后来的开发人员进行二次开发，实现具体功能的应用系统。框架也不是平台，平台的概念比较模糊，他可以是一种操作系统、一种应用服务器、一种数据库软件或一种通信软件等，因此平台在应用方面主要指提供特定服务的系统软件；而框架更侧重于设计和开发过程，或者可以说，框架通过调用平台提供的服务而起作用。</p>
+<p>框架也不是工具包或者类库。望文生义，类库就是一些类的集合，只要我们将一些可以复用的类集中放到一个Library中，就可以称其为一个类库。类库中的许多元素（如：类、结构、接口、枚举等）之间可能有一些关联，但这些关联通常用于支持一个类概念或接口概念的完整表达。如果从一个更高的视角来审视类库，可以发现类库中的一个个“完整的概念”之间是无关的或是关系松散的，框架和类库有着相似的形式，即框架往往也是类的集合；但不同之处在于，<strong>框架中的各个类并不是孤立的，框架中的业务逻辑代码是将不同的类连在一起在他们之间建立协作关系</strong>，例如：Spring-一个开源的Web设计规范。</p>
+<h4 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h4><p>设计模式（Design pattern）代表了最佳的实践，通常被有经验的面向对象的软件开发人员所采用。设计模式是软件开发人员在软件开发过程中面临的一般问题的解决方案。这些解决方案是众多软件开发人员经过相当长的一段时间的试验和错误总结出来的。</p>
+<p>设计模式是对某种环境下反复出现的问题以及解决该问题的方案描述，比框架更加抽象；框架可以用代码表示，也能直接执行或复用，而对模式而言只有实例才能用代码表示;设计模式是比框架更小的元素，一个框架中往往含有一个或多个设计模式，框架总是针对某一特定应用领域，但同一模式却可适用于各种应用。</p>
+<h4 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h4><ol>
+<li>框架与设计模式<br> 框架通常是代码重用，而设计模式是设计重用，架构介于两者之间，部分代码重用部分设计重用。<br> 设计模式研究的是针对单一问题的设计思路和解决方法，一个模式可以应用于不同的框架和被不同的语言所实现；而框架则是一个应用的体系结构，是一种或多种设计模式和代码的混合体，虽然他们有所不同，但却共同致力于使人们的设计可以被重用，在思想上存在着统一性的特点，因而设计模式的思想可以在框架设计中进行应用。</li>
+<li>框架与架构<br> 框架不是架构，框架比架构更具体，更偏重于技术，而架构偏重于设计。一个架构可以通过多种框架来实现.</li>
+<li>架构与设计模式<br> 设计模式主要是针对单一问题的解决方法，范畴比较小，而架构是高层次的针对体系结构的一种设计思路，范畴比较大。可以说一个架构中可能会出现多个设计模式类解决架构中的多种问题。</li>
+</ol>
+<p>通过上面的分析，可以看出这三者之间得区别还有很多，首先架构是一个范畴最大的概念，是最高层次的设计，一个架构设计中可能会用到多个框架和多个设计模式；而框架是针对共性抽象出来的半成品，这里面可能包含着多个设计模式；而设计模式就是解决单一问题的设计思路和解决方法。</p>
+<p>要做好一个项目，架构设计、框架设计和使用、设计模式都是非常重要的。<strong>我们在做一个项目的时候首先设计出来的应该是架构，是对整个问题的一个总体上的设计，之后再会考虑运用什么样的框架和设计模式来实现我们的框架；当然，只使用框架和设计模式中的一种也是经常遇到的。</strong></p>
+<p>这三者的共同点都是为解决现实生活中的问题而出现的，都为了使我们的设计更面向对象化。</p>
+<h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><p>MVC设计模式起源于SmallTalk的一种与用户界面相关的设计模式，可以有效分离数据和用户界面。</p>
+<p>MVC设计模式包含三个元素：<br>表示数据的模型（Model），表示用户界面的识图（View），定义了用户在界面上的操作控制（Control）。这和典型的三层架构不同。MVC是设计模式，属于微观的解决方案；三层架构是系统架构，属于宏观的解决方案。</p>
+<h3 id="Qt的MVC——InterView框架（MVD）"><a href="#Qt的MVC——InterView框架（MVD）" class="headerlink" title="Qt的MVC——InterView框架（MVD）"></a>Qt的MVC——InterView框架（MVD）</h3><ul>
+<li><a href="https://blog.csdn.net/weixin_39743893/article/details/80625759" target="_blank" rel="noopener">Qt的MVC设计模式——InterView框架（MVD）</a></li>
+<li><a href="https://blog.csdn.net/u012521552/article/details/51771318" target="_blank" rel="noopener">Qt5MVC模式(一)</a></li>
+<li><a href="https://blog.csdn.net/rl529014/article/details/52072380" target="_blank" rel="noopener">Qt中的MVC （模型/视图结构）</a></li>
+</ul>
+<p>与MVC设计模式类似，Qt引入了模型/视图结构用于完成数据与界面的分离，即InterView框架。但不同的是，Qt的InterView框架中把视图和控制部件结合在一起，使得框架更为简洁。<br>为了灵活地处理用户输入，InterView框架引入了代理（Delegate）。通过使用代理，能够自定义数据条目（item）的显示和编辑方式。</p>
+<p>Qt的模型/视图结构分为了三种部分：</p>
+<ul>
+<li>模型（Model）</li>
+<li>视图（View）</li>
+<li>代理（Delegate）</li>
+</ul>
+<p>如下图，模型与数据通信，并为了其它部件提供接口；<br>而视图从模型中获得用来引用数据条目的模型索引（Model Index）；<br>在视图中，代理负责绘制数据条目，当编辑条目时，代理和模型直接进行通信。<br>模型/视图/代理之间通过信号和槽进行通信。</p>
+<p><img src="/2019/04/30/qwt使用/2019-05-01-01-18-30.png" alt></p>
+<p>它们之间的关系如下：<br>数据发生改变时，模型发出信号通知视图；<br>用户对界面进行操作，视图发生信号；<br>代理发出信号告知模型和视图编辑器目前的状态。</p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ol>
+<li>模型（Model）<br> 抽象基类QAbstractItemModel<br> 列表的抽象基类QAbstractListModel、表格的抽象基类QAbstractTableModel、QAbstractProxyModel<br> QProxyModel<br> QDirModel<br> QFileSystemModel<br> QHelpContentModel<br> QStandardItemModel类继承</li>
+<li>视图（View）<br> 抽象基类QAbstractItemView<br> QListView—QListWidget\QUndoView<br> QTableView—QTableWidget<br> QTreeView—QTreeWidget<br> QColumnView<br> QHeaderView<br> 实际上：QListWidget、QTableWidget、QTreeWidget已经包含数据，是模型与视图集成的。</li>
+<li>代理（Delegate）<br> 抽象基类QAbstractItemDelegate<br> QItemDelegate<br> QStyleItemDelegate<br> 类QItemDelegate由类QSqlRelationDelegate继承</li>
+</ol>
 ]]></content>
   </entry>
   <entry>
@@ -1338,110 +1218,9 @@ QMessageBox::information(this, tr(&quot;Information&quot;), str);
 <figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">clr;</span><br><span class="line"></span><br><span class="line">x = <span class="number">0</span>:<span class="number">256</span>;</span><br><span class="line">y = normpdf(x, <span class="number">0</span>, <span class="number">75</span>);</span><br><span class="line">y = (y / y(<span class="number">1</span>) * <span class="number">1024</span>);</span><br><span class="line"></span><br><span class="line">LUT = [<span class="number">1024</span> <span class="number">1024</span> <span class="number">1024</span> <span class="number">1023</span> <span class="number">1023</span> <span class="number">1022</span> <span class="number">1021</span> <span class="number">1020</span> <span class="number">1018</span> <span class="number">1017</span> <span class="number">1015</span> <span class="number">1013</span> <span class="number">1011</span> <span class="number">1009</span> <span class="number">1007</span> <span class="number">1004</span> <span class="number">1001</span>  <span class="number">998</span>  <span class="number">995</span>  <span class="number">992</span>  <span class="number">989</span>  <span class="number">985</span>  <span class="number">982</span>  <span class="number">978</span>  <span class="number">974</span>  <span class="number">969</span>  <span class="number">965</span>  <span class="number">961</span>  <span class="number">956</span>  <span class="number">951</span>  <span class="number">946</span>  <span class="number">941</span>  <span class="number">936</span>  <span class="number">931</span>  <span class="number">925</span>  <span class="number">920</span>  <span class="number">914</span>  <span class="number">908</span>  <span class="number">902</span>  <span class="number">896</span>  <span class="number">890</span>  <span class="number">884</span>  <span class="number">878</span>  <span class="number">871</span>  <span class="number">864</span>  <span class="number">858</span>  <span class="number">851</span>  <span class="number">844</span>  <span class="number">837</span>  <span class="number">830</span>  <span class="number">823</span>  <span class="number">816</span>  <span class="number">808</span>  <span class="number">801</span>  <span class="number">793</span>  <span class="number">786</span>  <span class="number">778</span>  <span class="number">771</span>  <span class="number">763</span>  <span class="number">755</span>  <span class="number">747</span>  <span class="number">739</span>  <span class="number">731</span>  <span class="number">724</span>  <span class="number">716</span>  <span class="number">708</span>  <span class="number">699</span>  <span class="number">691</span>  <span class="number">683</span>  <span class="number">675</span>  <span class="number">667</span>  <span class="number">659</span>  <span class="number">651</span>  <span class="number">642</span>  <span class="number">634</span>  <span class="number">626</span>  <span class="number">618</span>  <span class="number">609</span>  <span class="number">601</span>  <span class="number">593</span>  <span class="number">585</span>  <span class="number">577</span>  <span class="number">569</span>  <span class="number">560</span>  <span class="number">552</span>  <span class="number">544</span>  <span class="number">536</span>  <span class="number">528</span>  <span class="number">520</span>  <span class="number">512</span>  <span class="number">504</span>  <span class="number">496</span>  <span class="number">488</span>  <span class="number">480</span>  <span class="number">473</span>  <span class="number">465</span>  <span class="number">457</span>  <span class="number">449</span>  <span class="number">442</span>  <span class="number">434</span>  <span class="number">427</span>  <span class="number">419</span>  <span class="number">412</span>  <span class="number">405</span>  <span class="number">397</span>  <span class="number">390</span>  <span class="number">383</span>  <span class="number">376</span>  <span class="number">369</span>  <span class="number">362</span>  <span class="number">355</span>  <span class="number">348</span>  <span class="number">342</span>  <span class="number">335</span>  <span class="number">328</span>  <span class="number">322</span>  <span class="number">315</span>  <span class="number">309</span>  <span class="number">303</span>  <span class="number">297</span>  <span class="number">290</span>  <span class="number">284</span>  <span class="number">278</span>  <span class="number">272</span>  <span class="number">267</span>  <span class="number">261</span>  <span class="number">255</span>  <span class="number">250</span>  <span class="number">244</span>  <span class="number">239</span>  <span class="number">233</span>  <span class="number">228</span>  <span class="number">223</span>  <span class="number">218</span>  <span class="number">213</span>  <span class="number">208</span>  <span class="number">203</span>  <span class="number">198</span>  <span class="number">193</span>  <span class="number">189</span>  <span class="number">184</span>  <span class="number">180</span>  <span class="number">175</span>  <span class="number">171</span>  <span class="number">167</span>  <span class="number">163</span>  <span class="number">159</span>  <span class="number">155</span>  <span class="number">151</span>  <span class="number">147</span>  <span class="number">143</span>  <span class="number">139</span>  <span class="number">136</span>  <span class="number">132</span>  <span class="number">129</span>  <span class="number">125</span>  <span class="number">122</span>  <span class="number">118</span>  <span class="number">115</span>  <span class="number">112</span>  <span class="number">109</span>  <span class="number">106</span>  <span class="number">103</span>  <span class="number">100</span>   <span class="number">97</span>   <span class="number">95</span>   <span class="number">92</span>   <span class="number">89</span>   <span class="number">87</span>   <span class="number">84</span>   <span class="number">82</span>   <span class="number">79</span>   <span class="number">77</span>   <span class="number">75</span>   <span class="number">72</span>   <span class="number">70</span>   <span class="number">68</span>   <span class="number">66</span>   <span class="number">64</span>   <span class="number">62</span>   <span class="number">60</span>   <span class="number">58</span>   <span class="number">56</span>   <span class="number">55</span>   <span class="number">53</span>   <span class="number">51</span>   <span class="number">50</span>   <span class="number">48</span>   <span class="number">46</span>   <span class="number">45</span>   <span class="number">43</span>   <span class="number">42</span>   <span class="number">41</span>   <span class="number">39</span>   <span class="number">38</span>   <span class="number">37</span>   <span class="number">36</span>   <span class="number">34</span>   <span class="number">33</span>   <span class="number">32</span>   <span class="number">31</span>   <span class="number">30</span>   <span class="number">29</span>   <span class="number">28</span>   <span class="number">27</span>   <span class="number">26</span>   <span class="number">25</span>   <span class="number">24</span>   <span class="number">23</span>   <span class="number">22</span>   <span class="number">22</span>   <span class="number">21</span>   <span class="number">20</span>   <span class="number">19</span>   <span class="number">19</span>   <span class="number">18</span>   <span class="number">17</span>   <span class="number">17</span>   <span class="number">16</span>   <span class="number">15</span>   <span class="number">15</span>   <span class="number">14</span>   <span class="number">14</span>   <span class="number">13</span>   <span class="number">13</span>   <span class="number">12</span>   <span class="number">12</span>   <span class="number">11</span>   <span class="number">11</span>   <span class="number">10</span>   <span class="number">10</span>   <span class="number">10</span>    <span class="number">9</span>    <span class="number">9</span>    <span class="number">8</span>    <span class="number">8</span>    <span class="number">8</span>    <span class="number">8</span>    <span class="number">7</span>    <span class="number">7</span>    <span class="number">7</span>    <span class="number">6</span>    <span class="number">6</span>    <span class="number">6</span>    <span class="number">6</span>    <span class="number">5</span>    <span class="number">5</span>    <span class="number">5</span>    <span class="number">5</span>    <span class="number">5</span>    <span class="number">4</span>    <span class="number">4</span>    <span class="number">4</span>    <span class="number">4</span>    <span class="number">4</span>    <span class="number">3</span>    <span class="number">3</span> ];</span><br><span class="line"></span><br><span class="line"><span class="built_in">figure</span>(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">plot</span>(x, y);</span><br><span class="line">title(<span class="string">'gauss curve, \sigma = 75, first point norm to 1024'</span>);</span><br><span class="line"><span class="comment">% plot(x, y, x, LUT);</span></span><br><span class="line">d = y - LUT;</span><br><span class="line"><span class="built_in">max</span>(<span class="built_in">abs</span>(d))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x = <span class="number">0</span>:<span class="number">8</span>:<span class="number">256</span>;</span><br><span class="line">y = normpdf(x, <span class="number">0</span>, <span class="number">80</span>);</span><br><span class="line">y = (y / y(<span class="number">1</span>) * <span class="number">128</span>);</span><br><span class="line"></span><br><span class="line">LUT = [  <span class="number">128</span>  <span class="number">128</span>  <span class="number">126</span>  <span class="number">123</span>  <span class="number">119</span>  <span class="number">115</span>  <span class="number">109</span>  <span class="number">102</span>   <span class="number">95</span>   <span class="number">89</span>   <span class="number">81</span>   <span class="number">74</span>   <span class="number">66</span>   <span class="number">59</span>   <span class="number">52</span>   <span class="number">45</span>   <span class="number">39</span>   <span class="number">34</span>   <span class="number">29</span>   <span class="number">24</span>   <span class="number">20</span>   <span class="number">17</span>   <span class="number">14</span>   <span class="number">11</span>    <span class="number">9</span>    <span class="number">7</span>    <span class="number">6</span>    <span class="number">5</span>    <span class="number">3</span>    <span class="number">3</span>    <span class="number">2</span>    <span class="number">2</span>    <span class="number">1</span>  ];</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">'b'</span>, x, LUT, <span class="string">'r'</span>);</span><br><span class="line">d = y - LUT;</span><br><span class="line"><span class="built_in">max</span>(<span class="built_in">abs</span>(d))</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
-    <title>编程规范</title>
-    <url>/2019/05/07/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/</url>
-    <content><![CDATA[<ul>
-<li><a href="https://zh-google-styleguide.readthedocs.io/en/latest/" target="_blank" rel="noopener">Google 开源项目风格指南 (中文版)</a> 包含5个中文版的风格指南</li>
-<li><a href="https://google.github.io/styleguide/cppguide.html" target="_blank" rel="noopener">Google C++ Style Guide</a></li>
-<li><a href="https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/contents/" target="_blank" rel="noopener">C++ 风格指南 - 内容目录</a></li>
-<li><a href="https://blog.csdn.net/voidccc/article/details/37599203" target="_blank" rel="noopener">一张图总结Google C++编程规范(Google C++ Style Guide)</a></li>
-</ul>
-<p>华为的编程规范参考了很多的Google编程规范。</p>
-<p>有一张图很好的总结了Google的编程规范<br><img src="/2019/05/07/编程规范/20140713220242000.jpg" alt></p>
-<h2 id="Google编程规范笔记"><a href="#Google编程规范笔记" class="headerlink" title="Google编程规范笔记"></a>Google编程规范笔记</h2><h3 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h3><ol>
-<li>避免使用前置声明，用头文件<br>优点：减少include，节省编译时间，减少重新编译头文件的可能<br>缺点：隐藏了依赖关系<br>前置声明是不完整类型</li>
-<li>10行代码下才适合内联，不适用于循环和析构函数</li>
-<li>include顺序<br>对应的头文件；C系统文件；C++系统文件；其他库的头文件；本项目的头文件<br>对应头文件放在最前面，可以在build的时候及时发现错误</li>
-</ol>
-<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><ol>
-<li>命名空间内不缩进</li>
-<li>鼓励在cc文件中使用匿名命名空间和static声明，但不能在h文件中使用；（匿名空间其实就是文件作用域，类似于C中的static声明的作用域）</li>
-<li>cc文件中的变量不会被外部文件引用时，使用匿名空间或者static，因为具有内部链接性，不会在其他文件中访问到；（尽可能限制作用域范围，避免污染）</li>
-<li>静态成员函数或非成员函数最好放在命名空间中，静态成员应该是和类相关的，如果不相关最好放在命名空间中，尽量单独形成编译单元</li>
-<li>禁止定义静态储存周期非POD变量，构造、析构和初始化可能是不确定的</li>
-</ol>
-<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><ol>
-<li>类定义中单参数的构造函数应该用<code>explicit</code>标记</li>
-<li>优先组合，而非继承；虽然继承可以复用代码，但耦合性太高，散布在父子类之间的代码理解起来更不易；不能重写非虚函数；基类可能有自己的数据成员，对理解有挑战，实际很难拿捏准；</li>
-<li>不要重载，除非确有需要，因为容易混淆，如重载</li>
-<li>不在构造函数中做过多逻辑相关的初始化</li>
-</ol>
-<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ol>
-<li>入参在前，出参在后</li>
-<li>输入参数是值参或const引用（不要使用非const引用，容易误解），输出参数为指针</li>
-</ol>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ol>
-<li>尽少使用默认参数，改用重载</li>
-<li>不使用C++异常，得不偿失，虽然允许高层决定底层中不可能的失败，减少使用错误代码，但实际上常安全很困难，异常可能会扰乱程序的正常流程</li>
-<li>禁用RTTI。RTTI虽然允许C++在运行时识别对象的类型，通过<code>dynamic_cast</code>和<code>typeid</code></li>
-<li>用static_cast替代C风格的值转换</li>
-<li>只在记录日志时使用流：否则容易混乱IO类型</li>
-<li>内建整型仅用int，否则使用<code>&lt;stdint.h&gt;</code>中长度精确的整型</li>
-<li>尽可能用<code>sizeof(varname)</code>代替<code>sizeof(type)</code>，因为变量类型改变时会自动更新</li>
-<li>C++ 11中用nullptr，03用NULL</li>
-<li>注意64位可移植型，例如对齐和指针大小等</li>
-<li><p>预处理宏</p>
-<ol>
-<li>不在.h中使用宏</li>
-<li>在马上使用时才定义</li>
-</ol>
-</li>
-<li><p>不使用复杂的模板编程</p>
-<ol>
-<li>对不熟练C++的人难理解</li>
-<li>编译出错的信息友好</li>
-<li>重构工具难发挥</li>
-<li>维护成本大于简洁的接口</li>
-<li>对外接口不使用模板，仅在内部实现使用</li>
-</ol>
-</li>
-</ol>
-<h2 id="命名约定"><a href="#命名约定" class="headerlink" title="命名约定"></a>命名约定</h2><ol>
-<li>文件名通通小写，下划线可用可不用</li>
-<li>类型命名（类，结构体，类型定义，模板参数，枚举）使用大小写风格，首字母大写——这样可区分类与对象</li>
-<li>变量、函数参数、成员数据均小写，下划线连接，类变量成员下划线结尾，结构体的不用</li>
-<li>声明为const或constexpr的变量，k开头，大小写混合，静态变量同</li>
-<li><p>函数也是大小写混合，大写开头，并且缩写字母也是首字母大写</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">AddTableEntry()</span><br><span class="line">DeleteUrl()</span><br><span class="line">OpenFileOrDie()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>命名空间全小写</p>
-</li>
-<li><p>枚举类型采用常量风格，旧的不用改</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> UrlTableErrors &#123;</span><br><span class="line">kOK = <span class="number">0</span>,</span><br><span class="line">kErrorOutOfMemory,</span><br><span class="line">kErrorMalformedInput,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">enum</span> AlternateUrlTableErrors &#123;</span><br><span class="line">    OK = <span class="number">0</span>,</span><br><span class="line">    OUT_OF_MEMORY = <span class="number">1</span>,</span><br><span class="line">    MALFORMED_INPUT = <span class="number">2</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol>
-<li>宏命名：全大写，下划线连接</li>
-<li>行尾空格两格注释</li>
-<li><p>TODO</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// TODO(kl@gmail.com): Use a "*" here for concatenation operator.</span></span><br><span class="line"><span class="comment">// TODO(Zeke) change this to use relations.</span></span><br><span class="line"><span class="comment">// TODO(bug 12345): remove the "Last visitors" feature</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>注释是为了看懂，不是炫耀语言水平，中英皆可</p>
-</li>
-<li>未被使用的参数注释掉<code>void Circle::Rotate(double /*radians*/) {}</code></li>
-<li>if可单行，一行可不用花括号，分支中使用了花括号，其他都得加</li>
-<li>空循环体用花括号</li>
-<li>预处理不缩进，即使在缩进块内</li>
-<li>public等缩进1格</li>
-<li>命名空间不缩进</li>
-<li><code>:</code>前后有空格</li>
-</ol>
-<h3 id="规则特例"><a href="#规则特例" class="headerlink" title="规则特例"></a>规则特例</h3><ol>
-<li>现有不合规的代码网开一面</li>
-</ol>
-<h2 id="Qt"><a href="#Qt" class="headerlink" title="Qt"></a>Qt</h2><ul>
-<li>Qt5开发及实例(完整版) P111</li>
-</ul>
-<ol>
-<li>与Google的编码规范基本一致<ol>
-<li>成员函数、成员变量命名风格，不过成员变量按照驼峰命名，小写开头，增加下划线</li>
-<li>存取函数按照<code>Get_var</code>等进行</li>
-</ol>
-</li>
-<li>控件统一在后面加后缀</li>
-<li>V和H不需要细分，控件的细分不需要，只需要表达出是哪个控件就好，剩下的知识控件布局的问题，一般复杂度还可以。</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InputDlg</span>:</span> <span class="keyword">public</span> QDialog</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    InputDlg(QWidget *parent = <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> slots:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ChangeName</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ChangeSex</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ChangeAge</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    QLabel *nameLabel1;</span><br><span class="line">    QLabel *sexLabel1;</span><br><span class="line">    QLabel *ageLabel1;</span><br><span class="line">    QLabel *nameLabel2;</span><br><span class="line">    QLabel *sexLabel2;</span><br><span class="line">    QLabel *ageLabel2;</span><br><span class="line">    QPushButton *nameBtn;</span><br><span class="line">    QPushButton *sexBtn;</span><br><span class="line">    QPushButton *scoreBtn;</span><br><span class="line">    QGridLayout *mainLayout;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">InputDlg::InputDlg(QWidget *parent = <span class="number">0</span>): QWidget(parent)</span><br><span class="line">&#123;</span><br><span class="line">    QLabel *queryLabel = <span class="keyword">new</span> QLabel(tr(<span class="string">"Query"</span>));</span><br><span class="line">    QLineEdit *queryEdit = <span class="keyword">new</span> QLineEdit();</span><br><span class="line">    QTableView *resView = <span class="keyword">new</span> QTableView();</span><br><span class="line"></span><br><span class="line">    QHBoxLayout *queryLayout = <span class="keyword">new</span> QHBoxLayout();</span><br><span class="line">    QVBoxLayout *mainLayout = <span class="keyword">new</span> QVBoxLayout();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>test20211213</title>
+    <url>/2021/12/13/test20211213/</url>
+    <content><![CDATA[<p>参考<a href="https://www.cnblogs.com/linlf03/p/6923519.html" target="_blank" rel="noopener">TortoiseSVN比较工具设置为BeyondCompare 4</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -1630,6 +1409,120 @@ QMessageBox::information(this, tr(&quot;Information&quot;), str);
 ]]></content>
   </entry>
   <entry>
+    <title>常用插件和小工具</title>
+    <url>/2019/04/19/%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%92%8C%E5%B0%8F%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<h2 id="1-常用的chrome插件"><a href="#1-常用的chrome插件" class="headerlink" title="1. 常用的chrome插件"></a>1. 常用的chrome插件</h2><ul>
+<li><a href="https://chrome.google.com/webstore/detail/context-menus/phlfmkfpmphogkomddckmggcfpmfchpn" target="_blank" rel="noopener">Context Menus/右键搜索</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall?utm_source=chrome-ntp-icon" target="_blank" rel="noopener">One Tab</a> 基本必备的插件</li>
+<li><a href="https://chrome.google.com/webstore/detail/ie-tab/hehijbfgiekmjfkfjpbkbammjbdenadd?utm_source=chrome-ntp-icon" target="_blank" rel="noopener">IE tab</a> 还没有试验过，不过有些网站确实只支持IE</li>
+<li><a href="https://chrome.google.com/webstore/detail/google-scholar-button/ldipcbpaocekfooobnbcddclnhejkcpn" target="_blank" rel="noopener">Google Scholar Button</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd" target="_blank" rel="noopener">LastPass: Free Password Manager</a> 以前还挺经常用的，不过现在直接用google账号就可以存好多密码了</li>
+<li><a href="https://chrome.google.com/webstore/detail/wizclipper/jfanfpmalehkemdiiebjljddhgojhfab" target="_blank" rel="noopener">WizClipper/为知笔记</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc" target="_blank" rel="noopener">Octotree</a> 用于github阅读</li>
+<li><a href="http://www.internetdownloadmanager.com/" target="_blank" rel="noopener">IDM</a> IDM配合chrome使用</li>
+<li><a href="https://chrome.google.com/webstore/detail/ticktick-todo-task-list/diankknpkndanachmlckaikddgcehkod" target="_blank" rel="noopener">TickTick - Todo &amp; Task List</a> 有时候需要同步手机上的清单</li>
+<li><a href="https://chrome.google.com/webstore/detail/%E8%B0%B7%E6%AD%8C%E8%AE%BF%E9%97%AE%E5%8A%A9%E6%89%8B/gocklaboggjfkolaknpbhddbaopcepfp" target="_blank" rel="noopener">谷歌访问助手</a> 没有VPN时候就靠这个活着了</li>
+<li><a href="https://chrome.google.com/webstore/detail/im-feeling-lucky/cnlabakikmdekpfaflaihcepfkjopgll" target="_blank" rel="noopener">I’m Feeling Lucky</a> <a href="https://www.techjunkie.com/im-feeling-lucky/" target="_blank" rel="noopener">How to add Google’s I’m Feeling Lucky Option to Your Chrome Search Engines</a></li>
+</ul>
+<h2 id="2-vscode常用插件及相关配置"><a href="#2-vscode常用插件及相关配置" class="headerlink" title="2. vscode常用插件及相关配置"></a>2. vscode常用插件及相关配置</h2><h3 id="2-1-插件"><a href="#2-1-插件" class="headerlink" title="2.1. 插件"></a>2.1. 插件</h3><ol>
+<li>vscode-icons<br> 文件格式一目了然，左侧文件目录的文件夹和文件都会显示相应的图标</li>
+<li>Bracket Pair Colorizer<br> 括号用不同颜色标识</li>
+<li>Git History<br>在vscode中添加git log</li>
+<li>LaTex language support</li>
+<li>LeetCode</li>
+<li><p>Markdown All in One<br>可以使用github flavored markdown渲染标准</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"markdown.styles": ["D:\\Documents\\01.Github\\01.markdown-css\\github-markdown.css"],</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Markdown Math<br>在markdown中支持数学公式</p>
+</li>
+<li>Markdown Preview Enhance<br>用于预览markdown</li>
+<li>Markdown Shortcuts<br>添加一些快捷键，写作时比较方便</li>
+<li><p>Markdown TOC<br>添加目录功能注意，并且可以在header中添加序号。<br>根据markdownlint的语法要求，一级标题应该仅有一个座位文章的标题，所以需要在二级标题中启动编号。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"markdown-toc.depthFrom": 2,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>markdownlint<br>对md文件做语法检查</p>
+</li>
+<li><p>Paste Image<br>方便在.md文件中复制图片，可以配置在当前同文件名的文件夹下，便于分类</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"pasteImage.path": "$&#123;currentFileDir&#125;/$&#123;currentFileNameWithoutExt&#125;/",</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Setting Sync</p>
+</li>
+<li><p>TODO Highlight<br>高亮TODO并扩展</p>
+</li>
+<li><p>OneDark-Pro<br>Atom’s ionic主题（首选项-颜色主题修改主题    </p>
+</li>
+<li>T</li>
+</ol>
+<h3 id="2-2-配置"><a href="#2-2-配置" class="headerlink" title="2.2. 配置"></a>2.2. 配置</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">"editor.mouseWheelZoom": true,</span><br><span class="line">"editor.fontFamily": "Consolas, 'Courier New', monospace",</span><br><span class="line">"workbench.colorTheme": "One Dark Pro",</span><br></pre></td></tr></table></figure>
+<h3 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h3><ul>
+<li><a href="https://aoenian.github.io/2018/12/24/vscode-markdown-to-pdf/" target="_blank" rel="noopener">vscode编辑markdown文件并导出为PDF格式</a></li>
+</ul>
+<h2 id="3-实用的软件"><a href="#3-实用的软件" class="headerlink" title="3. 实用的软件"></a>3. 实用的软件</h2><h3 id="3-1-实际使用"><a href="#3-1-实际使用" class="headerlink" title="3.1. 实际使用"></a>3.1. 实际使用</h3><ul>
+<li>SumatraPDF/福昕阅读器 小巧的PDF阅读器，不过不能编辑</li>
+<li>Total Commander/Q-Dir/Clover 多窗口多标签的资源管理器，文件整理工具</li>
+<li><strong>Launchy</strong>/Wox 快速启动</li>
+<li><strong>Eeverthing</strong> 快速搜索</li>
+<li>MediaInfo 强大的视频参数检测工具</li>
+<li>MathType Word中插入公式</li>
+<li>calibre 电子书管理器</li>
+<li>KMSpico 用于注册Microsoft Office</li>
+<li>Potplayer 好用的视频播放器</li>
+<li><strong>Ditto</strong> 剪切板管理工具，可以记录多个剪切板，写代码很实用</li>
+<li>火绒安全软件</li>
+<li>Internet Download Manager 下载工具</li>
+<li>Listary Pro 还没用起来，文件浏览工具，TODO</li>
+<li><strong>MobaXterm</strong>/cmder XShell的替代品，全能终端神器</li>
+<li>ShadowsocksR-dotnet4.0 VPN工具</li>
+<li>搜狗壁纸 桌面管理工具</li>
+<li>欧路词典 可以自由搭配词典，自由性比较高</li>
+<li>Thunder5 使用专门版本的迅雷，不会被限速，简单速度高</li>
+<li><strong>Beyond Compare</strong> 比对工具</li>
+<li><strong>Quicker</strong> 效率神器，启动、复制、查找等重复性工作的自动化工具</li>
+<li>TeamViewer 功能强大的远程控制软件</li>
+<li>WinSCP SCP文件传输软件，有点类似Total Commander的界面，同步很方便</li>
+<li>每日英语听力 练习英语</li>
+<li>软媒魔方 系统优化工具</li>
+<li><strong>Snipaste</strong> 简单强大的截图工具，很实用</li>
+<li>Mathpix Snip 数学公式的OCR工具，用于Latex等</li>
+<li>Xmind/幕布 思维导图工具，TODO</li>
+<li>为知笔记 笔记工具</li>
+<li><strong>unlocker</strong> 强力解除工具，用于解决文件占用问题</li>
+<li>Geek Uninstaller 还未使用，TODO</li>
+<li><strong>DesktopCal</strong> 桌面日历</li>
+<li>Seer、QuickLook windows查看工具，TODO</li>
+<li>Screen to GIF/Ocam fit录制/剪辑工具</li>
+<li>冰点下载 百度文库的免费下载器</li>
+<li>Collagelt 拼图，TODO</li>
+<li>7-Zip</li>
+<li>SpaceSniffer</li>
+<li>Duplicate Cleaner TODD</li>
+<li>SyncToy 文件夾同步工具 TODO</li>
+<li>Icaros 让资源管理器能够显示所有视频格式缩略图，缩略图拓展增强插件 Icaros TODO</li>
+<li>Smallpdf</li>
+<li><a href="https://github.com/soimort/you-get" target="_blank" rel="noopener">you-get</a> 下载视频神器</li>
+</ul>
+<h3 id="3-2-ref"><a href="#3-2-ref" class="headerlink" title="3.2. ref"></a>3.2. ref</h3><ul>
+<li><a href="https://www.zhihu.com/question/300735799/answer/604585413" target="_blank" rel="noopener">有哪些软件堪称神器，却不为大众所知？</a></li>
+</ul>
+<h2 id="4-实用的网站"><a href="#4-实用的网站" class="headerlink" title="4. 实用的网站"></a>4. 实用的网站</h2><ul>
+<li><a href="https://mubu.com/" target="_blank" rel="noopener">极简大纲笔记 | 一键生成思维导图</a></li>
+<li><a href="https://uzer.me/" target="_blank" rel="noopener">UZER.ME云端超级应用空间</a></li>
+<li><a href="http://bigjpg.com/" target="_blank" rel="noopener">AI人工智能图片放大</a></li>
+<li><a href="https://burner.bonanza.com/" target="_blank" rel="noopener">Background Burner: Remove Image Backgrounds Free &amp; Fast</a> 抠图</li>
+<li><a href="https://www.wolframalpha.com/" target="_blank" rel="noopener">wolframalpha</a></li>
+<li><a href="http://tools.jb51.net/" target="_blank" rel="noopener">脚本之家</a></li>
+</ul>
+<h2 id="5-Office"><a href="#5-Office" class="headerlink" title="5. Office"></a>5. Office</h2><ul>
+<li><a href="https://www.jiandaoyun.com/f/5b4fe560ba4f62256657ec95" target="_blank" rel="noopener">Office插件</a></li>
+<li><a href="http://www.hippter.com/" target="_blank" rel="noopener">HiPPTer</a></li>
+<li><a href="http://www.ffcell.com/" target="_blank" rel="noopener">方方格子</a></li>
+</ul>
+<h2 id="6-IOS"><a href="#6-IOS" class="headerlink" title="6. IOS"></a>6. IOS</h2><ul>
+<li><a href="https://www.zhihu.com/question/271740133" target="_blank" rel="noopener">在当下使用 iPad 有哪些值得推荐的应用？</a></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>正则表达式</title>
     <url>/2019/05/09/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
     <content><![CDATA[<h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><p>这个工具还是得找个机会熟悉起来，用的机会太少了，但感觉很有必要。</p>
@@ -1749,6 +1642,113 @@ QMessageBox::information(this, tr(&quot;Information&quot;), str);
     <content><![CDATA[]]></content>
   </entry>
   <entry>
+    <title>编程规范</title>
+    <url>/2019/05/07/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/</url>
+    <content><![CDATA[<ul>
+<li><a href="https://zh-google-styleguide.readthedocs.io/en/latest/" target="_blank" rel="noopener">Google 开源项目风格指南 (中文版)</a> 包含5个中文版的风格指南</li>
+<li><a href="https://google.github.io/styleguide/cppguide.html" target="_blank" rel="noopener">Google C++ Style Guide</a></li>
+<li><a href="https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/contents/" target="_blank" rel="noopener">C++ 风格指南 - 内容目录</a></li>
+<li><a href="https://blog.csdn.net/voidccc/article/details/37599203" target="_blank" rel="noopener">一张图总结Google C++编程规范(Google C++ Style Guide)</a></li>
+</ul>
+<p>华为的编程规范参考了很多的Google编程规范。</p>
+<p>有一张图很好的总结了Google的编程规范<br><img src="/2019/05/07/编程规范/20140713220242000.jpg" alt></p>
+<h2 id="Google编程规范笔记"><a href="#Google编程规范笔记" class="headerlink" title="Google编程规范笔记"></a>Google编程规范笔记</h2><h3 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h3><ol>
+<li>避免使用前置声明，用头文件<br>优点：减少include，节省编译时间，减少重新编译头文件的可能<br>缺点：隐藏了依赖关系<br>前置声明是不完整类型</li>
+<li>10行代码下才适合内联，不适用于循环和析构函数</li>
+<li>include顺序<br>对应的头文件；C系统文件；C++系统文件；其他库的头文件；本项目的头文件<br>对应头文件放在最前面，可以在build的时候及时发现错误</li>
+</ol>
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><ol>
+<li>命名空间内不缩进</li>
+<li>鼓励在cc文件中使用匿名命名空间和static声明，但不能在h文件中使用；（匿名空间其实就是文件作用域，类似于C中的static声明的作用域）</li>
+<li>cc文件中的变量不会被外部文件引用时，使用匿名空间或者static，因为具有内部链接性，不会在其他文件中访问到；（尽可能限制作用域范围，避免污染）</li>
+<li>静态成员函数或非成员函数最好放在命名空间中，静态成员应该是和类相关的，如果不相关最好放在命名空间中，尽量单独形成编译单元</li>
+<li>禁止定义静态储存周期非POD变量，构造、析构和初始化可能是不确定的</li>
+</ol>
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><ol>
+<li>类定义中单参数的构造函数应该用<code>explicit</code>标记</li>
+<li>优先组合，而非继承；虽然继承可以复用代码，但耦合性太高，散布在父子类之间的代码理解起来更不易；不能重写非虚函数；基类可能有自己的数据成员，对理解有挑战，实际很难拿捏准；</li>
+<li>不要重载，除非确有需要，因为容易混淆，如重载</li>
+<li>不在构造函数中做过多逻辑相关的初始化</li>
+</ol>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ol>
+<li>入参在前，出参在后</li>
+<li>输入参数是值参或const引用（不要使用非const引用，容易误解），输出参数为指针</li>
+</ol>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ol>
+<li>尽少使用默认参数，改用重载</li>
+<li>不使用C++异常，得不偿失，虽然允许高层决定底层中不可能的失败，减少使用错误代码，但实际上常安全很困难，异常可能会扰乱程序的正常流程</li>
+<li>禁用RTTI。RTTI虽然允许C++在运行时识别对象的类型，通过<code>dynamic_cast</code>和<code>typeid</code></li>
+<li>用static_cast替代C风格的值转换</li>
+<li>只在记录日志时使用流：否则容易混乱IO类型</li>
+<li>内建整型仅用int，否则使用<code>&lt;stdint.h&gt;</code>中长度精确的整型</li>
+<li>尽可能用<code>sizeof(varname)</code>代替<code>sizeof(type)</code>，因为变量类型改变时会自动更新</li>
+<li>C++ 11中用nullptr，03用NULL</li>
+<li>注意64位可移植型，例如对齐和指针大小等</li>
+<li><p>预处理宏</p>
+<ol>
+<li>不在.h中使用宏</li>
+<li>在马上使用时才定义</li>
+</ol>
+</li>
+<li><p>不使用复杂的模板编程</p>
+<ol>
+<li>对不熟练C++的人难理解</li>
+<li>编译出错的信息友好</li>
+<li>重构工具难发挥</li>
+<li>维护成本大于简洁的接口</li>
+<li>对外接口不使用模板，仅在内部实现使用</li>
+</ol>
+</li>
+</ol>
+<h2 id="命名约定"><a href="#命名约定" class="headerlink" title="命名约定"></a>命名约定</h2><ol>
+<li>文件名通通小写，下划线可用可不用</li>
+<li>类型命名（类，结构体，类型定义，模板参数，枚举）使用大小写风格，首字母大写——这样可区分类与对象</li>
+<li>变量、函数参数、成员数据均小写，下划线连接，类变量成员下划线结尾，结构体的不用</li>
+<li>声明为const或constexpr的变量，k开头，大小写混合，静态变量同</li>
+<li><p>函数也是大小写混合，大写开头，并且缩写字母也是首字母大写</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">AddTableEntry()</span><br><span class="line">DeleteUrl()</span><br><span class="line">OpenFileOrDie()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命名空间全小写</p>
+</li>
+<li><p>枚举类型采用常量风格，旧的不用改</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> UrlTableErrors &#123;</span><br><span class="line">kOK = <span class="number">0</span>,</span><br><span class="line">kErrorOutOfMemory,</span><br><span class="line">kErrorMalformedInput,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">enum</span> AlternateUrlTableErrors &#123;</span><br><span class="line">    OK = <span class="number">0</span>,</span><br><span class="line">    OUT_OF_MEMORY = <span class="number">1</span>,</span><br><span class="line">    MALFORMED_INPUT = <span class="number">2</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li>宏命名：全大写，下划线连接</li>
+<li>行尾空格两格注释</li>
+<li><p>TODO</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// TODO(kl@gmail.com): Use a "*" here for concatenation operator.</span></span><br><span class="line"><span class="comment">// TODO(Zeke) change this to use relations.</span></span><br><span class="line"><span class="comment">// TODO(bug 12345): remove the "Last visitors" feature</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注释是为了看懂，不是炫耀语言水平，中英皆可</p>
+</li>
+<li>未被使用的参数注释掉<code>void Circle::Rotate(double /*radians*/) {}</code></li>
+<li>if可单行，一行可不用花括号，分支中使用了花括号，其他都得加</li>
+<li>空循环体用花括号</li>
+<li>预处理不缩进，即使在缩进块内</li>
+<li>public等缩进1格</li>
+<li>命名空间不缩进</li>
+<li><code>:</code>前后有空格</li>
+</ol>
+<h3 id="规则特例"><a href="#规则特例" class="headerlink" title="规则特例"></a>规则特例</h3><ol>
+<li>现有不合规的代码网开一面</li>
+</ol>
+<h2 id="Qt"><a href="#Qt" class="headerlink" title="Qt"></a>Qt</h2><ul>
+<li>Qt5开发及实例(完整版) P111</li>
+</ul>
+<ol>
+<li>与Google的编码规范基本一致<ol>
+<li>成员函数、成员变量命名风格，不过成员变量按照驼峰命名，小写开头，增加下划线</li>
+<li>存取函数按照<code>Get_var</code>等进行</li>
+</ol>
+</li>
+<li>控件统一在后面加后缀</li>
+<li>V和H不需要细分，控件的细分不需要，只需要表达出是哪个控件就好，剩下的知识控件布局的问题，一般复杂度还可以。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InputDlg</span>:</span> <span class="keyword">public</span> QDialog</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    InputDlg(QWidget *parent = <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> slots:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ChangeName</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ChangeSex</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ChangeAge</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    QLabel *nameLabel1;</span><br><span class="line">    QLabel *sexLabel1;</span><br><span class="line">    QLabel *ageLabel1;</span><br><span class="line">    QLabel *nameLabel2;</span><br><span class="line">    QLabel *sexLabel2;</span><br><span class="line">    QLabel *ageLabel2;</span><br><span class="line">    QPushButton *nameBtn;</span><br><span class="line">    QPushButton *sexBtn;</span><br><span class="line">    QPushButton *scoreBtn;</span><br><span class="line">    QGridLayout *mainLayout;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">InputDlg::InputDlg(QWidget *parent = <span class="number">0</span>): QWidget(parent)</span><br><span class="line">&#123;</span><br><span class="line">    QLabel *queryLabel = <span class="keyword">new</span> QLabel(tr(<span class="string">"Query"</span>));</span><br><span class="line">    QLineEdit *queryEdit = <span class="keyword">new</span> QLineEdit();</span><br><span class="line">    QTableView *resView = <span class="keyword">new</span> QTableView();</span><br><span class="line"></span><br><span class="line">    QHBoxLayout *queryLayout = <span class="keyword">new</span> QHBoxLayout();</span><br><span class="line">    QVBoxLayout *mainLayout = <span class="keyword">new</span> QVBoxLayout();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>SICP_2.3</title>
     <url>/2019/04/16/SICP/SICP-2-3/</url>
     <content><![CDATA[<h2 id="2-3-Symbolic-Data"><a href="#2-3-Symbolic-Data" class="headerlink" title="2.3 Symbolic Data"></a>2.3 Symbolic Data</h2><h3 id="2-3-1-Quotation"><a href="#2-3-1-Quotation" class="headerlink" title="2.3.1 Quotation"></a>2.3.1 Quotation</h3><p>本小结主要讲符号的引用，之前都是在对数字进行处理，现在要考虑对实际变量的处理。</p>
@@ -1769,29 +1769,6 @@ QMessageBox::information(this, tr(&quot;Information&quot;), str);
 <p>的结果显示为<br><figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">(<span class="name">+</span> <span class="number">1</span> <span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
 <p>解决这个问题在于改变<code>make-sum</code>的行为即可，<code>deriv</code>不用改变。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(define (make-sum a1 a2)</span><br><span class="line">    (cond ((=number? a1 0) a2)</span><br><span class="line">          ((=number? a2 0) a1)</span><br><span class="line">          ((and (number? a1) (number? a2)) (+ a1 a2))</span><br><span class="line">          (else (list &apos;+ a1 a2))))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(define (make-product m1 m1)</span><br><span class="line">    (cond ((or (=number? m1 0) (=number? m2 0)) 0)</span><br><span class="line">          ((=number? m1 1) m2)</span><br><span class="line">          ((=number? m2 1) m1)</span><br><span class="line">          ((and (number? m1) (number? m2)) (* m1 m2))</span><br><span class="line">          (else (list &apos;* m1 m2))))</span><br></pre></td></tr></table></figure></p>
 <p>习题2.56 实现多项式求导规则<br><img src="/2019/04/16/SICP/SICP-2-3/2019-04-18-02-23-30.png" alt><br><figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">(<span class="name">define</span> (<span class="name">deriv</span> exp var)</span><br><span class="line">    (<span class="name">cond</span> ((<span class="name">number</span>? exp) <span class="number">0</span>)</span><br><span class="line">          ((<span class="name">variable</span>? exp)</span><br><span class="line">            (<span class="name">if</span> (<span class="name">same-variable</span>? exp var) <span class="number">1</span> <span class="number">0</span>)</span><br><span class="line">          ((<span class="name">sum</span>? exp)</span><br><span class="line">            (<span class="name">make-sum</span> (<span class="name">deriv</span> (<span class="name">addend</span> exp) var)</span><br><span class="line">                      (<span class="name">deriv</span> (<span class="name">augend</span> exp) var))</span><br><span class="line">          ((<span class="name">product</span>? exp)</span><br><span class="line">            (<span class="name">make-product</span> (<span class="name">deriv</span> (<span class="name">multiplier</span> exp) var)</span><br><span class="line">                          (<span class="name">deriv</span> (<span class="name">multiplicand</span> exp) var)))))</span><br><span class="line">          ((<span class="name">exponentiation</span>? exp)    <span class="comment">; 需要新增获取基本元素的函数以及构造函数</span></span><br><span class="line">            (<span class="name">let</span> ((<span class="name">n</span> (<span class="name">exponent</span> exp))</span><br><span class="line">                  (<span class="name">u</span> (<span class="name">base</span> exp)))</span><br><span class="line">                  (<span class="name">make-product</span></span><br><span class="line">                    n</span><br><span class="line">                    (<span class="name">make-product</span> (<span class="name">make-exponentiation</span> u (<span class="name">-</span> n <span class="number">1</span>))</span><br><span class="line">                                  (<span class="name">deriv</span> u var)))))</span><br><span class="line">          (<span class="name">else</span> (<span class="name">error</span> <span class="string">"unknown expression type -- DERIV"</span> exp))))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">make-exmponentiation</span> base exponent)</span><br><span class="line">    (<span class="name">cond</span> ((<span class="name">=</span> exponent <span class="number">0</span>)</span><br><span class="line">            <span class="number">1</span>)</span><br><span class="line">          ((<span class="name">=</span> exponent <span class="number">1</span>)</span><br><span class="line">            base)</span><br><span class="line">          (<span class="name">else</span></span><br><span class="line">            (<span class="name">list</span> '** base exponent))))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">exponent</span> exp)</span><br><span class="line">    (<span class="name">caddr</span> exp))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">base</span> exp)</span><br><span class="line">    (<span class="name">cadr</span> exp))</span><br><span class="line"></span><br><span class="line">(<span class="name">define</span> (<span class="name">exponentiation</span>? exp)</span><br><span class="line">    (<span class="name">and</span> (<span class="name">pair</span>? exp) (<span class="name">eq</span>? (<span class="name">car</span> exp) `**)))</span><br></pre></td></tr></table></figure></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>ffmpeg常用命令</title>
-    <url>/2019/04/27/ffmpeg/ffmpeg%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p>记录下工作中常用的ffmpeg命令，有些网络上不好查找到，需要总结。用md不知道怎么排版比较合适</p>
-<hr>
-<h2 id="1-编码"><a href="#1-编码" class="headerlink" title="1. 编码"></a>1. 编码</h2><p>u_p444_b10的YUV→100M的YUV420的24fps的HDR10码流（单帧，每帧YUV重复2秒）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># u_p444_b10的YUV→100M的YUV420的24fps的HDR10码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line"><span class="comment"># "如果要非单帧的，将前面一个""-r 0.5""去掉即可；重复10s，用""""-r 0.1""""；如果yuv仅有一帧，编码会有错误，所以至少2帧进行repeat"""</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 100M -vf scale=out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"keyint=24:colorprim=bt2020:transfer=smpte2084:colormatrix=bt2020nc:master-display=G(13250,34500)B(7500,3000)R(34000,16000)WP(15635,16450)L(10000000,50):max-cll=0,0"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># u_p444_b10的YUV→100M的YUV420的24fps的SDR码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 100M -vf scale=out_color_matrix=bt709:out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"colorprim=bt709:transfer=bt709:colormatrix=bt709"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># u_p444_b10的YUV→100M的YUV420的24fps的HLG码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 100M -vf scale=out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"keyint=24:colorprim=bt2020:transfer=arib-std-b67:colormatrix=bt2020nc"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># u_p420_b8的YUV→100M的YUV420p10的24fps的SDR码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 1920x1080 -pix_fmt yuv420p -i input.yuv -b:v 100M -s 3840x2160 -vf scale=out_color_matrix=bt709:out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"colorprim=bt709:transfer=bt709:colormatrix=bt709"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 720x480_p422_b8的YUV→100M的YUV422p8的24fps的SDR码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line"><span class="comment"># 一帧即可完成，但是V811不支持这个格式，需要更换编码库</span></span><br><span class="line">ffmpeg -threads 16 -r 0.2 -s 720x480 -pix_fmt yuv422p -i input.yuv -b:v 100M -c:v libx265 -preset ultrafast -x265-params -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 720x480_p422_b8的YUV→100M的YUV422p8的24fps的SDR码流（单帧，每帧YUV重复10秒）</span></span><br><span class="line"><span class="comment"># 注意至少需要两帧，但第二帧不会被repeated，总共只有10这里采用MPEG4编码库，不知道为何X265时V811支持不了</span></span><br><span class="line">ffmpeg -r 0.1 -s 720x480 -pix_fmt yuv422p -i input.yuv -b:v 100M -vcodec mpeg4 -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编码时重新添加旋转的metadata</span></span><br><span class="line">ffmpeg -I input.mp4 -c copy -metadata:s:v:0 rotate=90 output.mp4</span><br></pre></td></tr></table></figure>
-<h2 id="2-解码"><a href="#2-解码" class="headerlink" title="2. 解码"></a>2. 解码</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 直接解码出YUV444的码流</span></span><br><span class="line">ffmpeg -i input.mp4 -pix_fmt yuv444p10 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码YUV444的码流，并指定30帧和分辨率</span></span><br><span class="line">ffmpeg -i input.mp4 -frames:v 30 -pix_fmt yuv444p10 -s 3840x2160 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码YUV444的码流，并指定时间段和分辨率</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:54 -t 00:00:10 -pix_fmt yuv444p10 -s 3840x2160 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将码流分段解出yuv，每段持续2秒，总共最多解500帧，指定输出分辨率为f_p444_b10</span></span><br><span class="line"><span class="comment"># （ 注意直接使用命令行时用一个""%""，在脚本中要转义用""%%""）"</span></span><br><span class="line">ffmpeg -i input.mp4 -frames:v 500 -pix_fmt yuv444p10 -s 1920x1080 -f segment -segment_time 2 -y output_%%04d.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从制定时间开始截取一帧，并制定分辨率和格式</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:54 -frames:v 1 -pix_fmt yuv444p10 -s 3840x2160 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码时进行反交错deinterlace（有两种方法，但是主观效果差异应该不大）</span></span><br><span class="line">ffmpeg -i input.mp4 -deinterlace -pix_fmt yuv444p10 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 缩放</span></span><br><span class="line">ffmpeg -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -vf scale=iw*2:ih*2 output.yuvffmpeg -i input.jpg -vf scale=iw*w:ih*2 output.jpg</span><br><span class="line">ffmpeg -i input.avi -vf scale=320:240 output.avi</span><br><span class="line">ffmpeg -i input.avi -vf scale=320:-1 otuput.avi</span><br><span class="line">ffmpeg -i input.avi -vf <span class="string">"scale=iw/2:ih/2"</span> output.avi</span><br><span class="line">ffmpeg -s 1920x1080 -pix_fmt yuv444p10 -i input.yuv -vf scale=iw*2:ih*2 output.yuv</span><br><span class="line">ffmpeg -s 1920x1080 -pix_fmt gray10 -i input.yuv -vf scale=iw*2:ih*2 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解YUV4448bit</span></span><br><span class="line">ffmpeg -i input.mp4 -pix_fmt yuv444p -y output.yuv</span><br></pre></td></tr></table></figure>
-<h2 id="3-拼接"><a href="#3-拼接" class="headerlink" title="3. 拼接"></a>3. 拼接</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将多段ts流拼接</span></span><br><span class="line">ffmpeg -i concat:<span class="string">"u_r24_sdr_bt709.ts|u_r24_sdr_bt2020.ts|u_r24_sdr_pq.ts|u_r24_sdr_hdr10.ts|u_r24_sdr_hlg10.ts"</span> -c copy -an -y u_r24_b10_sscimf.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 同时拼接4路；做8K用</span></span><br><span class="line">ffmpeg -i 1.mp4 -i 2.mp4 -i 3.mp4 -i 4.mp4 -filter_complex <span class="string">"[0:v]pad=iw*2:ih*2[a];[a][1:v]overlay=w[b];[b][2:v]overlay=0:h[c];[c][3:v]overlay=w:h"</span> out.mp4</span><br></pre></td></tr></table></figure>
-<h2 id="4-截取"><a href="#4-截取" class="headerlink" title="4. 截取"></a>4. 截取</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 从指定时间开始截取一段码流</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:05.2 -t 00:00:10 -c copy output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从指定时间开始截取一帧</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:05 -frames:v 1 -pix_fmt yuv444p10 -y output.yuv</span><br></pre></td></tr></table></figure>
-<h2 id="5-转码-scaler"><a href="#5-转码-scaler" class="headerlink" title="5. 转码/scaler"></a>5. 转码/scaler</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将码流转码成420p10</span></span><br><span class="line">ffmpeg -i input.mp4 -vf format=yuv420p10 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将码流转码成fhd</span></span><br><span class="line">ffmpeg -i input.mp4 -vf scale=1920:1080 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将码流转码成uhd</span></span><br><span class="line"><span class="comment"># 但是HDR的metadata会丢失掉</span></span><br><span class="line">ffmpeg -i input.mp4 -vf scale=3840:2160 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新拷贝音视频流，可修复视频时间戳不正确等问题</span></span><br><span class="line">ffmpeg -i input.mp4 -c:v copy -c:a copy output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将UHD YUV转成FHD YUV</span></span><br><span class="line">ffmpeg -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -vf scale=1920:1080 -pix_fmt yuv444p10 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将UHD YUV444转成V210；"跟scalar效果基本一致，UV的值略偏右，目前没有看出来差异"</span></span><br><span class="line">ffmpeg -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -vcodec v210 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将V210转成YUV444 FHD</span></span><br><span class="line"><span class="comment"># 5529600刚好是一帧V210格式的大小，可能与标准的YUV422计算有一定的偏差，因为可能有偏移或者头 https://trac.ffmpeg.org/ticket/1869</span></span><br><span class="line">ffmpeg -f image2pipe -vcodec v210 -s 1920x1080 -frame_size 5529600 -i 1920x1080_ducks_v210.yuv</span><br></pre></td></tr></table></figure>
-<h2 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># "将u_p444_b10的yuv图像以50M的码率编成420的1fps的SDR码流</span></span><br><span class="line"><span class="comment"># 5秒对应1帧原图，改变了帧率，STB播放异常，但是编码速度较快）</span></span><br><span class="line">ffmpeg -threads 16 -r 0.2 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 50M -vf scale=out_color_matrix=bt709:out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset medium -x265-params  <span class="string">"colorprim=bt709:transfer=bt709:colormatrix=bt709"</span> -an -y -r 1 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># "将u_p444_b10的yuv图像以近无损方式编成10bit420的24fps的SDR码流（pq=0）</span></span><br><span class="line"><span class="comment"># 不过码流通常会过高，可能达到400M，一般不可行"""</span></span><br><span class="line">ffmpeg -threads 16 -pix_fmt yuv444p10 -s 3840x2160 -r 24 -i input.yuv -vf scale=out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset medium -x265-params qp=0:keyint=24:colorprim=bt709:transfer=bt709:colormatrix=bt709 -an -y otuput.mp4</span><br></pre></td></tr></table></figure>
-<h2 id="7-备注"><a href="#7-备注" class="headerlink" title="7. 备注"></a>7. 备注</h2><ol>
-<li>在编码的时候如果指定-preset ultrafast则速度会比-preset medium快不少，大约只要1/3的时间（单帧编码测试结果）。官方文档表示图像质量是一致的，文件大小有差异，但实测文件大小差异不大</li>
-</ol>
-<h2 id="8-ffprobe"><a href="#8-ffprobe" class="headerlink" title="8. ffprobe"></a>8. ffprobe</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 获取帧数（速度很慢，需要解出来才能获取）</span></span><br><span class="line">ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_read_frames -of default=nokey=1:noprint_wrappers=1 input.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 说是上面一个方法的快速版本，直接查询容器</span></span><br><span class="line">ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_frames -of default=nokey=1:noprint_wrappers=1 input.mp4</span><br></pre></td></tr></table></figure>
-<h2 id="9-mediainfo"><a href="#9-mediainfo" class="headerlink" title="9. mediainfo"></a>9. mediainfo</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 获取帧数（速度比ffprobbe快很多）</span></span><br><span class="line">mediainfo --Output=<span class="string">"Video;%FrameCount%"</span> input.mp4</span><br></pre></td></tr></table></figure>
-<h2 id="10-ref"><a href="#10-ref" class="headerlink" title="10. ref"></a>10. ref</h2><ul>
-<li><a href="https://www.cnblogs.com/wolf-song/p/7708364.html" target="_blank" rel="noopener">多个视频文件合成画中画效果（Python、ffmpeg）</a></li>
-<li><a href="https://blog.csdn.net/weiwen12138/article/details/70344681" target="_blank" rel="noopener">ffmpeg 命令行实现多路视频拼接播放</a>]</li>
-</ul>
 ]]></content>
   </entry>
   <entry>
@@ -1883,6 +1860,29 @@ QMessageBox::information(this, tr(&quot;Information&quot;), str);
 <h1 id="滤波器"><a href="#滤波器" class="headerlink" title="滤波器"></a>滤波器</h1><p>在多媒体处理中，滤波器通常指将编码前对输入文件进行修改的软件。ffmpeg中有多种内置的滤波器，可以通过复杂的语法直接连接，避免了多次编解码产生的PQ下降。libavfilter是ffmpeg的filtering API，可以使用<code>-vf</code>和<code>-af</code>进行处理</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ffmpeg -i A.flv -vf hqdn3d,pad=2*iw output.mp4  # 先滤波降噪并填充变成3840x1080</span><br><span class="line">ffmpeg -i output.mp4 -i A.flv -filter_complex overlay=w compare.mp4     # 填充另一个视频</span><br><span class="line"></span><br><span class="line"># 上面等价于</span><br><span class="line">ffplay -i A.flv -vf split[a][b];[a]pad=2*iw[A];[b]hqdn3d[B];[A][B]overlay=w # 直接使用filtergraph完成两路视频不同的处理并拼接</span><br></pre></td></tr></table></figure>
 <p>利用filtergraphs可以同时完成多路的滤波，实现比filter更复杂一些操作，如下是滤波器的典型用法<br><img src="/2019/04/19/ffmpeg/ffmpeg基础/2019-04-20-00-20-51.png" alt></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>ffmpeg常用命令</title>
+    <url>/2019/04/27/ffmpeg/ffmpeg%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p>记录下工作中常用的ffmpeg命令，有些网络上不好查找到，需要总结。用md不知道怎么排版比较合适</p>
+<hr>
+<h2 id="1-编码"><a href="#1-编码" class="headerlink" title="1. 编码"></a>1. 编码</h2><p>u_p444_b10的YUV→100M的YUV420的24fps的HDR10码流（单帧，每帧YUV重复2秒）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># u_p444_b10的YUV→100M的YUV420的24fps的HDR10码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line"><span class="comment"># "如果要非单帧的，将前面一个""-r 0.5""去掉即可；重复10s，用""""-r 0.1""""；如果yuv仅有一帧，编码会有错误，所以至少2帧进行repeat"""</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 100M -vf scale=out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"keyint=24:colorprim=bt2020:transfer=smpte2084:colormatrix=bt2020nc:master-display=G(13250,34500)B(7500,3000)R(34000,16000)WP(15635,16450)L(10000000,50):max-cll=0,0"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># u_p444_b10的YUV→100M的YUV420的24fps的SDR码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 100M -vf scale=out_color_matrix=bt709:out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"colorprim=bt709:transfer=bt709:colormatrix=bt709"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># u_p444_b10的YUV→100M的YUV420的24fps的HLG码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 100M -vf scale=out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"keyint=24:colorprim=bt2020:transfer=arib-std-b67:colormatrix=bt2020nc"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># u_p420_b8的YUV→100M的YUV420p10的24fps的SDR码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 1920x1080 -pix_fmt yuv420p -i input.yuv -b:v 100M -s 3840x2160 -vf scale=out_color_matrix=bt709:out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"colorprim=bt709:transfer=bt709:colormatrix=bt709"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 720x480_p422_b8的YUV→100M的YUV422p8的24fps的SDR码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line"><span class="comment"># 一帧即可完成，但是V811不支持这个格式，需要更换编码库</span></span><br><span class="line">ffmpeg -threads 16 -r 0.2 -s 720x480 -pix_fmt yuv422p -i input.yuv -b:v 100M -c:v libx265 -preset ultrafast -x265-params -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 720x480_p422_b8的YUV→100M的YUV422p8的24fps的SDR码流（单帧，每帧YUV重复10秒）</span></span><br><span class="line"><span class="comment"># 注意至少需要两帧，但第二帧不会被repeated，总共只有10这里采用MPEG4编码库，不知道为何X265时V811支持不了</span></span><br><span class="line">ffmpeg -r 0.1 -s 720x480 -pix_fmt yuv422p -i input.yuv -b:v 100M -vcodec mpeg4 -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编码时重新添加旋转的metadata</span></span><br><span class="line">ffmpeg -I input.mp4 -c copy -metadata:s:v:0 rotate=90 output.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="2-解码"><a href="#2-解码" class="headerlink" title="2. 解码"></a>2. 解码</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 直接解码出YUV444的码流</span></span><br><span class="line">ffmpeg -i input.mp4 -pix_fmt yuv444p10 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码YUV444的码流，并指定30帧和分辨率</span></span><br><span class="line">ffmpeg -i input.mp4 -frames:v 30 -pix_fmt yuv444p10 -s 3840x2160 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码YUV444的码流，并指定时间段和分辨率</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:54 -t 00:00:10 -pix_fmt yuv444p10 -s 3840x2160 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将码流分段解出yuv，每段持续2秒，总共最多解500帧，指定输出分辨率为f_p444_b10</span></span><br><span class="line"><span class="comment"># （ 注意直接使用命令行时用一个""%""，在脚本中要转义用""%%""）"</span></span><br><span class="line">ffmpeg -i input.mp4 -frames:v 500 -pix_fmt yuv444p10 -s 1920x1080 -f segment -segment_time 2 -y output_%%04d.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从制定时间开始截取一帧，并制定分辨率和格式</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:54 -frames:v 1 -pix_fmt yuv444p10 -s 3840x2160 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码时进行反交错deinterlace（有两种方法，但是主观效果差异应该不大）</span></span><br><span class="line">ffmpeg -i input.mp4 -deinterlace -pix_fmt yuv444p10 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 缩放</span></span><br><span class="line">ffmpeg -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -vf scale=iw*2:ih*2 output.yuvffmpeg -i input.jpg -vf scale=iw*w:ih*2 output.jpg</span><br><span class="line">ffmpeg -i input.avi -vf scale=320:240 output.avi</span><br><span class="line">ffmpeg -i input.avi -vf scale=320:-1 otuput.avi</span><br><span class="line">ffmpeg -i input.avi -vf <span class="string">"scale=iw/2:ih/2"</span> output.avi</span><br><span class="line">ffmpeg -s 1920x1080 -pix_fmt yuv444p10 -i input.yuv -vf scale=iw*2:ih*2 output.yuv</span><br><span class="line">ffmpeg -s 1920x1080 -pix_fmt gray10 -i input.yuv -vf scale=iw*2:ih*2 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解YUV4448bit</span></span><br><span class="line">ffmpeg -i input.mp4 -pix_fmt yuv444p -y output.yuv</span><br></pre></td></tr></table></figure>
+<h2 id="3-拼接"><a href="#3-拼接" class="headerlink" title="3. 拼接"></a>3. 拼接</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将多段ts流拼接</span></span><br><span class="line">ffmpeg -i concat:<span class="string">"u_r24_sdr_bt709.ts|u_r24_sdr_bt2020.ts|u_r24_sdr_pq.ts|u_r24_sdr_hdr10.ts|u_r24_sdr_hlg10.ts"</span> -c copy -an -y u_r24_b10_sscimf.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 同时拼接4路；做8K用</span></span><br><span class="line">ffmpeg -i 1.mp4 -i 2.mp4 -i 3.mp4 -i 4.mp4 -filter_complex <span class="string">"[0:v]pad=iw*2:ih*2[a];[a][1:v]overlay=w[b];[b][2:v]overlay=0:h[c];[c][3:v]overlay=w:h"</span> out.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="4-截取"><a href="#4-截取" class="headerlink" title="4. 截取"></a>4. 截取</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 从指定时间开始截取一段码流</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:05.2 -t 00:00:10 -c copy output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从指定时间开始截取一帧</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:05 -frames:v 1 -pix_fmt yuv444p10 -y output.yuv</span><br></pre></td></tr></table></figure>
+<h2 id="5-转码-scaler"><a href="#5-转码-scaler" class="headerlink" title="5. 转码/scaler"></a>5. 转码/scaler</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将码流转码成420p10</span></span><br><span class="line">ffmpeg -i input.mp4 -vf format=yuv420p10 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将码流转码成fhd</span></span><br><span class="line">ffmpeg -i input.mp4 -vf scale=1920:1080 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将码流转码成uhd</span></span><br><span class="line"><span class="comment"># 但是HDR的metadata会丢失掉</span></span><br><span class="line">ffmpeg -i input.mp4 -vf scale=3840:2160 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新拷贝音视频流，可修复视频时间戳不正确等问题</span></span><br><span class="line">ffmpeg -i input.mp4 -c:v copy -c:a copy output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将UHD YUV转成FHD YUV</span></span><br><span class="line">ffmpeg -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -vf scale=1920:1080 -pix_fmt yuv444p10 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将UHD YUV444转成V210；"跟scalar效果基本一致，UV的值略偏右，目前没有看出来差异"</span></span><br><span class="line">ffmpeg -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -vcodec v210 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将V210转成YUV444 FHD</span></span><br><span class="line"><span class="comment"># 5529600刚好是一帧V210格式的大小，可能与标准的YUV422计算有一定的偏差，因为可能有偏移或者头 https://trac.ffmpeg.org/ticket/1869</span></span><br><span class="line">ffmpeg -f image2pipe -vcodec v210 -s 1920x1080 -frame_size 5529600 -i 1920x1080_ducks_v210.yuv</span><br></pre></td></tr></table></figure>
+<h2 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># "将u_p444_b10的yuv图像以50M的码率编成420的1fps的SDR码流</span></span><br><span class="line"><span class="comment"># 5秒对应1帧原图，改变了帧率，STB播放异常，但是编码速度较快）</span></span><br><span class="line">ffmpeg -threads 16 -r 0.2 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 50M -vf scale=out_color_matrix=bt709:out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset medium -x265-params  <span class="string">"colorprim=bt709:transfer=bt709:colormatrix=bt709"</span> -an -y -r 1 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># "将u_p444_b10的yuv图像以近无损方式编成10bit420的24fps的SDR码流（pq=0）</span></span><br><span class="line"><span class="comment"># 不过码流通常会过高，可能达到400M，一般不可行"""</span></span><br><span class="line">ffmpeg -threads 16 -pix_fmt yuv444p10 -s 3840x2160 -r 24 -i input.yuv -vf scale=out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset medium -x265-params qp=0:keyint=24:colorprim=bt709:transfer=bt709:colormatrix=bt709 -an -y otuput.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="7-备注"><a href="#7-备注" class="headerlink" title="7. 备注"></a>7. 备注</h2><ol>
+<li>在编码的时候如果指定-preset ultrafast则速度会比-preset medium快不少，大约只要1/3的时间（单帧编码测试结果）。官方文档表示图像质量是一致的，文件大小有差异，但实测文件大小差异不大</li>
+</ol>
+<h2 id="8-ffprobe"><a href="#8-ffprobe" class="headerlink" title="8. ffprobe"></a>8. ffprobe</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 获取帧数（速度很慢，需要解出来才能获取）</span></span><br><span class="line">ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_read_frames -of default=nokey=1:noprint_wrappers=1 input.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 说是上面一个方法的快速版本，直接查询容器</span></span><br><span class="line">ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_frames -of default=nokey=1:noprint_wrappers=1 input.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="9-mediainfo"><a href="#9-mediainfo" class="headerlink" title="9. mediainfo"></a>9. mediainfo</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 获取帧数（速度比ffprobbe快很多）</span></span><br><span class="line">mediainfo --Output=<span class="string">"Video;%FrameCount%"</span> input.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="10-ref"><a href="#10-ref" class="headerlink" title="10. ref"></a>10. ref</h2><ul>
+<li><a href="https://www.cnblogs.com/wolf-song/p/7708364.html" target="_blank" rel="noopener">多个视频文件合成画中画效果（Python、ffmpeg）</a></li>
+<li><a href="https://blog.csdn.net/weiwen12138/article/details/70344681" target="_blank" rel="noopener">ffmpeg 命令行实现多路视频拼接播放</a>]</li>
+</ul>
 ]]></content>
   </entry>
 </search>
