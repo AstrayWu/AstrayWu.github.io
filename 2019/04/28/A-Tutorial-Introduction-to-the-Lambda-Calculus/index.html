@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="参考文献 我的最爱Lambda演算——开篇 A Tutorial Introduction to the Lambda Calculus 很不错的一篇入门参考 The Lambda Calculus for Absolute Dummies (like myself) 基本是上一篇文章的理解和翻译，不过加入了很多理解，从我看过第一篇文章后，再看这篇会很容易接受 认知科学家写给小白的Lambda演算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Tutorial Introduction to the Lambda Calculus">
+<meta property="og:url" content="http://yoursite.com/2019/04/28/A-Tutorial-Introduction-to-the-Lambda-Calculus/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="参考文献 我的最爱Lambda演算——开篇 A Tutorial Introduction to the Lambda Calculus 很不错的一篇入门参考 The Lambda Calculus for Absolute Dummies (like myself) 基本是上一篇文章的理解和翻译，不过加入了很多理解，从我看过第一篇文章后，再看这篇会很容易接受 认知科学家写给小白的Lambda演算">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-8de07855e732abd5ff08a6c00b6a23dd_hd.jpg">
+<meta property="og:updated_time" content="2021-12-12T17:27:14.380Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A Tutorial Introduction to the Lambda Calculus">
+<meta name="twitter:description" content="参考文献 我的最爱Lambda演算——开篇 A Tutorial Introduction to the Lambda Calculus 很不错的一篇入门参考 The Lambda Calculus for Absolute Dummies (like myself) 基本是上一篇文章的理解和翻译，不过加入了很多理解，从我看过第一篇文章后，再看这篇会很容易接受 认知科学家写给小白的Lambda演算">
+<meta name="twitter:image" content="https://pic2.zhimg.com/80/v2-8de07855e732abd5ff08a6c00b6a23dd_hd.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/28/A-Tutorial-Introduction-to-the-Lambda-Calculus/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>A Tutorial Introduction to the Lambda Calculus | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/28/A-Tutorial-Introduction-to-the-Lambda-Calculus/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">A Tutorial Introduction to the Lambda Calculus
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-28 01:10:47" itemprop="dateCreated datePublished" datetime="2019-04-28T01:10:47+08:00">2019-04-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-12-13 01:27:14" itemprop="dateModified" datetime="2021-12-13T01:27:14+08:00">2021-12-13</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">7 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="http://cgnail.github.io/academic/lambda-1/" target="_blank" rel="noopener">我的最爱Lambda演算——开篇</a></li>
+<li><a href="https://www.inf.fu-berlin.de/lehre/WS03/alpi/lambda.pdf" target="_blank" rel="noopener">A Tutorial Introduction to the Lambda Calculus</a> 很不错的一篇入门参考</li>
+<li><a href="http://palmstroem.blogspot.com/2012/05/lambda-calculus-for-absolute-dummies.html" target="_blank" rel="noopener">The Lambda Calculus for Absolute Dummies (like myself)</a> 基本是上一篇文章的理解和翻译，不过加入了很多理解，从我看过第一篇文章后，再看这篇会很容易接受</li>
+<li><a href="https://zhuanlan.zhihu.com/p/30510749?utm_source=ZHShareTargetIDMore&amp;utm_medium=social&amp;utm_oi=898539620818640896" target="_blank" rel="noopener">认知科学家写给小白的Lambda演算</a> 这是上一篇文章的中文翻译</li>
+<li><a href="https://www.cs.utah.edu/~mflatt/past-courses/cs7520/public_html/s06/notes.pdf" target="_blank" rel="noopener">Programming languages and lambda calculi</a> 参考书</li>
+<li><a href="https://zhuanlan.zhihu.com/p/25771134" target="_blank" rel="noopener">Lambda calculus引论(三): 不可判定</a> 这是更为简洁的笔记介绍</li>
+<li><a href="https://www.jianshu.com/p/e7db2f50b012" target="_blank" rel="noopener">神奇的λ演算</a> 另一个不错的入门介绍</li>
+</ul>
+<p>这里以第二篇开始lambda演算的学习<br>λ演算是一种形式系统(formal system)，什么是形式系统呢？大家都知道，数学语言是可以脱离现实而存在的——大家把数学想成了一种符号游戏，脱离生活常识，从公理开始，进行大量的推导和证明——最终产生了一个系统，在这个系统中有公理、定理、推论、猜想……这种自成系统，有公理又承认推理证明方法的体系，成为形式系统。而用于描述形式系统的语言就是形式语言(formal language)</p>
+<h2 id="图灵完备"><a href="#图灵完备" class="headerlink" title="图灵完备"></a>图灵完备</h2><p>首先先理解一下什么是<strong>图灵完备</strong>，参考知乎的答案<a href="https://www.zhihu.com/question/20115374" target="_blank" rel="noopener"># 什么是图灵完备？</a></p>
+<h3 id="什么是图灵机"><a href="#什么是图灵机" class="headerlink" title="什么是图灵机"></a>什么是图灵机</h3><p>图灵机是图灵在1936年发表的paper中提出的数学模型，是一个架空概念，他在文中描述了什么是图灵机，并且证明，<strong>只要图灵机可以被实现，就可以用来解决任何可计算问题</strong>。<br>图灵机的结构包括：</p>
+<ol>
+<li>一个无限长的纸带</li>
+<li>一个字符表</li>
+<li>一个读写头</li>
+<li>一个状态寄存器</li>
+<li>一个有限的指令集</li>
+</ol>
+<h3 id="图灵机可以解决什么问题"><a href="#图灵机可以解决什么问题" class="headerlink" title="图灵机可以解决什么问题"></a>图灵机可以解决什么问题</h3><p>图灵证明，假设上述模型所说的功能都可以被某种形式物理实现，那么任何可计算问题都可以被解决。<br>所谓可计算问题，涉及到计算理论（即泛指一切与计算相关的问题），可以理解为，<strong>是否存在一个算法，能解决在任何输入下的此计算问题</strong>，比如著名的停机问题，就是一个不可计算的计算问题。<br>简单所，图灵证明了对于一个问题，对于任何输入，只要人类可以保证算出结果，那么图灵机就可以保证计算结果。</p>
+<h3 id="什么是图灵完备性"><a href="#什么是图灵完备性" class="headerlink" title="什么是图灵完备性"></a>什么是图灵完备性</h3><p>图灵完备性，是针对一套数据操作规则而言的概念，数据操作规则可以是一门编程语言，也可以是计算机里的实现的指令集。当这套规则可以实现图灵机模型里的全部功能时，就称为具备图灵完备性。</p>
+<h3 id="直观理解图灵完备——Brainfuck语言"><a href="#直观理解图灵完备——Brainfuck语言" class="headerlink" title="直观理解图灵完备——Brainfuck语言"></a>直观理解图灵完备——Brainfuck语言</h3><p>1993年，有人发明了Brainfuck语言，只有8个有效字符，每个字符都是一个指令，但这却是一门图形完备的编程语言。<br>BF的工作机制与图灵机基本一致，他存储数据的方式是一个无限长的一位整数数组，里面的数值全部初始化为0，还有一个数据指针，每个时刻都指向数组的某一元素，指针可以左右移动，也可以读取、修改数组当前元素的值。<br>BF中8个有效字符分别是：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- &gt;</span><br><span class="line">指针向右移动一格</span><br><span class="line">- &lt;</span><br><span class="line">指针向左移动一格</span><br><span class="line">- +</span><br><span class="line">使指针当前格数值加一</span><br><span class="line">- -</span><br><span class="line">使指针当前格数值减一</span><br><span class="line">- .</span><br><span class="line">把当前格数值按 ASCII 表输出到终端</span><br><span class="line">- ,</span><br><span class="line">从终端接受一 byte 的数据，存储其 ASCII 数值到当前格</span><br><span class="line">- [</span><br><span class="line">当指针当前值为 0 时，程序跳转至与之对应的 ] 之后；否则程序正常执行</span><br><span class="line">- ]</span><br><span class="line">程序跳转回与之对应的 [ 处</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+++++</span><br><span class="line">[</span><br><span class="line">&gt;+++++++++++++</span><br><span class="line">&lt;-</span><br><span class="line">]</span><br><span class="line">&gt;.</span><br></pre></td></tr></table></figure>
+<p>对于上述代码段，通过完成5X13输出了字符<code>A</code>,<br>这里讲一下我的理解，<code>+</code>进行五次，因此当前指针初始化的格子cell 0的值被递增了5次<br><code>[</code>指令读取到当前值各自值为5（因此将[]中的部分执行了5次，[]中的程序会递减该值，直到0），来看[]中的行为<br><code>&gt;</code>右移指针，随后将当前指针的各自cell 1递增了13次，再左移一个到cell 0，将cell 0的值递减一次<br>随后<code>&gt;.</code>右移指针并将当前值格子cell 1的值打印出来，得到<code>A</code></p>
+<h3 id="图灵停机问题"><a href="#图灵停机问题" class="headerlink" title="图灵停机问题"></a>图灵停机问题</h3><p><strong>不存在有这样一个程序，能够计算任何程序在给定的输入上是否会结束（停机）。</strong><br>用反证法，假设有这样一个程序，叫做GodAlg，给定一个程序，并且给定这个程序的输入，就能够判定这个程序在这个输入上是否会停机。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">GodAlg</span><span class="params">(<span class="keyword">char</span> *program, <span class="keyword">char</span> *input)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (&lt;program&gt; halts on &lt;input&gt;)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们假设一个新的程序</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">SatanAlg</span><span class="params">(<span class="keyword">char</span> *program)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (GodAlg(program, program)) &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当这个算法调用自身时，SatanAlg(SatanAlg)会产生的结果如何？<br>从代码片段来看，这个程序要么能够结束运行停机，要不不能返回。</p>
+<ol>
+<li>假设能够停机，则if判断成立，程序进入循环，于是这个调用永远不会返回，说明SatanAlg(SatanAlg)不能停机。</li>
+<li>假设不能够停机，则返回true，说明SatanAlg(SatanAlg)能停机。<br>这说明假设不成立，不存在这样的一个程序GodAlg</li>
+</ol>
+<h2 id="λ演算"><a href="#λ演算" class="headerlink" title="λ演算"></a>λ演算</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>λ演算被称为最小通用编程语言，1930年由Church引入，用于公式化有效计算中的一些问题，它也是图灵完备的，但更强调变换规则的使用，而不是具体的实现，并且其约束的规则非常简单，易于演算。<br>λ演算中只有三种表达式，分别如下。在λ演算中，只有λ和.是关键字。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- &lt;expression&gt;  := &lt;name&gt; | &lt;function&gt; | &lt;application&gt;</span><br><span class="line">- &lt;function&gt;    := λ &lt;name&gt;.&lt;expression&gt;</span><br><span class="line">- &lt;application&gt; := &lt;expression&gt;&lt;expression&gt;</span><br></pre></td></tr></table></figure>
+<p>注意表达式可以是name，function和application，对于，在λ演算中，只有λ和.是关键字！<br>记住最后一个表达式，两个expression表示application。对于表达式，默认是从左到右进行分析或者应用应用的。</p>
+<script type="math/tex; mode=display">
+E_1E_2E_3\dots E_n=(((E_1E_2)E_3)\dots E_n)</script><p>最简单的恒等函数为</p>
+<script type="math/tex; mode=display">
+\lambda x.x</script><p>函数可以应用于表达式，例如下式表示将函数应用到$y$上</p>
+<script type="math/tex; mode=display">
+(\lambda x.x)y</script><p>关于function application可以通过替换规则替换body中的argument实现求值，例如</p>
+<script type="math/tex; mode=display">
+(\lambda x.x)y=[y/x]x=y</script><p>这里$[y/x]$表示将所有的$x$替换为$y$<br>λ演算中有α transform和β reduction，在λ演算中，变量是没有任何含义的，不代表任何东西，只是用先相同的名字表示两个相同的东西。而函数也什么都不计算，就是一个表达式，唯一能做的就是β规约(β reduction)，直到没有任何东西可以再替换为为止。</p>
+<ul>
+<li>α transform<br>对于λ演算中的任何表达式，可以修改函数参数的名称，只要同时修改函数体的内所有的引用。（替换有约束变量的名字）</li>
+<li>β reduction<br>指的是，对于一个application，可以将函数体中和对应函数标识符相关的部分做替换来实现application，方法就是使用标识符作为参数值替换，也就是下面的substituions部分。（将实参应用到函数体中）</li>
+</ul>
+<h3 id="约束变量-bound-variable-和自由变量-free-variable-variable"><a href="#约束变量-bound-variable-和自由变量-free-variable-variable" class="headerlink" title="约束变量(bound variable)和自由变量(free variable variable)"></a>约束变量(bound variable)和自由变量(free variable variable)</h3><p><img src="https://pic2.zhimg.com/80/v2-8de07855e732abd5ff08a6c00b6a23dd_hd.jpg" alt><br>在头部(head)中提及的变量被成为约束变量，没有提到的成为自由变量，因为函数可以是其他函数的一部分，所以一个变量可以同时是约束变量，又是自由变量。</p>
+<h3 id="substitutions"><a href="#substitutions" class="headerlink" title="substitutions"></a>substitutions</h3><p>由于在λ演算中当要使用一个函数时，都需要完整写出完整的定义，这里可以使用其他字符来代替定义，例如恒等function</p>
+<script type="math/tex; mode=display">
+I= (\lambda x.x)</script><p>当恒等function应用于本身时，可以表示为</p>
+<script type="math/tex; mode=display">
+II=(\lambda x.x)(\lambda x.x)</script><p>注意前后的$x$是互相独立的，上式可以写作</p>
+<script type="math/tex; mode=display">
+II=(\lambda x.x)(\lambda z.z)</script><p>对上式作变量替换，将所有$x$用$\lambda z.z$替换</p>
+<script type="math/tex; mode=display">
+[\lambda z.z/x] = \lambda z.z\equiv I</script><h3 id="算术"><a href="#算术" class="headerlink" title="算术"></a>算术</h3><p>λ演算最早就是应用于算术运算的，但在λ演算中只有函数，并没有所谓的数字，这里用丘齐数来表示，首先定义zero，然后one用suc(zero)表示，two用suc(suc(zero))表示。<br>zero表示为，需要接受两个参数s和z</p>
+<script type="math/tex; mode=display">
+\lambda s.(\lambda z.z)</script><p>可以简写为（λ演算中只定义了单个参数的函数，但是多个参数的函数无非就是单个函数的多次调用，其实就是柯里化）</p>
+<script type="math/tex; mode=display">
+0\equiv \lambda sz.z</script><p>简化后的式子可以接受两个参数，第一个可替换s，第二个可替换z。这个表达式被应用时，会把第一个表达式丢掉，然后第二个原封不动。<br>利用这个记号法，其他自然数可以定义为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+1 \equiv & \lambda sz.s(z) \\
+2 \equiv & \lambda sz.s(s(z)) \\
+3 \equiv &\lambda sz.s(s(s(z)))
+\end{aligned}</script><p>以上的计数法其实就是在z之上嵌套表达式s，数字多大就嵌套多少次，就是对z应用了n次s。这其实就是自然数的本质，不断加1。<br>我们定义后继函数(successor function)如下</p>
+<script type="math/tex; mode=display">
+S =\lambda wyx.y(wyx)</script><p>后继函数可以应用于0得到</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+S0 =& (\lambda wyx.y(wyx)) 0 \\
+    =& \lambda yx.y(0yx) \\
+    =& \lambda yx.y(x) \\
+    = &1
+\end{aligned}</script><p>同理可以得到2等等，由此即可得到加法的定义，例如2+3就表示2S3，即2 suc 3次。注意以下推导中，2接受两个参数S和3，分别将S和3作为s和z替换，同时也要注意到$S3=4$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+2S3\equiv & (\lambda sz.s(s(z))) S 3\\
+=& S(S(3))\\
+=& S(4) \\
+=& 5
+\end{aligned}</script><!-- 这部分有问题，需要重新看下其他文章
+关于加法实际可以定义如下
+$$
++\equiv \lambda szxy.sx(ysz) \equiv \lambda sz.()
+$$
+-->
+<h3 id="柯里化-currying"><a href="#柯里化-currying" class="headerlink" title="柯里化(currying)"></a>柯里化(currying)</h3><p>这一块可以参考wiki的解释。柯里化就是把接受多个参数的函数变成接受一个单一函数（最初函数的第一个参数）的函数，并返回接受剩余参数的函数的新函数的技术。</p>
+<p>举个例子很典型</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">add(3, 5) -&gt; add(3)(5)</span><br></pre></td></tr></table></figure>
+<p>0的定义为$\lambda sz.z$，这个其实是$\lambda s.(\lambda z.z)$是完全等价的。</p>
+<h3 id="乘法-multiplication"><a href="#乘法-multiplication" class="headerlink" title="乘法(multiplication)"></a>乘法(multiplication)</h3><script type="math/tex; mode=display">
+\lambda xyz.x(yz)</script><p>例如2x2的结果为如下，注意2是可以接受两个参数的，所以$2s(z)$实际上是2接受了$s$和$z$作为输入，得到s(s(z))</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+(\lambda xyz.x(yz))23 &= (\lambda z. 2(3z)) \\
+    &= \lambda z.(\lambda s.((3z)(((3z)(s))))) \\
+    &= \lambda zs.((3z)(3zs))\\
+    &= \lambda zs.3z(3zs) \\
+    &= \lambda zs.z(z(z(3zs))) \\
+    &= \lambda zs.z(z(z(z(z(z(s)))))) \\
+    &= 6
+\end{aligned}</script><p>时刻要记住每个应用函数时，接受了几个参数，并且是左结合的。</p>
+<h2 id="条件-conditionals"><a href="#条件-conditionals" class="headerlink" title="条件(conditionals)"></a>条件(conditionals)</h2><p>定义以下两个函数为真和加，分别接受两个参数返回其中的一个，真就返回第一个，假就返回第二个</p>
+<script type="math/tex; mode=display">
+\mathrm{T} \equiv \lambda xy.x \\
+\mathrm{F} \equiv \lambda xy.y</script><h3 id="逻辑运算-logical-operations"><a href="#逻辑运算-logical-operations" class="headerlink" title="逻辑运算(logical operations)"></a>逻辑运算(logical operations)</h3><script type="math/tex; mode=display">
+\land \equiv \lambda xy.xy\mathrm{F}\\
+\lor \equiv \lambda xy. x\mathrm{T}y \\
+\lnot \equiv \lambda x.x\mathrm F \mathrm T \\</script><p>例如</p>
+<script type="math/tex; mode=display">
+\lnot \mathrm{T}=\mathrm T \mathrm F \mathrm T = \mathrm F</script><h3 id="条件测试-a-conditional-test"><a href="#条件测试-a-conditional-test" class="headerlink" title="条件测试(a conditional test)"></a>条件测试(a conditional test)</h3><p>定义一个函数，如果参数是数字0则返回T，否则返回F</p>
+<script type="math/tex; mode=display">
+\mathrm Z \equiv \lambda x.xF\lnot F</script><p>验证如下，注意0表示接受两个参数，然后用第一个参数对第二个参数作用0次</p>
+<script type="math/tex; mode=display">
+\mathrm{Z} = (\lambda x.x \mathrm F \lnot \mathrm F)0 = 0 \mathrm F \lnot \mathrm F = \lnot \mathrm F</script><script type="math/tex; mode=display">
+\mathrm Z \mathrm N \equiv (\lambda x.x\mathrm F \lnot \mathrm F) \mathrm N = \mathrm N \mathrm F \lnot \mathrm F</script><p><strong>注意到，F对任何参数的应用都是返回恒等函数</strong></p>
+<script type="math/tex; mode=display">
+\mathrm F a \equiv (\lambda xy.y)a = \lambda y.y= \mathrm I</script><p>因此，上式继续展开为</p>
+<script type="math/tex; mode=display">
+\mathrm N \mathrm F \lnot \mathrm F = \mathrm I \mathrm F =\mathrm F</script><p>另外可以换一种方式理解，$\mathrm N \mathrm F \lnot \mathrm F $同时也表示对对$\lnot $应用n次$\mathrm F$，然后结果再应用于$\mathrm F $。注意到$\mathrm F $的定义，接受两个参数，仅仅返回第二个参数。第一个$\mathrm F $实际接受了两个参数，一个是对$\lnot$应用了n-1次F的返回值，另一个是后面的一个$\mathrm F $，因此抹掉第一个参数返回第二个参数，也就是返回最后面的那个$\mathrm F $，也就是最后就返回$\mathrm F $。</p>
+<h3 id="前继函数-predecessor-function"><a href="#前继函数-predecessor-function" class="headerlink" title="前继函数(predecessor function)"></a>前继函数(predecessor function)</h3><p>对于n的前继，通用的做法是创建一个序对(pair)，(n,n-1)然后返回需对的第二个参数作为结果。序对用λ演算可以表示为</p>
+<script type="math/tex; mode=display">
+\lambda z.zab</script><p>将该函数应用于$\mathrm T$就可以返回序对的第一个数</p>
+<script type="math/tex; mode=display">
+(\lambda z.zab)\mathrm T= \mathrm T ab=a</script><p>同理，应用于$\mathrm F$就可以返回需对的第二个数</p>
+<script type="math/tex; mode=display">
+(\lambda z.zab)\mathrm F= \mathrm F ab=b</script><p>利用下面这个函数就可以由序对(n,n-1)生成(n+1,n-1)</p>
+<blockquote>
+<p>这里感觉应该是由序对(n,n-1)生成(n+1,n)才对啊！</p>
+</blockquote>
+<script type="math/tex; mode=display">
+\Theta \equiv (\lambda pz.z(S(pT))(pT))</script><blockquote>
+<p>注意一下对上式的理解，在函数体z(S(pT))(pT))中，如果没有对z进行规约，则该式子不会进行任何计算；如果用数字n对z进行规约，变成n(S(pT))(pT)，此时才可以进一步进行参数替换S(pT)作为n的第一个参数，pT作为第二个参数。</p>
+</blockquote>
+<p>其中，子表达式$pT$从序对p中提取第一个元素。上式会构造一个新的序对，第一个元素是原序对第一个元素的后继——S(pT)，第二个元素就是第原序对的第一个元素——pT。</p>
+<blockquote>
+<p>简单来说，应该是由序对(a,b)生成(a+1,a)。</p>
+</blockquote>
+<p>因此n的前继就是应用n次$\Theta$到序对$\lambda z.z00$（得到(n,n-1)）然后返回第二个参数得到n-1：</p>
+<script type="math/tex; mode=display">
+P\equiv \lambda n.n\Theta (\lambda z.z00)\mathrm F</script><p>可以我们可以进行推导</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+P2=&2\Theta(\lambda z.z00)F\\
+=& \Theta(\Theta(\lambda z.z00))F\\
+=& \Theta(\Theta(\lambda p.p00))F\\
+=& \Theta(\lambda z.z10)F \\
+=& (\lambda z.z21)F\\
+=& F21 \\
+=& 1
+\end{aligned}</script><p>以此类推。同时要注意到$P0=0$，该性质对其他函数的定义很有用，验证如下</p>
+<script type="math/tex; mode=display">
+P0=0\Theta(\lambda z.z00)F=(\lambda z.z00)F=F00=0</script><h3 id="相等与不等"><a href="#相等与不等" class="headerlink" title="相等与不等"></a>相等与不等</h3><p>定义如下函数判断数字$x$是否大于等于$y$</p>
+<script type="math/tex; mode=display">
+G\equiv (\lambda xy.Z(xPy))</script><p>这里的$xPy$表示对y应用x次的前继，也就是y-x，如果该式等于0，说明$y \le x$。<br>利用$x \ge y$与$y \ge x$同时成立表示$x=y$，可以得到下面这个关于相等的定义</p>
+<script type="math/tex; mode=display">
+E\equiv (\lambda xy.\land(ZxPy)(Z(yPx)))</script><p>用同样的方式我们也可以定义$x<y$，$x>y$和$x\neq y$。</y$，$x></p>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>在λ演算中，递归函数可以定义为调用函数y并且返回自身</p>
+<script type="math/tex; mode=display">
+Y\equiv (\lambda y.(\lambda x.y(xx))(\lambda x.y(xx)))</script><p>注意这里其实是加括号了，完整表示如下</p>
+<script type="math/tex; mode=display">
+Y\equiv (\lambda y.((\lambda x.y(xx))(\lambda x.y(xx))))</script><p>这里第二个$(\lambda x.y(xx))$是规约到第一个约束变量x中去的还是不会减少表达式的个数，<br>该函数应用于R时</p>
+<script type="math/tex; mode=display">
+YR=(\lambda x.R(xx))(\lambda x.R(xx))= R((\lambda x.R(xx))(\lambda x.R(xx)))=R(YR)</script><p>考虑从0到n的求和函数R</p>
+<script type="math/tex; mode=display">
+R\equiv (\lambda rn.Zn0(n(r(Pn))))</script><p>该函数对n进行了测试，如果n为0的话，就返回0；如果n不为0则返回n+(r(n-1))，这里r其实是对自身函数的调用。这里我们怎么知道r是对自身的递归调用呢？在λ演算中我们没有对函数定义名字的。这就是给出递归操作Y的原因，例如求和到3</p>
+<script type="math/tex; mode=display">\begin{aligned}
+YR3= &R(YR)3\\
+    =& Z30(3S(YR(P3))) \\
+    =& 3S(YR2)\\
+    =&3S2S1S0
+    =6
+\end{aligned}</script><p>这就是Y组合子(Y combinator)!</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/27/ffmpeg/ffmpeg常用命令/" rel="next" title="ffmpeg常用命令">
+                <i class="fa fa-chevron-left"></i> ffmpeg常用命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/30/Linux使用小记/" rel="prev" title="Linux使用小记">
+                Linux使用小记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Astray Wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图灵完备"><span class="nav-text">图灵完备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是图灵机"><span class="nav-text">什么是图灵机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图灵机可以解决什么问题"><span class="nav-text">图灵机可以解决什么问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是图灵完备性"><span class="nav-text">什么是图灵完备性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直观理解图灵完备——Brainfuck语言"><span class="nav-text">直观理解图灵完备——Brainfuck语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图灵停机问题"><span class="nav-text">图灵停机问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#λ演算"><span class="nav-text">λ演算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#约束变量-bound-variable-和自由变量-free-variable-variable"><span class="nav-text">约束变量(bound variable)和自由变量(free variable variable)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#substitutions"><span class="nav-text">substitutions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算术"><span class="nav-text">算术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#柯里化-currying"><span class="nav-text">柯里化(currying)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#乘法-multiplication"><span class="nav-text">乘法(multiplication)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件-conditionals"><span class="nav-text">条件(conditionals)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑运算-logical-operations"><span class="nav-text">逻辑运算(logical operations)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件测试-a-conditional-test"><span class="nav-text">条件测试(a conditional test)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前继函数-predecessor-function"><span class="nav-text">前继函数(predecessor function)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相等与不等"><span class="nav-text">相等与不等</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归"><span class="nav-text">递归</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Astray Wu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">77k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">1:10</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '0dc2b1112de28c1c61bd',
+    clientSecret: '18b118f15b345c4b26e72a2bf08388f3d0ad1d48',
+    repo: 'astraywu.github.io',
+    owner: 'astraywu',
+    admin: ['astraywu'],
+    id: md5(location.pathname),
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+</body>
+</html>

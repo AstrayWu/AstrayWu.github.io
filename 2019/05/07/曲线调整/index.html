@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="有一段代码是利用高斯函数来做曲线拟合的，比较简单和方便，调试起来可能也会简单些。首先利用高斯函数生成0~256之间的sigma为75的曲线，第一个点按照1024归一化。大致如下 然后利用标准正太分布公式来计算给定sigma和mean的高斯曲线。 #define _CRT_SECURE_NO_WARNINGS#include &amp;lt;iostream&amp;gt;#include &amp;lt;cstdio&amp;g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="曲线调整">
+<meta property="og:url" content="http://yoursite.com/2019/05/07/曲线调整/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="有一段代码是利用高斯函数来做曲线拟合的，比较简单和方便，调试起来可能也会简单些。首先利用高斯函数生成0~256之间的sigma为75的曲线，第一个点按照1024归一化。大致如下 然后利用标准正太分布公式来计算给定sigma和mean的高斯曲线。 #define _CRT_SECURE_NO_WARNINGS#include &amp;lt;iostream&amp;gt;#include &amp;lt;cstdio&amp;g">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/05/07/曲线调整/2019-05-07-23-33-30.png">
+<meta property="og:updated_time" content="2021-12-12T17:27:14.409Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="曲线调整">
+<meta name="twitter:description" content="有一段代码是利用高斯函数来做曲线拟合的，比较简单和方便，调试起来可能也会简单些。首先利用高斯函数生成0~256之间的sigma为75的曲线，第一个点按照1024归一化。大致如下 然后利用标准正太分布公式来计算给定sigma和mean的高斯曲线。 #define _CRT_SECURE_NO_WARNINGS#include &amp;lt;iostream&amp;gt;#include &amp;lt;cstdio&amp;g">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/07/曲线调整/2019-05-07-23-33-30.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/07/曲线调整/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>曲线调整 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/07/曲线调整/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">曲线调整
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-07 02:00:31" itemprop="dateCreated datePublished" datetime="2019-05-07T02:00:31+08:00">2019-05-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-12-13 01:27:14" itemprop="dateModified" datetime="2021-12-13T01:27:14+08:00">2021-12-13</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">4.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">4 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>有一段代码是利用高斯函数来做曲线拟合的，比较简单和方便，调试起来可能也会简单些。首先利用高斯函数生成0~256之间的sigma为75的曲线，第一个点按照1024归一化。大致如下<br><img src="/2019/05/07/曲线调整/2019-05-07-23-33-30.png" alt></p>
+<p>然后利用标准正太分布公式来计算给定sigma和mean的高斯曲线。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> STD_GS_LUT_Bit = <span class="number">8</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> STD_GS_Sigma = <span class="number">75</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> STD_GS_Mean = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> STD_GS_PRCS = <span class="number">10</span>; <span class="comment">// prcs of output</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> STD_GS_LUT_Sz = (<span class="number">1</span> &lt;&lt; STD_GS_LUT_Bit) + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> STD_GS_LUT[STD_GS_LUT_Sz];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LUTInter</span><span class="params">(<span class="keyword">int</span> val, <span class="keyword">int</span> valBit, <span class="keyword">int</span> *LUT, <span class="keyword">int</span> LUTBit)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> LUTSz = (<span class="number">1</span> &lt;&lt; LUTBit) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> shift = valBit - LUTBit;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> index = val &gt;&gt; shift;</span><br><span class="line">    <span class="keyword">if</span> (index &gt;= LUTSz - <span class="number">1</span>) &#123; <span class="comment">// index + 1&gt;= LUTSz -&gt; index + 1 &lt;= LUTSz - 1 -&gt; index + 1 &lt; LUTSz</span></span><br><span class="line">        <span class="keyword">return</span> LUT[LUTSz - <span class="number">1</span>];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> ret = LUT[index] + ((LUT[index + <span class="number">1</span>] - LUT[index]) * (val - (index &lt;&lt; shift)) &gt;&gt; shift);</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LUTInterFromSTD_GS</span><span class="params">(<span class="keyword">int</span> *LUT, <span class="keyword">int</span> LUTSz = <span class="number">33</span>, <span class="keyword">int</span> mean = <span class="number">0</span>, <span class="keyword">int</span> sigma = <span class="number">80</span>, <span class="keyword">int</span> weight = <span class="number">50</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> STD_LUT_Bit = <span class="number">8</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> PRCS = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span> shift = PRCS;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> scl = (STD_GS_Sigma &lt;&lt; shift) / sigma;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; LUTSz; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> val = <span class="built_in">abs</span>((i &lt;&lt; <span class="number">8</span>) / LUTSz - mean) * scl &gt;&gt; <span class="number">8</span>;</span><br><span class="line">        LUT[i] = (weight * LUTInter(val, shift, STD_GS_LUT, STD_GS_LUT_Bit) + (<span class="number">1</span> &lt;&lt; (shift - <span class="number">1</span>))) &gt;&gt; shift;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CalcSTD_GS</span><span class="params">(<span class="keyword">int</span> *LUT, <span class="keyword">int</span> sz, <span class="keyword">int</span> prcs, <span class="keyword">int</span> sigma, <span class="keyword">int</span> mean)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// prcs 10</span></span><br><span class="line">    <span class="comment">// sigma U6.8</span></span><br><span class="line">    <span class="comment">// mean U6.8</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">double</span> var = sigma / <span class="number">255.0</span> * sigma / <span class="number">255.0</span>;</span><br><span class="line">    <span class="keyword">double</span> u = mean / <span class="number">255</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sz; ++i) &#123;</span><br><span class="line">        <span class="keyword">double</span> val = i * <span class="number">1.0</span> / sz;</span><br><span class="line">        LUT[i] = round((<span class="number">1</span> &lt;&lt; prcs) * <span class="built_in">exp</span>(-(val - u) * (val - u) / (<span class="number">2</span> * var)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printmat</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> *p, <span class="keyword">int</span> len, <span class="keyword">const</span> <span class="keyword">char</span> *filename = <span class="string">"otuput.txt"</span>)</span> </span>&#123;</span><br><span class="line">    freopen(filename, <span class="string">"w"</span>, <span class="built_in">stderr</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i)</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"%4d "</span>, p[i]);</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ut</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    CalcSTD_GS(STD_GS_LUT, STD_GS_LUT_Sz, STD_GS_PRCS, STD_GS_Sigma, STD_GS_Mean);</span><br><span class="line">    printmat(STD_GS_LUT, STD_GS_LUT_Sz, <span class="string">"LUT_STD_GS.txt"</span>);</span><br><span class="line">    <span class="keyword">int</span> lut[<span class="number">33</span>];</span><br><span class="line">    LUTInterFromSTD_GS(lut, <span class="number">33</span>, <span class="number">0</span>, <span class="number">80</span>, <span class="number">128</span>);</span><br><span class="line">    printmat(lut, <span class="number">33</span>, <span class="string">"lut.txt"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ut();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">clr;</span><br><span class="line"></span><br><span class="line">x = <span class="number">0</span>:<span class="number">256</span>;</span><br><span class="line">y = normpdf(x, <span class="number">0</span>, <span class="number">75</span>);</span><br><span class="line">y = (y / y(<span class="number">1</span>) * <span class="number">1024</span>);</span><br><span class="line"></span><br><span class="line">LUT = [<span class="number">1024</span> <span class="number">1024</span> <span class="number">1024</span> <span class="number">1023</span> <span class="number">1023</span> <span class="number">1022</span> <span class="number">1021</span> <span class="number">1020</span> <span class="number">1018</span> <span class="number">1017</span> <span class="number">1015</span> <span class="number">1013</span> <span class="number">1011</span> <span class="number">1009</span> <span class="number">1007</span> <span class="number">1004</span> <span class="number">1001</span>  <span class="number">998</span>  <span class="number">995</span>  <span class="number">992</span>  <span class="number">989</span>  <span class="number">985</span>  <span class="number">982</span>  <span class="number">978</span>  <span class="number">974</span>  <span class="number">969</span>  <span class="number">965</span>  <span class="number">961</span>  <span class="number">956</span>  <span class="number">951</span>  <span class="number">946</span>  <span class="number">941</span>  <span class="number">936</span>  <span class="number">931</span>  <span class="number">925</span>  <span class="number">920</span>  <span class="number">914</span>  <span class="number">908</span>  <span class="number">902</span>  <span class="number">896</span>  <span class="number">890</span>  <span class="number">884</span>  <span class="number">878</span>  <span class="number">871</span>  <span class="number">864</span>  <span class="number">858</span>  <span class="number">851</span>  <span class="number">844</span>  <span class="number">837</span>  <span class="number">830</span>  <span class="number">823</span>  <span class="number">816</span>  <span class="number">808</span>  <span class="number">801</span>  <span class="number">793</span>  <span class="number">786</span>  <span class="number">778</span>  <span class="number">771</span>  <span class="number">763</span>  <span class="number">755</span>  <span class="number">747</span>  <span class="number">739</span>  <span class="number">731</span>  <span class="number">724</span>  <span class="number">716</span>  <span class="number">708</span>  <span class="number">699</span>  <span class="number">691</span>  <span class="number">683</span>  <span class="number">675</span>  <span class="number">667</span>  <span class="number">659</span>  <span class="number">651</span>  <span class="number">642</span>  <span class="number">634</span>  <span class="number">626</span>  <span class="number">618</span>  <span class="number">609</span>  <span class="number">601</span>  <span class="number">593</span>  <span class="number">585</span>  <span class="number">577</span>  <span class="number">569</span>  <span class="number">560</span>  <span class="number">552</span>  <span class="number">544</span>  <span class="number">536</span>  <span class="number">528</span>  <span class="number">520</span>  <span class="number">512</span>  <span class="number">504</span>  <span class="number">496</span>  <span class="number">488</span>  <span class="number">480</span>  <span class="number">473</span>  <span class="number">465</span>  <span class="number">457</span>  <span class="number">449</span>  <span class="number">442</span>  <span class="number">434</span>  <span class="number">427</span>  <span class="number">419</span>  <span class="number">412</span>  <span class="number">405</span>  <span class="number">397</span>  <span class="number">390</span>  <span class="number">383</span>  <span class="number">376</span>  <span class="number">369</span>  <span class="number">362</span>  <span class="number">355</span>  <span class="number">348</span>  <span class="number">342</span>  <span class="number">335</span>  <span class="number">328</span>  <span class="number">322</span>  <span class="number">315</span>  <span class="number">309</span>  <span class="number">303</span>  <span class="number">297</span>  <span class="number">290</span>  <span class="number">284</span>  <span class="number">278</span>  <span class="number">272</span>  <span class="number">267</span>  <span class="number">261</span>  <span class="number">255</span>  <span class="number">250</span>  <span class="number">244</span>  <span class="number">239</span>  <span class="number">233</span>  <span class="number">228</span>  <span class="number">223</span>  <span class="number">218</span>  <span class="number">213</span>  <span class="number">208</span>  <span class="number">203</span>  <span class="number">198</span>  <span class="number">193</span>  <span class="number">189</span>  <span class="number">184</span>  <span class="number">180</span>  <span class="number">175</span>  <span class="number">171</span>  <span class="number">167</span>  <span class="number">163</span>  <span class="number">159</span>  <span class="number">155</span>  <span class="number">151</span>  <span class="number">147</span>  <span class="number">143</span>  <span class="number">139</span>  <span class="number">136</span>  <span class="number">132</span>  <span class="number">129</span>  <span class="number">125</span>  <span class="number">122</span>  <span class="number">118</span>  <span class="number">115</span>  <span class="number">112</span>  <span class="number">109</span>  <span class="number">106</span>  <span class="number">103</span>  <span class="number">100</span>   <span class="number">97</span>   <span class="number">95</span>   <span class="number">92</span>   <span class="number">89</span>   <span class="number">87</span>   <span class="number">84</span>   <span class="number">82</span>   <span class="number">79</span>   <span class="number">77</span>   <span class="number">75</span>   <span class="number">72</span>   <span class="number">70</span>   <span class="number">68</span>   <span class="number">66</span>   <span class="number">64</span>   <span class="number">62</span>   <span class="number">60</span>   <span class="number">58</span>   <span class="number">56</span>   <span class="number">55</span>   <span class="number">53</span>   <span class="number">51</span>   <span class="number">50</span>   <span class="number">48</span>   <span class="number">46</span>   <span class="number">45</span>   <span class="number">43</span>   <span class="number">42</span>   <span class="number">41</span>   <span class="number">39</span>   <span class="number">38</span>   <span class="number">37</span>   <span class="number">36</span>   <span class="number">34</span>   <span class="number">33</span>   <span class="number">32</span>   <span class="number">31</span>   <span class="number">30</span>   <span class="number">29</span>   <span class="number">28</span>   <span class="number">27</span>   <span class="number">26</span>   <span class="number">25</span>   <span class="number">24</span>   <span class="number">23</span>   <span class="number">22</span>   <span class="number">22</span>   <span class="number">21</span>   <span class="number">20</span>   <span class="number">19</span>   <span class="number">19</span>   <span class="number">18</span>   <span class="number">17</span>   <span class="number">17</span>   <span class="number">16</span>   <span class="number">15</span>   <span class="number">15</span>   <span class="number">14</span>   <span class="number">14</span>   <span class="number">13</span>   <span class="number">13</span>   <span class="number">12</span>   <span class="number">12</span>   <span class="number">11</span>   <span class="number">11</span>   <span class="number">10</span>   <span class="number">10</span>   <span class="number">10</span>    <span class="number">9</span>    <span class="number">9</span>    <span class="number">8</span>    <span class="number">8</span>    <span class="number">8</span>    <span class="number">8</span>    <span class="number">7</span>    <span class="number">7</span>    <span class="number">7</span>    <span class="number">6</span>    <span class="number">6</span>    <span class="number">6</span>    <span class="number">6</span>    <span class="number">5</span>    <span class="number">5</span>    <span class="number">5</span>    <span class="number">5</span>    <span class="number">5</span>    <span class="number">4</span>    <span class="number">4</span>    <span class="number">4</span>    <span class="number">4</span>    <span class="number">4</span>    <span class="number">3</span>    <span class="number">3</span> ];</span><br><span class="line"></span><br><span class="line"><span class="built_in">figure</span>(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">plot</span>(x, y);</span><br><span class="line">title(<span class="string">'gauss curve, \sigma = 75, first point norm to 1024'</span>);</span><br><span class="line"><span class="comment">% plot(x, y, x, LUT);</span></span><br><span class="line">d = y - LUT;</span><br><span class="line"><span class="built_in">max</span>(<span class="built_in">abs</span>(d))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x = <span class="number">0</span>:<span class="number">8</span>:<span class="number">256</span>;</span><br><span class="line">y = normpdf(x, <span class="number">0</span>, <span class="number">80</span>);</span><br><span class="line">y = (y / y(<span class="number">1</span>) * <span class="number">128</span>);</span><br><span class="line"></span><br><span class="line">LUT = [  <span class="number">128</span>  <span class="number">128</span>  <span class="number">126</span>  <span class="number">123</span>  <span class="number">119</span>  <span class="number">115</span>  <span class="number">109</span>  <span class="number">102</span>   <span class="number">95</span>   <span class="number">89</span>   <span class="number">81</span>   <span class="number">74</span>   <span class="number">66</span>   <span class="number">59</span>   <span class="number">52</span>   <span class="number">45</span>   <span class="number">39</span>   <span class="number">34</span>   <span class="number">29</span>   <span class="number">24</span>   <span class="number">20</span>   <span class="number">17</span>   <span class="number">14</span>   <span class="number">11</span>    <span class="number">9</span>    <span class="number">7</span>    <span class="number">6</span>    <span class="number">5</span>    <span class="number">3</span>    <span class="number">3</span>    <span class="number">2</span>    <span class="number">2</span>    <span class="number">1</span>  ];</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">'b'</span>, x, LUT, <span class="string">'r'</span>);</span><br><span class="line">d = y - LUT;</span><br><span class="line"><span class="built_in">max</span>(<span class="built_in">abs</span>(d))</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/C、C++基础/" rel="next" title="C、C++基础">
+                <i class="fa fa-chevron-left"></i> C、C++基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/07/编程规范/" rel="prev" title="编程规范">
+                编程规范 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Astray Wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Astray Wu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">77k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">1:10</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '0dc2b1112de28c1c61bd',
+    clientSecret: '18b118f15b345c4b26e72a2bf08388f3d0ad1d48',
+    repo: 'astraywu.github.io',
+    owner: 'astraywu',
+    admin: ['astraywu'],
+    id: md5(location.pathname),
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+</body>
+</html>

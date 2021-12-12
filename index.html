@@ -1,0 +1,3484 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home menu-item-active">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/13/test20211213/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2021/12/13/test20211213/" class="post-title-link" itemprop="url">test20211213</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2021-12-13 01:38:03 / Modified: 01:38:51" itemprop="dateCreated datePublished" datetime="2021-12-13T01:38:03+08:00">2021-12-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">36</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>参考<a href="https://www.cnblogs.com/linlf03/p/6923519.html" target="_blank" rel="noopener">TortoiseSVN比较工具设置为BeyondCompare 4</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/12/Qt之QTimer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/12/Qt之QTimer/" class="post-title-link" itemprop="url">Qt之QTimer</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-12 16:18:06" itemprop="dateCreated datePublished" datetime="2019-05-12T16:18:06+08:00">2019-05-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-12-13 01:27:14" itemprop="dateModified" datetime="2021-12-13T01:27:14+08:00">2021-12-13</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">2.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">2 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><a href="http://www.qter.org/portal.php?mod=view&amp;aid=37" target="_blank" rel="noopener">第10篇 Qt5基础（十）Qt定时器和随机数</a></li>
+<li><a href="https://blog.csdn.net/zz2862625432/article/details/79550285" target="_blank" rel="noopener">QT之 QTimer使用方法</a></li>
+<li><a href="https://blog.csdn.net/liang19890820/article/details/52302879" target="_blank" rel="noopener">Qt 之 QProgressBar</a></li>
+</ul>
+<p>效果图如下，定时器设置为100ms触发，进度条也随之滚进。</p>
+<p><img src="/2019/05/12/Qt之QTimer/demo_QTimer.gif" alt></p>
+<p><strong>MainWindow.h</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QtWidgets/QMainWindow&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"ui_MainWindow.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QTimer&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QProgressBar&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span> :</span> <span class="keyword">public</span> QMainWindow</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    MainWindow(QWidget *parent = Q_NULLPTR);</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Ui::MainWindowClass ui;</span><br><span class="line">    QTimer *timer_;</span><br><span class="line">    QProgressBar *progress_;</span><br><span class="line"><span class="keyword">private</span> slots:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">UpdateProgress</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>MainWindow.cpp</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"MainWindow.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QLayout&gt;</span></span></span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent)</span><br><span class="line">    : QMainWindow(parent) &#123;</span><br><span class="line">    ui.setupUi(<span class="keyword">this</span>);</span><br><span class="line">    timer_ = <span class="keyword">new</span> QTimer(<span class="keyword">this</span>);</span><br><span class="line">    timer_-&gt;setInterval(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">    progress_ = <span class="keyword">new</span> QProgressBar(<span class="keyword">this</span>);</span><br><span class="line">    progress_-&gt;setRange(<span class="number">0</span>, <span class="number">100</span>);</span><br><span class="line">    progress_-&gt;setValue(<span class="number">50</span>);</span><br><span class="line"></span><br><span class="line">    QPushButton *okBtn = <span class="keyword">new</span> QPushButton(<span class="keyword">this</span>);</span><br><span class="line">    okBtn-&gt;setText(tr(<span class="string">"ok"</span>));</span><br><span class="line"></span><br><span class="line">    QPushButton *cancelBtn = <span class="keyword">new</span> QPushButton(<span class="keyword">this</span>);</span><br><span class="line">    cancelBtn-&gt;setText(tr(<span class="string">"cancel"</span>));</span><br><span class="line"></span><br><span class="line">    QHBoxLayout *btnLayout = <span class="keyword">new</span> QHBoxLayout();</span><br><span class="line">    btnLayout-&gt;addWidget(okBtn);</span><br><span class="line">    btnLayout-&gt;addWidget(cancelBtn);</span><br><span class="line">    QVBoxLayout *mainLayout = <span class="keyword">new</span> QVBoxLayout();</span><br><span class="line">    mainLayout-&gt;addWidget(progress_);</span><br><span class="line">    mainLayout-&gt;addLayout(btnLayout);</span><br><span class="line"></span><br><span class="line">    QWidget *widget = <span class="keyword">new</span> QWidget(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//setCentralWidget(widget);</span></span><br><span class="line">    <span class="comment">//centralWidget()-&gt;setLayout(mainLayout);</span></span><br><span class="line"></span><br><span class="line">    widget-&gt;setLayout(mainLayout);</span><br><span class="line">    setCentralWidget(widget);</span><br><span class="line"></span><br><span class="line">    connect(okBtn, &amp;QPushButton::clicked, timer_, <span class="keyword">static_cast</span>&lt;<span class="keyword">void</span> (QTimer::*)()&gt; (&amp;QTimer::start));</span><br><span class="line">    connect(cancelBtn, &amp;QPushButton::clicked, timer_, &amp;QTimer::stop);</span><br><span class="line">    connect(timer_, &amp;QTimer::timeout, <span class="keyword">this</span>, &amp;MainWindow::UpdateProgress);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> MainWindow::UpdateProgress() &#123;</span><br><span class="line">    <span class="keyword">int</span> curVal = progress_-&gt;value();</span><br><span class="line">    ++curVal;</span><br><span class="line">    <span class="keyword">if</span> (curVal &gt;= <span class="number">100</span>) &#123;</span><br><span class="line">        curVal = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    progress_-&gt;setValue(curVal);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>main.cpp</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"MainWindow.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QtWidgets/QApplication&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line">    MainWindow w;</span><br><span class="line">    w.show();</span><br><span class="line">    <span class="keyword">return</span> a.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/12/Qt多线程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/12/Qt多线程/" class="post-title-link" itemprop="url">Qt多线程</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-12 00:00:06" itemprop="dateCreated datePublished" datetime="2019-05-12T00:00:06+08:00">2019-05-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-12-13 01:27:14" itemprop="dateModified" datetime="2021-12-13T01:27:14+08:00">2021-12-13</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">4.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">4 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这两天在弄Qt的多线程，简要记录一些心得。</p>
+<h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><ul>
+<li><a href="https://blog.csdn.net/czyt1988/article/details/64441443" target="_blank" rel="noopener">Qt使用多线程的一些心得——1.继承QThread的多线程使用方法 CSDN</a> 写得还是挺不错的，比较实用</li>
+<li><a href="https://blog.csdn.net/czyt1988/article/details/71194457" target="_blank" rel="noopener">Qt使用多线程的一些心得——2.继承QObject的多线程使用方法 CSDN</a></li>
+</ul>
+<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>Qt有两种多线程方法，一种是继承QThread的run函数，另一种是把继承于QObject的类转移到新的Thread里。Qt4.8一般采用继承QThread的方法，但在4.8之后官方建议采用第二种方法，使用会更加灵活一些。<br>网络上较多的方法是采用第一种，包括很多书籍教程也是，这里把两种方法都进行下记录。</p>
+<p>通常，应用程序都是在一个线程中执行的，但当调用一个好事操作，例如大批量Io或大量矩阵变换等CPU密集操作时，用于界面常常会冻结，可以使用多线程来解决这些问题。</p>
+<p>优势</p>
+<ol>
+<li>提高应用程序的响应速度，尤其对于GUI来说，如果某个操作耗时很长，整个系统都在等待，将不能响应鼠标、键盘、菜单等操作。利用多线程可以将耗时操作放到一个新的线程中，避免该问题。</li>
+<li>使多CPU更加有效</li>
+<li>改善程序结构，将复杂的进行拆成多个线程，成为独立或半独立的运行部分，有利于代码的理解和维护。</li>
+</ol>
+<p>不足</p>
+<ol>
+<li>行为无法预期，多次执行结果可能不尽相同</li>
+<li>多线程的执行顺序无法保证，与操作系统地调度策略和线程优先级有关</li>
+<li>多线程的切换可能发生在任何时间和地点</li>
+<li>对代码的敏感度较高，细微修改都可能造成意向不到的结果</li>
+</ol>
+<h3 id="继承QThread"><a href="#继承QThread" class="headerlink" title="继承QThread"></a>继承QThread</h3><p>使用Qthread时有一个重要的规则，<strong>QThread只有run函数是在新线程里的，其他所有函数都在QThread生成的线程里</strong>。之前某个写法一直阻塞UI就是因为我在前天函数进行了操作，但其他函数并不是在子线程中的。所以要注意以下两点：</p>
+<ol>
+<li>如果QThread是在ui所在线程里成成，那么QThread的其他非run函数都是和ui一样的，要确保耗时的操作都在run函数中完成。<br>在UI线程下调用QThread的非run函数和执行普通函数没有区别。但要注意，如果这2. 个函数对线程的某个变量进行变更，并且该变量在run函数中也会使用，就要注意同步的问题，因为虽然都是QThread的类里，但run和非run函数实际上两个不同线程进行的，之间可能有竞争。</li>
+</ol>
+<p>任何继承于QThread的线程都是通过继承QThread的run函数来实现多线程的，因此，必须重写QThread的run函数，把复杂逻辑写在QThread的run函数中。</p>
+<p>参考博客提供的代码，如下，稍微替换了下命名风格。该类继承自QThread，包含了Qt类的常见内容，包括普通方法，信号和槽，还有run函数。其中<code>SetSth, GetSth, DoSth</code>函数都进行了500ms的延迟，用于验证在<code>QThread::run()</code>之外调用QThread的成员函数并会在新的线程中运行。</p>
+<p><strong>ThreadFromQThread.h</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QThread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMutex&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadFromQThread</span> :</span> <span class="keyword">public</span> QThread &#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"></span><br><span class="line">signals:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Msg</span><span class="params">(<span class="keyword">const</span> QString&amp; info)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Progress</span><span class="params">(<span class="keyword">int</span> present)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ThreadFromQThread(QObject* par);</span><br><span class="line">    ~ThreadFromQThread();</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">SetSth</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">GetSth</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Set_runCnt</span><span class="params">(<span class="keyword">int</span> count)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DoSth</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> runCnt_;</span><br><span class="line">    QMutex mutex_;</span><br><span class="line">    <span class="keyword">bool</span> canRun_;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> slots:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">StopImmediately</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>ThreadFromQThread.cpp</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"ThreadFromQThread.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMutex&gt;</span></span></span><br><span class="line">ThreadFromQThread::ThreadFromQThread(QObject* par) : QThread(par)</span><br><span class="line">, runCnt_(<span class="number">20</span>) &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ThreadFromQThread::~ThreadFromQThread() &#123;</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"ThreadFromQThread::~ThreadFromQThread()"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ThreadFromQThread::SetSth() &#123;</span><br><span class="line">    msleep(<span class="number">500</span>);</span><br><span class="line">    QString str = QString(<span class="string">"%1-&gt;%2,thread id:%3"</span>).arg(__FUNCTION__).arg(__FILE__).arg((<span class="keyword">int</span>)QThread::currentThreadId());</span><br><span class="line">    <span class="function">emit <span class="title">Msg</span><span class="params">(str)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ThreadFromQThread::GetSth() &#123;</span><br><span class="line">    msleep(<span class="number">500</span>);</span><br><span class="line">    <span class="function">emit <span class="title">Msg</span><span class="params">(QString(<span class="string">"%1-&gt;%2,thread id:%3"</span>).arg(__FUNCTION__).arg(__FILE__).arg((<span class="keyword">int</span>)QThread::currentThreadId()))</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ThreadFromQThread::Set_runCnt(<span class="keyword">int</span> count) &#123;</span><br><span class="line">    runCnt_ = count;</span><br><span class="line">    <span class="function">emit <span class="title">Msg</span><span class="params">(QString(<span class="string">"%1-&gt;%2,thread id:%3"</span>).arg(__FUNCTION__).arg(__FILE__).arg((<span class="keyword">int</span>)QThread::currentThreadId()))</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ThreadFromQThread::run() &#123;</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    QString str = QString(<span class="string">"%1-&gt;%2,thread id:%3"</span>).arg(__FILE__).arg(__FUNCTION__).arg((<span class="keyword">int</span>)QThread::currentThreadId());</span><br><span class="line">    <span class="function">emit <span class="title">Msg</span><span class="params">(str)</span></span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        sleep(<span class="number">1</span>); <span class="comment">// 共20秒完成一次进度条，不过doSth还会暂停一点时间</span></span><br><span class="line">        ++cnt;</span><br><span class="line">        <span class="function">emit <span class="title">Progress</span><span class="params">(((<span class="keyword">float</span>)cnt / runCnt_) * <span class="number">100</span>)</span></span>;</span><br><span class="line">        <span class="function">emit <span class="title">Msg</span><span class="params">(QString(<span class="string">"ThreadFromQThread::run times:%1"</span>).arg(cnt))</span></span>;</span><br><span class="line">        DoSth();</span><br><span class="line">        <span class="keyword">if</span> (runCnt_ == cnt) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function">QMutexLocker <span class="title">locker</span><span class="params">(&amp;mutex_)</span></span>;</span><br><span class="line">            <span class="keyword">if</span> (!canRun_)</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ThreadFromQThread::DoSth() &#123;</span><br><span class="line">    msleep(<span class="number">500</span>);</span><br><span class="line">    <span class="function">emit <span class="title">Msg</span><span class="params">(QString(<span class="string">"%1-&gt;%2,thread id:%3"</span>).arg(__FUNCTION__).arg(__FILE__).arg((<span class="keyword">int</span>)QThread::currentThreadId()))</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ThreadFromQThread::StopImmediately() &#123;</span><br><span class="line">    <span class="function">QMutexLocker <span class="title">locker</span><span class="params">(&amp;mutex_)</span></span>;</span><br><span class="line">    canRun_ = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>博主提供了如下的UI界面，用于验证：</p>
+<ol>
+<li>UI线程中调用SetSth和GetSth，是否会阻塞UI线程</li>
+<li>调用quit函数和exit是否会停止子线程</li>
+<li>调用terminte是否会停止子线程</li>
+</ol>
+<p>基本效果如下<br><img src="/2019/05/12/Qt多线程/QtThreadDemo.gif" alt></p>
+<p>UI界面上提供一个进度条，由主程序的定时器控制，每100ms触发一次，用于证明UI线程是否阻塞。<br>第二个进度条由子线程控制。<br>run按钮会运行子线程。<br>点击getSth, setSth, doSth等按钮时候，都是调用子线程类中的非run函数，可以看到对应的thread ID其实并不是子线程的ID。<br>并且点击quit，thread没有任何响应，QThread在不调用exec()的情况下的exit和quit函数不会起作用。<br>点击terminate按钮，线程立即终止。</p>
+<p>总结一下：</p>
+<ol>
+<li>正确终止子线程<br>在子线程类中添加bool变量，主线程修改该变量然后在线程的run函数中判断是否退出。注意要用QMutexLocker枷锁判断，避免线程冲突。</li>
+<li>正确启动线程<ol>
+<li>全局线程<br>  方法一：在窗口中创建，在窗口析构时要先调用线程的wait函数，等待子线程完全结束<br>  方法二：创建时连接<code>connect(thread, &amp;QThread::finished, &amp;QObject::deleteLater;</code>，父对象为<code>NULL</code>，在线程结束时自行销毁（消息循环中确认没有该对象后析构）</li>
+<li>局部线程<br>  采用以上方法二即可</li>
+</ol>
+</li>
+<li>重复创建子线程时，可能要注意重复生成还有析构，以及时切换到新线程中完成任务，参考代码。</li>
+</ol>
+<h3 id="继承QObject"><a href="#继承QObject" class="headerlink" title="继承QObject"></a>继承QObject</h3><p>Qt官方比较推荐继承QObject的方法来实现，更加灵活。<br>QObject是Qt框架的基本类，但凡涉及到信号槽有关的类都是继承于QObject。QObject是一个功能异常强大的类，它提供了Qt关键技术信号和槽的支持以及事件系统的支持，同时它提供了线程操作的接口，也就是QObject是可以选择不同的线程里执行的。<br>QObject的线程转移函数是：void moveToThread(QThread * targetThread) ，通过此函数可以把一个顶层Object（就是没有父级）转移到一个新的线程里。<br>QThread非常容易被新手误用，主要是QThread自身并不生存在它run函数所在的线程，而是生存在旧的线程中，此问题在上一篇重点描述了。由于QThread的这个特性，导致在调用QThread的非run函数容易在旧线程中执行。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/09/正则表达式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/09/正则表达式/" class="post-title-link" itemprop="url">正则表达式</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-09 23:25:45" itemprop="dateCreated datePublished" datetime="2019-05-09T23:25:45+08:00">2019-05-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-12-13 01:27:14" itemprop="dateModified" datetime="2021-12-13T01:27:14+08:00">2021-12-13</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">2.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">2 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><p>这个工具还是得找个机会熟悉起来，用的机会太少了，但感觉很有必要。</p>
+<ul>
+<li><a href="https://www.runoob.com/regexp/regexp-tutorial.html" target="_blank" rel="noopener">正则表达式 - 教程 菜鸟教程</a></li>
+<li><a href="https://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="noopener">正则表达式30分钟入门教程</a></li>
+<li><a href="https://ahkcn.github.io/docs/misc/RegEx-QuickRef.htm" target="_blank" rel="noopener">正则表达式（RegEx）——快速参考</a></li>
+<li><a href="https://www.runoob.com/regexp/regexp-metachar.html" target="_blank" rel="noopener">正则表达式 - 元字符</a></li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference" target="_blank" rel="noopener">Regular Expression Language - Quick Reference</a></li>
+<li><a href="https://www.zhihu.com/topic/19577832/top-answers" target="_blank" rel="noopener">正则表达式 知乎</a></li>
+<li><a href="http://www.imooc.com/article/details/id/20793" target="_blank" rel="noopener">最实用的正则表达式整理</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/29707385" target="_blank" rel="noopener">《JavaScript 正则表达式迷你书》问世了！</a></li>
+<li><a href="https://www.zhihu.com/question/20197998/answer/17118246" target="_blank" rel="noopener">学习正则表达式有哪些入门和进阶的书籍？ 知乎</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/27653434" target="_blank" rel="noopener">正则表达式系列总结</a></li>
+<li><a href="https://www.zhihu.com/question/48219401" target="_blank" rel="noopener">你是如何学会正则表达式的？</a></li>
+</ul>
+<h2 id="正则表达式示例"><a href="#正则表达式示例" class="headerlink" title="正则表达式示例"></a>正则表达式示例</h2><ul>
+<li><a href="https://www.runoob.com/regexp/regexp-example.html" target="_blank" rel="noopener">正则表达式 - 示例 菜鸟教程</a></li>
+<li><a href="https://c.runoob.com/front-end/854" target="_blank" rel="noopener">正则表达式在线测试 菜鸟教程</a></li>
+<li><a href="https://www.jb51.net/tools/regexsc.htm" target="_blank" rel="noopener">常用正则表达式 jb51</a></li>
+<li><a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html" target="_blank" rel="noopener">最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等</a></li>
+<li><a href="https://www.jianshu.com/p/e7bb97218946" target="_blank" rel="noopener">知道这20个正则表达式，能让你少写1,000行代码</a></li>
+</ul>
+<h2 id="测试工具"><a href="#测试工具" class="headerlink" title="测试工具"></a>测试工具</h2><ul>
+<li><a href="https://regex101.com/" target="_blank" rel="noopener">regular epressions 101</a> 在线测试工具</li>
+<li><a href="https://regexper.com/" target="_blank" rel="noopener">Regexper</a> 正则表达式可视化工具</li>
+<li><a href="https://deerchao.net/tools/regester/index.htm" target="_blank" rel="noopener">Regester</a> 正则表达式测试工具</li>
+</ul>
+<h2 id="相关介绍"><a href="#相关介绍" class="headerlink" title="相关介绍"></a>相关介绍</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>正则表达式(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为”元字符”）。</p>
+<p>正则表达式使用单个字符串来描述、匹配一系列匹配某个句法规则的字符串。</p>
+<h3 id="为什么使用"><a href="#为什么使用" class="headerlink" title="为什么使用"></a>为什么使用</h3><p>典型的搜索和替换操作要求您提供与预期的搜索结果匹配的确切文本。虽然这种技术对于对静态文本执行简单搜索和替换任务可能已经足够了，但它缺乏灵活性，若采用这种方法搜索动态文本，即使不是不可能，至少也会变得很困难。</p>
+<p>通过使用正则表达式，可以：</p>
+<ul>
+<li>测试字符串内的模式。<br>  例如，可以测试输入字符串，以查看字符串内是否出现电话号码模式或信用卡号码模式。这称为数据验证。</li>
+<li>替换文本。<br>  可以使用正则表达式来识别文档中的特定文本，完全删除该文本或者用其他文本替换它。</li>
+<li>基于模式匹配从字符串中提取子字符串。<br>  可以查找文档内或输入域内特定的文本。</li>
+</ul>
+<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>正则表达式是由<strong>普通字符（例如字符 a 到 z）以及特殊字符（称为”元字符”）</strong>组成的文字模式。模式描述在搜索文本时要匹配的一个或多个字符串。正则表达式作为一个模板，将某个字符模式与所搜索的字符串进行匹配。</p>
+<ul>
+<li>普通字符<br>普通字符包括没有显式指定为元字符的所有可打印和不可打印字符。这包括所有大写和小写字母、所有数字、所有标点符号和一些其他符号。</li>
+<li>特殊字符<br>  所谓特殊字符，就是一些有特殊含义的字符，许多元字符要求在试图匹配它们时特别对待。若要匹配这些特殊字符，必须首先使字符”转义”，即，将反斜杠字符\ 放在它们前面。</li>
+<li><p>限定符<br>  用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。有<code>*</code>或<code>+</code>或<code>?</code>或<code>{n}</code>或<code>{n,}</code>或<code>{n,m}</code>共6种。</p>
+</li>
+<li><p>定位符<br>  使您能够将正则表达式固定到行首或行尾。它们还使您能够创建这样的正则表达式，这些正则表达式出现在一个单词内、在一个单词的开头或者一个单词的结尾。</p>
+<p>  定位符用来描述字符串或单词的边界，<code>^</code>和<code>$</code>分别指字符串的开始与结束，<code>\b</code>描述单词的前或后边界，<code>\B</code>表示非单词边界。</p>
+</li>
+<li><p>选择<br>用圆括号将所有选择项括起来，相邻的选择项之间用|分隔。</p>
+</li>
+<li><p>反向引用<br>  对一个正则表达式模式或部分模式两边添加圆括号将导致相关匹配存储到一个临时缓冲区中，所捕获的每个子匹配都按照在正则表达式模式中从左到右出现的顺序存储。缓冲区编号从1开始，最多可存储99个捕获的子表达式。每个缓冲区都可以使用<code>\n</code>访问，其中<code>n</code>为一个标识特定缓冲区的一位或两位十进制数。</p>
+</li>
+</ul>
+<h2 id="常用的元字符"><a href="#常用的元字符" class="headerlink" title="常用的元字符"></a>常用的元字符</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x&#124;y</td>
+<td>匹配 x 或 y。例如，’z&#124;food’ 能匹配 “z” 或 “food”。’(z&#124;f)ood’ 则匹配 “zood” 或 “food”。</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配一个单词边界，也就是指单词和空格间的位置。例如， ‘er\b’ 可以匹配”never” 中的 ‘er’，但不能匹配 “verb” 中的 ‘er’。</td>
+</tr>
+<tr>
+<td>\cx</td>
+<td>匹配由 x 指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 ‘c’ 字符。</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配一个数字字符。等价于 [0-9]。</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配一个非数字字符。等价于 <code>[^0-9]</code>。</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配任何非空白字符。等价于 <code>[^ \f\n\r\t\v]</code>。</td>
+</tr>
+<tr>
+<td>.</td>
+<td>匹配除换行符（\n、\r）之外的任何单个字符。要匹配包括 ‘\n’ 在内的任何字符，请使用像”(.&#124;\n)”的模式。</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配字母、数字、下划线。等价于’[A-Za-z0-9_]’。</td>
+</tr>
+<tr>
+<td>\un</td>
+<td>匹配 n，其中 n 是一个用四个十六进制数字表示的 Unicode 字符。例如， \u00A9 匹配版权符号 (?)。</td>
+</tr>
+<tr>
+<td>(?=E)</td>
+<td>表示表示表达式后紧随E才匹配, 例如要只在using后面是naemspace时才匹配using，用using(?=\s+namespace)</td>
+</tr>
+<tr>
+<td>(?!E)</td>
+<td>表示表示表达式后不跟随E才匹配</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/07/编程规范/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/07/编程规范/" class="post-title-link" itemprop="url">编程规范</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-07 02:03:10" itemprop="dateCreated datePublished" datetime="2019-05-07T02:03:10+08:00">2019-05-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-12-13 01:27:14" itemprop="dateModified" datetime="2021-12-13T01:27:14+08:00">2021-12-13</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">2.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">3 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><a href="https://zh-google-styleguide.readthedocs.io/en/latest/" target="_blank" rel="noopener">Google 开源项目风格指南 (中文版)</a> 包含5个中文版的风格指南</li>
+<li><a href="https://google.github.io/styleguide/cppguide.html" target="_blank" rel="noopener">Google C++ Style Guide</a></li>
+<li><a href="https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/contents/" target="_blank" rel="noopener">C++ 风格指南 - 内容目录</a></li>
+<li><a href="https://blog.csdn.net/voidccc/article/details/37599203" target="_blank" rel="noopener">一张图总结Google C++编程规范(Google C++ Style Guide)</a></li>
+</ul>
+<p>华为的编程规范参考了很多的Google编程规范。</p>
+<p>有一张图很好的总结了Google的编程规范<br><img src="/2019/05/07/编程规范/20140713220242000.jpg" alt></p>
+<h2 id="Google编程规范笔记"><a href="#Google编程规范笔记" class="headerlink" title="Google编程规范笔记"></a>Google编程规范笔记</h2><h3 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h3><ol>
+<li>避免使用前置声明，用头文件<br>优点：减少include，节省编译时间，减少重新编译头文件的可能<br>缺点：隐藏了依赖关系<br>前置声明是不完整类型</li>
+<li>10行代码下才适合内联，不适用于循环和析构函数</li>
+<li>include顺序<br>对应的头文件；C系统文件；C++系统文件；其他库的头文件；本项目的头文件<br>对应头文件放在最前面，可以在build的时候及时发现错误</li>
+</ol>
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><ol>
+<li>命名空间内不缩进</li>
+<li>鼓励在cc文件中使用匿名命名空间和static声明，但不能在h文件中使用；（匿名空间其实就是文件作用域，类似于C中的static声明的作用域）</li>
+<li>cc文件中的变量不会被外部文件引用时，使用匿名空间或者static，因为具有内部链接性，不会在其他文件中访问到；（尽可能限制作用域范围，避免污染）</li>
+<li>静态成员函数或非成员函数最好放在命名空间中，静态成员应该是和类相关的，如果不相关最好放在命名空间中，尽量单独形成编译单元</li>
+<li>禁止定义静态储存周期非POD变量，构造、析构和初始化可能是不确定的</li>
+</ol>
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><ol>
+<li>类定义中单参数的构造函数应该用<code>explicit</code>标记</li>
+<li>优先组合，而非继承；虽然继承可以复用代码，但耦合性太高，散布在父子类之间的代码理解起来更不易；不能重写非虚函数；基类可能有自己的数据成员，对理解有挑战，实际很难拿捏准；</li>
+<li>不要重载，除非确有需要，因为容易混淆，如重载</li>
+<li>不在构造函数中做过多逻辑相关的初始化</li>
+</ol>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ol>
+<li>入参在前，出参在后</li>
+<li>输入参数是值参或const引用（不要使用非const引用，容易误解），输出参数为指针</li>
+</ol>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ol>
+<li>尽少使用默认参数，改用重载</li>
+<li>不使用C++异常，得不偿失，虽然允许高层决定底层中不可能的失败，减少使用错误代码，但实际上常安全很困难，异常可能会扰乱程序的正常流程</li>
+<li>禁用RTTI。RTTI虽然允许C++在运行时识别对象的类型，通过<code>dynamic_cast</code>和<code>typeid</code></li>
+<li>用static_cast替代C风格的值转换</li>
+<li>只在记录日志时使用流：否则容易混乱IO类型</li>
+<li>内建整型仅用int，否则使用<code>&lt;stdint.h&gt;</code>中长度精确的整型</li>
+<li>尽可能用<code>sizeof(varname)</code>代替<code>sizeof(type)</code>，因为变量类型改变时会自动更新</li>
+<li>C++ 11中用nullptr，03用NULL</li>
+<li>注意64位可移植型，例如对齐和指针大小等</li>
+<li><p>预处理宏</p>
+<ol>
+<li>不在.h中使用宏</li>
+<li>在马上使用时才定义</li>
+</ol>
+</li>
+<li><p>不使用复杂的模板编程</p>
+<ol>
+<li>对不熟练C++的人难理解</li>
+<li>编译出错的信息友好</li>
+<li>重构工具难发挥</li>
+<li>维护成本大于简洁的接口</li>
+<li>对外接口不使用模板，仅在内部实现使用</li>
+</ol>
+</li>
+</ol>
+<h2 id="命名约定"><a href="#命名约定" class="headerlink" title="命名约定"></a>命名约定</h2><ol>
+<li>文件名通通小写，下划线可用可不用</li>
+<li>类型命名（类，结构体，类型定义，模板参数，枚举）使用大小写风格，首字母大写——这样可区分类与对象</li>
+<li>变量、函数参数、成员数据均小写，下划线连接，类变量成员下划线结尾，结构体的不用</li>
+<li>声明为const或constexpr的变量，k开头，大小写混合，静态变量同</li>
+<li><p>函数也是大小写混合，大写开头，并且缩写字母也是首字母大写</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">AddTableEntry()</span><br><span class="line">DeleteUrl()</span><br><span class="line">OpenFileOrDie()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命名空间全小写</p>
+</li>
+<li><p>枚举类型采用常量风格，旧的不用改</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> UrlTableErrors &#123;</span><br><span class="line">kOK = <span class="number">0</span>,</span><br><span class="line">kErrorOutOfMemory,</span><br><span class="line">kErrorMalformedInput,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">enum</span> AlternateUrlTableErrors &#123;</span><br><span class="line">    OK = <span class="number">0</span>,</span><br><span class="line">    OUT_OF_MEMORY = <span class="number">1</span>,</span><br><span class="line">    MALFORMED_INPUT = <span class="number">2</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li>宏命名：全大写，下划线连接</li>
+<li>行尾空格两格注释</li>
+<li><p>TODO</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// TODO(kl@gmail.com): Use a "*" here for concatenation operator.</span></span><br><span class="line"><span class="comment">// TODO(Zeke) change this to use relations.</span></span><br><span class="line"><span class="comment">// TODO(bug 12345): remove the "Last visitors" feature</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注释是为了看懂，不是炫耀语言水平，中英皆可</p>
+</li>
+<li>未被使用的参数注释掉<code>void Circle::Rotate(double /*radians*/) {}</code></li>
+<li>if可单行，一行可不用花括号，分支中使用了花括号，其他都得加</li>
+<li>空循环体用花括号</li>
+<li>预处理不缩进，即使在缩进块内</li>
+<li>public等缩进1格</li>
+<li>命名空间不缩进</li>
+<li><code>:</code>前后有空格</li>
+</ol>
+<h3 id="规则特例"><a href="#规则特例" class="headerlink" title="规则特例"></a>规则特例</h3><ol>
+<li>现有不合规的代码网开一面</li>
+</ol>
+<h2 id="Qt"><a href="#Qt" class="headerlink" title="Qt"></a>Qt</h2><ul>
+<li>Qt5开发及实例(完整版) P111</li>
+</ul>
+<ol>
+<li>与Google的编码规范基本一致<ol>
+<li>成员函数、成员变量命名风格，不过成员变量按照驼峰命名，小写开头，增加下划线</li>
+<li>存取函数按照<code>Get_var</code>等进行</li>
+</ol>
+</li>
+<li>控件统一在后面加后缀</li>
+<li>V和H不需要细分，控件的细分不需要，只需要表达出是哪个控件就好，剩下的知识控件布局的问题，一般复杂度还可以。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InputDlg</span>:</span> <span class="keyword">public</span> QDialog</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    InputDlg(QWidget *parent = <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> slots:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ChangeName</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ChangeSex</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ChangeAge</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    QLabel *nameLabel1;</span><br><span class="line">    QLabel *sexLabel1;</span><br><span class="line">    QLabel *ageLabel1;</span><br><span class="line">    QLabel *nameLabel2;</span><br><span class="line">    QLabel *sexLabel2;</span><br><span class="line">    QLabel *ageLabel2;</span><br><span class="line">    QPushButton *nameBtn;</span><br><span class="line">    QPushButton *sexBtn;</span><br><span class="line">    QPushButton *scoreBtn;</span><br><span class="line">    QGridLayout *mainLayout;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">InputDlg::InputDlg(QWidget *parent = <span class="number">0</span>): QWidget(parent)</span><br><span class="line">&#123;</span><br><span class="line">    QLabel *queryLabel = <span class="keyword">new</span> QLabel(tr(<span class="string">"Query"</span>));</span><br><span class="line">    QLineEdit *queryEdit = <span class="keyword">new</span> QLineEdit();</span><br><span class="line">    QTableView *resView = <span class="keyword">new</span> QTableView();</span><br><span class="line"></span><br><span class="line">    QHBoxLayout *queryLayout = <span class="keyword">new</span> QHBoxLayout();</span><br><span class="line">    QVBoxLayout *mainLayout = <span class="keyword">new</span> QVBoxLayout();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/07/曲线调整/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/07/曲线调整/" class="post-title-link" itemprop="url">曲线调整</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-07 02:00:31" itemprop="dateCreated datePublished" datetime="2019-05-07T02:00:31+08:00">2019-05-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-12-13 01:27:14" itemprop="dateModified" datetime="2021-12-13T01:27:14+08:00">2021-12-13</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">4.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">4 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>有一段代码是利用高斯函数来做曲线拟合的，比较简单和方便，调试起来可能也会简单些。首先利用高斯函数生成0~256之间的sigma为75的曲线，第一个点按照1024归一化。大致如下<br><img src="/2019/05/07/曲线调整/2019-05-07-23-33-30.png" alt></p>
+<p>然后利用标准正太分布公式来计算给定sigma和mean的高斯曲线。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> STD_GS_LUT_Bit = <span class="number">8</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> STD_GS_Sigma = <span class="number">75</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> STD_GS_Mean = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> STD_GS_PRCS = <span class="number">10</span>; <span class="comment">// prcs of output</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> STD_GS_LUT_Sz = (<span class="number">1</span> &lt;&lt; STD_GS_LUT_Bit) + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> STD_GS_LUT[STD_GS_LUT_Sz];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LUTInter</span><span class="params">(<span class="keyword">int</span> val, <span class="keyword">int</span> valBit, <span class="keyword">int</span> *LUT, <span class="keyword">int</span> LUTBit)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> LUTSz = (<span class="number">1</span> &lt;&lt; LUTBit) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> shift = valBit - LUTBit;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> index = val &gt;&gt; shift;</span><br><span class="line">    <span class="keyword">if</span> (index &gt;= LUTSz - <span class="number">1</span>) &#123; <span class="comment">// index + 1&gt;= LUTSz -&gt; index + 1 &lt;= LUTSz - 1 -&gt; index + 1 &lt; LUTSz</span></span><br><span class="line">        <span class="keyword">return</span> LUT[LUTSz - <span class="number">1</span>];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> ret = LUT[index] + ((LUT[index + <span class="number">1</span>] - LUT[index]) * (val - (index &lt;&lt; shift)) &gt;&gt; shift);</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LUTInterFromSTD_GS</span><span class="params">(<span class="keyword">int</span> *LUT, <span class="keyword">int</span> LUTSz = <span class="number">33</span>, <span class="keyword">int</span> mean = <span class="number">0</span>, <span class="keyword">int</span> sigma = <span class="number">80</span>, <span class="keyword">int</span> weight = <span class="number">50</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> STD_LUT_Bit = <span class="number">8</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> PRCS = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span> shift = PRCS;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> scl = (STD_GS_Sigma &lt;&lt; shift) / sigma;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; LUTSz; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> val = <span class="built_in">abs</span>((i &lt;&lt; <span class="number">8</span>) / LUTSz - mean) * scl &gt;&gt; <span class="number">8</span>;</span><br><span class="line">        LUT[i] = (weight * LUTInter(val, shift, STD_GS_LUT, STD_GS_LUT_Bit) + (<span class="number">1</span> &lt;&lt; (shift - <span class="number">1</span>))) &gt;&gt; shift;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CalcSTD_GS</span><span class="params">(<span class="keyword">int</span> *LUT, <span class="keyword">int</span> sz, <span class="keyword">int</span> prcs, <span class="keyword">int</span> sigma, <span class="keyword">int</span> mean)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// prcs 10</span></span><br><span class="line">    <span class="comment">// sigma U6.8</span></span><br><span class="line">    <span class="comment">// mean U6.8</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">double</span> var = sigma / <span class="number">255.0</span> * sigma / <span class="number">255.0</span>;</span><br><span class="line">    <span class="keyword">double</span> u = mean / <span class="number">255</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sz; ++i) &#123;</span><br><span class="line">        <span class="keyword">double</span> val = i * <span class="number">1.0</span> / sz;</span><br><span class="line">        LUT[i] = round((<span class="number">1</span> &lt;&lt; prcs) * <span class="built_in">exp</span>(-(val - u) * (val - u) / (<span class="number">2</span> * var)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printmat</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> *p, <span class="keyword">int</span> len, <span class="keyword">const</span> <span class="keyword">char</span> *filename = <span class="string">"otuput.txt"</span>)</span> </span>&#123;</span><br><span class="line">    freopen(filename, <span class="string">"w"</span>, <span class="built_in">stderr</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i)</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"%4d "</span>, p[i]);</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ut</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    CalcSTD_GS(STD_GS_LUT, STD_GS_LUT_Sz, STD_GS_PRCS, STD_GS_Sigma, STD_GS_Mean);</span><br><span class="line">    printmat(STD_GS_LUT, STD_GS_LUT_Sz, <span class="string">"LUT_STD_GS.txt"</span>);</span><br><span class="line">    <span class="keyword">int</span> lut[<span class="number">33</span>];</span><br><span class="line">    LUTInterFromSTD_GS(lut, <span class="number">33</span>, <span class="number">0</span>, <span class="number">80</span>, <span class="number">128</span>);</span><br><span class="line">    printmat(lut, <span class="number">33</span>, <span class="string">"lut.txt"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ut();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">clr;</span><br><span class="line"></span><br><span class="line">x = <span class="number">0</span>:<span class="number">256</span>;</span><br><span class="line">y = normpdf(x, <span class="number">0</span>, <span class="number">75</span>);</span><br><span class="line">y = (y / y(<span class="number">1</span>) * <span class="number">1024</span>);</span><br><span class="line"></span><br><span class="line">LUT = [<span class="number">1024</span> <span class="number">1024</span> <span class="number">1024</span> <span class="number">1023</span> <span class="number">1023</span> <span class="number">1022</span> <span class="number">1021</span> <span class="number">1020</span> <span class="number">1018</span> <span class="number">1017</span> <span class="number">1015</span> <span class="number">1013</span> <span class="number">1011</span> <span class="number">1009</span> <span class="number">1007</span> <span class="number">1004</span> <span class="number">1001</span>  <span class="number">998</span>  <span class="number">995</span>  <span class="number">992</span>  <span class="number">989</span>  <span class="number">985</span>  <span class="number">982</span>  <span class="number">978</span>  <span class="number">974</span>  <span class="number">969</span>  <span class="number">965</span>  <span class="number">961</span>  <span class="number">956</span>  <span class="number">951</span>  <span class="number">946</span>  <span class="number">941</span>  <span class="number">936</span>  <span class="number">931</span>  <span class="number">925</span>  <span class="number">920</span>  <span class="number">914</span>  <span class="number">908</span>  <span class="number">902</span>  <span class="number">896</span>  <span class="number">890</span>  <span class="number">884</span>  <span class="number">878</span>  <span class="number">871</span>  <span class="number">864</span>  <span class="number">858</span>  <span class="number">851</span>  <span class="number">844</span>  <span class="number">837</span>  <span class="number">830</span>  <span class="number">823</span>  <span class="number">816</span>  <span class="number">808</span>  <span class="number">801</span>  <span class="number">793</span>  <span class="number">786</span>  <span class="number">778</span>  <span class="number">771</span>  <span class="number">763</span>  <span class="number">755</span>  <span class="number">747</span>  <span class="number">739</span>  <span class="number">731</span>  <span class="number">724</span>  <span class="number">716</span>  <span class="number">708</span>  <span class="number">699</span>  <span class="number">691</span>  <span class="number">683</span>  <span class="number">675</span>  <span class="number">667</span>  <span class="number">659</span>  <span class="number">651</span>  <span class="number">642</span>  <span class="number">634</span>  <span class="number">626</span>  <span class="number">618</span>  <span class="number">609</span>  <span class="number">601</span>  <span class="number">593</span>  <span class="number">585</span>  <span class="number">577</span>  <span class="number">569</span>  <span class="number">560</span>  <span class="number">552</span>  <span class="number">544</span>  <span class="number">536</span>  <span class="number">528</span>  <span class="number">520</span>  <span class="number">512</span>  <span class="number">504</span>  <span class="number">496</span>  <span class="number">488</span>  <span class="number">480</span>  <span class="number">473</span>  <span class="number">465</span>  <span class="number">457</span>  <span class="number">449</span>  <span class="number">442</span>  <span class="number">434</span>  <span class="number">427</span>  <span class="number">419</span>  <span class="number">412</span>  <span class="number">405</span>  <span class="number">397</span>  <span class="number">390</span>  <span class="number">383</span>  <span class="number">376</span>  <span class="number">369</span>  <span class="number">362</span>  <span class="number">355</span>  <span class="number">348</span>  <span class="number">342</span>  <span class="number">335</span>  <span class="number">328</span>  <span class="number">322</span>  <span class="number">315</span>  <span class="number">309</span>  <span class="number">303</span>  <span class="number">297</span>  <span class="number">290</span>  <span class="number">284</span>  <span class="number">278</span>  <span class="number">272</span>  <span class="number">267</span>  <span class="number">261</span>  <span class="number">255</span>  <span class="number">250</span>  <span class="number">244</span>  <span class="number">239</span>  <span class="number">233</span>  <span class="number">228</span>  <span class="number">223</span>  <span class="number">218</span>  <span class="number">213</span>  <span class="number">208</span>  <span class="number">203</span>  <span class="number">198</span>  <span class="number">193</span>  <span class="number">189</span>  <span class="number">184</span>  <span class="number">180</span>  <span class="number">175</span>  <span class="number">171</span>  <span class="number">167</span>  <span class="number">163</span>  <span class="number">159</span>  <span class="number">155</span>  <span class="number">151</span>  <span class="number">147</span>  <span class="number">143</span>  <span class="number">139</span>  <span class="number">136</span>  <span class="number">132</span>  <span class="number">129</span>  <span class="number">125</span>  <span class="number">122</span>  <span class="number">118</span>  <span class="number">115</span>  <span class="number">112</span>  <span class="number">109</span>  <span class="number">106</span>  <span class="number">103</span>  <span class="number">100</span>   <span class="number">97</span>   <span class="number">95</span>   <span class="number">92</span>   <span class="number">89</span>   <span class="number">87</span>   <span class="number">84</span>   <span class="number">82</span>   <span class="number">79</span>   <span class="number">77</span>   <span class="number">75</span>   <span class="number">72</span>   <span class="number">70</span>   <span class="number">68</span>   <span class="number">66</span>   <span class="number">64</span>   <span class="number">62</span>   <span class="number">60</span>   <span class="number">58</span>   <span class="number">56</span>   <span class="number">55</span>   <span class="number">53</span>   <span class="number">51</span>   <span class="number">50</span>   <span class="number">48</span>   <span class="number">46</span>   <span class="number">45</span>   <span class="number">43</span>   <span class="number">42</span>   <span class="number">41</span>   <span class="number">39</span>   <span class="number">38</span>   <span class="number">37</span>   <span class="number">36</span>   <span class="number">34</span>   <span class="number">33</span>   <span class="number">32</span>   <span class="number">31</span>   <span class="number">30</span>   <span class="number">29</span>   <span class="number">28</span>   <span class="number">27</span>   <span class="number">26</span>   <span class="number">25</span>   <span class="number">24</span>   <span class="number">23</span>   <span class="number">22</span>   <span class="number">22</span>   <span class="number">21</span>   <span class="number">20</span>   <span class="number">19</span>   <span class="number">19</span>   <span class="number">18</span>   <span class="number">17</span>   <span class="number">17</span>   <span class="number">16</span>   <span class="number">15</span>   <span class="number">15</span>   <span class="number">14</span>   <span class="number">14</span>   <span class="number">13</span>   <span class="number">13</span>   <span class="number">12</span>   <span class="number">12</span>   <span class="number">11</span>   <span class="number">11</span>   <span class="number">10</span>   <span class="number">10</span>   <span class="number">10</span>    <span class="number">9</span>    <span class="number">9</span>    <span class="number">8</span>    <span class="number">8</span>    <span class="number">8</span>    <span class="number">8</span>    <span class="number">7</span>    <span class="number">7</span>    <span class="number">7</span>    <span class="number">6</span>    <span class="number">6</span>    <span class="number">6</span>    <span class="number">6</span>    <span class="number">5</span>    <span class="number">5</span>    <span class="number">5</span>    <span class="number">5</span>    <span class="number">5</span>    <span class="number">4</span>    <span class="number">4</span>    <span class="number">4</span>    <span class="number">4</span>    <span class="number">4</span>    <span class="number">3</span>    <span class="number">3</span> ];</span><br><span class="line"></span><br><span class="line"><span class="built_in">figure</span>(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">plot</span>(x, y);</span><br><span class="line">title(<span class="string">'gauss curve, \sigma = 75, first point norm to 1024'</span>);</span><br><span class="line"><span class="comment">% plot(x, y, x, LUT);</span></span><br><span class="line">d = y - LUT;</span><br><span class="line"><span class="built_in">max</span>(<span class="built_in">abs</span>(d))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x = <span class="number">0</span>:<span class="number">8</span>:<span class="number">256</span>;</span><br><span class="line">y = normpdf(x, <span class="number">0</span>, <span class="number">80</span>);</span><br><span class="line">y = (y / y(<span class="number">1</span>) * <span class="number">128</span>);</span><br><span class="line"></span><br><span class="line">LUT = [  <span class="number">128</span>  <span class="number">128</span>  <span class="number">126</span>  <span class="number">123</span>  <span class="number">119</span>  <span class="number">115</span>  <span class="number">109</span>  <span class="number">102</span>   <span class="number">95</span>   <span class="number">89</span>   <span class="number">81</span>   <span class="number">74</span>   <span class="number">66</span>   <span class="number">59</span>   <span class="number">52</span>   <span class="number">45</span>   <span class="number">39</span>   <span class="number">34</span>   <span class="number">29</span>   <span class="number">24</span>   <span class="number">20</span>   <span class="number">17</span>   <span class="number">14</span>   <span class="number">11</span>    <span class="number">9</span>    <span class="number">7</span>    <span class="number">6</span>    <span class="number">5</span>    <span class="number">3</span>    <span class="number">3</span>    <span class="number">2</span>    <span class="number">2</span>    <span class="number">1</span>  ];</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">plot</span>(x, y, <span class="string">'b'</span>, x, LUT, <span class="string">'r'</span>);</span><br><span class="line">d = y - LUT;</span><br><span class="line"><span class="built_in">max</span>(<span class="built_in">abs</span>(d))</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/06/C、C++基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/06/C、C++基础/" class="post-title-link" itemprop="url">C、C++基础</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-06 22:52:46" itemprop="dateCreated datePublished" datetime="2019-05-06T22:52:46+08:00">2019-05-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-12-13 01:27:14" itemprop="dateModified" datetime="2021-12-13T01:27:14+08:00">2021-12-13</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">1.3k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>工作中的工程主要是C，不过公共的库函数设计上面存在一些问题，例如全局变量设计不合适、函数声明不合理、部分函数定义有问题，导致可移植性有点差，改成cpp文件后，报了很多错误，这里记录一些容易错误的地方，也顺带回顾一下基础知识。</p>
+<hr>
+<h3 id="全局变量的声明和使用（跨文件）"><a href="#全局变量的声明和使用（跨文件）" class="headerlink" title="全局变量的声明和使用（跨文件）"></a>全局变量的声明和使用（跨文件）</h3><ul>
+<li><a href="https://stackoverflow.com/questions/1433204/how-do-i-use-extern-to-share-variables-between-source-files" target="_blank" rel="noopener">How do I use extern to share variables between source files?</a></li>
+<li><a href="https://stackoverflow.com/questions/1410563/what-is-the-difference-between-a-definition-and-a-declaration" target="_blank" rel="noopener">What is the difference between a definition and a declaration?</a></li>
+</ul>
+<p>错误的参考</p>
+<ul>
+<li><a href="https://blog.csdn.net/flyingdust21/article/details/51679943" target="_blank" rel="noopener">C语言：全局变量在多个c文件中公用的方法</a></li>
+</ul>
+<p>上面的链接中Jonathan Leffler已经回答的很好了。对于声明和定义来说：</p>
+<ul>
+<li>一个变量被声明是指告知编译器，有个某种类型的变量会被使用，但编译不会为它分配内存。</li>
+<li>一个变量并定义是指编译器会分配对应变量的存储空间。</li>
+</ul>
+<p>一个变量可以被多次声明，但在给定的作用域范围内只能定义一次。一个变量的定义可以是一种声明，反之不是。</p>
+<p>最佳实践方式是使用包含<code>extern</code>关键字的头文件来声明变量，然后用某个包含该头文件的源文件对该变量进行定义。</p>
+<p>指导原则：</p>
+<ul>
+<li>头文件中值包含<code>extern</code>方式声明的变量，不要使用<code>static</code>或其他不合格的定义（静态全局变量只在本地文件中可以访问，因此有多个副本）</li>
+<li>对于任何变量，仅在一个头文件中声明（SPOT-Single Point of Truth）</li>
+<li>不要在在源文件中使用<code>extern</code>方式声明变量，源文件中应该用include头文件的方式来声明他们。——我司的实践规范，但实际代码并没有这么遵循，这样代码不好维护。</li>
+<li>对于任何变量，只能有一个源文件进行定义，并且建议初始化为0。</li>
+<li>头文件和源文件中的声明和定义应该保持一致。</li>
+<li>不需要在函数中用<code>extern</code>来声明变量。</li>
+<li>尽量避免全局变量。</li>
+</ul>
+<p>例如有<code>file3.h</code>、<code>file1.c</code>和<code>file2.c</code>三个文件（头文件和源文件名称一致会更好）：</p>
+<p><strong>file3.h</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> global_variable;  <span class="comment">/* Declaration of the variable */</span></span><br></pre></td></tr></table></figure>
+<p><strong>file1.c</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"file3.h"</span>  <span class="comment">/* Declaration made available here */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"prog1.h"</span>  <span class="comment">/* Function declarations */</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Variable defined here */</span></span><br><span class="line"><span class="keyword">int</span> global_variable = <span class="number">37</span>;    <span class="comment">/* Definition checked against declaration */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">increment</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123; <span class="keyword">return</span> global_variable++; &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>file2.c</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"file3.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"prog1.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">use_it</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Global variable: %d\n"</span>, global_variable++);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/04/Qt资源汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/04/Qt资源汇总/" class="post-title-link" itemprop="url">Qt资源汇总</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-04 23:14:42" itemprop="dateCreated datePublished" datetime="2019-05-04T23:14:42+08:00">2019-05-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-12-13 01:27:14" itemprop="dateModified" datetime="2021-12-13T01:27:14+08:00">2021-12-13</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">1.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近在工作中使用到Qt，所以准备复习一下Qt相关的东西，网络上关于Qt的东西还是比较杂，仅仅记录下目前看到可能会实用的东西，同时按照自己的方式整理下，便于后续深入了解。</p>
+<p>ref:</p>
+<ol>
+<li><a href="https://blog.csdn.net/liang19890820/article/details/51752029" target="_blank" rel="noopener">Qt 资料大全 CSDN</a></li>
+</ol>
+<h2 id="Qt官网"><a href="#Qt官网" class="headerlink" title="Qt官网"></a>Qt官网</h2><ul>
+<li><a href="https://www.qt.io/" target="_blank" rel="noopener">Qt官网</a></li>
+<li><a href="https://www.qt.io/download" target="_blank" rel="noopener">Qt下载</a> Qt源码也在这里面下载</li>
+<li><a href="http://download.qt.io/archive/qt/" target="_blank" rel="noopener">Qt所有版本下载</a></li>
+<li><a href="http://download.qt.io/official_releases/qt" target="_blank" rel="noopener">Qt官方发布下载</a></li>
+<li><a href="https://wiki.qt.io/Main" target="_blank" rel="noopener">Qt wiki</a></li>
+</ul>
+<h2 id="Github-amp-Third-Party"><a href="#Github-amp-Third-Party" class="headerlink" title="Github &amp; Third-Party"></a>Github &amp; Third-Party</h2><ul>
+<li><a href="https://github.com/qtproject" target="_blank" rel="noopener">Qt Project github</a> 官方镜像，各种强大的Qt项目及丰富的Qt库</li>
+<li><a href="https://insideqt.github.io/awesome-qt/" target="_blank" rel="noopener">Awesome Qt</a></li>
+<li><a href="https://github.com/fffaraz/awesome-cpp" target="_blank" rel="noopener">Awesome C++</a>/[]</li>
+<li><a href="https://inqlude.org/" target="_blank" rel="noopener">inqlude</a> Qt库存档</li>
+<li><a href="https://github.com/justjavac/free-programming-books-zh_CN" target="_blank" rel="noopener">免费的编程中文书籍索引</a></li>
+</ul>
+<h2 id="社区论坛"><a href="#社区论坛" class="headerlink" title="社区论坛"></a>社区论坛</h2><h3 id="国外"><a href="#国外" class="headerlink" title="国外"></a>国外</h3><ul>
+<li><a href="http://www.qtcentre.org" target="_blank" rel="noopener">Qt-Centre</a> 很全面的国外网站，包含forum、wiki、docs和blogs等</li>
+<li><a href="https://forum.qt.io/" target="_blank" rel="noopener">Qt-forum</a> 知名的Qt论坛</li>
+<li><a href="https://www.linux-apps.com/" target="_blank" rel="noopener">Linux-Apps</a> 可以找到很多免费的 Qt 应用，获得源码来学习、研究。</li>
+<li><a href="https://www.qtsoftware.de/oxShop2/source/" target="_blank" rel="noopener">Qt Software</a> 提供第三方商业软件和开源软件的Qt用户社区</li>
+<li><a href="http://quitcoding.com/" target="_blank" rel="noopener">QUIt Coding</a></li>
+</ul>
+<h3 id="国内"><a href="#国内" class="headerlink" title="国内"></a>国内</h3><ul>
+<li><a href="https://bbs.csdn.net/forums/Qt" target="_blank" rel="noopener">Qt论坛 CSDN</a></li>
+<li><a href="http://www.qtcn.org/bbs/i.php" target="_blank" rel="noopener">QTCN 开发网 </a></li>
+<li><a href="http://www.qter.org" target="_blank" rel="noopener">Qter 开源社区 </a> 里面富含 Qter 们开发的实用开源项目和作品，以及一系列优秀的原创教程 - 图文并茂、简单易学</li>
+</ul>
+<h2 id="blog"><a href="#blog" class="headerlink" title="blog"></a>blog</h2><ul>
+<li><a href="http://planet.qt.io/" target="_blank" rel="noopener">Qt 相关博客的汇集者</a></li>
+<li><a href="http://blog.csdn.net/liang19890820" target="_blank" rel="noopener">一去丶二三里</a></li>
+<li><a href="http://www.devbean.net" target="_blank" rel="noopener">豆子</a></li>
+<li><a href="https://blog.csdn.net/dbzhang800" target="_blank" rel="noopener">1+1=10</a></li>
+<li><a href="http://qtdebug.com/" target="_blank" rel="noopener">QtDebug</a></li>
+</ul>
+<h2 id="书籍"><a href="#书籍" class="headerlink" title="书籍"></a>书籍</h2><ul>
+<li>QmlBook - A Book about Qt5<ul>
+<li><a href="http://qmlbook.github.io" target="_blank" rel="noopener">英文版</a></li>
+<li><a href="https://github.com/cwc1987/QmlBook-In-Chinese" target="_blank" rel="noopener">中文版</a></li>
+</ul>
+</li>
+<li>C++ Primer</li>
+<li>C++ GUI Qt4编程<br>Trolltech 的 Qt 培训教材，生动、全面、深刻地阐明了 Qt 程序的设计理念，轻松创建跨平台的解决方案。</li>
+<li>Qt 高级编程<br>阐述 Qt 高级编程技术的书籍。以工程实践为主旨，是对 Qt 现有的 700 多个类和上百万字参考文档中部分关键技术深入、全面的讲解和探讨。</li>
+<li>Python Qt GUI 快速编程<br>讲述如何利用 Python 和 Qt 开发 GUI 应用程序的原理、方法和关键技术。结构合理，内容详实，适合用作对Python、Qt 和 PyQt 编程感兴趣的童鞋。</li>
+<li>C++ Qt 设计模式<br>利用跨平台开源软件开发框架 Qt 阐释了 C++ 和设计模式中的主要思想，既复习了设计模式，又学了 C++/Qt，对于使用其它框架也是一个非常有用的参考。</li>
+<li>Qt5 开发实战<br>在全面阐述 Qt 基本功能的基础上，对新增的功能和服务进行了重点介绍。同时运用大量示例，集中讲解了应用程序的开发方法、技巧和必需的 API。</li>
+<li><strong>Qt5 开发及实例</strong><br>以 Qt5.4 为平台，循序渐进，在介绍开发环境的基础上，系统介绍 Qt5 应用程序的开发技术，通过实例介绍和讲解内容，将知识和能力融为一体。一般能够在比较短的时间内掌握 Qt5 应用技术。</li>
+<li>Qt on Android 核心编程<br>基于 Qt 5.2，详细讲述如何在移动平台 Android 上使用 Qt 框架进行开发。无论是专注于传统的桌面软件开发，还是希望尝试使用 Qt 在 Android 平台开发，都可以从中获得重要的知识与实例。</li>
+<li>Qt Quick 核心编程<br>着力于 QML 语言基础、事件、Qt Quick 基本元素，辅以简要的 ECMAScript（JavaScript）语言介绍，能够快速熟悉 Qt Quick 的基本知识和开发过程，详尽入微。</li>
+<li>Qt Creator快速入门<br>基于 Qt Creator 编写，全面涉及 Qt Quick；植根于 Qt 网络博客教程，可无限更新；对每个知识点详尽讲解，并设计了示例程序。</li>
+<li>Qt5 编程入门<br>基于 Qt5.3 编写，全面涉及 Qt Quick；植根于 Qt 网络博客教程，可无限更新；对每个知识点详尽讲解，并设计了示例程序。</li>
+<li>Qt 5.9 C++开发指南<br><a href="https://blog.csdn.net/HongAndYi/article/details/80169184" target="_blank" rel="noopener">倾心倾力之作《Qt 5.9 C++开发指南》</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/02/qt小结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/02/qt小结/" class="post-title-link" itemprop="url">qt小结</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-02 21:52:42" itemprop="dateCreated datePublished" datetime="2019-05-02T21:52:42+08:00">2019-05-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-12-13 01:27:14" itemprop="dateModified" datetime="2021-12-13T01:27:14+08:00">2021-12-13</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">11k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">10 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>重新温习一下Qt的教程，回顾下相关知识</p>
+<ul>
+<li><a href="http://www.qter.org/portal.php?mod=view&amp;aid=25&amp;page=1" target="_blank" rel="noopener">第1篇 Qt5基础（一）Qt开发环境的搭建和hello world</a></li>
+<li><a href="http://www.qter.org/forum.php?mod=viewthread&amp;tid=193" target="_blank" rel="noopener">Qt快速入门系列教程目录</a></li>
+<li></li>
+</ul>
+<h2 id="Qt开发环境的搭建和helloworld"><a href="#Qt开发环境的搭建和helloworld" class="headerlink" title="Qt开发环境的搭建和helloworld"></a>Qt开发环境的搭建和helloworld</h2><ol>
+<li>release版本</li>
+<li>配置icon</li>
+</ol>
+<h2 id="Qt多窗口程序"><a href="#Qt多窗口程序" class="headerlink" title="Qt多窗口程序"></a>Qt多窗口程序</h2><ol>
+<li>在界面上显示的中文仍然使用tr(“中文”)，便于使用Qt预言家来翻译整个软件要显示的字符创。</li>
+<li>通过UI来设置信号和槽</li>
+<li>在QtDesigner界面可以设置信号和槽</li>
+<li>QMessageBox</li>
+<li>lineEdit设置占位符</li>
+<li>lineEdit的trim和clear</li>
+<li>类的前置声明</li>
+</ol>
+<p>设置信号和槽的方式：</p>
+<ol>
+<li>F4拖动</li>
+<li>右键转到槽，会要求选择信号</li>
+<li>QtDesigner中选择加号</li>
+<li>纯代码设置</li>
+</ol>
+<h2 id="添加菜单图标"><a href="#添加菜单图标" class="headerlink" title="添加菜单图标"></a>添加菜单图标</h2><ol>
+<li>菜单如果方无法输入中文，可以复制和粘贴</li>
+<li>添加资源文件<ol>
+<li>避免外部文件的问题</li>
+<li>压缩</li>
+</ol>
+</li>
+<li>菜单栏、菜单项</li>
+</ol>
+<h2 id="布局管理器"><a href="#布局管理器" class="headerlink" title="布局管理器"></a>布局管理器</h2><ol>
+<li>QSplitter</li>
+<li>Vertical Layout</li>
+</ol>
+<h2 id="实现Qt文本编辑功能"><a href="#实现Qt文本编辑功能" class="headerlink" title="实现Qt文本编辑功能"></a>实现Qt文本编辑功能</h2><p>实现新建、保存和另存为三个功能</p>
+<h2 id="实现Qt文本查找功能"><a href="#实现Qt文本查找功能" class="headerlink" title="实现Qt文本查找功能"></a>实现Qt文本查找功能</h2><ol>
+<li>dialog添加layout布局</li>
+<li>refactor功能，在.h中添加声明，然后直接在.cpp中实现定义</li>
+<li><p>%1作为占位符，在显示时会被arg()中的参数替换掉</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">QMessageBox::warning(<span class="keyword">this</span>, tr(<span class="string">"查找"</span>),</span><br><span class="line">        tr(<span class="string">"找不到%1"</span>).arg(str));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件定位方法，使用定位器。</p>
+</li>
+</ol>
+<h2 id="设置主窗口状态栏"><a href="#设置主窗口状态栏" class="headerlink" title="设置主窗口状态栏"></a>设置主窗口状态栏</h2><ol>
+<li>添加动作状态提示statusTip</li>
+<li>显示其他临时信息</li>
+</ol>
+<h2 id="Qt键盘、鼠标事件的处理"><a href="#Qt键盘、鼠标事件的处理" class="headerlink" title="Qt键盘、鼠标事件的处理"></a>Qt键盘、鼠标事件的处理</h2><h2 id="Qt定时器和随机数"><a href="#Qt定时器和随机数" class="headerlink" title="Qt定时器和随机数"></a>Qt定时器和随机数</h2><p>定时器，一种是定时器事件，另一种是使用信号和槽。一般使用了多个定时器时最好使用定时器事件来处理。</p>
+<h2 id="2D绘图"><a href="#2D绘图" class="headerlink" title="2D绘图"></a>2D绘图</h2><h3 id="渐变填充"><a href="#渐变填充" class="headerlink" title="渐变填充"></a>渐变填充</h3><h3 id="绘制文字"><a href="#绘制文字" class="headerlink" title="绘制文字"></a>绘制文字</h3><h3 id="绘制路径"><a href="#绘制路径" class="headerlink" title="绘制路径"></a>绘制路径</h3><h3 id="绘制图片"><a href="#绘制图片" class="headerlink" title="绘制图片"></a>绘制图片</h3><p>QImage、QPixmap、QBitmap和QPicture，它们都是常用的绘图设备。其中QImage主要用来进行I/O处理，它对I/O处理操作进行了优化，而且可以用来直接访问和操作像素；QPixmap主要用来在屏幕上显示图像，它对在屏幕上显示图像进行了优化；QBitmap是QPixmap的子类，用来处理颜色深度为1的图像，即只能显示黑白两种颜色；QPicture用来记录并重演QPainter命令。</p>
+<p>QPixmap 缩放、旋转、扭曲等</p>
+<h3 id="Qt坐标系统"><a href="#Qt坐标系统" class="headerlink" title="Qt坐标系统"></a>Qt坐标系统</h3><h3 id="双缓冲绘图"><a href="#双缓冲绘图" class="headerlink" title="双缓冲绘图"></a>双缓冲绘图</h3><p>这一部分并没有完成，源代码也没有正确运行，如果默认都有双缓冲的话，那一开始的代码是怎么回事。</p>
+<h3 id="2D绘图部分窗口、视口的研究"><a href="#2D绘图部分窗口、视口的研究" class="headerlink" title="2D绘图部分窗口、视口的研究"></a>2D绘图部分窗口、视口的研究</h3><p>图形视图提供大量定制的2D图形项进行管理和相互作用，便于控制多个图形以及之间的相互作用。主要包括Scene、View和Item。</p>
+<p>QDrag<br>QMineData<br>QCursor</p>
+<h2 id="数据库-SQL模块"><a href="#数据库-SQL模块" class="headerlink" title="数据库 SQL模块"></a>数据库 SQL模块</h2><p>这一部分目前涉及比较少，暂时不深入研究</p>
+<p>该模块可以分为</p>
+<ul>
+<li>用户接口层：用户接口层的几个类实现了将数据库中的数据链接到窗口部件上，它们是更高层次的抽象，即便不熟悉SQL也可以操作数据库<br>QSqlQueryModel、QSqlTableModel和QSqlRelationalTableModel</li>
+<li>SQL接口层：SQL接口层提供了对数据库的访问<br>QSqlDatabase、QSqlQuery、A=QSqlError、QSqlField、QSqlIndex和QSqlRecord</li>
+<li>驱动层：驱动层为具体的数据库和SQL接口层之间提供了底层的桥梁<br>QSqlDriver、QSqlDriverCreator、SQqlDriverCraetorBase、QSqlDriverPlugin和QSqlResult</li>
+</ul>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><h3 id="安装MySQL数据库"><a href="#安装MySQL数据库" class="headerlink" title="安装MySQL数据库"></a>安装MySQL数据库</h3><h3 id="利用QSqlQuery类执行SQL语句"><a href="#利用QSqlQuery类执行SQL语句" class="headerlink" title="利用QSqlQuery类执行SQL语句"></a>利用QSqlQuery类执行SQL语句</h3><p>有界面和按钮之间的信号和槽控制</p>
+<ol>
+<li>创建</li>
+<li>操作结果</li>
+<li>使用变量</li>
+<li>批处理</li>
+<li>事务操作：保证一个复杂的操作的原子性就是对于一个数据库操作序列，这些操作要么全部做完，要么一条也不做，它是一个不可分割的工作单位。</li>
+</ol>
+<h3 id="SQL查询模型QSqlQueryModel"><a href="#SQL查询模型QSqlQueryModel" class="headerlink" title="SQL查询模型QSqlQueryModel"></a>SQL查询模型QSqlQueryModel</h3><p>简单操作和自定义（读写）</p>
+<h2 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h2><ol>
+<li>使用DOM读取XML文档</li>
+<li>使用DOM创建和操作XML文档，包含UI操控</li>
+<li>Qt中的SAX，另一种读取XML文档的方法，速度更快</li>
+<li>使用流读写XML：QXmlStreamReader和QXmlStreamWriter，是SAX地替代品</li>
+</ol>
+<p>总的来说，QT提供了3种读取XML文档的方法：</p>
+<ol>
+<li>QXmlStreamReader：一种快速的基于流的方式访问XML文档，特别使用于一次解析</li>
+<li>DOM（Document Object Model）：将整个XML文档读入内存，构建一个树结构，允许程序在树上向前向后移动导航，可以允许多次解析。</li>
+<li>SAX（Simple API for XML）：提供大量虚函数，以事件的形式处理XML，是为了解决DOM得到内存占用问题提出的。</li>
+</ol>
+<p>生成XML文档方法：</p>
+<ol>
+<li>QXmlStreamWriter：最快最方便的XML方法</li>
+<li>DOM，首先在内存中生成DOM树，然后将DOM树写入文件，临时生成树再写入比较麻烦。</li>
+<li>手动生成XML</li>
+</ol>
+<h2 id="Qt元对象和属性系统"><a href="#Qt元对象和属性系统" class="headerlink" title="Qt元对象和属性系统"></a>Qt元对象和属性系统</h2><p>Qt 的元对象系统（Meta-Object System）提供了对象之间通信的信号与槽机制、运行时类型信息和动态属性系统。</p>
+<p>元对象系统由以下三个基础组成：</p>
+<ol>
+<li>QObject 类是所有使用元对象系统的类的基类。</li>
+<li>在一个类的 private 部分声明 Q_OBJECT宏，使得类可以使用元对象的特性，如动态属性、信号与槽。</li>
+<li>MOC（元对象编译器）为每个 QObject 的子类提供必要的代码来实现元对象系统的特性。</li>
+</ol>
+<h2 id="Qt中的基本数据类型"><a href="#Qt中的基本数据类型" class="headerlink" title="Qt中的基本数据类型"></a>Qt中的基本数据类型</h2><ul>
+<li><a href="https://blog.csdn.net/qq_15647227/article/details/83956078" target="_blank" rel="noopener">QT基本数据类型</a></li>
+</ul>
+<h2 id="编译时遇到的一些错误"><a href="#编译时遇到的一些错误" class="headerlink" title="编译时遇到的一些错误"></a>编译时遇到的一些错误</h2><ul>
+<li><a href="https://blog.csdn.net/qq_35488967/article/details/72847088" target="_blank" rel="noopener">error LNK2001: 无法解析的外部符号 “public: virtual struct QMetaObject const * __thiscall Widget::metaObject</a></li>
+</ul>
+<h2 id="信号和槽"><a href="#信号和槽" class="headerlink" title="信号和槽"></a>信号和槽</h2><ul>
+<li><a href="https://www.cnblogs.com/mushroom/p/5701330.html" target="_blank" rel="noopener">qt5中信号和槽的新语法 cnblogs</a></li>
+<li><a href="https://wiki.qt.io/New_Signal_Slot_Syntax" target="_blank" rel="noopener">New Signal Slot Syntax</a></li>
+<li><a href="https://www.cnblogs.com/wanghui1234/p/8964968.html" target="_blank" rel="noopener">C++_之Qt的信号和槽的详解 cnblogs</a></li>
+<li><a href="https://blog.csdn.net/u012372584/article/details/88252002" target="_blank" rel="noopener">QT实现信号与槽之间传递QVector类型的数据 CSDN</a> 可以不用这么麻烦</li>
+<li><a href="https://blog.csdn.net/zhenguo26/article/details/82588415" target="_blank" rel="noopener">QT子线程与主线程的信号槽通信</a> 传结构体</li>
+<li><a href="https://stackoverflow.com/questions/10719553/passing-qvectorfloat-from-worker-thread-to-main-thread-via-signal-slot" target="_blank" rel="noopener">Passing QVector<float> from worker thread to main thread via signal/slot</float></a> 传QVector</li>
+<li><a href="https://blog.csdn.net/dbzhang800/article/details/6547196" target="_blank" rel="noopener">信号与槽的新语法(Qt5) CSDN</a></li>
+<li><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3></li>
+</ul>
+<p>所谓信号槽，实际就是观察者模式。<strong>当某个事件发生之后</strong>，比如，按钮检测到自己被点击了一下，<strong>它就会发出一个信号（signal）</strong>。这种发出是没有目的的，类似广播。<strong>如果有对象对这个信号感兴趣，它就会使用连接（connect）函数</strong>，意思是，<strong>将想要处理的信号和自己的一个函数（称为槽（slot））绑定来处理这个信号</strong>。也就是说，<strong>当信号发出时，被连接的槽函数会自动被回调</strong>。这就类似观察者模式：当发生了感兴趣的事件，某一个操作就会被自动触发。<br><strong>信号和槽是Qt特有的信息传输机制，是Qt设计程序的重要基础，它可以让互不干扰的对象建立一种联系。</strong><br>槽的本质是类的成员函数，其参数可以是任意类型的。和普通C++成员函数几乎没有区别，它可以是虚函数；也可以被重载；可以是公有的、保护的、私有的、也可以被其他C++成员函数调用。唯一区别的是：<strong>槽可以与信号连接在一起，每当和槽连接的信号被发射的时候，就会调用这个槽。</strong>Qt5中的新语法可以将信号connect到QObject的任何成员方法，不仅仅是定义的槽。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>Qt5中的使用方式：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">QPushButton <span class="title">button</span><span class="params">(<span class="string">"Quit"</span>)</span></span>;</span><br><span class="line">    QObject::connect(&amp;button, &amp;QPushButton::clicked,</span><br><span class="line">                    &amp;app, &amp;QApplication::quit);</span><br><span class="line">    button.show();</span><br><span class="line">    <span class="keyword">return</span> app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>connect()函数最常用的一般形式：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">connect(sender, signal, receiver, slot);</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<ul>
+<li>sender：发出信号的对象</li>
+<li>signal：发送对象发出的信号</li>
+<li>receiver：接收信号的对象</li>
+<li>slot：接收对象在接收到信号之后所需要调用的函数</li>
+</ul>
+<p><strong>信号槽要求信号和槽的参数一致，所谓一致，是参数类型一致</strong>。如果不一致，<strong>允许的情况是，槽函数的参数可以比信号的少，即便如此，槽函数存在的那些参数的顺序也必须和信号的前面几个一致起来。</strong>这是因为，你可以在槽函数中选择忽略信号传来的数据（也就是槽函数的参数比信号的少），但是不能说信号根本没有这个数据，你就要在槽函数中使用（就是槽函数的参数比信号的多，这是不允许的）。</p>
+<p>Qt4的使用方式：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">        <span class="function">QApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line">        QPushButton *button = <span class="keyword">new</span> QPushButton(<span class="string">"Quit"</span>);</span><br><span class="line">        connect(button, SIGNAL(clicked()), &amp;a, SLOT(quit()));</span><br><span class="line">        button-&gt;show();</span><br><span class="line">        <span class="keyword">return</span> a.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里使用了<strong>SIGNAL</strong>和<strong>SLOT</strong>这两个宏，<strong>将两个函数名转换成了字符串</strong>。注意到connect()函数的signal和slot都是接受字符串，<strong>一旦出现连接不成功的情况，Qt4是没有编译错误的</strong>（因为一切都是字符串，编译期是不检查字符串是否匹配），<strong>而是在运行时给出错误。这无疑会增加程序的不稳定性</strong>。</p>
+<p>Qt中使用了新的信号和槽语法，作为旧语法的一种补充。</p>
+<p><strong>旧语法</strong><br>qt5将继续支持旧的语法去连接，在QObject对象上定义信号和槽函数，及任何继承QObjec的对象（包含QWidget）</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">connect(sender, SIGNAL (valueChanged(QString,QString)),receiver, SLOT (updateValue(QString)) );</span><br></pre></td></tr></table></figure>
+<h3 id="自定义信号和槽"><a href="#自定义信号和槽" class="headerlink" title="自定义信号和槽"></a>自定义信号和槽</h3><p>使用 Qt 的信号槽，实现一个报纸和订阅者的例子：<br>有一个报纸类Newspaper，有一个订阅者类Subscriber。Subscriber可以订阅Newspaper。这样，当Newspaper有了新的内容的时候，Subscriber可以立即得到通知。</p>
+<p><strong>newspaper.h</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QObject&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Newspaper</span> :</span> <span class="keyword">public</span> QObject</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Newspaper(<span class="keyword">const</span> QString &amp; name) :</span><br><span class="line">        m_name(name)</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">send</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="function">emit <span class="title">newPaper</span><span class="params">(m_name)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">signals:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">newPaper</span><span class="params">(<span class="keyword">const</span> QString &amp;name)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    QString m_name;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>reader.h</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QObject&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Reader</span> :</span> <span class="keyword">public</span> QObject</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Reader() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">receiveNewspaper</span><span class="params">(<span class="keyword">const</span> QString &amp; name)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        qDebug() &lt;&lt; <span class="string">"Receives Newspaper: "</span> &lt;&lt; name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>main.cpp</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QCoreApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"newspaper.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"reader.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">QCoreApplication <span class="title">app</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Newspaper <span class="title">newspaper</span><span class="params">(<span class="string">"Newspaper A"</span>)</span></span>;</span><br><span class="line">    Reader reader;</span><br><span class="line">    QObject::connect(&amp;newspaper, &amp;Newspaper::newPaper,</span><br><span class="line">                     &amp;reader,    &amp;Reader::receiveNewspaper);</span><br><span class="line">    newspaper.send();</span><br><span class="line">    <span class="keyword">return</span> app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Newspaper类继承了QObject类。<strong>只有继承了QObject类的类，才具有信号槽的能力</strong>。所以，为了使用信号槽，必须继承QObject。凡是QObject类（不管是直接子类还是间接子类），都应该在第一行代码写上Q_OBJECT。不管是不是使用信号槽，都应该添加这个宏。<strong>这个宏的展开将为我们的类提供信号槽机制、国际化机制以及 Qt 提供的不基于 C++ RTTI 的反射能力</strong>。</p>
+<p>Newspaper类的 public 和 private 代码块都比较简单，只不过它新加了一个 signals。signals块所列出的，就是该类的信号。<strong>信号就是一个个的函数名，返回值是void</strong>（因为无法获得信号的返回值，所以也就无需返回任何值），参数是该类需要让外界知道的数据。<strong>信号作为函数名，不需要在cpp函数中添加任何实现</strong>。</p>
+<p>Newspaper类的send()函数比较简单，只有一个语句emit newPaper(m_name);。<strong>emit是Qt对C++的扩展，是一个关键字（其实也是一个宏）</strong>。emit的含义是发出，也就是发出newPaper()信号。感兴趣的接收者会关注这个信号，可能还需要知道是哪份报纸发出的信号？所以，<strong>我们将实际的报纸名字m_name当做参数传给这个信号。当接收者连接这个信号时，就可以通过槽函数获得实际值</strong>。这样就完成了数据从发出者到接收者的一个转移。</p>
+<p>Reader类更简单。因为这个类需要接受信号，所以我们将其继承了QObject，并且添加了Q_OBJECT宏。后面则是默认构造函数和一个普通的成员函数。<strong>Qt5中，任何成员函数、static 函数、全局函数和 Lambda 表达式都可以作为槽函数</strong>。与信号函数不同，槽函数必须自己完成实现代码。<strong>槽函数就是普通的成员函数，因此作为成员函数，也会受到public、private 等访问控制符的影响</strong>。（<strong>如果信号是private的，这个信号就不能在类的外面连接，也就没有任何意义</strong>。）</p>
+<p>小结：</p>
+<ul>
+<li>发送者和接收者都需要是QObject的子类（当然，槽函数是全局函数、Lambda 表达式等无需接收者的时候除外）；</li>
+<li>使用 signals 标记信号函数，信号是一个函数声明，返回 void，不需要实现函数代码；</li>
+<li>槽函数是普通的成员函数，作为成员函数，会受到 public、private、protected 的影响；</li>
+<li>使用 emit 在恰当的位置发送信号；</li>
+<li>使用QObject::connect()函数连接信号和槽。</li>
+<li>任何成员函数、static 函数、全局函数和 Lambda 表达式都可以作为槽函数</li>
+<li>槽函数需要和信号一致（参数，返回值），由于信号都是没有返回值，所以槽函数一定没有返回值</li>
+</ul>
+<h3 id="信号槽的更多用法"><a href="#信号槽的更多用法" class="headerlink" title="信号槽的更多用法"></a>信号槽的更多用法</h3><ul>
+<li>一个信号可以和多个槽相连<br>　　如果是这种情况，这些槽会一个接一个的被调用，但是它们的调用顺序是不确定的。</li>
+<li><p>多个信号可以连接到一个槽<br>　　只要任意一个信号发出，这个槽就会被调用。</p>
+</li>
+<li><p>一个信号可以连接到另外的一个信号<br>　　当第一个信号发出时，第二个信号被发出。除此之外，这种信号-信号的形式和信号-槽的形式没有什么区别。</p>
+</li>
+<li>槽可以被取消链接<br>　　这种情况并不经常出现，因为当一个对象delete之后，Qt自动取消所有连接到这个对象上面的槽。</li>
+<li><p>使用Lambda 表达式<br>　　在使用 Qt 5 的时候，能够支持 Qt 5 的编译器都是支持 Lambda 表达式的。<br>　　我们的代码可以写成下面这样：</p>
+  <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">QObject::connect(&amp;newspaper, <span class="keyword">static_cast</span>&lt;<span class="keyword">void</span> (Newspaper:: *)</span><br><span class="line">(<span class="keyword">const</span> QString &amp;)&gt;(&amp;Newspaper::newPaper),</span><br><span class="line">[=](<span class="keyword">const</span> QString &amp;name)</span><br><span class="line">&#123; <span class="comment">/* Your code here. */</span> &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>  在连接信号和槽的时候，槽函数可以使用Lambda表达式的方式进行处理。</p>
+</li>
+</ul>
+<h3 id="新旧语法对比"><a href="#新旧语法对比" class="headerlink" title="新旧语法对比"></a>新旧语法对比</h3><p><strong>新语法：连接到QObject成员</strong><br>下面是一种新的方式来连接两个QObjects：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">connect(sender, &amp;Sender::valueChanged,receiver, &amp;Receiver::updateValue );</span><br></pre></td></tr></table></figure>
+<p>它支持：</p>
+<ul>
+<li>编译期间检查信号和槽是否存在，它们的类型，及Q_OBJECT是否丢失</li>
+<li>参数能被typedef或不同命名空间指定。</li>
+<li>如果有隐式转换的参数，会自动转换类型。比如QString到QVariant</li>
+<li>它可以连接QObject的任何成员方法，不仅仅是定义的槽。</li>
+</ul>
+<p>旧版本的不足原因是旧语法connect接收的是两个字符串：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">bool</span> QObject::connect ( <span class="keyword">const</span> QObject * sender, <span class="keyword">const</span> <span class="keyword">char</span> * signal, <span class="keyword">const</span> QObject * receiver, <span class="keyword">const</span> <span class="keyword">char</span> * method, Qt::ConnectionType type = Qt::AutoConnection ) [<span class="keyword">static</span>]</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">connect(slider, SIGNAL(valueChanged(<span class="keyword">int</span>)), spinbox, SLOT(setValue(<span class="keyword">int</span>)));</span><br></pre></td></tr></table></figure>
+<p>编译预处理后就是：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">connect(slider, <span class="string">"2valueChanged(int)"</span>, spinbox, <span class="string">"1setValue(int)"</span>);</span><br></pre></td></tr></table></figure>
+<p>这将导致：</p>
+<ul>
+<li>即使信号和槽不存在，编译不会出问题。只有运行时会给出警告并返回false，可是大部分用户并不检查返回值。</li>
+<li>参数必须匹配，比如信号参数是 int，槽参数是 double，语法将会 connect 失败</li>
+<li>参数类型必须字面上一样，比如说都是int，但是其中一个typedef了一下，或者namespace修饰不同，都会导致连接失败。</li>
+</ul>
+<p>而在新语法中避免掉了这些问题。但它不支持：</p>
+<ul>
+<li>更复杂的语法？你需要指定你的对象类型、</li>
+<li>非常复杂的语法，比如重载，参见后面。</li>
+<li><strong>在槽的中默认参数不再被支持</strong>。</li>
+</ul>
+<p>很典型的例如<code>QSpinBox</code>重载了信号<code>valueChanged()</code>，因此不能将</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">connect(mySpinBox, SIGNAL(valueChanged(<span class="keyword">int</span>)), mySlider, SLOT(setValue(<span class="keyword">int</span>));</span><br></pre></td></tr></table></figure>
+<p>简单转换为</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">connect(</span><br><span class="line">    mySpinBox, &amp;QSpinBox::valueChanged,</span><br><span class="line">    mySlider, &amp;QSlider::setValue</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>需要使用强制类型转换</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">connect(</span><br><span class="line">    mySpinBox, <span class="keyword">static_cast</span>&lt;<span class="keyword">void</span> (QSpinBox::*)(<span class="keyword">int</span>)&gt;(&amp;QSpinBox::valueChanged),</span><br><span class="line">    mySlider, &amp;QSlider::setValue</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>不过这种显示转换可能还是会让某些错误跳过编译器，可以容如下赋值临时变量的方法来保持编译期的检查：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">void</span> (QSpinBox::* mySignal)(<span class="keyword">int</span>) = &amp;QSpinBox::valueChanged;</span><br><span class="line">connect(</span><br><span class="line">    mySpinBox, mySignal,</span><br><span class="line">    mySlider, &amp;QSlider::setValue</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>当然还有一些其他方法，但<strong>最好就是不要重载信号和槽</strong>。</p>
+<h3 id="传递非基本数据类型"><a href="#传递非基本数据类型" class="headerlink" title="传递非基本数据类型"></a>传递非基本数据类型</h3><p>正常情况下信号和槽只能传递通用数据类型，例如<code>QVector</code>、<code>QString</code>和结构体等不能传递，编译可能不会出错，但槽函数不会被调用，需要对复杂数据做一些包装处理才行。可以使用</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">qRegisterMetaType&lt;QVector&lt;<span class="keyword">float</span>&gt; &gt;(<span class="string">"QVector&lt;float&gt;"</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Msg</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> int_info_;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> str_info;   <span class="comment">// 不知道是否还要对string再注册下</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">qRegisterMetaType&lt;Msg&gt;(<span class="string">"Msg"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h3><p>C++11中的Lambda表达式用于定义并创建匿名的函数对象，以简化编程工作。首先看一下Lambda表达式的基本构成：<br><img src="/2019/05/02/qt小结/2019-05-07-01-00-21.png" alt></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">[函数对象参数](操作符重载函数参数)<span class="keyword">mutable</span>或exception -&gt;返回值&#123;函数体&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>函数对象参数；<br>　　[]，标识一个Lambda的开始，这部分必须存在，不能省略。函数对象参数是传递给编译器自动生成的函数对象类的构造函数的。函数对象参数只能使用那些到定义Lambda为止时Lambda所在作用范围内可见的局部变量（包括Lambda所在类的this）。函数对象参数有以下形式：</p>
+<ul>
+<li>空。没有使用任何函数对象参数。</li>
+<li>=。函数体内可以使用Lambda所在作用范围内所有可见的局部变量（包括Lambda所在类的this），并且是值传递方式（相当于编译器自动为我们按值传递了所有局部变量）。</li>
+<li>&amp;。函数体内可以使用Lambda所在作用范围内所有可见的局部变量（包括Lambda所在类的this），并且是引用传递方式（相当于编译器自动为我们按引用传递了所有局部变量）。</li>
+<li>this。函数体内可以使用Lambda所在类中的成员变量。</li>
+<li>a。将a按值进行传递。按值进行传递时，函数体内不能修改传递进来的a的拷贝，因为默认情况下函数是const的。要修改传递进来的a的拷贝，可以添加mutable修饰符。</li>
+<li>&amp;a。将a按引用进行传递。</li>
+<li>a, &amp;b。将a按值进行传递，b按引用进行传递。</li>
+<li>=，&amp;a, &amp;b。除a和b按引用进行传递外，其他参数都按值进行传递。</li>
+<li><p>&amp;, a, b。除a和b按值进行传递外，其他参数都按引用进行传递。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> m = <span class="number">0</span>, n = <span class="number">0</span>;</span><br><span class="line">[=] (<span class="keyword">int</span> a) <span class="keyword">mutable</span> &#123; m = ++n + a; &#125;(<span class="number">4</span>);</span><br><span class="line">[&amp;] (<span class="keyword">int</span> a) &#123; m = ++n + a; &#125;(<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">[=,&amp;m] (<span class="keyword">int</span> a) <span class="keyword">mutable</span> &#123; m = ++n + a; &#125;(<span class="number">4</span>);</span><br><span class="line">[&amp;,m] (<span class="keyword">int</span> a) <span class="keyword">mutable</span> &#123; m = ++n + a; &#125;(<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">[m,n] (<span class="keyword">int</span> a) <span class="keyword">mutable</span> &#123; m = ++n + a; &#125;(<span class="number">4</span>);</span><br><span class="line">[&amp;m,&amp;n] (<span class="keyword">int</span> a) &#123; m = ++n + a; &#125;(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>操作符重载函数参数；<br> 标识重载的()操作符的参数，没有参数时，这部分可以省略。参数可以通过按值（如：(a,b)）和按引用（如：(&amp;a,&amp;b)）两种方式进行传递。</p>
+</li>
+<li>可修改标示符；<br> mutable声明，这部分可以省略。按值传递函数对象参数时，加上mutable修饰符后，可以修改按值传递进来的拷贝（注意是能修改拷贝，而不是值本身）。</li>
+<li>错误抛出标示符；<br> exception声明，这部分也可以省略。exception声明用于指定函数抛出的异常，如抛出整数类型的异常，可以使用throw(int)</li>
+<li>函数返回值；<br> -&gt;返回值类型，标识函数返回值的类型，当返回值为void，或者函数体中只有一处return的地方（此时编译器可以自动推断出返回值类型）时，这部分可以省略。</li>
+<li>是函数体；<br> {}，标识函数的实现，这部分不能省略，但函数体可以为空。</li>
+</ol>
+<pre><code>布局是QT界面当中必不可少的一环。我们常常使用QHBoxLayout、QVBoxLayout等进行布局。然而有个问题是，在MainWindow并不能直接进行布局。
+
+-[QT笔记——在QMainWindow内直接添加Layout行不通](https://blog.csdn.net/qq_26399665/article/details/52695042)
+发现在QMainWindow中添加的控件不显示，还有QToolBar也可能。
+
+原因是该窗口类中已经有一个Layout对象了，这时候再setLayout是无效的。有三种方法：
+1. 调用layout()方法，返回这个窗口内部的layout对象，删除后再setLayout设置自己的Layout对象
+2. 直接使用该Layout对象
+3. 创建子窗口对象，在这个子窗口对象中使用Layout对象。例如在QMainWindow中，通常是创建一个窗口对象后，调用setCentralWidget来安装该窗口，然后在该窗口中使用自己的Layout。
+
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">QWidget *widget = <span class="keyword">new</span> QWidget();</span><br><span class="line"><span class="comment">// method 1</span></span><br><span class="line"><span class="comment">//setCentralWidget(widget);</span></span><br><span class="line"><span class="comment">//centralWidget()-&gt;setLayout(mainLayout);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// method 2</span></span><br><span class="line">widget-&gt;setLayout(mainLayout);</span><br><span class="line">setCentralWidget(widget);</span><br></pre></td></tr></table></figure>
+
+## utils
+
+QMessageBox::information(this, tr(&quot;Information&quot;), str);
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/01/设计模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/01/设计模式/" class="post-title-link" itemprop="url">设计模式</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-01 10:02:44" itemprop="dateCreated datePublished" datetime="2019-05-01T10:02:44+08:00">2019-05-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-12-13 01:27:14" itemprop="dateModified" datetime="2021-12-13T01:27:14+08:00">2021-12-13</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">0</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Astray Wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Astray Wu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">77k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">1:10</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+  
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+
+  
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+</body>
+</html>

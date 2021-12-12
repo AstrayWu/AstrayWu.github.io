@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="记录下工作中常用的ffmpeg命令，有些网络上不好查找到，需要总结。用md不知道怎么排版比较合适  1. 编码u_p444_b10的YUV→100M的YUV420的24fps的HDR10码流（单帧，每帧YUV重复2秒） # u_p444_b10的YUV→100M的YUV420的24fps的HDR10码流（单帧，每帧YUV重复2秒）# &quot;如果要非单帧的，将前面一个&quot;&quot;-r 0.5&quot;&quot;去掉即可；重复1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ffmpeg常用命令">
+<meta property="og:url" content="http://yoursite.com/2019/04/27/ffmpeg/ffmpeg常用命令/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="记录下工作中常用的ffmpeg命令，有些网络上不好查找到，需要总结。用md不知道怎么排版比较合适  1. 编码u_p444_b10的YUV→100M的YUV420的24fps的HDR10码流（单帧，每帧YUV重复2秒） # u_p444_b10的YUV→100M的YUV420的24fps的HDR10码流（单帧，每帧YUV重复2秒）# &quot;如果要非单帧的，将前面一个&quot;&quot;-r 0.5&quot;&quot;去掉即可；重复1">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-12-12T17:27:14.398Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ffmpeg常用命令">
+<meta name="twitter:description" content="记录下工作中常用的ffmpeg命令，有些网络上不好查找到，需要总结。用md不知道怎么排版比较合适  1. 编码u_p444_b10的YUV→100M的YUV420的24fps的HDR10码流（单帧，每帧YUV重复2秒） # u_p444_b10的YUV→100M的YUV420的24fps的HDR10码流（单帧，每帧YUV重复2秒）# &quot;如果要非单帧的，将前面一个&quot;&quot;-r 0.5&quot;&quot;去掉即可；重复1">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/27/ffmpeg/ffmpeg常用命令/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ffmpeg常用命令 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/27/ffmpeg/ffmpeg常用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ffmpeg常用命令
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-27 18:25:49" itemprop="dateCreated datePublished" datetime="2019-04-27T18:25:49+08:00">2019-04-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-12-13 01:27:14" itemprop="dateModified" datetime="2021-12-13T01:27:14+08:00">2021-12-13</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">5.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">5 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>记录下工作中常用的ffmpeg命令，有些网络上不好查找到，需要总结。用md不知道怎么排版比较合适</p>
+<hr>
+<h2 id="1-编码"><a href="#1-编码" class="headerlink" title="1. 编码"></a>1. 编码</h2><p>u_p444_b10的YUV→100M的YUV420的24fps的HDR10码流（单帧，每帧YUV重复2秒）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># u_p444_b10的YUV→100M的YUV420的24fps的HDR10码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line"><span class="comment"># "如果要非单帧的，将前面一个""-r 0.5""去掉即可；重复10s，用""""-r 0.1""""；如果yuv仅有一帧，编码会有错误，所以至少2帧进行repeat"""</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 100M -vf scale=out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"keyint=24:colorprim=bt2020:transfer=smpte2084:colormatrix=bt2020nc:master-display=G(13250,34500)B(7500,3000)R(34000,16000)WP(15635,16450)L(10000000,50):max-cll=0,0"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># u_p444_b10的YUV→100M的YUV420的24fps的SDR码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 100M -vf scale=out_color_matrix=bt709:out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"colorprim=bt709:transfer=bt709:colormatrix=bt709"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># u_p444_b10的YUV→100M的YUV420的24fps的HLG码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 100M -vf scale=out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"keyint=24:colorprim=bt2020:transfer=arib-std-b67:colormatrix=bt2020nc"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># u_p420_b8的YUV→100M的YUV420p10的24fps的SDR码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line">ffmpeg -threads 16 -r 0.5 -s 1920x1080 -pix_fmt yuv420p -i input.yuv -b:v 100M -s 3840x2160 -vf scale=out_color_matrix=bt709:out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset ultrafast -x265-params <span class="string">"colorprim=bt709:transfer=bt709:colormatrix=bt709"</span> -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 720x480_p422_b8的YUV→100M的YUV422p8的24fps的SDR码流（单帧，每帧YUV重复2秒）</span></span><br><span class="line"><span class="comment"># 一帧即可完成，但是V811不支持这个格式，需要更换编码库</span></span><br><span class="line">ffmpeg -threads 16 -r 0.2 -s 720x480 -pix_fmt yuv422p -i input.yuv -b:v 100M -c:v libx265 -preset ultrafast -x265-params -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 720x480_p422_b8的YUV→100M的YUV422p8的24fps的SDR码流（单帧，每帧YUV重复10秒）</span></span><br><span class="line"><span class="comment"># 注意至少需要两帧，但第二帧不会被repeated，总共只有10这里采用MPEG4编码库，不知道为何X265时V811支持不了</span></span><br><span class="line">ffmpeg -r 0.1 -s 720x480 -pix_fmt yuv422p -i input.yuv -b:v 100M -vcodec mpeg4 -an -y -r 24 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编码时重新添加旋转的metadata</span></span><br><span class="line">ffmpeg -I input.mp4 -c copy -metadata:s:v:0 rotate=90 output.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="2-解码"><a href="#2-解码" class="headerlink" title="2. 解码"></a>2. 解码</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 直接解码出YUV444的码流</span></span><br><span class="line">ffmpeg -i input.mp4 -pix_fmt yuv444p10 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码YUV444的码流，并指定30帧和分辨率</span></span><br><span class="line">ffmpeg -i input.mp4 -frames:v 30 -pix_fmt yuv444p10 -s 3840x2160 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码YUV444的码流，并指定时间段和分辨率</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:54 -t 00:00:10 -pix_fmt yuv444p10 -s 3840x2160 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将码流分段解出yuv，每段持续2秒，总共最多解500帧，指定输出分辨率为f_p444_b10</span></span><br><span class="line"><span class="comment"># （ 注意直接使用命令行时用一个""%""，在脚本中要转义用""%%""）"</span></span><br><span class="line">ffmpeg -i input.mp4 -frames:v 500 -pix_fmt yuv444p10 -s 1920x1080 -f segment -segment_time 2 -y output_%%04d.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从制定时间开始截取一帧，并制定分辨率和格式</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:54 -frames:v 1 -pix_fmt yuv444p10 -s 3840x2160 -y output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码时进行反交错deinterlace（有两种方法，但是主观效果差异应该不大）</span></span><br><span class="line">ffmpeg -i input.mp4 -deinterlace -pix_fmt yuv444p10 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 缩放</span></span><br><span class="line">ffmpeg -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -vf scale=iw*2:ih*2 output.yuvffmpeg -i input.jpg -vf scale=iw*w:ih*2 output.jpg</span><br><span class="line">ffmpeg -i input.avi -vf scale=320:240 output.avi</span><br><span class="line">ffmpeg -i input.avi -vf scale=320:-1 otuput.avi</span><br><span class="line">ffmpeg -i input.avi -vf <span class="string">"scale=iw/2:ih/2"</span> output.avi</span><br><span class="line">ffmpeg -s 1920x1080 -pix_fmt yuv444p10 -i input.yuv -vf scale=iw*2:ih*2 output.yuv</span><br><span class="line">ffmpeg -s 1920x1080 -pix_fmt gray10 -i input.yuv -vf scale=iw*2:ih*2 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解YUV4448bit</span></span><br><span class="line">ffmpeg -i input.mp4 -pix_fmt yuv444p -y output.yuv</span><br></pre></td></tr></table></figure>
+<h2 id="3-拼接"><a href="#3-拼接" class="headerlink" title="3. 拼接"></a>3. 拼接</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将多段ts流拼接</span></span><br><span class="line">ffmpeg -i concat:<span class="string">"u_r24_sdr_bt709.ts|u_r24_sdr_bt2020.ts|u_r24_sdr_pq.ts|u_r24_sdr_hdr10.ts|u_r24_sdr_hlg10.ts"</span> -c copy -an -y u_r24_b10_sscimf.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 同时拼接4路；做8K用</span></span><br><span class="line">ffmpeg -i 1.mp4 -i 2.mp4 -i 3.mp4 -i 4.mp4 -filter_complex <span class="string">"[0:v]pad=iw*2:ih*2[a];[a][1:v]overlay=w[b];[b][2:v]overlay=0:h[c];[c][3:v]overlay=w:h"</span> out.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="4-截取"><a href="#4-截取" class="headerlink" title="4. 截取"></a>4. 截取</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 从指定时间开始截取一段码流</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:05.2 -t 00:00:10 -c copy output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从指定时间开始截取一帧</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:05 -frames:v 1 -pix_fmt yuv444p10 -y output.yuv</span><br></pre></td></tr></table></figure>
+<h2 id="5-转码-scaler"><a href="#5-转码-scaler" class="headerlink" title="5. 转码/scaler"></a>5. 转码/scaler</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将码流转码成420p10</span></span><br><span class="line">ffmpeg -i input.mp4 -vf format=yuv420p10 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将码流转码成fhd</span></span><br><span class="line">ffmpeg -i input.mp4 -vf scale=1920:1080 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将码流转码成uhd</span></span><br><span class="line"><span class="comment"># 但是HDR的metadata会丢失掉</span></span><br><span class="line">ffmpeg -i input.mp4 -vf scale=3840:2160 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新拷贝音视频流，可修复视频时间戳不正确等问题</span></span><br><span class="line">ffmpeg -i input.mp4 -c:v copy -c:a copy output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将UHD YUV转成FHD YUV</span></span><br><span class="line">ffmpeg -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -vf scale=1920:1080 -pix_fmt yuv444p10 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将UHD YUV444转成V210；"跟scalar效果基本一致，UV的值略偏右，目前没有看出来差异"</span></span><br><span class="line">ffmpeg -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -vcodec v210 output.yuv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将V210转成YUV444 FHD</span></span><br><span class="line"><span class="comment"># 5529600刚好是一帧V210格式的大小，可能与标准的YUV422计算有一定的偏差，因为可能有偏移或者头 https://trac.ffmpeg.org/ticket/1869</span></span><br><span class="line">ffmpeg -f image2pipe -vcodec v210 -s 1920x1080 -frame_size 5529600 -i 1920x1080_ducks_v210.yuv</span><br></pre></td></tr></table></figure>
+<h2 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># "将u_p444_b10的yuv图像以50M的码率编成420的1fps的SDR码流</span></span><br><span class="line"><span class="comment"># 5秒对应1帧原图，改变了帧率，STB播放异常，但是编码速度较快）</span></span><br><span class="line">ffmpeg -threads 16 -r 0.2 -s 3840x2160 -pix_fmt yuv444p10 -i input.yuv -b:v 50M -vf scale=out_color_matrix=bt709:out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset medium -x265-params  <span class="string">"colorprim=bt709:transfer=bt709:colormatrix=bt709"</span> -an -y -r 1 output.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># "将u_p444_b10的yuv图像以近无损方式编成10bit420的24fps的SDR码流（pq=0）</span></span><br><span class="line"><span class="comment"># 不过码流通常会过高，可能达到400M，一般不可行"""</span></span><br><span class="line">ffmpeg -threads 16 -pix_fmt yuv444p10 -s 3840x2160 -r 24 -i input.yuv -vf scale=out_h_chr_pos=0:out_v_chr_pos=0,format=yuv420p10 -c:v libx265 -preset medium -x265-params qp=0:keyint=24:colorprim=bt709:transfer=bt709:colormatrix=bt709 -an -y otuput.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="7-备注"><a href="#7-备注" class="headerlink" title="7. 备注"></a>7. 备注</h2><ol>
+<li>在编码的时候如果指定-preset ultrafast则速度会比-preset medium快不少，大约只要1/3的时间（单帧编码测试结果）。官方文档表示图像质量是一致的，文件大小有差异，但实测文件大小差异不大</li>
+</ol>
+<h2 id="8-ffprobe"><a href="#8-ffprobe" class="headerlink" title="8. ffprobe"></a>8. ffprobe</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 获取帧数（速度很慢，需要解出来才能获取）</span></span><br><span class="line">ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_read_frames -of default=nokey=1:noprint_wrappers=1 input.mp4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 说是上面一个方法的快速版本，直接查询容器</span></span><br><span class="line">ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_frames -of default=nokey=1:noprint_wrappers=1 input.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="9-mediainfo"><a href="#9-mediainfo" class="headerlink" title="9. mediainfo"></a>9. mediainfo</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 获取帧数（速度比ffprobbe快很多）</span></span><br><span class="line">mediainfo --Output=<span class="string">"Video;%FrameCount%"</span> input.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="10-ref"><a href="#10-ref" class="headerlink" title="10. ref"></a>10. ref</h2><ul>
+<li><a href="https://www.cnblogs.com/wolf-song/p/7708364.html" target="_blank" rel="noopener">多个视频文件合成画中画效果（Python、ffmpeg）</a></li>
+<li><a href="https://blog.csdn.net/weiwen12138/article/details/70344681" target="_blank" rel="noopener">ffmpeg 命令行实现多路视频拼接播放</a>]</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/27/git使用小记/" rel="next" title="git使用小记">
+                <i class="fa fa-chevron-left"></i> git使用小记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/28/A-Tutorial-Introduction-to-the-Lambda-Calculus/" rel="prev" title="A Tutorial Introduction to the Lambda Calculus">
+                A Tutorial Introduction to the Lambda Calculus <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Astray Wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-编码"><span class="nav-text">1. 编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-解码"><span class="nav-text">2. 解码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-拼接"><span class="nav-text">3. 拼接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-截取"><span class="nav-text">4. 截取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-转码-scaler"><span class="nav-text">5. 转码/scaler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-其他"><span class="nav-text">6. 其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-备注"><span class="nav-text">7. 备注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-ffprobe"><span class="nav-text">8. ffprobe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-mediainfo"><span class="nav-text">9. mediainfo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-ref"><span class="nav-text">10. ref</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Astray Wu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">77k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">1:10</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '0dc2b1112de28c1c61bd',
+    clientSecret: '18b118f15b345c4b26e72a2bf08388f3d0ad1d48',
+    repo: 'astraywu.github.io',
+    owner: 'astraywu',
+    admin: ['astraywu'],
+    id: md5(location.pathname),
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+</body>
+</html>

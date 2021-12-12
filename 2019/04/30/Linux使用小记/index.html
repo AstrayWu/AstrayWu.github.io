@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="近期需要回顾一些基础知识，需要相对系统地学习一下。 ref Linux工具快速教程 主要参考的文档  帮助 在只记得部分命令关键字的场合，我们可通过man -k来搜索； 需要知道某个命令的简要说明，可以使用whatis；用`whatis -w “loca*”实现正则匹配； 而更详细的介绍，则可用info命令； 查看命令在哪个位置，我们需要使用which；当系统中安装了同一软件的多个版本时，不确定使">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux使用小记">
+<meta property="og:url" content="http://yoursite.com/2019/04/30/Linux使用小记/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="近期需要回顾一些基础知识，需要相对系统地学习一下。 ref Linux工具快速教程 主要参考的文档  帮助 在只记得部分命令关键字的场合，我们可通过man -k来搜索； 需要知道某个命令的简要说明，可以使用whatis；用`whatis -w “loca*”实现正则匹配； 而更详细的介绍，则可用info命令； 查看命令在哪个位置，我们需要使用which；当系统中安装了同一软件的多个版本时，不确定使">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-12-12T17:27:14.381Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux使用小记">
+<meta name="twitter:description" content="近期需要回顾一些基础知识，需要相对系统地学习一下。 ref Linux工具快速教程 主要参考的文档  帮助 在只记得部分命令关键字的场合，我们可通过man -k来搜索； 需要知道某个命令的简要说明，可以使用whatis；用`whatis -w “loca*”实现正则匹配； 而更详细的介绍，则可用info命令； 查看命令在哪个位置，我们需要使用which；当系统中安装了同一软件的多个版本时，不确定使">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/30/Linux使用小记/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Linux使用小记 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/30/Linux使用小记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux使用小记
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-30 00:45:45" itemprop="dateCreated datePublished" datetime="2019-04-30T00:45:45+08:00">2019-04-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-12-13 01:27:14" itemprop="dateModified" datetime="2021-12-13T01:27:14+08:00">2021-12-13</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">4.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">4 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>近期需要回顾一些基础知识，需要相对系统地学习一下。</p>
+<h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><ul>
+<li><a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html" target="_blank" rel="noopener">Linux工具快速教程</a> 主要参考的文档</li>
+</ul>
+<h2 id="帮助"><a href="#帮助" class="headerlink" title="帮助"></a>帮助</h2><ul>
+<li>在只记得部分命令关键字的场合，我们可通过<code>man -k</code>来搜索；</li>
+<li>需要知道某个命令的简要说明，可以使用<code>whatis</code>；用`whatis -w “loca*”实现正则匹配；</li>
+<li>而更详细的介绍，则可用<code>info</code>命令；</li>
+<li>查看命令在哪个位置，我们需要使用<code>which</code>；当系统中安装了同一软件的多个版本时，不确定使用的是哪个版本时，这个命令就能派上用场；</li>
+<li>而对于命令的具体参数及使用方法，我们需要用到强大的<code>man</code>；</li>
+</ul>
+<p>在man的帮助手册中，将帮助文档分为了9个类别，对于有的关键字可能存在多个类别中， 我们就需要指定特定的类别来查看；（一般我们查询bash命令，归类在1类中）；</p>
+<ol>
+<li><strong>用户可以操作的命令或者是可执行文件</strong></li>
+<li>系统核心可调用的函数与工具等</li>
+<li><strong>一些常用的函数与数据库</strong></li>
+<li>设备文件的说明</li>
+<li>设置文件或者某些文件的格式</li>
+<li>游戏</li>
+<li>惯例与协议等。例如Linux标准文件系统、网络协议、ASCⅡ，码等说明内容</li>
+<li>系统管理员可用的管理条令</li>
+<li>与内核有关的文件</li>
+</ol>
+<p>我们看到printf在分类1和分类3中都有；分类1中的页面是命令操作及可执行文件的帮助；而3是常用函数库说明；如果我们想看的是C语言中printf的用法，可以指定查看分类3的帮助：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">man 3 <span class="built_in">printf</span></span><br></pre></td></tr></table></figure>
+<h2 id="文件及目录"><a href="#文件及目录" class="headerlink" title="文件及目录"></a>文件及目录</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看当前目录下文件个数</span></span><br><span class="line">find ./ | wc -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制目录</span></span><br><span class="line">cp -r source_dir  dest_dir</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到home目录</span></span><br><span class="line"><span class="built_in">cd</span></span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按时间排序，新的在前</span></span><br><span class="line">ls -lt</span><br><span class="line">ls -ltr</span><br><span class="line"></span><br><span class="line"><span class="comment"># 给每项文件前面增加一个id编号</span></span><br><span class="line">ls | cat -n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 搜寻文件或目录:</span></span><br><span class="line">find ./ -name <span class="string">"core*"</span> | xargs file <span class="comment"># xargs是列出文件类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找目标文件夹中是否有obj文件:</span></span><br><span class="line">find ./ -name <span class="string">'*.o'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归当前目录及子目录删除所有.o文件</span></span><br><span class="line">find ./ -name <span class="string">"*.o"</span> -<span class="built_in">exec</span> rm &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+<p>find是实时查找，如果需要更快的查询，可试试locate；locate会为文件系统建立索引数据库，如果有文件更新，需要定期执行更新命令来更新索引库</p>
+<p><strong>cat vi head tail more</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 显示时同时显示行号</span></span><br><span class="line">cat -n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示文件第一行:</span></span><br><span class="line">head -1 filename</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示文件倒数第五行:</span></span><br><span class="line">tail -5 filename</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看两个文件间的差别:</span></span><br><span class="line">diff file1 file2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 动态显示文本最新信息:</span></span><br><span class="line">tail -f crawler.log</span><br><span class="line"></span><br><span class="line">ln cc ccAgain <span class="comment"># 硬连接；删除一个，将仍能找到；</span></span><br><span class="line">ln -s cc ccTo <span class="comment"># 符号链接(软链接)；删除源，另一个无法使用；（后面一个ccTo 为新建的文件）</span></span><br></pre></td></tr></table></figure>
+<p>批处理命令连接执行，使用 |<br>串联: 使用分号 ;<br>前面成功，则执行后面一条，否则，不执行:&amp;&amp;<br>前面失败，则后一条执行: ||</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ls /proc &amp;&amp; <span class="built_in">echo</span>  suss! || <span class="built_in">echo</span> failed.</span><br></pre></td></tr></table></figure>
+<h3 id="查看文件夹大小"><a href="#查看文件夹大小" class="headerlink" title="查看文件夹大小"></a>查看文件夹大小</h3><p><a href="https://www.jianshu.com/p/936ae380de54" target="_blank" rel="noopener">linux下使用 du查看某个文件或目录占用磁盘空间的大小</a></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -h：以人类可读的方式显示</span></span><br><span class="line"><span class="comment"># -s：显示目录占用的磁盘空间大小，不显示其下子目录和文件占用的磁盘空间大小</span></span><br><span class="line"><span class="comment"># 查看当前目录总共占的容量。而不单独列出各子项占用的容量</span></span><br><span class="line">du -sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前路径下一级子目录的占用大小（不包含文件）</span></span><br><span class="line">du -h --max-depth=1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 包含文件和文件夹</span></span><br><span class="line">du -ah --max-depth=1</span><br></pre></td></tr></table></figure>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>参考<a href="https://blog.csdn.net/jiangyanting2011/article/details/78875928" target="_blank" rel="noopener">Linux下的环境变量</a></p>
+<p>Linux中环境变量包括系统级和用户级，系统级的环境变量是每个登录到系统的用户都要读取的系统变量，而用户级的环境变量则是该用户使用系统时加载的环境变量。所以管理环境变量的文件也分为系统级和用户级的。</p>
+<ol>
+<li>系统级<ol>
+<li><code>/etc/environment</code>: 是系统在登录时读取的第一个文件，<strong>用于为所有进程设置环境变量。</strong></li>
+<li><code>/etc/profile</code>：是系统登录时执行的第二个文件，可以用于设定针对全系统所有用户的环境变量。该文件一般是调用<code>/etc/bash.bashrc</code>文件。</li>
+<li><code>/etc/bash.bashrc</code>：系统级的<code>bashrc</code>文件，为每一个运行bash shell的用户执行此文件。此文件会在用户每次打开shell时执行一次。</li>
+</ol>
+</li>
+<li>用户级<ol>
+<li><code>~/.profile</code>: 是对应当前登录用户的profile文件，用于定制当前用户的个人工作环境。 每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件。</li>
+<li><code>~/.bashrc</code>: 是对应当前登录用户的bash初始化文件，当用户每次打开shell时，系统都会执行此文件一次。平时设置这个文件就可以了。</li>
+</ol>
+</li>
+</ol>
+<p>那么根据以上描述，这几个文件的执行先后顺序应当是：<br><code>/etc/enviroment –&gt;/etc/profile –&gt;~/.profile –&gt;/etc/bash.bashrc–&gt; ~/.bashrc</code></p>
+<p>配置环境变量</p>
+<ol>
+<li><p>临时生效<br> 直接运行export命令定义变量【只对当前shell(BASH)有效(临时的)】</p>
+ <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=/usr/<span class="built_in">local</span>/webserver/php/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对当前用户有效<br>编辑<code>~/.bashrc</code>并添加<code>export PATH=$PATH:/usr/local/webserver/php/bin</code>；用<code>source ~/.bashrc</code>让修改马上生效</p>
+</li>
+<li>对所有用户生效<br> 在<code>/etc/profile</code>文件中添加变量，并执行<code>source /etc/profile</code></li>
+</ol>
+<h2 id="文件与目录权限修改"><a href="#文件与目录权限修改" class="headerlink" title="文件与目录权限修改"></a>文件与目录权限修改</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">chown <span class="comment"># 改变文件的拥有者</span></span><br><span class="line">chmod <span class="comment">#改变文件读、写、执行等属性</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归子目录修改</span></span><br><span class="line">chomd chown -R tuxapp <span class="built_in">source</span>/</span><br><span class="line">chown 777 -R test_dir</span><br></pre></td></tr></table></figure>
+<p><code>chmod</code>的语法为</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">chmod [who] [+ | - | =] [mode] 文件名</span><br></pre></td></tr></table></figure>
+<ul>
+<li>u 表示“用户（user）”，即文件或目录的所有者。</li>
+<li>g 表示“同组（group）用户”，即与文件属主有相同组ID的所有用户。</li>
+<li>o 表示“其他（others）用户”。</li>
+<li>a 表示“所有（all）用户”。它是系统默认值。</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在一个命令行中可给出多个权限方式，其间用逗号隔开</span></span><br><span class="line">chmod g+r，o+r example <span class="comment"># 使同组和其他用户对文件example 有读权限</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 对所有用户增加执行权限</span></span><br><span class="line">chmod a+x sort</span><br></pre></td></tr></table></figure>
+<h2 id="文本处理"><a href="#文本处理" class="headerlink" title="文本处理"></a>文本处理</h2><h3 id="find-文件查找"><a href="#find-文件查找" class="headerlink" title="find 文件查找"></a>find 文件查找</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查找txt和pdf文件:</span></span><br><span class="line">find . \( -name <span class="string">"*.txt"</span> -o -name <span class="string">"*.pdf"</span> \) -<span class="built_in">print</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 正则方式查找.txt和pdf:</span></span><br><span class="line"><span class="comment"># -iregex： 忽略大小写的正则</span></span><br><span class="line">find . -regex  <span class="string">".*\(\.txt|\.pdf\)$"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 否定参数 ,查找所有非txt文本:</span></span><br><span class="line">find . ! -name <span class="string">"*.txt"</span> -<span class="built_in">print</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定搜索深度,打印出当前目录的文件（深度为1）:</span></span><br><span class="line">find . -maxdepth 1 -<span class="built_in">type</span> f</span><br><span class="line"></span><br><span class="line"><span class="comment">## 定制搜索</span></span><br><span class="line"><span class="comment"># 按类型搜索</span></span><br><span class="line">find . -<span class="built_in">type</span> d -<span class="built_in">print</span>  //只列出所有目录</span><br><span class="line"><span class="comment"># -type f 文件 / l 符号链接 / d 目录</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># file命令可以检查文件具体类型（二进制或文本），find不行</span></span><br><span class="line"><span class="comment"># $ file redis-cli  # 二进制文件</span></span><br><span class="line"><span class="comment"># redis-cli: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.9, not stripped</span></span><br><span class="line"><span class="comment"># $ file redis.pid  # 文本文件</span></span><br><span class="line"><span class="comment"># redis.pid: ASCII text</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以用以下命令组合来实现查找本地目录下的所有二进制文件:</span></span><br><span class="line">ls -lrt | awk <span class="string">'&#123;print $9&#125;'</span>|xargs file|grep  ELF| awk <span class="string">'&#123;print $1&#125;'</span>|tr -d <span class="string">':'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 按时间搜索</span></span><br><span class="line"><span class="comment"># -atime 访问时间 (单位是天，分钟单位则是-amin，以下类似）</span></span><br><span class="line"><span class="comment"># -mtime 修改时间 （内容被修改）</span></span><br><span class="line"><span class="comment"># -ctime 变化时间 （元数据或权限变化）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 最近第7天被访问过的所有文件:</span></span><br><span class="line">find . -atime 7 -<span class="built_in">type</span> f -<span class="built_in">print</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 最近7天内被访问过的所有文件:</span></span><br><span class="line">find . -atime -7 -<span class="built_in">type</span> f -<span class="built_in">print</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询7天前被访问过的所有文件:</span></span><br><span class="line">find . -atime +7 <span class="built_in">type</span> f -<span class="built_in">print</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 按大小搜索</span></span><br><span class="line"><span class="comment"># w字 k M G 寻找大于2k的文件:</span></span><br><span class="line">find . -<span class="built_in">type</span> f -size +2k</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除当前目录下所有的swp文件:</span></span><br><span class="line">find . -<span class="built_in">type</span> f -name <span class="string">"*.swp"</span> -delete</span><br><span class="line">find . -<span class="built_in">type</span> f -name <span class="string">"*.swp"</span> | xargs rm</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行动作（强大的exec）</span></span><br><span class="line"><span class="comment"># 将当前目录下的所有权变更为weber:</span></span><br><span class="line">find . -<span class="built_in">type</span> f -user root -<span class="built_in">exec</span> chown weber &#123;&#125; \;</span><br><span class="line"><span class="comment"># &#123;&#125;是一个特殊的字符串，对于每一个匹配的文件，&#123;&#125;会被替换成相应的文件名</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将找到的文件全都copy到另一个目录:</span></span><br><span class="line">find . -<span class="built_in">type</span> f -mtime +10 -name <span class="string">"*.txt"</span> -<span class="built_in">exec</span> cp &#123;&#125; OLD \;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果需要后续执行多个命令，可以将多个命令写成一个脚本。然后 -exec 调用时执行脚本即可:</span></span><br><span class="line">-<span class="built_in">exec</span> ./commands.sh &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+<h3 id="grep-文本搜索"><a href="#grep-文本搜索" class="headerlink" title="grep 文本搜索"></a>grep 文本搜索</h3><p>常用参数</p>
+<ul>
+<li>-o 只输出匹配的文本行 VS -v 只输出没有匹配的文本行</li>
+<li>-c 统计文件中包含文本的次数<br>  <code>grep -c “text” filename</code></li>
+<li>-n 打印匹配的行号</li>
+<li>-i 搜索时忽略大小写</li>
+<li>-l 只打印文件名</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在多级目录中对文本递归搜索(程序员搜代码的最爱）:</span></span><br><span class="line">grep <span class="string">"class"</span> . -R -n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 匹配多个模式:</span></span><br><span class="line">grep -e <span class="string">"class"</span> -e <span class="string">"vitural"</span> file</span><br></pre></td></tr></table></figure>
+<h2 id="关机"><a href="#关机" class="headerlink" title="关机"></a>关机</h2><p><a href="http://www.cnblogs.com/deeryao/archive/2010/09/10/1823665.html" target="_blank" rel="noopener">linux定时关机</a></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 立刻关机</span></span><br><span class="line">shutdown -h now</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在23点定时关机</span></span><br><span class="line">shutdown -h 23:00</span><br><span class="line"></span><br><span class="line"><span class="comment"># 延时关机sudo shutdown +minutes（这个加号不可省略，minutes表示分钟）</span></span><br><span class="line"><span class="comment"># 两小时候后关机</span></span><br><span class="line">shutdown -h +120</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消前一个关机命令按“Ctrl+C”键或输入命令：</span></span><br><span class="line">shutdown -c</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/28/A-Tutorial-Introduction-to-the-Lambda-Calculus/" rel="next" title="A Tutorial Introduction to the Lambda Calculus">
+                <i class="fa fa-chevron-left"></i> A Tutorial Introduction to the Lambda Calculus
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/30/快捷键/" rel="prev" title="快捷键">
+                快捷键 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Astray Wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ref"><span class="nav-text">ref</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#帮助"><span class="nav-text">帮助</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件及目录"><span class="nav-text">文件及目录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看文件夹大小"><span class="nav-text">查看文件夹大小</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境变量"><span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件与目录权限修改"><span class="nav-text">文件与目录权限修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本处理"><span class="nav-text">文本处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#find-文件查找"><span class="nav-text">find 文件查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#grep-文本搜索"><span class="nav-text">grep 文本搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关机"><span class="nav-text">关机</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Astray Wu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">77k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">1:10</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '0dc2b1112de28c1c61bd',
+    clientSecret: '18b118f15b345c4b26e72a2bf08388f3d0ad1d48',
+    repo: 'astraywu.github.io',
+    owner: 'astraywu',
+    admin: ['astraywu'],
+    id: md5(location.pathname),
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+</body>
+</html>
