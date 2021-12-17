@@ -103,19 +103,18 @@
 
 
 
-  <meta name="description" content="Google 开源项目风格指南 (中文版) 包含5个中文版的风格指南 Google C++ Style Guide C++ 风格指南 - 内容目录 一张图总结Google C++编程规范(Google C++ Style Guide)  华为的编程规范参考了很多的Google编程规范。 有一张图很好的总结了Google的编程规范 Google编程规范笔记头文件 避免使用前置声明，用头文件优点：减">
+  <meta name="description" content="PyQt5 tutorial ZetCode 笔记 Date and time  Current date and time a. Qt.ISOData b. DefaultLocaleLongDate UTC time Number of days Difference in days Date arithmetic Daylight saving time Unix epoch Julian">
+<meta name="keywords" content="Python Qt PyQt5 GUI">
 <meta property="og:type" content="article">
-<meta property="og:title" content="编程规范">
-<meta property="og:url" content="http://yoursite.com/2019/05/07/编程规范/index.html">
+<meta property="og:title" content="PyQt5">
+<meta property="og:url" content="http://yoursite.com/2021/12/17/PyQt5/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Google 开源项目风格指南 (中文版) 包含5个中文版的风格指南 Google C++ Style Guide C++ 风格指南 - 内容目录 一张图总结Google C++编程规范(Google C++ Style Guide)  华为的编程规范参考了很多的Google编程规范。 有一张图很好的总结了Google的编程规范 Google编程规范笔记头文件 避免使用前置声明，用头文件优点：减">
+<meta property="og:description" content="PyQt5 tutorial ZetCode 笔记 Date and time  Current date and time a. Qt.ISOData b. DefaultLocaleLongDate UTC time Number of days Difference in days Date arithmetic Daylight saving time Unix epoch Julian">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2019/05/07/编程规范/20140713220242000.jpg">
-<meta property="og:updated_time" content="2021-12-12T17:27:14.410Z">
+<meta property="og:updated_time" content="2021-12-17T17:21:43.882Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="编程规范">
-<meta name="twitter:description" content="Google 开源项目风格指南 (中文版) 包含5个中文版的风格指南 Google C++ Style Guide C++ 风格指南 - 内容目录 一张图总结Google C++编程规范(Google C++ Style Guide)  华为的编程规范参考了很多的Google编程规范。 有一张图很好的总结了Google的编程规范 Google编程规范笔记头文件 避免使用前置声明，用头文件优点：减">
-<meta name="twitter:image" content="http://yoursite.com/2019/05/07/编程规范/20140713220242000.jpg">
+<meta name="twitter:title" content="PyQt5">
+<meta name="twitter:description" content="PyQt5 tutorial ZetCode 笔记 Date and time  Current date and time a. Qt.ISOData b. DefaultLocaleLongDate UTC time Number of days Difference in days Date arithmetic Daylight saving time Unix epoch Julian">
 
 
 
@@ -124,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/07/编程规范/">
+  <link rel="canonical" href="http://yoursite.com/2021/12/17/PyQt5/">
 
 
 
@@ -134,7 +133,7 @@
   };
 </script>
 
-  <title>编程规范 | Hexo</title>
+  <title>PyQt5 | Hexo</title>
   
 
 
@@ -345,7 +344,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/07/编程规范/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/17/PyQt5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Astray Wu">
@@ -362,7 +361,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">编程规范
+          <h1 class="post-title" itemprop="name headline">PyQt5
 
               
             
@@ -388,7 +387,7 @@
                 
               
 
-              <time title="Created: 2019-05-07 02:03:10" itemprop="dateCreated datePublished" datetime="2019-05-07T02:03:10+08:00">2019-05-07</time>
+              <time title="Created: 2021-12-17 01:13:16" itemprop="dateCreated datePublished" datetime="2021-12-17T01:13:16+08:00">2021-12-17</time>
             
 
             
@@ -405,7 +404,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-12-13 01:27:14" itemprop="dateModified" datetime="2021-12-13T01:27:14+08:00">2021-12-13</time>
+                <time title="Modified: 2021-12-18 01:21:43" itemprop="dateModified" datetime="2021-12-18T01:21:43+08:00">2021-12-18</time>
               
             
           </span>
@@ -440,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">2.9k</span>
+                <span title="Symbols count in article">1.9k</span>
               
 
               
@@ -454,7 +453,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">3 mins.</span>
+                <span title="Reading time">2 mins.</span>
               
             </div>
           
@@ -474,108 +473,119 @@
       
 
       
-        <ul>
-<li><a href="https://zh-google-styleguide.readthedocs.io/en/latest/" target="_blank" rel="noopener">Google 开源项目风格指南 (中文版)</a> 包含5个中文版的风格指南</li>
-<li><a href="https://google.github.io/styleguide/cppguide.html" target="_blank" rel="noopener">Google C++ Style Guide</a></li>
-<li><a href="https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/contents/" target="_blank" rel="noopener">C++ 风格指南 - 内容目录</a></li>
-<li><a href="https://blog.csdn.net/voidccc/article/details/37599203" target="_blank" rel="noopener">一张图总结Google C++编程规范(Google C++ Style Guide)</a></li>
-</ul>
-<p>华为的编程规范参考了很多的Google编程规范。</p>
-<p>有一张图很好的总结了Google的编程规范<br><img src="/2019/05/07/编程规范/20140713220242000.jpg" alt></p>
-<h2 id="Google编程规范笔记"><a href="#Google编程规范笔记" class="headerlink" title="Google编程规范笔记"></a>Google编程规范笔记</h2><h3 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h3><ol>
-<li>避免使用前置声明，用头文件<br>优点：减少include，节省编译时间，减少重新编译头文件的可能<br>缺点：隐藏了依赖关系<br>前置声明是不完整类型</li>
-<li>10行代码下才适合内联，不适用于循环和析构函数</li>
-<li>include顺序<br>对应的头文件；C系统文件；C++系统文件；其他库的头文件；本项目的头文件<br>对应头文件放在最前面，可以在build的时候及时发现错误</li>
-</ol>
-<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><ol>
-<li>命名空间内不缩进</li>
-<li>鼓励在cc文件中使用匿名命名空间和static声明，但不能在h文件中使用；（匿名空间其实就是文件作用域，类似于C中的static声明的作用域）</li>
-<li>cc文件中的变量不会被外部文件引用时，使用匿名空间或者static，因为具有内部链接性，不会在其他文件中访问到；（尽可能限制作用域范围，避免污染）</li>
-<li>静态成员函数或非成员函数最好放在命名空间中，静态成员应该是和类相关的，如果不相关最好放在命名空间中，尽量单独形成编译单元</li>
-<li>禁止定义静态储存周期非POD变量，构造、析构和初始化可能是不确定的</li>
-</ol>
-<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><ol>
-<li>类定义中单参数的构造函数应该用<code>explicit</code>标记</li>
-<li>优先组合，而非继承；虽然继承可以复用代码，但耦合性太高，散布在父子类之间的代码理解起来更不易；不能重写非虚函数；基类可能有自己的数据成员，对理解有挑战，实际很难拿捏准；</li>
-<li>不要重载，除非确有需要，因为容易混淆，如重载</li>
-<li>不在构造函数中做过多逻辑相关的初始化</li>
-</ol>
-<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ol>
-<li>入参在前，出参在后</li>
-<li>输入参数是值参或const引用（不要使用非const引用，容易误解），输出参数为指针</li>
-</ol>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ol>
-<li>尽少使用默认参数，改用重载</li>
-<li>不使用C++异常，得不偿失，虽然允许高层决定底层中不可能的失败，减少使用错误代码，但实际上常安全很困难，异常可能会扰乱程序的正常流程</li>
-<li>禁用RTTI。RTTI虽然允许C++在运行时识别对象的类型，通过<code>dynamic_cast</code>和<code>typeid</code></li>
-<li>用static_cast替代C风格的值转换</li>
-<li>只在记录日志时使用流：否则容易混乱IO类型</li>
-<li>内建整型仅用int，否则使用<code>&lt;stdint.h&gt;</code>中长度精确的整型</li>
-<li>尽可能用<code>sizeof(varname)</code>代替<code>sizeof(type)</code>，因为变量类型改变时会自动更新</li>
-<li>C++ 11中用nullptr，03用NULL</li>
-<li>注意64位可移植型，例如对齐和指针大小等</li>
-<li><p>预处理宏</p>
+        <h2 id="PyQt5-tutorial-ZetCode-笔记"><a href="#PyQt5-tutorial-ZetCode-笔记" class="headerlink" title="PyQt5 tutorial ZetCode 笔记"></a><a href="https://zetcode.com/gui/pyqt5/" target="_blank" rel="noopener">PyQt5 tutorial</a> ZetCode 笔记</h2><ol>
+<li><p>Date and time</p>
 <ol>
-<li>不在.h中使用宏</li>
-<li>在马上使用时才定义</li>
+<li>Current date and time<br> a. Qt.ISOData<br> b. DefaultLocaleLongDate</li>
+<li>UTC time</li>
+<li>Number of days</li>
+<li>Difference in days</li>
+<li>Date arithmetic</li>
+<li>Daylight saving time</li>
+<li>Unix epoch</li>
+<li>Julian day<br>便于时间相减，直接计算天数</li>
 </ol>
 </li>
-<li><p>不使用复杂的模板编程</p>
+<li><p>Hello, world</p>
 <ol>
-<li>对不熟练C++的人难理解</li>
-<li>编译出错的信息友好</li>
-<li>重构工具难发挥</li>
-<li>维护成本大于简洁的接口</li>
-<li>对外接口不使用模板，仅在内部实现使用</li>
+<li>Simple example</li>
+<li>Icon</li>
+<li>Tooltip<br> a. Btn.sizeHint()</li>
+<li>closeEvent<br> qbtn.clicked.connect(QApplication.instance().quit)</li>
+<li>Message box</li>
+<li>Center</li>
 </ol>
 </li>
+<li><p>Menus and toolbar</p>
+<ol>
+<li>Statusbar</li>
+<li>Menu</li>
+<li>Sub menu</li>
+<li>Check menu</li>
+<li>Context menu</li>
+<li>Toolbar</li>
+<li>Main window</li>
 </ol>
-<h2 id="命名约定"><a href="#命名约定" class="headerlink" title="命名约定"></a>命名约定</h2><ol>
-<li>文件名通通小写，下划线可用可不用</li>
-<li>类型命名（类，结构体，类型定义，模板参数，枚举）使用大小写风格，首字母大写——这样可区分类与对象</li>
-<li>变量、函数参数、成员数据均小写，下划线连接，类变量成员下划线结尾，结构体的不用</li>
-<li>声明为const或constexpr的变量，k开头，大小写混合，静态变量同</li>
-<li><p>函数也是大小写混合，大写开头，并且缩写字母也是首字母大写</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">AddTableEntry()</span><br><span class="line">DeleteUrl()</span><br><span class="line">OpenFileOrDie()</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>命名空间全小写</p>
+<li><p>Layout</p>
+<ol>
+<li>QHBoxlayout</li>
+<li>QGridLayout</li>
+</ol>
 </li>
-<li><p>枚举类型采用常量风格，旧的不用改</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> UrlTableErrors &#123;</span><br><span class="line">kOK = <span class="number">0</span>,</span><br><span class="line">kErrorOutOfMemory,</span><br><span class="line">kErrorMalformedInput,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">enum</span> AlternateUrlTableErrors &#123;</span><br><span class="line">    OK = <span class="number">0</span>,</span><br><span class="line">    OUT_OF_MEMORY = <span class="number">1</span>,</span><br><span class="line">    MALFORMED_INPUT = <span class="number">2</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<li><p>Event and signal</p>
+<ol>
+<li>LED demo</li>
+<li>Key event handler</li>
+<li>Event object, mouse event</li>
+<li>Push btn event sender</li>
+<li>Emitting signal</li>
+</ol>
+</li>
+<li><p>Dialog</p>
+<ol>
+<li>QDialog</li>
+<li>QcolorDialog and QFrame</li>
+<li>QFontDialog, btn.setSizePolicy</li>
+<li>QFileDialog, Qaction.triggered, QMainWindow</li>
+</ol>
+</li>
+<li><p>Qwidge1</p>
+<ol>
+<li>QCheckBox</li>
+<li>Toggle button, color demo, Qcolor.setRed</li>
+<li>Qslider</li>
+<li>QProgressBar</li>
+<li>QCalendarWidge</li>
+</ol>
 </li>
 </ol>
 <ol>
-<li>宏命名：全大写，下划线连接</li>
-<li>行尾空格两格注释</li>
-<li><p>TODO</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// TODO(kl@gmail.com): Use a "*" here for concatenation operator.</span></span><br><span class="line"><span class="comment">// TODO(Zeke) change this to use relations.</span></span><br><span class="line"><span class="comment">// TODO(bug 12345): remove the "Last visitors" feature</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>注释是为了看懂，不是炫耀语言水平，中英皆可</p>
-</li>
-<li>未被使用的参数注释掉<code>void Circle::Rotate(double /*radians*/) {}</code></li>
-<li>if可单行，一行可不用花括号，分支中使用了花括号，其他都得加</li>
-<li>空循环体用花括号</li>
-<li>预处理不缩进，即使在缩进块内</li>
-<li>public等缩进1格</li>
-<li>命名空间不缩进</li>
-<li><code>:</code>前后有空格</li>
-</ol>
-<h3 id="规则特例"><a href="#规则特例" class="headerlink" title="规则特例"></a>规则特例</h3><ol>
-<li>现有不合规的代码网开一面</li>
-</ol>
-<h2 id="Qt"><a href="#Qt" class="headerlink" title="Qt"></a>Qt</h2><ul>
-<li>Qt5开发及实例(完整版) P111</li>
-</ul>
+<li><p>QWidget2</p>
 <ol>
-<li>与Google的编码规范基本一致<ol>
-<li>成员函数、成员变量命名风格，不过成员变量按照驼峰命名，小写开头，增加下划线</li>
-<li>存取函数按照<code>Get_var</code>等进行</li>
+<li>Qpixmap, Qlabel.setPixmap</li>
+<li>QLineEdit</li>
+<li>Qsplitter</li>
+<li>QComBox 复选框</li>
 </ol>
 </li>
-<li>控件统一在后面加后缀</li>
-<li>V和H不需要细分，控件的细分不需要，只需要表达出是哪个控件就好，剩下的知识控件布局的问题，一般复杂度还可以。</li>
+<li><p>Drag and Drop 稍微还是有些不理解</p>
+<ol>
+<li>Qdrag</li>
+<li>QMineData</li>
+<li>dragEnterEvent仅获取对应的类型</li>
+<li>dropEvent设置drop时的动作</li>
 </ol>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InputDlg</span>:</span> <span class="keyword">public</span> QDialog</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    InputDlg(QWidget *parent = <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> slots:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ChangeName</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ChangeSex</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ChangeAge</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    QLabel *nameLabel1;</span><br><span class="line">    QLabel *sexLabel1;</span><br><span class="line">    QLabel *ageLabel1;</span><br><span class="line">    QLabel *nameLabel2;</span><br><span class="line">    QLabel *sexLabel2;</span><br><span class="line">    QLabel *ageLabel2;</span><br><span class="line">    QPushButton *nameBtn;</span><br><span class="line">    QPushButton *sexBtn;</span><br><span class="line">    QPushButton *scoreBtn;</span><br><span class="line">    QGridLayout *mainLayout;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">InputDlg::InputDlg(QWidget *parent = <span class="number">0</span>): QWidget(parent)</span><br><span class="line">&#123;</span><br><span class="line">    QLabel *queryLabel = <span class="keyword">new</span> QLabel(tr(<span class="string">"Query"</span>));</span><br><span class="line">    QLineEdit *queryEdit = <span class="keyword">new</span> QLineEdit();</span><br><span class="line">    QTableView *resView = <span class="keyword">new</span> QTableView();</span><br><span class="line"></span><br><span class="line">    QHBoxLayout *queryLayout = <span class="keyword">new</span> QHBoxLayout();</span><br><span class="line">    QVBoxLayout *mainLayout = <span class="keyword">new</span> QVBoxLayout();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>QPainter</p>
+<ol>
+<li>Draw text</li>
+<li>Draw point</li>
+<li>Draw color</li>
+<li>drawRect, setBrush</li>
+<li>Qpen(line, curves, rectangle)</li>
+<li>Qbrush<br>BezierCurve</li>
+</ol>
+</li>
+</ol>
+<h2 id="Python-and-PyQt-Building-a-GUI-Desktop-Calculator-笔记"><a href="#Python-and-PyQt-Building-a-GUI-Desktop-Calculator-笔记" class="headerlink" title="Python and PyQt: Building a GUI Desktop Calculator 笔记"></a><a href="https://realpython.com/python-pyqt-gui-calculator/" target="_blank" rel="noopener">Python and PyQt: Building a GUI Desktop Calculator</a> 笔记</h2><p>MVC典型流程，先画View，再设计控制逻辑Control，最后再设计计算模型Model，分步骤实现。</p>
+<h2 id="Qt-Designer-and-Python-Build-Your-GUI-Applications-Faster-笔记"><a href="#Qt-Designer-and-Python-Build-Your-GUI-Applications-Faster-笔记" class="headerlink" title="Qt Designer and Python: Build Your GUI Applications Faster 笔记"></a><a href="https://realpython.com/qt-designer-python/#getting-started-with-qt-designer" target="_blank" rel="noopener">Qt Designer and Python: Build Your GUI Applications Faster</a> 笔记</h2><p>coding一个相当完整的mainwindow</p>
+<h2 id="进一步熟悉"><a href="#进一步熟悉" class="headerlink" title="进一步熟悉"></a>进一步熟悉</h2><p>书籍《PyQt快速开发与实践》中介绍了一些基本内容，后续可以进一步掌握，包括设计师的使用，基础组件，布局管理，高级组件等，还是要结合实战进行更深入的学习和使用才行。</p>
+<h2 id="1-参考链接"><a href="#1-参考链接" class="headerlink" title="1. 参考链接"></a>1. 参考链接</h2><ol>
+<li><a href="https://www.pythonguis.com/pyqt5-tutorial/" target="_blank" rel="noopener">The complete PyQt5 tutorial — Create GUI applications with Pyth on</a></li>
+<li><a href="https://www.riverbankcomputing.com/static/Docs/PyQt5/" target="_blank" rel="noopener">PyQt5 Reference Guide</a> 官方文档</li>
+<li><a href="https://zetcode.com/gui/pyqt5/" target="_blank" rel="noopener">PyQt5 tutorial</a> ZetCode</li>
+<li><a href="https://github.com/janbodnar/PyQt-Examples" target="_blank" rel="noopener">PyQt-Examples</a> Github contains more in-depth examples for different topics</li>
+<li><a href="https://github.com/janbodnar/PyQt5-Tutorial-Examples" target="_blank" rel="noopener">PyQt5-Tutorial-Examples</a> Sources and images for ZetCode’s PyQt5 tutorial</li>
+<li><a href="https://zhuanlan.zhihu.com/p/48373518" target="_blank" rel="noopener">PyQt5图形界面编程（目录）</a> 知乎</li>
+<li><a href="https://realpython.com/python-pyqt-gui-calculator/" target="_blank" rel="noopener">Python and PyQt: Building a GUI Desktop Calculator</a> 入门制作一个计算器，手把手指导，很不错<ol>
+<li>相关的repo <a href="https://github.com/realpython/materials" target="_blank" rel="noopener">materials</a></li>
+</ol>
+</li>
+<li><a href="https://doc.qt.io/qt-5/qtdesigner-manual.html" target="_blank" rel="noopener">Qt Designer Manual</a></li>
+<li><a href="https://realpython.com/qt-designer-python/#getting-started-with-qt-designer" target="_blank" rel="noopener">Qt Designer and Python: Build Your GUI Applications Faster</a> QtDesigner的简单使用</li>
+<li><a href="https://www.cnblogs.com/linyfeng/p/11223707.html" target="_blank" rel="noopener">[ PyQt入门教程 ] Qt Designer工具的使用</a> 使用qtdesigner实现登录框和业务逻辑代码</li>
+</ol>
 
       
     </div>
@@ -597,6 +607,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Python-Qt-PyQt5-GUI/" rel="tag"># Python Qt PyQt5 GUI</a>
+          
+        </div>
+      
 
       
       
@@ -606,8 +622,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/07/曲线调整/" rel="next" title="曲线调整">
-                <i class="fa fa-chevron-left"></i> 曲线调整
+              <a href="/2021/12/13/test20211213/" rel="next" title="test20211213">
+                <i class="fa fa-chevron-left"></i> test20211213
               </a>
             
           </div>
@@ -615,10 +631,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/09/正则表达式/" rel="prev" title="正则表达式">
-                正则表达式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -754,7 +766,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Google编程规范笔记"><span class="nav-text">Google编程规范笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#头文件"><span class="nav-text">头文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域"><span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类"><span class="nav-text">类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-text">函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名约定"><span class="nav-text">命名约定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#规则特例"><span class="nav-text">规则特例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt"><span class="nav-text">Qt</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt5-tutorial-ZetCode-笔记"><span class="nav-text">PyQt5 tutorial ZetCode 笔记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-and-PyQt-Building-a-GUI-Desktop-Calculator-笔记"><span class="nav-text">Python and PyQt: Building a GUI Desktop Calculator 笔记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-Designer-and-Python-Build-Your-GUI-Applications-Faster-笔记"><span class="nav-text">Qt Designer and Python: Build Your GUI Applications Faster 笔记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进一步熟悉"><span class="nav-text">进一步熟悉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-参考链接"><span class="nav-text">1. 参考链接</span></a></li></ol></div>
             
 
           </div>

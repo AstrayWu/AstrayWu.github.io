@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-12-12T17:38:51.445Z</updated>
+  <updated>2021-12-17T17:21:43.882Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PyQt5</title>
+    <link href="http://yoursite.com/2021/12/17/PyQt5/"/>
+    <id>http://yoursite.com/2021/12/17/PyQt5/</id>
+    <published>2021-12-16T17:13:16.000Z</published>
+    <updated>2021-12-17T17:21:43.882Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="PyQt5-tutorial-ZetCode-笔记"><a href="#PyQt5-tutorial-ZetCode-笔记" class="headerlink" title="PyQt5 tutorial ZetCode 笔记"></a><a href="https://zetcode.com/gui/pyqt5/" target="_blank" rel="noopener">PyQt5 tutorial</a> ZetCode 笔记</h2><ol><li><p>Date and time</p><ol><li>Current date and time<br> a. Qt.ISOData<br> b. DefaultLocaleLongDate</li><li>UTC time</li><li>Number of days</li><li>Difference in days</li><li>Date arithmetic</li><li>Daylight saving time</li><li>Unix epoch</li><li>Julian day<br>便于时间相减，直接计算天数</li></ol></li><li><p>Hello, world</p><ol><li>Simple example</li><li>Icon</li><li>Tooltip<br> a. Btn.sizeHint()</li><li>closeEvent<br> qbtn.clicked.connect(QApplication.instance().quit)</li><li>Message box</li><li>Center</li></ol></li><li><p>Menus and toolbar</p><ol><li>Statusbar</li><li>Menu</li><li>Sub menu</li><li>Check menu</li><li>Context menu</li><li>Toolbar</li><li>Main window</li></ol></li><li><p>Layout</p><ol><li>QHBoxlayout</li><li>QGridLayout</li></ol></li><li><p>Event and signal</p><ol><li>LED demo</li><li>Key event handler</li><li>Event object, mouse event</li><li>Push btn event sender</li><li>Emitting signal</li></ol></li><li><p>Dialog</p><ol><li>QDialog</li><li>QcolorDialog and QFrame</li><li>QFontDialog, btn.setSizePolicy</li><li>QFileDialog, Qaction.triggered, QMainWindow</li></ol></li><li><p>Qwidge1</p><ol><li>QCheckBox</li><li>Toggle button, color demo, Qcolor.setRed</li><li>Qslider</li><li>QProgressBar</li><li>QCalendarWidge</li></ol></li></ol><ol><li><p>QWidget2</p><ol><li>Qpixmap, Qlabel.setPixmap</li><li>QLineEdit</li><li>Qsplitter</li><li>QComBox 复选框</li></ol></li><li><p>Drag and Drop 稍微还是有些不理解</p><ol><li>Qdrag</li><li>QMineData</li><li>dragEnterEvent仅获取对应的类型</li><li>dropEvent设置drop时的动作</li></ol></li><li><p>QPainter</p><ol><li>Draw text</li><li>Draw point</li><li>Draw color</li><li>drawRect, setBrush</li><li>Qpen(line, curves, rectangle)</li><li>Qbrush<br>BezierCurve</li></ol></li></ol><h2 id="Python-and-PyQt-Building-a-GUI-Desktop-Calculator-笔记"><a href="#Python-and-PyQt-Building-a-GUI-Desktop-Calculator-笔记" class="headerlink" title="Python and PyQt: Building a GUI Desktop Calculator 笔记"></a><a href="https://realpython.com/python-pyqt-gui-calculator/" target="_blank" rel="noopener">Python and PyQt: Building a GUI Desktop Calculator</a> 笔记</h2><p>MVC典型流程，先画View，再设计控制逻辑Control，最后再设计计算模型Model，分步骤实现。</p><h2 id="Qt-Designer-and-Python-Build-Your-GUI-Applications-Faster-笔记"><a href="#Qt-Designer-and-Python-Build-Your-GUI-Applications-Faster-笔记" class="headerlink" title="Qt Designer and Python: Build Your GUI Applications Faster 笔记"></a><a href="https://realpython.com/qt-designer-python/#getting-started-with-qt-designer" target="_blank" rel="noopener">Qt Designer and Python: Build Your GUI Applications Faster</a> 笔记</h2><p>coding一个相当完整的mainwindow</p><h2 id="进一步熟悉"><a href="#进一步熟悉" class="headerlink" title="进一步熟悉"></a>进一步熟悉</h2><p>书籍《PyQt快速开发与实践》中介绍了一些基本内容，后续可以进一步掌握，包括设计师的使用，基础组件，布局管理，高级组件等，还是要结合实战进行更深入的学习和使用才行。</p><h2 id="1-参考链接"><a href="#1-参考链接" class="headerlink" title="1. 参考链接"></a>1. 参考链接</h2><ol><li><a href="https://www.pythonguis.com/pyqt5-tutorial/" target="_blank" rel="noopener">The complete PyQt5 tutorial — Create GUI applications with Pyth on</a></li><li><a href="https://www.riverbankcomputing.com/static/Docs/PyQt5/" target="_blank" rel="noopener">PyQt5 Reference Guide</a> 官方文档</li><li><a href="https://zetcode.com/gui/pyqt5/" target="_blank" rel="noopener">PyQt5 tutorial</a> ZetCode</li><li><a href="https://github.com/janbodnar/PyQt-Examples" target="_blank" rel="noopener">PyQt-Examples</a> Github contains more in-depth examples for different topics</li><li><a href="https://github.com/janbodnar/PyQt5-Tutorial-Examples" target="_blank" rel="noopener">PyQt5-Tutorial-Examples</a> Sources and images for ZetCode’s PyQt5 tutorial</li><li><a href="https://zhuanlan.zhihu.com/p/48373518" target="_blank" rel="noopener">PyQt5图形界面编程（目录）</a> 知乎</li><li><a href="https://realpython.com/python-pyqt-gui-calculator/" target="_blank" rel="noopener">Python and PyQt: Building a GUI Desktop Calculator</a> 入门制作一个计算器，手把手指导，很不错<ol><li>相关的repo <a href="https://github.com/realpython/materials" target="_blank" rel="noopener">materials</a></li></ol></li><li><a href="https://doc.qt.io/qt-5/qtdesigner-manual.html" target="_blank" rel="noopener">Qt Designer Manual</a></li><li><a href="https://realpython.com/qt-designer-python/#getting-started-with-qt-designer" target="_blank" rel="noopener">Qt Designer and Python: Build Your GUI Applications Faster</a> QtDesigner的简单使用</li><li><a href="https://www.cnblogs.com/linyfeng/p/11223707.html" target="_blank" rel="noopener">[ PyQt入门教程 ] Qt Designer工具的使用</a> 使用qtdesigner实现登录框和业务逻辑代码</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;PyQt5-tutorial-ZetCode-笔记&quot;&gt;&lt;a href=&quot;#PyQt5-tutorial-ZetCode-笔记&quot; class=&quot;headerlink&quot; title=&quot;PyQt5 tutorial ZetCode 笔记&quot;&gt;&lt;/a&gt;&lt;a href=&quot;ht</summary>
+      
+    
+    
+    
+    
+    <category term="Python Qt PyQt5 GUI" scheme="http://yoursite.com/tags/Python-Qt-PyQt5-GUI/"/>
+    
+  </entry>
   
   <entry>
     <title>test20211213</title>
@@ -410,26 +432,6 @@
       
     <summary type="html">&lt;h2 id=&quot;1-常用的chrome插件&quot;&gt;&lt;a href=&quot;#1-常用的chrome插件&quot; class=&quot;headerlink&quot; title=&quot;1. 常用的chrome插件&quot;&gt;&lt;/a&gt;1. 常用的chrome插件&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://c</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ffmpeg基础</title>
-    <link href="http://yoursite.com/2019/04/19/ffmpeg/ffmpeg%E5%9F%BA%E7%A1%80/"/>
-    <id>http://yoursite.com/2019/04/19/ffmpeg/ffmpeg%E5%9F%BA%E7%A1%80/</id>
-    <published>2019-04-18T16:25:19.000Z</published>
-    <updated>2021-12-12T17:27:14.395Z</updated>
-    
-    <content type="html"><![CDATA[<p>在工作中还是挺经常用到ffmpeg的，虽然多用于编解码和一些格式的转换，但很多时候确实需要用到一些特殊的用法，网络上比较少能查找到。顺便准备稍微系统学习一下ffmpeg知识，便于扩展和应用，没准自己有时候还要做一些定制化的处理。例如用NVIDIA加速的HDR10编解码、V210格式的编解码、加标签和文字用于demo、视频的裁剪和拼接。</p><hr><h1 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h1><ul><li><a href="http://ffmpeg.tv/" target="_blank" rel="noopener">FFmpeg Basics</a> 前期的计划准备以这本书展开，作为基础的巩固</li><li><a href="https://www.jianshu.com/p/5baf47e7c4cb" target="_blank" rel="noopener">《FFmpeg Basics》中文版-目录</a> 上一本书的中文翻译，初步看起来还可以，预计很多内容都来自这篇blog</li><li><a href="http://dranger.com/ffmpeg/ffmpeg.html" target="_blank" rel="noopener">An ffmpeg and SDL Tutorial or How to Write a Video Player in Less Than 1000 Lines</a> 用ffmpeg写个播放器，后期参考</li><li><a href="http://keycorner.org/pub/text/doc/ffmpeg-tutorial.htm" target="_blank" rel="noopener">A FFmpeg Tutorial For Beginners</a> 官网的一些简单介绍</li><li><a href="https://wenku.baidu.com/view/da6b71f04128915f804d2b160b4e767f5acf80d5.html" target="_blank" rel="noopener">Tutorial_FFMPEG</a> 一个很简单的官网介绍，十一页</li></ul><h1 id="FFmpeg-Basics的目录"><a href="#FFmpeg-Basics的目录" class="headerlink" title="FFmpeg Basics的目录"></a>FFmpeg Basics的目录</h1><ol><li>简介</li><li>FFmpeg基本介绍</li><li>帮助和特征信息</li><li>比特率/帧率/文件大小</li><li>调整和伸缩视频</li><li>裁剪视频</li><li>填充视频</li><li>翻转和旋转视频</li><li>模糊/锐化和其他去噪</li><li>overlay-画中画</li><li>为视频添加文字</li><li>格式间转换</li><li>时间操作</li><li>数学函数</li><li>元数据和字幕</li><li>图像处理</li><li>数字音频</li><li>预设编解码器</li><li>视频的隔行扫描</li><li>FFmpeg组件和项目</li><li>麦克风和摄像头</li><li>批处理文件</li><li>颜色修正</li><li>先进的技术点</li><li>网页视频</li><li>调试和测试</li><li>词汇表/关于作者的介绍</li></ol><p>这本书主要是介绍调整大小、裁剪、填充、去燥和覆盖等基本的视频编辑功能，还包括一些复杂的处理和实验的指导内容。</p><h1 id="ffmpeg的基本介绍"><a href="#ffmpeg的基本介绍" class="headerlink" title="ffmpeg的基本介绍"></a>ffmpeg的基本介绍</h1><blockquote><p>FFmpeg是根据GNU通用公共许可证获得许可的多媒体处理自由软件项目的名称。 该项目最受欢迎的部分是用于视频和音频编码/解码的ffmpeg命令行工具，其主要特点是速度快，输出质量高和文件大小比较小。 FFmpeg中的“FF”表示 媒体播放器上的表示“快进”的控制按钮，“mpeg”是Moving Pictures Experts Group的缩写。 FFmpeg标志包含Z形图案，这是图片中以8x8块图示的熵编码方案的特征。</p></blockquote><p>ffmpeg命令行工具组件，我一般常用ffmpeg和ffprobe</p><div class="table-container"><table><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td>ffmpeg</td><td>快速音频和视频编码器/解码器</td></tr><tr><td>ffplay</td><td>媒体播放器</td></tr><tr><td>ffprobe</td><td>显示媒体文件的特点</td></tr><tr><td>ffserver</td><td>使用HTTP和RTSP协议进行多媒体流的广播服务器</td></tr></tbody></table></div><p>ffmpeg软件库，可以参考github的介绍<br>| | |<br>———- | ———-<br>libavcodec | 各种多媒体编解码器的软件库<br>libavdevice | 软件库的设备，提供了访问捕获和播放设备的一层抽象<br>libavfilter | 提供了通过一系列滤波去来更改解码后的音视频的手段<br>libavformat | 实现了流协议、容器格式和基本的IO操作<br>libavutil | 包含各种实用程序的软件库<br>libpostproc | 用于后期处理的软件库<br>libswresample | 用于音频重采样的软件库<br>libswscale | 用于媒体扩展的软件库</p><p>其中音频的编解码库libavcodec最常用，libavfilter也挺常用，用于不同YUV格式之间的转换、缩放等等的，都需要用滤波实现。</p><p>以上组件都是用C语言完成的，源码可以在Windows、Linux和Mac OS X上编译使用。</p><h1 id="ffmpeg下载"><a href="#ffmpeg下载" class="headerlink" title="ffmpeg下载"></a>ffmpeg下载</h1><ul><li><a href="http://ffmpeg.org/download.html" target="_blank" rel="noopener">Download FFmpeg</a> 主要下载地址</li><li><a href="https://ffmpeg.zeranoe.com/builds/" target="_blank" rel="noopener">FFmpeg Builds</a> windows可以直接下载别人编译好的可执行文件，其实就是上面提供的路径</li></ul><h1 id="ffmpeg的基本语法格式"><a href="#ffmpeg的基本语法格式" class="headerlink" title="ffmpeg的基本语法格式"></a>ffmpeg的基本语法格式</h1><p>cmd的环境变量设置<br><figure class="highlight bat"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> <span class="built_in">path</span>=<span class="variable">%path%</span>;C:/media</span><br></pre></td></tr></table></figure></p><h1 id="使用ffplay预览"><a href="#使用ffplay预览" class="headerlink" title="使用ffplay预览"></a>使用ffplay预览</h1><p>如果用ffmpeg会需要保存到一个文件中，但用ffplay则可以直接预览看效果，用法差不多只是不用再指定输出文件</p><h1 id="在ffmpeg中使用si前缀"><a href="#在ffmpeg中使用si前缀" class="headerlink" title="在ffmpeg中使用si前缀"></a>在ffmpeg中使用si前缀</h1><p>其实就是用m, k, g等代替千位符号等等的</p><h1 id="ffmpeg中的转码"><a href="#ffmpeg中的转码" class="headerlink" title="ffmpeg中的转码"></a>ffmpeg中的转码</h1><p>其实就是demuxer和decoder<br><img src="/2019/04/19/ffmpeg/ffmpeg基础/2019-04-20-00-02-59.png" alt></p><h1 id="滤波器"><a href="#滤波器" class="headerlink" title="滤波器"></a>滤波器</h1><p>在多媒体处理中，滤波器通常指将编码前对输入文件进行修改的软件。ffmpeg中有多种内置的滤波器，可以通过复杂的语法直接连接，避免了多次编解码产生的PQ下降。libavfilter是ffmpeg的filtering API，可以使用<code>-vf</code>和<code>-af</code>进行处理</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ffmpeg -i A.flv -vf hqdn3d,pad=2*iw output.mp4  # 先滤波降噪并填充变成3840x1080</span><br><span class="line">ffmpeg -i output.mp4 -i A.flv -filter_complex overlay=w compare.mp4     # 填充另一个视频</span><br><span class="line"></span><br><span class="line"># 上面等价于</span><br><span class="line">ffplay -i A.flv -vf split[a][b];[a]pad=2*iw[A];[b]hqdn3d[B];[A][B]overlay=w # 直接使用filtergraph完成两路视频不同的处理并拼接</span><br></pre></td></tr></table></figure><p>利用filtergraphs可以同时完成多路的滤波，实现比filter更复杂一些操作，如下是滤波器的典型用法<br><img src="/2019/04/19/ffmpeg/ffmpeg基础/2019-04-20-00-20-51.png" alt></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;在工作中还是挺经常用到ffmpeg的，虽然多用于编解码和一些格式的转换，但很多时候确实需要用到一些特殊的用法，网络上比较少能查找到。顺便准备稍微系统学习一下ffmpeg知识，便于扩展和应用，没准自己有时候还要做一些定制化的处理。例如用NVIDIA加速的HDR10编解码、V2</summary>
       
     
     
