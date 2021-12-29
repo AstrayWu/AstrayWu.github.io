@@ -340,6 +340,176 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/19/RM开发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Astray Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2021/12/19/RM开发/" class="post-title-link" itemprop="url">RM开发</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2021-12-19 12:37:14 / Modified: 12:44:58" itemprop="dateCreated datePublished" datetime="2021-12-19T12:37:14+08:00">2021-12-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">662</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">uint32_t</span> <span class="title">lut_cal</span><span class="params">(<span class="keyword">uint32_t</span> *lut, <span class="keyword">uint32_t</span> x_base, <span class="keyword">uint32_t</span> x_step, <span class="keyword">uint32_t</span> index_base,</span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">uint32_t</span> in_max, <span class="keyword">uint32_t</span> in_data, <span class="keyword">uint32_t</span> lut_sz)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">uint32_t</span> index_off = (in_data - x_base) &gt;&gt; x_step;</span><br><span class="line">    <span class="keyword">uint32_t</span> index = index_off + index_base;</span><br><span class="line">    assert(index &lt; lut_sz &amp;&amp; index &gt;= <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">uint32_t</span> y0 = lut[index];</span><br><span class="line">    <span class="keyword">uint32_t</span> y1 = lut[min(index + <span class="number">1</span>, lut_sz - <span class="number">1</span>)];</span><br><span class="line">    <span class="keyword">uint32_t</span> frac = in_data - ((index_off &lt;&lt; x_step) + x_base);</span><br><span class="line">    <span class="keyword">uint32_t</span> y;    </span><br><span class="line">    assert(y1 &gt;= y0);</span><br><span class="line">    <span class="keyword">if</span> (in_data &lt;= in_max) &#123;</span><br><span class="line">        y = (((y1 - y0) * frac) &gt;&gt; x_step) + y0;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        y = y0;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/17/PyQt5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -402,7 +572,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-12-18 01:52:12" itemprop="dateModified" datetime="2021-12-18T01:52:12+08:00">2021-12-18</time>
+                <time title="Modified: 2021-12-29 23:34:28" itemprop="dateModified" datetime="2021-12-29T23:34:28+08:00">2021-12-29</time>
               
             
           </span>
@@ -430,7 +600,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">2.2k</span>
+                <span title="Symbols count in article">2.5k</span>
               
 
               
@@ -466,7 +636,7 @@
       
         
           
-            <h2 id="PyQt5-tutorial-ZetCode-笔记"><a href="#PyQt5-tutorial-ZetCode-笔记" class="headerlink" title="PyQt5 tutorial ZetCode 笔记"></a><a href="https://zetcode.com/gui/pyqt5/" target="_blank" rel="noopener">PyQt5 tutorial</a> ZetCode 笔记</h2><ol>
+            <h2 id="1-PyQt5-tutorial-ZetCode-笔记"><a href="#1-PyQt5-tutorial-ZetCode-笔记" class="headerlink" title="1. PyQt5 tutorial ZetCode 笔记"></a>1. <a href="https://zetcode.com/gui/pyqt5/" target="_blank" rel="noopener">PyQt5 tutorial</a> ZetCode 笔记</h2><ol>
 <li>Date and time<ol>
 <li>Current date and time<br> a. Qt.ISOData<br> b. DefaultLocaleLongDate</li>
 <li>UTC time</li>
@@ -550,10 +720,19 @@
 </ol>
 </li>
 </ol>
-<h2 id="Python-and-PyQt-Building-a-GUI-Desktop-Calculator-笔记"><a href="#Python-and-PyQt-Building-a-GUI-Desktop-Calculator-笔记" class="headerlink" title="Python and PyQt: Building a GUI Desktop Calculator 笔记"></a><a href="https://realpython.com/python-pyqt-gui-calculator/" target="_blank" rel="noopener">Python and PyQt: Building a GUI Desktop Calculator</a> 笔记</h2><p>MVC典型流程，先画View，再设计控制逻辑Control，最后再设计计算模型Model，分步骤实现。</p>
-<h2 id="Qt-Designer-and-Python-Build-Your-GUI-Applications-Faster-笔记"><a href="#Qt-Designer-and-Python-Build-Your-GUI-Applications-Faster-笔记" class="headerlink" title="Qt Designer and Python: Build Your GUI Applications Faster 笔记"></a><a href="https://realpython.com/qt-designer-python/#getting-started-with-qt-designer" target="_blank" rel="noopener">Qt Designer and Python: Build Your GUI Applications Faster</a> 笔记</h2><p>coding一个相当完整的mainwindow</p>
-<h2 id="进一步熟悉"><a href="#进一步熟悉" class="headerlink" title="进一步熟悉"></a>进一步熟悉</h2><p>书籍《PyQt快速开发与实践》中介绍了一些基本内容，后续可以进一步掌握，包括设计师的使用，基础组件，布局管理，高级组件等，还是要结合实战进行更深入的学习和使用才行。</p>
-<h2 id="1-参考链接"><a href="#1-参考链接" class="headerlink" title="1. 参考链接"></a>1. 参考链接</h2><ol>
+<h2 id="2-Python-and-PyQt-Building-a-GUI-Desktop-Calculator-笔记"><a href="#2-Python-and-PyQt-Building-a-GUI-Desktop-Calculator-笔记" class="headerlink" title="2. Python and PyQt: Building a GUI Desktop Calculator 笔记"></a>2. <a href="https://realpython.com/python-pyqt-gui-calculator/" target="_blank" rel="noopener">Python and PyQt: Building a GUI Desktop Calculator</a> 笔记</h2><p>MVC典型流程，先画View，再设计控制逻辑Control，最后再设计计算模型Model，分步骤实现。</p>
+<h2 id="3-Qt-Designer-and-Python-Build-Your-GUI-Applications-Faster-笔记"><a href="#3-Qt-Designer-and-Python-Build-Your-GUI-Applications-Faster-笔记" class="headerlink" title="3. Qt Designer and Python: Build Your GUI Applications Faster 笔记"></a>3. <a href="https://realpython.com/qt-designer-python/#getting-started-with-qt-designer" target="_blank" rel="noopener">Qt Designer and Python: Build Your GUI Applications Faster</a> 笔记</h2><p>coding一个相当完整的mainwindow</p>
+<h2 id="4-进一步熟悉"><a href="#4-进一步熟悉" class="headerlink" title="4. 进一步熟悉"></a>4. 进一步熟悉</h2><p>书籍《PyQt快速开发与实践》中介绍了一些基本内容，后续可以进一步掌握，包括设计师的使用，基础组件，布局管理，高级组件等，还是要结合实战进行更深入的学习和使用才行。</p>
+<h2 id="5-PythonQwt"><a href="#5-PythonQwt" class="headerlink" title="5. PythonQwt"></a>5. PythonQwt</h2><p>QWT可以用于生成各种统计图，给具有专业技术背景的程序提供GUI组件和实用类，以基于2D方式的窗体不见来显示数据。</p>
+<p><a href="https://pythonqwt.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">PythonQwt</a><br><a href="https://qwt.sourceforge.io/" target="_blank" rel="noopener">Qwgt User’s Guide 6.2.0</a><br><a href="https://zhuanlan.zhihu.com/p/396555026" target="_blank" rel="noopener">Qt之Qwt曲线绘制</a></p>
+<h3 id="5-1-curve-fitting"><a href="#5-1-curve-fitting" class="headerlink" title="5.1. curve fitting"></a>5.1. curve fitting</h3><p><a href="https://github.com/AstrayWu/pyqt-demo/blob/main/event_filter_demo.py" target="_blank" rel="noopener">event_filter_demo.py</a></p>
+<p>制作曲线调整的工具，为加速开发就基于event filter demo修改，可以适配7条曲线的调试和保存，主要改动如下：</p>
+<ol>
+<li>支持鼠标和键盘拖动曲线，固定Y方向</li>
+<li>显示7条曲线，可隐藏</li>
+<li>支持曲线的导入和导出，暂时指定文件名</li>
+</ol>
+<h2 id="6-参考链接"><a href="#6-参考链接" class="headerlink" title="6. 参考链接"></a>6. 参考链接</h2><ol>
 <li><a href="https://www.pythonguis.com/pyqt5-tutorial/" target="_blank" rel="noopener">The complete PyQt5 tutorial — Create GUI applications with Pyth on</a></li>
 <li><a href="https://www.riverbankcomputing.com/static/Docs/PyQt5/" target="_blank" rel="noopener">PyQt5 Reference Guide</a> 官方文档</li>
 <li><a href="https://zetcode.com/gui/pyqt5/" target="_blank" rel="noopener">PyQt5 tutorial</a> ZetCode</li>
@@ -575,177 +754,6 @@
 <li><a href="https://doc.qt.io/qt-5/qtdesigner-manual.html" target="_blank" rel="noopener">Qt Designer Manual</a></li>
 <li><a href="https://www.cnblogs.com/linyfeng/p/11223707.html" target="_blank" rel="noopener">[ PyQt入门教程 ] Qt Designer工具的使用</a> 使用qtdesigner实现登录框和业务逻辑代码</li>
 </ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/13/test20211213/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Astray Wu">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2021/12/13/test20211213/" class="post-title-link" itemprop="url">test20211213</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2021-12-13 01:38:03 / Modified: 01:38:51" itemprop="dateCreated datePublished" datetime="2021-12-13T01:38:03+08:00">2021-12-13</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">36</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>参考<a href="https://www.cnblogs.com/linlf03/p/6923519.html" target="_blank" rel="noopener">TortoiseSVN比较工具设置为BeyondCompare 4</a></p>
 
           
         
@@ -2050,7 +2058,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-12-13 01:27:14" itemprop="dateModified" datetime="2021-12-13T01:27:14+08:00">2021-12-13</time>
+                <time title="Modified: 2021-12-19 12:26:00" itemprop="dateModified" datetime="2021-12-19T12:26:00+08:00">2021-12-19</time>
               
             
           </span>
@@ -2078,7 +2086,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">1.3k</span>
+                <span title="Symbols count in article">1.4k</span>
               
 
               
@@ -2149,6 +2157,9 @@
 <p><strong>file2.c</strong></p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"file3.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"prog1.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">use_it</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Global variable: %d\n"</span>, global_variable++);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
+<h2 id="相关问题锦集"><a href="#相关问题锦集" class="headerlink" title="相关问题锦集"></a>相关问题锦集</h2><ol>
+<li><a href="https://www.zhihu.com/question/55936870/answer/2263354839" target="_blank" rel="noopener">C++ 11为什么引入nullptr？</a><br> 在C++中NULL定义为0，在函数匹配时会有二义性</li>
+</ol>
 
           
         
@@ -2981,7 +2992,7 @@ QMessageBox::information(this, tr(&quot;Information&quot;), str);
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">79k</span>
+    <span title="Symbols count total">80k</span>
   
 
   
@@ -2990,7 +3001,7 @@ QMessageBox::information(this, tr(&quot;Information&quot;), str);
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">1:12</span>
+    <span title="Reading time total">1:13</span>
   
 </div>
 
